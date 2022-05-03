@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e84a0e43970656d4999dc36059e3d100
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _parentObject1: {instanceID: 0}
+  - _featureTilePrefab: {fileID: -155634246477857046, guid: ddd911e1142e09b44b9866036a0d9eb8, type: 3}
+  - questionMark: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

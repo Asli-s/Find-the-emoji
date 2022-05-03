@@ -1,0 +1,142 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+[System.Serializable]
+public class Tiles : MonoBehaviour
+{
+    public static Tiles Instance;
+    public Sprite[] _gameObjects;
+    private SpriteRenderer _spriteRenderer;
+    [SerializeField] private GameObject _highlight;
+    [SerializeField] private Featured _featureTile;
+    private SpriteRenderer _featureTileSprite;
+    private Sprite clickedTile;
+   // bool clicked = false;
+    public GameObject health;
+    private bool win = false;
+    public Board _board;
+    public Tiles _tile;
+    private int positionInArray;
+
+    public GameObject firstSprite;
+
+
+    void Awake()
+       
+    {
+        if (Instance == null) {
+            Instance = this;
+            _featureTileSprite = _featureTile._featureTilePrefab.GetComponent<SpriteRenderer>();
+         
+          //   healthSet.healthFunction(health);
+        }
+        else
+        {
+            _featureTileSprite = _featureTile._featureTilePrefab.GetComponent<SpriteRenderer>();
+         
+            //   GetComponent<HealthHearts>().healthFunction(health);
+
+
+        }
+
+    }
+     void Start()
+    {
+        // Debug.Log("tile");
+       // health= GetComponent<HealthHearts>();
+    //    Debug.Log("health");
+
+   
+
+
+    }
+    public void checkForClicks()
+    {
+        if(win)
+        {
+            Debug.Log("true");
+        }
+    }
+  
+
+    private void OnMouseEnter()
+    {
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+
+            _highlight.SetActive(true);
+
+        }
+
+
+        
+        
+
+    
+    }
+   
+    public void OnMouseDown()
+    {
+        /*  if (!EventSystem.current.IsPointerOverGameObject())
+          {*/
+
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            //It means clicked on panel. So we do not consider this as click on game Object. Hence returning. 
+            print("gui");
+            return;
+        }
+        else
+        {
+
+
+
+
+
+
+            print("stillClicked!");
+            clickedTile = GetComponent<SpriteRenderer>().sprite;
+            //  print(clickedTile);
+
+            if (clickedTile == _featureTileSprite.sprite)
+            {
+                Debug.Log("win!");
+                win = true;
+                GameManager.Instance.ChangeState(GameState.Win);
+
+            }
+            else if (clickedTile != _featureTileSprite.sprite)
+            {
+                positionInArray =
+                      _board._nodes.FindIndex(x => x.Equals(_tile));
+                health.GetComponent<HealthHearts>().loseLife(positionInArray);
+
+
+
+
+                // }
+
+
+
+            }
+
+
+
+
+        }
+
+
+
+
+
+    }
+    private void OnMouseExit()
+    {
+     
+       
+        _highlight?.SetActive(false);
+      
+    }
+}
