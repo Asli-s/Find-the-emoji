@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class LoadMenu : MonoBehaviour
+public class MenuAnim : MonoBehaviour
 {
     // Start is called before the first frame update
-    public static LoadMenu Instance;
+    public static MenuAnim Instance;
     public CanvasGroup Fade;
 
 
@@ -32,16 +32,16 @@ public class LoadMenu : MonoBehaviour
     private void SetFalse()
    
     {
+        gameObject.SetActive(false);
         Featured.Instance.screenActive = false;
 
-        gameObject.SetActive(false);
 
         //  LeanTween.moveLocal(gameObject/*.GetComponent<RectTransform>()*/,new Vector3(0,1846, 89501.99f), 1f).setEaseInExpo();
     }
     public void CloseMenuAnim()
     {
-        print("change screenactive to false");
-          LeanTween.moveLocal(gameObject/*.GetComponent<RectTransform>()*/, new Vector3(0, 1846, 89501.99f), 0.5f).setEaseInExpo().setOnComplete(SetFalse);
+     //   print("change screenactive to false");
+          LeanTween.moveLocal(gameObject/*.GetComponent<RectTransform>()*/, new Vector3(0, 1846, 89501.99f), 0.6f).setEaseInExpo().setOnComplete(SetFalse);
         Fade.LeanAlpha(0, 0);
 
     }

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Audio;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 public class Board : MonoBehaviour
@@ -17,10 +19,10 @@ public class Board : MonoBehaviour
     /*[SerializeField] private SpriteRenderer _boardPrefab;*/
     private SpriteRenderer _tileSpriteRenderer;
     private int _minRange = 0;
-    private int _maxRange = 0;
+    private int _maxRange = 80;
 
     public GameObject PausePanel;
-    public bool pausePanelActive =false;
+    public bool pausePanelActive = false;
 
 
     public float timeSpeed = 0.4f;
@@ -35,25 +37,37 @@ public class Board : MonoBehaviour
     public Sprite buttonSpritePlay;
     public Sprite buttonSpritePause;
 
-                          //start board change after 4sec
+    //start board change after 4sec
     public int secondsToStart = 5;
     public IEnumerator toStartTimer;
 
+    public List<Sprite> chosenSpritesArray;
+
 
     public int originalSeconds = 2;
-    public int secondsLeft;    public bool takingAway = false;
+    public int secondsLeft; public bool takingAway = false;
     public IEnumerator StartTimer;
     public List<Tiles> _nodes;
-   public bool paused = false;
+    public bool paused = false;
     public bool findScreenFinished = false;
     public bool gridPopulation = false;
 
-     void Awake()
+    AudioManager audioManager;
+    public Sound[] sounds;
+
+    int count = 0;
+
+
+    GameObject singleNode;
+
+    void Awake()
     {
 
 
 
-        if (Instance == null) { Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
             _maxRange = _tilesPrefab._gameObjects.Length;
             //_tilesPrefab = GetComponent<Tiles>();
             _tileSpriteRenderer = _tilesPrefab?.GetComponent<SpriteRenderer>();
@@ -64,60 +78,163 @@ public class Board : MonoBehaviour
             _tileSpriteRenderer = _tilesPrefab?.GetComponent<SpriteRenderer>();
 
         }
-     
+
 
 
     }
     private void Start()
     {
-      //  Debug.Log("board inside");
+        //  Debug.Log("board inside");
         secondsLeft = originalSeconds;
+        audioManager = FindObjectOfType<AudioManager>();
+
+
     }
     private void Update()
     {
         //Dont call changesingle tile before generategrid is populated completely 
-                // maybe while any tile sprite == firstsprite => get tile??
-
-
-        if (secondsToStart > 0 )
-        {
-            toStartTimer = StartingTimer();
-            StartCoroutine(toStartTimer);
-        }
-        else if (secondsToStart <= 0)
+        // maybe while any tile sprite == firstsprite => get tile??
+        if (gridPopulation == true)
         {
 
-            StopCoroutine(toStartTimer);        // <-- starting timer
-            if (takingAway == false && secondsLeft > 0 && paused == false)
+            if (secondsToStart > 0)
             {
-                StartTimer = Timer();
-
-                StartCoroutine(StartTimer);
+                toStartTimer = StartingTimer();
+                StartCoroutine(toStartTimer);
             }
-            else if (takingAway == false && secondsLeft == 0 && paused == false)
+            else if (secondsToStart <= 0)
             {
-                secondsLeft = originalSeconds;
-                changeSingleTile();
+
+                StopCoroutine(toStartTimer);        // <-- starting timer
+                if (takingAway == false && secondsLeft > 0 && paused == false)
+                {
+                    StartTimer = Timer();
+
+                    StartCoroutine(StartTimer);
+                }
+                else if (takingAway == false && secondsLeft == 0 && paused == false)
+                {
+                    secondsLeft = originalSeconds;
+                    changeSingleTile();
+
+                }
 
             }
-
-
         }
-       
+
     }
+
+
+    public void PopSprite()
+    {
+        count = 0;
+
+        for (int i = 3; i < _nodes.Count; i += 4)
+        {
+
+            singleNode = _nodes[i].transform.GetChild(0).gameObject;
+          
+
+            LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+            DestroyTileChild();
+         
+        }
+
+        for (int x = 2; x < _nodes.Count - 1; x += 4)
+        {
+          
+
+          //  print("count" + count);
+            singleNode = _nodes[x].transform.GetChild(0).gameObject;
+          
+            LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
+            //Invoke("HideShowGameobject", count / 10);
+            DestroyTileChild();
+
+
+        }
+        
+        for (int y = 1; y < _nodes.Count - 2; y += 4)
+        {
+          
+            singleNode = _nodes[y].transform.GetChild(0).gameObject;
+        
+            LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
+                                                                                                                          //  Invoke("HideShowGameobject", count / 10);
+            DestroyTileChild();
+
+        }
+
+        for (int z = 0; z < _nodes.Count - 3; z += 4)
+        {
+           
+
+            singleNode = _nodes[z].transform.GetChild(0).gameObject;
+       
+            LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
+                                                                                                                          //       Invoke("HideShowGameobject", count / 10);
+            DestroyTileChild();
+
+
+        }
+
+
+        if (count == 16)
+        {           
+            gridPopulation = true;
+        }
+
+
+
+        Featured.Instance.tile.GetComponent<BoxCollider2D>().enabled = true;
+    }
+
+
+
+                                    /*PLAY POP AUDIO*/
+    void HideShowGameobject()
+    {
+       if(GameOver.Instance.win == false)
+        {
+
+        FindObjectOfType<AudioManager>().Play("pop");
+        }
+
+    }
+
+
+    void DestroyTileChild()
+    {
+        Invoke("HideShowGameobject", (count + 0.01f) / 10);
+
+
+        Destroy(singleNode, (count + 1.7f) / 10);
+        count += 1;
+    }
+
+ /*   void disableLoop()
+    {
+        // audioManager.GetComponent<AudioSource>().loop = false;
+        print("stop the loop");
+        FindObjectOfType<AudioManager>().Play("jump", false, true);
+
+    }
+*/
+
     private Tiles getTile()
     {
 
         alreadyAssigned = false;
         Sprite firstSprite = Tiles.Instance.firstSprite.GetComponent<SpriteRenderer>().sprite;
 
-        rnd = Random.Range(_minRange, _maxRange);
-        _tileSpriteRenderer.sprite = _tilesPrefab?._gameObjects?[rnd];
-      
+        // _tileSpriteRenderer.sprite = _tilesPrefab?._gameObjects?[rnd];
 
-        //dont change TIles unless animation is completed
+        rnd = UnityEngine.Random.Range(_minRange, 80);
 
-        if (_nodes != null && findScreenFinished==true &&gridPopulation ==true ) // && population is completed
+        _tileSpriteRenderer.sprite = chosenSpritesArray[rnd];
+
+
+        if (_nodes != null)
         {
             _nodes.ForEach((t) =>
             {
@@ -125,16 +242,17 @@ public class Board : MonoBehaviour
                 if (t.GetComponent<SpriteRenderer>().sprite == _tileSpriteRenderer.sprite)
                 {
                     alreadyAssigned = true;
-                 
+
 
                 }
                 //print(featureTile.tile.GetComponent<SpriteRenderer>().sprite);//.GetComponent<SpriteRenderer>().sprite);
-                
-                if(alreadyAssigned ==false && t.GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
+
+                //check if featureTile sprite appeared
+                if (alreadyAssigned == false && t.GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
                 {
-                    print("appeared");
+                   // print("appeared");
                     appearCounter = 1;
-                    print(appearCounter);
+                  //  print(appearCounter);
                 }
 
 
@@ -146,34 +264,50 @@ public class Board : MonoBehaviour
 
         //change to  first sprite 
 
-        else if(findScreenFinished == false )// && population is completed)
-        {
-            _tileSpriteRenderer.sprite = firstSprite;
 
-        }
-       /* else if(findScreenFinished =true && gridPopulation ==false)
-        {
-            GenerateGrid();    ____________----->  call NEW generategrid at this point 
-            gridPopulation = true;
-        }*/
+
+        /*   else if(findScreenFinished == false )// && population is completed)
+           {
+               _tileSpriteRenderer.sprite = firstSprite;
+
+           }*/
+
+
+
+        /* else if(findScreenFinished =true && gridPopulation ==false)
+         {
+             GenerateGrid();    ____________----->  call NEW generategrid at this point 
+             gridPopulation = true;
+         }*/
         return _tilesPrefab;
 
 
 
     }
 
-    //____________----->  make another generategrid ()
-    //populate in one go Not changesingle tile
-
-
+   
 
     public void GenerateGrid()
     {
         featureTileSpriteRenderer = featureTile._featureTilePrefab.GetComponent<SpriteRenderer>();
-        print("board" + featureTileSpriteRenderer.sprite);
+     //   print("board" + featureTileSpriteRenderer.sprite);
+
+        //chosenSpritesArray will contain 80 sprites
+        for (int i = 0; i < 79; i++)
+        {
+            rnd = UnityEngine.Random.Range(_minRange, _maxRange);
+            chosenSpritesArray.Add(_tilesPrefab?._gameObjects?[rnd]);
+        }
+
+
+        chosenSpritesArray.Add(featureTileSpriteRenderer.sprite);
+     //   print(chosenSpritesArray);
+      //  print("length of chosenSpritesArray" + chosenSpritesArray.Count);
+
 
 
         _nodes = new List<Tiles>();
+
         for (int x = 0; x < _width; x++)
         {
             for (int y = 0; y < _height; y++)
@@ -192,9 +326,10 @@ public class Board : MonoBehaviour
                 _nodes.Add(node);
 
 
-
-
             }
+
+
+
         }
 
 
@@ -213,16 +348,16 @@ public class Board : MonoBehaviour
         GameManager.Instance.ChangeState(GameState.ChoseTile);
 
     }
-    
 
 
 
 
 
-    
+
+
     /*GENERATE GRID ORIGINAL FUNCTION*/
-    
-    
+
+
     /*
     public void GenerateGrid()
     {
@@ -269,11 +404,16 @@ public class Board : MonoBehaviour
 */
     public void changeSingleTile()
     {
-        randomChosenTile = Random.Range(_minRange, _width * _width);
-        alreadyAssigned = false;
-        rnd = Random.Range(_minRange, _maxRange);
 
-        var randomChosenSprite = _tilesPrefab._gameObjects?[rnd];
+
+        randomChosenTile = UnityEngine.Random.Range(_minRange, _width * _width);
+        alreadyAssigned = false;
+        // rnd = Random.Range(_minRange, _maxRange);
+        rnd = UnityEngine.Random.Range(_minRange, 80);
+
+        //    var randomChosenSprite = _tilesPrefab._gameObjects?[rnd];
+        var randomChosenSprite = chosenSpritesArray[rnd];
+
         // get node sprite
         var nodeSprite = _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite;
         //chose random tile
@@ -286,110 +426,130 @@ public class Board : MonoBehaviour
 
 
             }
-           
+
 
             // var freeNodes = _nodes.Where();
         });
-        
+
         if (alreadyAssigned)
         {
             changeSingleTile();
         }
-        else if(alreadyAssigned ==false)
+        else if (alreadyAssigned == false)
         {
             //set new sprite for single tile
             _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite = randomChosenSprite;
             //set child sprite active for 1s
 
-         //   _nodes[randomChosenTile].
-   /*       particleName=  Instantiate(particleInstance);
-            particleName.transform.parent = _parentObject.transform;*/
+            //   _nodes[randomChosenTile].
+            /*       particleName=  Instantiate(particleInstance);
+                     particleName.transform.parent = _parentObject.transform;*/
+
+
+
+
+            //FindObjectOfType<AudioManager>().Play("click");
+
+
+
+
+
             if (_nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
             {
-                print("appeared changed tile");
+              //  print("appeared changed tile");
                 appearCounter += 1;
-                print(appearCounter);
-            }
-
-        }
-            }
-    public void pauseBoard()
-    {
-        print("here");
-
-        //normal mode 
-        if (paused == false && Featured.Instance.screenActive ==false)
-        {
-            print(paused);
-            button.GetComponent<Image>().sprite = buttonSpritePlay;
-            paused = true;
-            //       print("pause");
-            //  StopCoroutine(Timer());
-            StopCoroutine(StartTimer);
-
-
-            //activate panel
-
-
-
-            //
-            //StopAllCoroutines();
-
-
-            //last changed 13.03
-            //featureTile stays open on pause
-
-            /*Featured.Instance.StopCoroutine(Featured.Instance.FeatureTimer);
-            */
-
-        }
-
-        // 
-    
-        else if (paused == true && Featured.Instance.screenActive == true)
-        {
-            button.GetComponent<Image>().sprite = buttonSpritePause;
-            print(paused);
-
-            paused = false;
-
-            StartTimer = Timer();
-
-            StartCoroutine(StartTimer);
-            secondsLeft = originalSeconds;
-
-            if (Featured.Instance.openTile == true || Featured.Instance.clicked == true)
-            {
-                Featured.Instance.StartCoroutine(Featured.Instance.FeatureTimer);
-                //decrease coin after warning
+               // print(appearCounter);
             }
 
         }
     }
+    public void pauseBoard()
+    {
+        //print("here");
+        if (gridPopulation == true)
+        {
+            //normal mode 
+            if (paused == false && Featured.Instance.screenActive == false)
+            {
+            //    print(paused);
+                button.GetComponent<Image>().sprite = buttonSpritePlay;
+                paused = true;
+                if (takingAway == true && secondsLeft > 0)
+                {
 
+                    StopCoroutine(StartTimer);
+                }
+
+
+
+            }
+            //test this 
+            /* else if (paused == false && Featured.Instance.screenActive == true)
+             {
+                 StopCoroutine(StartTimer);
+             }*/
+            else if (paused == true && Featured.Instance.screenActive == false)
+            {
+                if (takingAway == true && secondsLeft > 0)
+                {
+
+                    StopCoroutine(StartTimer);
+                }
+            }
+            // 
+
+            else if (paused == true && Featured.Instance.screenActive == true)
+            {
+                button.GetComponent<Image>().sprite = buttonSpritePause;
+              //  print(paused);
+
+                paused = false;
+
+                StartTimer = Timer();
+
+                StartCoroutine(StartTimer);
+                secondsLeft = originalSeconds;
+
+                if (Featured.Instance.openTile == true || Featured.Instance.clicked == true)
+                {
+                    Featured.Instance.StartCoroutine(Featured.Instance.FeatureTimer);
+                    //decrease coin after warning
+                }
+
+            }
+        }
+    }
     public void PauseButton()
     {
 
+        //only after popanimation
 
-        if (paused == false && pausePanelActive == false  &&Featured.Instance.screenActive == false)
+
+/*PAUSE IF NOT ALREADY PAUSED*/
+        if (paused == false && pausePanelActive == false && Featured.Instance.screenActive == false && gridPopulation ==true)
         {
-            print(paused);
+            ThemeSound.Instance.audio.volume = 0.04f;
+
             button.GetComponent<Image>().sprite = buttonSpritePlay;
             paused = true;
             //       print("pause");
             //  StopCoroutine(Timer());
             StopCoroutine(StartTimer);
-            pausePanelActive =true;
+            pausePanelActive = true;
 
 
             //activate panel
             PausePanel.SetActive(true);
         }
 
-        else if (paused == true && Featured.Instance.screenActive == false)// && Featured.Instance.screenActive == false && pausePanelActive == true)
+/*START IF PAUSED*/
+
+        else if (paused == true && Featured.Instance.screenActive == false &&gridPopulation ==true)// && Featured.Instance.screenActive == false && pausePanelActive == true)
         {
+            ThemeSound.Instance.audio.volume = 0.1f;
+
             button.GetComponent<Image>().sprite = buttonSpritePause;
-            print(paused);
+          //  print(paused);
 
             paused = false;
             pausePanelActive = false;
@@ -407,14 +567,16 @@ public class Board : MonoBehaviour
 
     public void changeClickedSingleTile(int positionIndex)
     {
-      randomChosenTile = Random.Range(_minRange, _width * _width);
+        randomChosenTile = UnityEngine.Random.Range(_minRange, _width * _width);
         //var specificTile = "";
         alreadyAssigned = false;
-        rnd = Random.Range(_minRange, _maxRange);
+        rnd = UnityEngine.Random.Range(_minRange, _maxRange);
+        //define new maxrange -ex. 50
+        //make array with array[0] ==ftile + 49 rand. gameobjects
 
         var randomChosenSprite = _tilesPrefab._gameObjects?[rnd];
         // get node sprite
- //       var nodeSprite = _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite;
+        //       var nodeSprite = _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite;
 
         _nodes.ForEach((t) =>
         {
@@ -435,34 +597,34 @@ public class Board : MonoBehaviour
             _nodes[positionIndex].GetComponent<SpriteRenderer>().sprite = randomChosenSprite;
             if (_nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
             {
-                print("appeared through clicked");
+             //   print("appeared through clicked");
                 appearCounter += 1;
-                print(appearCounter);
+             //   print(appearCounter);
             }
 
         }
     }
 
- /*   void restart()
-    {
-        //restarrt
-    }
-*/
+    /*   void restart()
+       {
+           //restarrt
+       }
+   */
     IEnumerator Timer()
     {
         takingAway = true;
         yield return new WaitForSeconds(timeSpeed);
         secondsLeft--;
         takingAway = false;
-     //   print(secondsLeft);
+        //   print(secondsLeft);
     }
 
     IEnumerator StartingTimer()
     {
-       
+
         yield return new WaitForSeconds(1);
         secondsToStart--;
-    
+
         //   print(secondsLeft);
     }
 }

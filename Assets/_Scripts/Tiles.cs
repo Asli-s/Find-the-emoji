@@ -44,9 +44,8 @@ public class Tiles : MonoBehaviour
     }
      void Start()
     {
-        // Debug.Log("tile");
-       // health= GetComponent<HealthHearts>();
-    //    Debug.Log("health");
+     
+        _highlight.SetActive(false);
 
    
 
@@ -56,11 +55,11 @@ public class Tiles : MonoBehaviour
     {
         if(win)
         {
-            Debug.Log("true");
+            //Debug.Log("true");
         }
     }
   
-
+/*
     private void OnMouseEnter()
     {
         if (!EventSystem.current.IsPointerOverGameObject())
@@ -70,33 +69,31 @@ public class Tiles : MonoBehaviour
 
         }
 
-
         
         
 
     
     }
+*/
    
     public void OnMouseDown()
     {
         /*  if (!EventSystem.current.IsPointerOverGameObject())
           {*/
 
-        if (EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current.IsPointerOverGameObject()&& Featured.Instance.screenActive == true || Board.Instance.pausePanelActive == true && EventSystem.current.IsPointerOverGameObject())
         {
             //It means clicked on panel. So we do not consider this as click on game Object. Hence returning. 
-            print("gui");
+            print("gui"+ EventSystem.current.IsPointerOverGameObject());
             return;
         }
-        else
+        else if(Featured.Instance.screenActive == false)
         {
+           FindObjectOfType<AudioManager>().Play("jump", false);
+         //   FindObjectOfType<AudioManager>().Play("right");
 
 
-
-
-
-
-            print("stillClicked!");
+     //       print("stillClicked!");
             clickedTile = GetComponent<SpriteRenderer>().sprite;
             //  print(clickedTile);
 
@@ -105,13 +102,17 @@ public class Tiles : MonoBehaviour
                 Debug.Log("win!");
                 win = true;
                 GameManager.Instance.ChangeState(GameState.Win);
+                // enable highlight 
+                _highlight.SetActive(true);
 
             }
             else if (clickedTile != _featureTileSprite.sprite)
             {
                 positionInArray =
                       _board._nodes.FindIndex(x => x.Equals(_tile));
-                health.GetComponent<HealthHearts>().loseLife(positionInArray);
+           //     health.GetComponent<HealthHearts>().loseLife();
+                HealthHearts.Instance.loseLife();
+              //  print(health.GetComponent<HealthHearts>().health);
 
 
 
@@ -132,11 +133,19 @@ public class Tiles : MonoBehaviour
 
 
     }
-    private void OnMouseExit()
-    {
-     
-       
-        _highlight?.SetActive(false);
-      
-    }
+    /*    private void OnMouseExit()
+        {
+
+
+            _highlight?.SetActive(false);
+
+        }*/
+  
+
+
+
+
+
+
+
 }

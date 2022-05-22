@@ -11,12 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/slow.unity
     guid: 6825fb78f1ed453419b955285ded9f60
-  - enabled: 0
-    path: Assets/Scenes/medium scene.unity
-    guid: b118000224ffc3b4384804ae66fd8cfc
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/med.unity
     guid: 9e463db0741cf5c4698ecd6abc7c676f

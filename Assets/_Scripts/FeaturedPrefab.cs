@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class FeaturedPrefab : MonoBehaviour
 {
-    public Sprite[] _gameObjects ;
+    public Sprite[] _gameObjects;
     // Start is called before the first frame update
     public GameObject questionMark;
     public GameObject BoxCollision;
@@ -13,9 +13,9 @@ public class FeaturedPrefab : MonoBehaviour
     private void OnMouseDown()
     {
 
-        if (EventSystem.current.IsPointerOverGameObject() && Featured.Instance.screenActive ==true ||Board.Instance.pausePanelActive ==true && EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current.IsPointerOverGameObject() && Featured.Instance.screenActive == true || Board.Instance.pausePanelActive == true && EventSystem.current.IsPointerOverGameObject())
         {
-            print("gui"+ EventSystem.current.IsPointerOverGameObject());
+            //   print("gui"+ EventSystem.current.IsPointerOverGameObject());
             //It means clicked on panel. So we do not consider this as click on game Object. Hence returning. 
             return;
         }
@@ -23,12 +23,14 @@ public class FeaturedPrefab : MonoBehaviour
         {
             //clicked directly on game object. 
 
-            print("just not working");
-        if (Featured.Instance.findScreen.activeSelf==false && Featured.Instance.screenActive == false)
-        {
-            print("feauturetiile clicked");
-        Featured.Instance.FeatureTileClicked();
-        }
+
+            if (Featured.Instance.findScreen.activeSelf == false && Featured.Instance.screenActive == false && Board.Instance.gridPopulation == true)
+            {
+                FindObjectOfType<ClickSound>().Click();
+                //print("feauturetiile clicked");
+
+                Featured.Instance.FeatureTileClicked();
+            }
 
         }
 

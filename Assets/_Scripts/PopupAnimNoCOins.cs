@@ -22,6 +22,8 @@ public class PopupAnimNoCOins : MonoBehaviour
 
     {
         Featured.Instance.screenActive = true;
+        FindObjectOfType<AudioManager>().Play("appear");
+
 
         LeanTween.scale(mainBlock, new Vector3(1, 1, 1), 0.8f).setEaseOutExpo();
         /*  if (LeanTween.isTweening() ==false)

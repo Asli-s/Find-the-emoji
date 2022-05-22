@@ -7,8 +7,10 @@ public class HealthHearts : MonoBehaviour
 {
     // Start
     // is called before the first frame update
-    private int health;
+    public int health;
     public int numOfHearts;
+
+    public static HealthHearts Instance;
 
     public Image[] hearts;
     public Sprite fullHeart;
@@ -16,7 +18,15 @@ public class HealthHearts : MonoBehaviour
     public Sprite emptyHeart;
 
     int newHealth;
-   
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+    }
+
     private void Start()
     {
        
@@ -39,16 +49,16 @@ public class HealthHearts : MonoBehaviour
         return health;
     }
 
-    public void loseLife(int positionIndex)
+    public void loseLife()
     {
 
 
 
-      //  print(health);
-        if (health > 0)
+       print(health);
+        health= health-1;
+        if (health >= 0)
         {
           //  print("health bigger 0");
-        health--;
 
         hearts[health].sprite = emptyHeart;
             //ACTIVATE TO CHANGE SINGLE TILE AFTER CLICKED
