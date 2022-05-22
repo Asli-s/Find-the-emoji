@@ -21,7 +21,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance != null)
+        if (Instance != null)
         {
             Debug.LogError("already an instance created");
         }
@@ -44,7 +44,7 @@ public class DataPersistenceManager : MonoBehaviour
         this.gameData = new GameData();
 
     }
-
+    
 
 
     public void LoadGame()
@@ -65,6 +65,24 @@ public class DataPersistenceManager : MonoBehaviour
 
         Debug.Log("loaded coinnum" + gameData.coinNumber);
         Debug.Log("loaded position" + gameData.lastPos);
+        Debug.Log("loaded gamenum" + gameData.gameNumber);
+        Debug.Log("loaded win" + gameData.win);
+        Debug.Log("loaded lose" + gameData.lose);
+        Debug.Log("loaded score 1" + " " + gameData.score1);
+        Debug.Log("loaded score2" + " " + gameData.score2);
+        Debug.Log("loaded score3" + " " + gameData.score3);
+
+        Debug.Log("load  dateTime = " + gameData.savedTIme);
+
+
+        print("load minutes" + gameData.
+      minutesLeft);
+        print("load sec" + gameData.
+         secondsLeft);
+        print("activecountd" + gameData.
+         timerActive);
+
+
     }
 
 
@@ -74,8 +92,24 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPers.SaveData( gameData);
         }
+        //Debug.Log("saved coinnum" + gameData.coinNumber);
+       // Debug.Log("saved positon" + gameData.lastPos);
         Debug.Log("saved coinnum" + gameData.coinNumber);
-        Debug.Log("saved positon" + gameData.lastPos);
+        Debug.Log("saved position" + gameData.lastPos);
+        Debug.Log("saved gamenum" + gameData.gameNumber);
+        Debug.Log("saved win" + gameData.win);
+        Debug.Log("saved lose" + gameData.lose);
+        Debug.Log("score 1" + " "+ gameData.score1);
+        Debug.Log("score2" + " " + gameData.score2);
+        Debug.Log("score3" + " " + gameData.score3);
+
+        Debug.Log("dateTime = " + gameData.savedTIme);
+        print("save minutes"+ gameData.
+            minutesLeft);
+        print("save sec" + gameData.
+         secondsLeft);
+        print("activecountd" + gameData.
+         timerActive);
 
 
         dataHandler.Save(gameData);
@@ -84,6 +118,10 @@ public class DataPersistenceManager : MonoBehaviour
 
 
     private void OnApplicationQuit()
+    {
+        SaveGame();
+    }
+    public void changeScene()
     {
         SaveGame();
     }

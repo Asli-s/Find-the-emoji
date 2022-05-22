@@ -15,7 +15,7 @@ public class CoinCount : MonoBehaviour
     {
        //if coincount not 5 take that else 5
        //memory?
-       m_Object.text = "6";
+       m_Object.text = "5";
        /* if(coinCount read == null){
         * 
             coinCountText == "6";

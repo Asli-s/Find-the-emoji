@@ -23,6 +23,7 @@ public class PopUpAnimRestart : MonoBehaviour
     
     {
         Featured.Instance.screenActive = true;
+        FindObjectOfType<AudioManager>().Play("appear");
 
         LeanTween.scale(mainBlock, new Vector3(1,1,1), 0.8f).setEaseOutExpo();
       /*  if (LeanTween.isTweening() ==false)
@@ -44,6 +45,9 @@ public class PopUpAnimRestart : MonoBehaviour
     public void CloseMenuAnimation()
     {
         LeanTween.scale(mainBlock, new Vector3(0f, 0f, 0f), .8f).setEaseInExpo().setOnComplete(SetFalse);
+      //
+      //
+      //LeanTween.scale(Featured.Instance.tile as , new Vector3(1, 1, 1),0);
         print("close");
     }
 }

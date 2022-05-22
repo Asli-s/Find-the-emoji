@@ -4,28 +4,28 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameOver : MonoBehaviour
-{
+public class GameOver : MonoBehaviour 
+{ 
     public static GameOver Instance;
     public Tiles _tiles;
     public Board _board;
     public GameObject _parent;
     public GameObject _parent_mainCanvas;
 
-    private GameObject winScreen;
-    private GameObject loseScreen;
+    public bool win = false;
+    public bool lose = false;
     private List<Tiles> _allTiles;
     public GameObject featureTile;
     public Image[] Stars;
     public Sprite greyStar;
     public Sprite yellowStar;
-    public  int score;
+    public int score;
 
 
     //activating screens
     public GameObject WinScreen;
     public GameObject LoseScreen;
-   // public GameObject WinScreen;
+    // public GameObject WinScreen;
 
 
 
@@ -36,50 +36,20 @@ public class GameOver : MonoBehaviour
     }
     public void Win()
     {
-         WinScreen.SetActive(true);
+      //  GameManager.Instance.win += 1;
+        win = true;
+        WinScreen.SetActive(true);
         score = GameManager.Instance.score;
-
-        /*ACCESS CHILD OBJECT STARS ___PREFAB CHILDREN NOT ACCESSIBLE*/
-
+        FindObjectOfType<AudioManager>().Play("win", false);
 
 
-       /* for (int i = 0; i < Stars.Length; i++)
-        {
-            if(_board.appearCounter==0 || _board.appearCounter == 1)
-            {
-              //  print(_board.appearCounter);
-            Stars[i].sprite = yellowStar;
-              
-                score = 3;
-            }
-           else if (_board.appearCounter >1 && _board.appearCounter <= 3)
-            {
-                Stars[0].sprite = yellowStar;
-                Stars[1].sprite = yellowStar;
-                Stars[2].sprite = greyStar;
-                score = 2;
-            }
-            else if (_board.appearCounter >3)
-            {
-                // Stars[i].sprite = greyStar;
-                Stars[0].sprite = yellowStar;
-                Stars[1].sprite = greyStar;
-                Stars[2].sprite = greyStar;
-                score = 1;
 
-            }
-            // save score
-
-        }
-          */
-
-         
 
 
         _allTiles = _board._nodes;
         _tiles.GetComponent<BoxCollider2D>();
-       
-        _allTiles.ForEach((tile)=>{ tile.GetComponent<BoxCollider2D>().enabled = false; });
+
+        _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
         featureTile.transform.GetChild(0).gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
         StopCoroutine(_board.StartTimer);
@@ -96,32 +66,45 @@ public class GameOver : MonoBehaviour
     }
     public void Lose()
     {
-           LoseScreen.SetActive(true);
+    //    GameManager.Instance.lose += 1;
+        lose = true;
+        LoseScreen.SetActive(true);
         score = GameManager.Instance.score;
-
         score = 0;
         _allTiles = _board._nodes;
         _tiles.GetComponent<BoxCollider2D>();
 
         _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
         featureTile.transform.GetChild(0).gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        FindObjectOfType<AudioManager>().Play("lose", false);
 
+
+    
 
         StopCoroutine(_board.StartTimer);
 
-       // Time.timeScale = 0f;
+        // Time.timeScale = 0f;
 
-    //  loseScreen=  Instantiate(LoseScreen, Vector2.one, Quaternion.identity);
-     //   loseScreen.transform.parent = _parent_mainCanvas.transform;
+        //  loseScreen=  Instantiate(LoseScreen, Vector2.one, Quaternion.identity);
+        //   loseScreen.transform.parent = _parent_mainCanvas.transform;
 
 
     }
     public void Restart()
     {
+
         StopCoroutine(_board.StartTimer);
         Time.timeScale = 1f;
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+     
+        FindObjectOfType<AudioManager>().Play("coin");
+        Invoke("ActualRestart", 0.5f);
+    }
+
+    void ActualRestart()
+    {
         Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
 
     }
+
+ 
 }
