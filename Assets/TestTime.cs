@@ -17,7 +17,11 @@ public class TestTime : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI minutesText;
     [SerializeField] TMPro.TextMeshProUGUI secondsText;
 
-   public int remainingMinutes;
+
+    [SerializeField] public TMPro.TextMeshProUGUI TimerText;
+
+
+    public int remainingMinutes;
   public  int remainingSeconds;
 
     int minutesLeft;
@@ -166,87 +170,87 @@ public class TestTime : MonoBehaviour
         print("minutes"+minutes);
         print("seconds" + seconds);
 
-               while(minutes >= 30)
+            while(minutes >= 30)
+            {
+
+                minutes-=30;
+                print(minutes);
+                lifesToAdd += 1;
+                print(minutes);
+                print("lifestoadd"+lifesToAdd);
+                if (minutes < 30)
                 {
-
-                    minutes-=30;
-                    print(minutes);
-                    lifesToAdd += 1;
-                    print(minutes);
-                    print("lifestoadd"+lifesToAdd);
-                    if (minutes > 30)
-                    {
-                        break;
-                    }
+                    break;
                 }
+            }
 
-
+        print("minutes after while" + minutes);
 
                if(minutes <30)
                 {
                     print("minutes under 30" + minutes);
-                    if (minutes < minutesLeft || (minutesLeft == minutes && secondsLeft> seconds)
-                        ) {
+                        if (minutes < minutesLeft || (minutesLeft == minutes && secondsLeft> seconds) ) 
+                            {
 
-                        if (seconds <= secondsLeft) //working
+                                if (seconds <= secondsLeft) //working
+                                {
+                                    print(" 1 minutes<mLeft s<sL" + minutes);
+
+                                    minutes = minutesLeft -minutes;
+
+                                    seconds = secondsLeft - seconds;
+                                }
+                                else if(seconds > secondsLeft) { //working
+                                    print(" 1 minutes<mLeft sL<s" + minutes);
+
+                                    minutes = minutesLeft -minutes-1;
+                                    seconds =  60+secondsLeft -seconds;
+                //*if min ==0*//*
+
+                                }
+                        }
+                        else if(minutes>minutesLeft ||( minutesLeft ==minutes && seconds> secondsLeft))
                         {
-                            print(" 1 minutes<mLeft s<sL" + minutes);
+                            print("minutes<mLeft" + minutes);
 
-                            minutes = minutesLeft -minutes;
+                                    if (secondsLeft == seconds)
+                                    {
+                                        minutes =  minutesLeft-minutes;
+                                        minutes = 30 - minutes;
+                                        lifesToAdd += 1;
+                                    }
+                                    else if(secondsLeft > seconds)
+                                    {
+                                        seconds = secondsLeft - seconds;
+                                        seconds = seconds * 60 / 100;
+                                         //WRONG  26 
 
-                            seconds = secondsLeft - seconds;
-                        }
-                        else if(seconds > secondsLeft) { //working
-                            print(" 1 minutes<mLeft sL<s" + minutes);
-
-                            minutes = minutesLeft -minutes-1;
-                            seconds =  60+secondsLeft -seconds;
-        //*if min ==0*//*
-
-                        }
-                    }
-                    else if(minutes>minutesLeft ||( minutesLeft ==minutes && seconds> secondsLeft))
-                    {
-                        print("minutes<mLeft" + minutes);
-
-                        if (secondsLeft == seconds)
-                        {
-                            minutes =  minutesLeft-minutes;
-                            minutes = 30 - minutes;
-                            lifesToAdd += 1;
-                        }
-                        else if(secondsLeft > seconds)
-                        {
-                            seconds = secondsLeft - seconds;
-                    seconds = seconds * 60 / 100;
-                    //WRONG  26 
-
-                    //        minutes =  minutesLeft-minutes;
-                            minutes = 30 - minutes+minutesLeft;
-                    lifesToAdd++;
-                            print("minutes<mLeft s<sL" + minutes);
+                                         //        minutes =  minutesLeft-minutes;
+                                        minutes = 30 - minutes+minutesLeft;
+                                        lifesToAdd++;
+                                        print("minutes<mLeft s<sL" + minutes);
 
 
-                        }
-                        else if( secondsLeft <seconds)
-                        {
-                    lifesToAdd++;
+                                    }
+                                    else if( secondsLeft <seconds)
+                                    {
+                                        lifesToAdd++;
 
-                    // seconds = seconds + 60 - secondsLeft;
-                    seconds =100-  seconds+secondsLeft;
-                    seconds = seconds * 60 / 100;
-                         //   minutes = minutesLeft - minutes - 1;
+                                        // seconds = seconds + 60 - secondsLeft;
+                                        seconds =100-  seconds+secondsLeft;
+                                        seconds = seconds * 60 / 100;
+                                             //   minutes = minutesLeft - minutes - 1;
 
 
 
-                            minutes = 30 - minutes -1 +minutesLeft;
-                            //      seconds = 60 - seconds;
-                            //seconds = seconds;
-                        print("minutes<mLeft sL<s" + minutes);
+                                        minutes = 30 - minutes -1 +minutesLeft;
+                                        //      seconds = 60 - seconds;
+                                        //seconds = seconds;
+                                        print("minutes<mLeft sL<s" + minutes);
 
-                        }
+                                    }
 
-                    }
+                         }
                 }
 
 
@@ -255,47 +259,52 @@ public class TestTime : MonoBehaviour
                 if (coinCountNum < 5)
                 {
 
-                        GameManager.Instance.secondsLeft =seconds;
-                        GameManager.Instance.minutesLeft = minutes;
+                GameManager.Instance.secondsLeft =seconds;
+                GameManager.Instance.minutesLeft = minutes;
                 print(lifesToAdd);
 
                 newNum = coinCountNum;
                 newNum += lifesToAdd;
 
 
-                            if (newNum >= 5)
-                            {
-                                newNum = 5;
-                                GameManager.Instance.coinNum = newNum;
+                        if (newNum >= 5)
+                        {
+                            newNum = 5;
+                            GameManager.Instance.coinNum = newNum;
 
-                                GameManager.Instance.m_Object.text = newNum.ToString();
-
-                                GameManager.Instance.secondsLeft = 0;
-                                GameManager.Instance.minutesLeft = 0;
-                                GameManager.Instance.activeCountDown = false;
-                FindObjectOfType<CountdownTimer>().timerStarted = false; ;
-
-
-
-
-            }
-            else
-                            {
-                                GameManager.Instance.coinNum = newNum;
+                            GameManager.Instance.m_Object.text = newNum.ToString();
+                            TimerText.text = "full";
             
-                                GameManager.Instance.m_Object.text = newNum.ToString();
-                                FindObjectOfType<CountdownTimer>().StartTimer(minutes,seconds);
-                            }
+                GameManager.Instance.secondsLeft = 0;
+                            GameManager.Instance.minutesLeft = 0;
+                            GameManager.Instance.activeCountDown = false;
+                                FindObjectOfType<CountdownTimer>().timerStarted = false; ;
+
+
+
+
+                        }
+                        else
+                        {
+                            GameManager.Instance.coinNum = newNum;
+            
+                            GameManager.Instance.m_Object.text = newNum.ToString();
+                            FindObjectOfType<CountdownTimer>().StartTimer(minutes,seconds);
+                        }
 
                 }
                 else
                 {
+       
                     GameManager.Instance.secondsLeft = 0;
                     GameManager.Instance.minutesLeft = 0;
                     GameManager.Instance.activeCountDown = false;
+                    FindObjectOfType<CountdownTimer>().timerStarted = false; ;
+                    TimerText.text = "full";
 
 
-                }
+
+        }
 
         //  FindObjectOfType<Timer>().starte();*/
 
