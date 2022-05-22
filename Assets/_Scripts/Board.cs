@@ -57,6 +57,7 @@ public class Board : MonoBehaviour
 
     int count = 0;
 
+    bool checkForPopFinish =false;
 
     GameObject singleNode;
 
@@ -85,6 +86,7 @@ public class Board : MonoBehaviour
     private void Start()
     {
         //  Debug.Log("board inside");
+        checkForPopFinish = false;
         secondsLeft = originalSeconds;
         audioManager = FindObjectOfType<AudioManager>();
 
@@ -92,10 +94,20 @@ public class Board : MonoBehaviour
     }
     private void Update()
     {
+
+
+
+        
         //Dont call changesingle tile before generategrid is populated completely 
         // maybe while any tile sprite == firstsprite => get tile??
         if (gridPopulation == true)
         {
+            if (checkForPopFinish == false)
+            {
+                checkTiles();
+            }
+
+
 
             if (secondsToStart > 0)
             {
@@ -194,7 +206,7 @@ public class Board : MonoBehaviour
                                     /*PLAY POP AUDIO*/
     void HideShowGameobject()
     {
-       if(GameOver.Instance.win == false)
+       if(GameOver.Instance.win == false && GameOver.Instance.lose == false)
         {
 
         FindObjectOfType<AudioManager>().Play("pop");
@@ -220,6 +232,36 @@ public class Board : MonoBehaviour
 
     }
 */
+
+    void checkTiles()
+    {
+        int childCountFour = 0;
+        int childCountThree = 0;
+
+
+        for (int i = 0; i < 16; i++)
+        { 
+            //children count should be three
+          if(  _nodes[i].transform.childCount ==4)
+            {
+                childCountFour = 4;
+            }
+            else
+            {
+                childCountThree = 3;
+
+            }
+
+        }
+        if(childCountFour == 0)
+        {
+            checkForPopFinish = true;
+        }
+
+    }
+
+
+
 
     private Tiles getTile()
     {
@@ -526,7 +568,7 @@ public class Board : MonoBehaviour
 
 
 /*PAUSE IF NOT ALREADY PAUSED*/
-        if (paused == false && pausePanelActive == false && Featured.Instance.screenActive == false && gridPopulation ==true)
+        if (paused == false && pausePanelActive == false && Featured.Instance.screenActive == false && gridPopulation ==true && checkForPopFinish ==true)
         {
             ThemeSound.Instance.audio.volume = 0.04f;
 
@@ -544,7 +586,7 @@ public class Board : MonoBehaviour
 
 /*START IF PAUSED*/
 
-        else if (paused == true && Featured.Instance.screenActive == false &&gridPopulation ==true)// && Featured.Instance.screenActive == false && pausePanelActive == true)
+        else if (paused == true && Featured.Instance.screenActive == false &&gridPopulation ==true && checkForPopFinish == true)// && Featured.Instance.screenActive == false && pausePanelActive == true)
         {
             ThemeSound.Instance.audio.volume = 0.1f;
 
