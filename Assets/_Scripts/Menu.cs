@@ -87,7 +87,7 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
             }
             else
             {
-                Buttons[i].GetComponent<Image>().color = new Color32(157,255,255,255);
+                Buttons[i].GetComponent<Image>().color = new Color32(138,253,255,255);
                 //new Color32(255,116,220,255);
               
 

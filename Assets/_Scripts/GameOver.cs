@@ -43,24 +43,13 @@ public class GameOver : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("win", false);
 
 
-
-
-
         _allTiles = _board._nodes;
         _tiles.GetComponent<BoxCollider2D>();
 
         _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
         featureTile.transform.GetChild(0).gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
-        StopCoroutine(_board.StartTimer);
-
-        /*  Time.timeScale = 0f;
-          winScreen.SetActive(true);
-          //call board star rating*/
-
-
-        //   winScreen = Instantiate(WinScreen,Vector2.one,Quaternion.identity);
-        //    winScreen.transform.parent = _parent_mainCanvas.transform;
+   //     StopCoroutine(_board.StartTimer);
 
 
     }
@@ -75,13 +64,13 @@ public class GameOver : MonoBehaviour
         _tiles.GetComponent<BoxCollider2D>();
 
         _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
-        featureTile.transform.GetChild(0).gameObject.GetComponent<BoxCollider2D>().enabled = false;
         FindObjectOfType<AudioManager>().Play("lose", false);
 
+        featureTile.transform.GetChild(0).gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
     
 
-        StopCoroutine(_board.StartTimer);
+    //    StopCoroutine(_board.StartTimer);
 
         // Time.timeScale = 0f;
 

@@ -17,9 +17,6 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public string positionStringLoad = "";
     public string positionStringSave = "";
 
-    public bool sound;
-    public bool music;
-
     public int win;
     public int lose;
     public int score1;
@@ -37,6 +34,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
     int prevlose;
     int nextlose;
 
+    public bool soundActive =true;
+    public bool musicActive = true;
+
 
     public int secondsLeft=0;
     public int minutesLeft=0;
@@ -46,6 +46,11 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     public static GameManager Instance;
     public GameState GameState;
+
+    [SerializeField] public GameObject coinNotEnoughScreen;
+    public bool coinNotEnough = false;
+
+    public bool restarted = false;
 
      void Awake()
     {
@@ -67,21 +72,31 @@ public class GameManager : MonoBehaviour, IDataPersistence
         print(gameCount);
 
         m_Object.text = coinNum.ToString();
+      /*  if (coinNum > 0 || coinNotEnough == false)
+        {*/
         ChangeState(
-            GameState.FeatureTile);
+            GameState.CheckTimer);
+        //    findScreen.SetActive(true);
         //loaad gameCount
+
+        //}
+     /*   else
+        {
+            coinNotEnoughScreen.SetActive(true);
+           
+
+        }*/
         //load coinNum
 
-      //  toSaveDatetime = DateTime.Now;
+        //  toSaveDatetime = DateTime.Now;
     }
 
     public void LoadData(GameData gameData)
     {
         this.gameCount = gameData.gameNumber;
 
-        this.coinNum = gameData.coinNumber;
-        this.sound = gameData.sound;
-        this.music = gameData.music;
+       this.coinNum = gameData.coinNumber;
+     
         this.win = gameData.win;
         this.lose = gameData.lose;
 
@@ -94,9 +109,23 @@ public class GameManager : MonoBehaviour, IDataPersistence
         this.minutesLeft = gameData.minutesLeft;
         this.secondsLeft = gameData.secondsLeft;
 
+      /*  this.minutesLeft = 0;
+             this.secondsLeft =40;
+          this.coinNum =0;*/
+
+
+
         this.activeCountDown = gameData.timerActive;
 
+        this.soundActive = gameData.sound;
+        this.musicActive = gameData.music;
+
+
         positionStringLoad = gameData.lastPos;
+
+        this.coinNotEnough = gameData.notEnoughCoins;
+
+        this.restarted = gameData.restarted;
 
         print(gameData);
       
@@ -109,22 +138,10 @@ public class GameManager : MonoBehaviour, IDataPersistence
      
 
         gameData.lastPos = positionStringSave;
-        //temporarily turned off
+    
 
-        /*RESET*/
 
-        /* gameData.gameNumber = 0;
-        gameData.coinNumber = 5;
-          gameData.lose = 0;
-          gameData.win = 0;
-          gameData.score1 = 0 ;
-         gameData.score2=  0 ;
-         gameData.score3 = 0;*/
-        gameData.timerActive = this.activeCountDown;
-
-        gameData.gameNumber = this.gameCount;
-      gameData.coinNumber = this.coinNum;
-        //gameData.coinNumber = 5;
+      //  gameData.gameNumber = this.gameCount;
 
 
 
@@ -136,23 +153,37 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.score2 = this.score2;
         gameData.score3 = this.score3;
 
-        gameData.sound = this.sound ;
-        gameData.music = this.music;
+        gameData.sound = this.soundActive ;
+        gameData.music = this.musicActive;
 
         gameData.savedTIme = this.savedate;
 
+        //
+
+        gameData.timerActive = this.activeCountDown;
         gameData.secondsLeft = this.secondsLeft;
         gameData.minutesLeft = this.minutesLeft;
 
-    /*    gameData.secondsLeft = 3;
 
-        gameData.minutesLeft = 2;*/
 
+        gameData.restarted = this.restarted;
+
+
+
+        gameData.notEnoughCoins = this.coinNotEnough;
+
+/*
+        gameData.secondsLeft = 0;
+        gameData.timerActive = true;
+        gameData.minutesLeft = 1;*/
+
+      gameData.coinNumber = this.coinNum;
+    //   gameData.coinNumber =5;
 
     }
 
 
-  
+
 
     public void ChangeState(GameState newState)
     {
@@ -160,20 +191,29 @@ public class GameManager : MonoBehaviour, IDataPersistence
         print("GAMEMANAGER minLeft" + minutesLeft);
         print("GAMEMANAGER secLeft" + secondsLeft);
         print(loadDateStr);
-  
-
+     /*   if (coinNum > 0) { 
+*/
         switch ( newState)
         {
+            case GameState.CheckTimer:
+                TestTime.Instance.CalculateTime();
+                    break;
+
             case GameState.FeatureTile:
-             
+                print("gamestate featuretile");
                 Featured.Instance?.choseFeatureTile();
 
                 break;
             case GameState.ActivateFindScreen:
+                print("gamestate activateFindScreen");
+
                 findScreen.SetActive(true);
                 findFeatureScreenAnim.Instance?.startFindScreenAnimation();
-
-                break;
+                /*if (coinNum==0)
+                {
+                    coinNotEnough = true;
+                }*/
+                    break;
 
             case GameState.GenerateGrid:
                
@@ -239,6 +279,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
                 Menu.Instance.LoadSceneFast();
                 break;
+         /*   case GameState.NotEnoughCoins:
+                noCoinScreen.Instance.*/
+        }
         }
 
 
@@ -248,18 +291,20 @@ public class GameManager : MonoBehaviour, IDataPersistence
     //onTileClicked
     
    
-}
+
 public enum GameState
 {
-    FeatureTile = 0,
-    GenerateGrid =1,
-    ChoseTile = 2,
-    Win= 3,
-    Lose=4,
-    Restart=5,
-    changeToSlowScene=6,
-    changeToMedScene = 7,
-    changeToHardScene = 8,
-    ActivateFindScreen =9,
+    CheckTimer =0,
+    FeatureTile = 1,
+    GenerateGrid =2,
+    ChoseTile = 3,
+    Win= 4,
+    Lose=5,
+    Restart=6,
+    changeToSlowScene=7,
+    changeToMedScene = 8,
+    changeToHardScene = 9,
+    ActivateFindScreen =10,
+    NotEnoughCoins =11,
 
 }

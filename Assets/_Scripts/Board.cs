@@ -24,6 +24,8 @@ public class Board : MonoBehaviour
     public GameObject PausePanel;
     public bool pausePanelActive = false;
 
+    bool checkParentBoard = false;
+
 
     public float timeSpeed = 0.4f;
 
@@ -219,7 +221,7 @@ public class Board : MonoBehaviour
     {
         Invoke("HideShowGameobject", (count + 0.01f) / 10);
 
-
+        print("Destroy!!");
         Destroy(singleNode, (count + 1.7f) / 10);
         count += 1;
     }
@@ -236,7 +238,7 @@ public class Board : MonoBehaviour
     void checkTiles()
     {
         int childCountFour = 0;
-        int childCountThree = 0;
+      
 
 
         for (int i = 0; i < 16; i++)
@@ -246,11 +248,7 @@ public class Board : MonoBehaviour
             {
                 childCountFour = 4;
             }
-            else
-            {
-                childCountThree = 3;
-
-            }
+     
 
         }
         if(childCountFour == 0)
@@ -343,37 +341,62 @@ public class Board : MonoBehaviour
 
 
         chosenSpritesArray.Add(featureTileSpriteRenderer.sprite);
-     //   print(chosenSpritesArray);
-      //  print("length of chosenSpritesArray" + chosenSpritesArray.Count);
+        //   print(chosenSpritesArray);
+        //  print("length of chosenSpritesArray" + chosenSpritesArray.Count);
 
 
 
-        _nodes = new List<Tiles>();
-
-        for (int x = 0; x < _width; x++)
+        if(checkParentBoard == false)
         {
-            for (int y = 0; y < _height; y++)
+            checkParentBoard = true;
+            if (_parentObject.transform.childCount > 0)
+
             {
-
-                Instance.getTile();
-                while (alreadyAssigned)
+                var childCount = _parentObject.transform.childCount;
+                for (int i = childCount - 1; i >= 0; i--)
                 {
-                    // Debug.Log("already");
-                    getTile();
+                    GameObject.DestroyImmediate(_parentObject.transform.GetChild(i).gameObject);
                 }
-
-                Tiles node = Instantiate(_tilesPrefab, new Vector2(x, y), Quaternion.identity);
-
-                node.transform.parent = _parentObject.transform;
-                _nodes.Add(node);
-
-
+                _nodes.Clear();
             }
-
 
 
         }
 
+        _nodes = new List<Tiles>();
+       
+        if (_nodes.Count<16 && _parentObject.transform.childCount <16)
+        {
+            for (int x = 0; x < 4; x++)
+            {
+                for (int y = 0; y < 4; y++)
+                {
+
+                    Instance.getTile();
+                    while (alreadyAssigned == true)
+                    {
+                        getTile();
+                        Debug.Log(" tile already in board");
+                        //little fix?!
+                        if (alreadyAssigned == false)
+                        {
+                            break;
+                        }
+
+                    }
+
+                    Tiles node = Instantiate(_tilesPrefab, new Vector2(x, y), Quaternion.identity);
+
+                    node.transform.parent = _parentObject.transform;
+                    _nodes.Add(node);
+                    print(node);
+
+                }
+
+
+
+            }
+        }
 
 
 

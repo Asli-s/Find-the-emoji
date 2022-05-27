@@ -6,7 +6,7 @@ public class ThemeSound : MonoBehaviour
 {
     // Start is called before the first frame update
     public static ThemeSound Instance;
-   public AudioSource audio;
+   new public AudioSource audio;
 
     private void Awake()
     {
@@ -28,15 +28,30 @@ public class ThemeSound : MonoBehaviour
     {/*
         audio.volume = .8f;
         audio.pitch = 1.08f;*/
+        
           PlayThemeSong();
     }
 
     public void PlayThemeSong()
-    { 
-        audio.volume = .1f;
-        audio.pitch = 1.08f;
+    {
+        if (GameManager.Instance.musicActive == true)
+        {
+            audio.volume = .1f;
+            audio.pitch = 1.12f;
 
-        audio.Play();
+            audio.Play();
+        }
+
+    }
+    public void StopThemeSong()
+    {
+        if (GameManager.Instance.musicActive == false)
+        {
+            audio.volume = .1f;
+            audio.pitch = 1.12f;
+
+            audio.Stop();
+        }
 
     }
 }

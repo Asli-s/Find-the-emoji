@@ -24,48 +24,52 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public void Play(string name , bool loop =false, bool stop= false)
+    public void Play(string name, bool loop = false, bool stop = false)
     {
-        audioSource =gameObject.GetComponent<AudioSource>();
-        Sound s =Array.Find(sounds, sound =>sound.name == name);
-        if (s == null) return;
-        //(sound)
-        audioSource.clip = s.audioClip;
-        audioSource.pitch = s.pitch;
-        audioSource.volume = s.volume;
-     audioSource.loop = loop;
-    //    audioSource.Play();
-   /*     if(loop == true)
-          {
-              audioSource.loop = true;
-          }
-          else if(loop ==false)
-          {
-            print("deactivate loop");
-            audioSource.Stop();
+        if (GameManager.Instance.soundActive == true)
+        {
 
-            audioSource.loop = false;
-          }*/
-          if(stop == true)
-          {
-              print("stop =true");
-              audioSource.Stop();
+            audioSource = gameObject.GetComponent<AudioSource>();
+            Sound s = Array.Find(sounds, sound => sound.name == name);
+            if (s == null) return;
+            //(sound)
+            audioSource.clip = s.audioClip;
+            audioSource.pitch = s.pitch;
+            audioSource.volume = s.volume;
+            audioSource.loop = loop;
+            //    audioSource.Play();
+            /*     if(loop == true)
+                   {
+                       audioSource.loop = true;
+                   }
+                   else if(loop ==false)
+                   {
+                     print("deactivate loop");
+                     audioSource.Stop();
 
-          }
-          else if(stop ==false)
-          {
+                     audioSource.loop = false;
+                   }*/
+            if (stop == true)
+            {
+                print("stop =true");
+                audioSource.Stop();
 
-         audioSource.Play();
-          }
+            }
+            else if (stop == false)
+            {
 
-        // audioSource.clip = s.audioClip;
-        /*
-                s.source.clip = s.audioClip;
-                s.source.pitch = s.pitch;
-                s.source.volume = s.volume;
-                s.source.loop = s.loop;
-                s.source.Play();
-        */
+                audioSource.Play();
+            }
+
+            // audioSource.clip = s.audioClip;
+            /*
+                    s.source.clip = s.audioClip;
+                    s.source.pitch = s.pitch;
+                    s.source.volume = s.volume;
+                    s.source.loop = s.loop;
+                    s.source.Play();
+            */
+        }
     }
 
 

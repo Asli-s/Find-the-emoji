@@ -36,17 +36,19 @@ public GameObject featureImageObject;
     }
     private void OnEnable()
     {
+        if (GameManager.Instance.coinNotEnough == false)
+        {
+            Featured.Instance.screenActive = true;
+            /*    setActive();*/
 
-         Featured.Instance.screenActive = true;
-    /*    setActive();*/
-    
-       // featureImageObject.GetComponent<Image>().sprite= Featured.Instance.tile.GetComponent<SpriteRenderer>().sprite;
-       /* featureTileSprite = Featured.Instance.tile.GetComponent<SpriteRenderer>().sprite;
-        featureImageObject.GetComponent<Image>().sprite = featureTileSprite;
-      */
-        animateFindScreen();
-     
+            // featureImageObject.GetComponent<Image>().sprite= Featured.Instance.tile.GetComponent<SpriteRenderer>().sprite;
+            /* featureTileSprite = Featured.Instance.tile.GetComponent<SpriteRenderer>().sprite;
+             featureImageObject.GetComponent<Image>().sprite = featureTileSprite;
+           */
+            animateFindScreen();
 
+
+        }
     }
 
 
@@ -94,16 +96,12 @@ public GameObject featureImageObject;
 
 
 
-        //LeanTween.moveLocal(mainBlock, new Vector3(0,0,0), 1f).setDelay(0f).setEaseOutElastic();
-
-
-        /*BACKGROUNG SHRINK*/
         LeanTween.scale(backGround, Vector3.zero, 0.6f).setDelay(3.3f).setEaseOutElastic();
 
 
         /*FEATURE TILE MOVE UP*/
-        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 381, 0), .4f).setDelay(3.4f).setEaseOutExpo()/*.setOnComplete(scaleBack)*/;
-        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 381, 0),.3f).setDelay(3.8f).setEaseInElastic();
+        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 401, 0), .4f).setDelay(3.4f).setEaseOutExpo()/*.setOnComplete(scaleBack)*/;
+        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 401, 0),.3f).setDelay(3.8f).setEaseInElastic();
 
         //   LeanTween.move(featureImageObject.GetComponent<RectTransform>(),new Vector3(0,381,0),4f).setDelay(3.4f).setEaseOutElastic()/*.setOnComplete(scaleBack)*/;
 
@@ -157,17 +155,10 @@ public GameObject featureImageObject;
 
         Board.Instance.PopSprite();
 
-           // FindObjectOfType<AudioManager>().Play("jump", true);
-
-            /*    for (int i = 0; i <16; i++)
-                {
-                       FindObjectOfType<AudioManager>().Play("click");
-
-        FindObjectOfType<AudioManager>().Play("jump", true);
-                }*/
+      
         }
         Featured.Instance.screenActive = false;
-   //     print(false);
+
         gameObject.SetActive(false);
         //
 
@@ -183,10 +174,7 @@ public GameObject featureImageObject;
         LeanTween.scale(featureImageObject, new Vector3(1f, 1f, 1f), 0);
     //    LeanTween.scale(featureTileParent, new Vector3(1f, 1f, 1), 0);
         LeanTween.scale(backGround, Vector3.one, 0f);
-        // LeanTween.scale(fea, Vector3.one, 0f);
 
-
-//        Featured.Instance.tile.transform.localScale = new Vector3(2.22f,2.22f,1f);
 
 
     }

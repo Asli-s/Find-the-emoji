@@ -22,6 +22,7 @@ public class MenuAnim : MonoBehaviour
     }
     private void OnEnable()
     {
+        FindObjectOfType<AudioManager>().Play("swipe");
         Featured.Instance.screenActive = true;
 
         LeanTween.moveLocal(gameObject,new Vector3(0,0, 89501.99f), 0.8f).setEaseOutExpo();
@@ -40,8 +41,10 @@ public class MenuAnim : MonoBehaviour
     }
     public void CloseMenuAnim()
     {
-     //   print("change screenactive to false");
-          LeanTween.moveLocal(gameObject/*.GetComponent<RectTransform>()*/, new Vector3(0, 1846, 89501.99f), 0.6f).setEaseInExpo().setOnComplete(SetFalse);
+        //   print("change screenactive to false");
+        FindObjectOfType<AudioManager>().Play("slide");
+
+        LeanTween.moveLocal(gameObject/*.GetComponent<RectTransform>()*/, new Vector3(0, 1846, 89501.99f), 0.6f).setEaseInExpo().setOnComplete(SetFalse);
         Fade.LeanAlpha(0, 0);
 
     }

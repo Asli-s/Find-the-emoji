@@ -28,6 +28,10 @@ public class GameData
 
   public  bool timerActive;
 
+    public bool restarted ;
+    public bool notEnoughCoins;
+
+
     public GameData()
     {
         this.lastPos = "slow";
@@ -51,5 +55,11 @@ public class GameData
         this.secondsLeft = 0;
         this.minutesLeft = 0;
 
+        this.sound = true;
+        this.music = true;
+
+        this.restarted = false;
+
+        this.notEnoughCoins = false;
     }
 }
