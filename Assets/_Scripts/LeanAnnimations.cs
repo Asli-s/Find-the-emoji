@@ -13,10 +13,14 @@ public class LeanAnnimations : MonoBehaviour
     public Sprite yellowStar;
     public Sprite greyStar;
     int score = 0;
+
+    public GameObject noCoinScreen;
  
 
     private void OnEnable()
     {
+    
+
         Board.Instance.pauseBoard();
         Featured.Instance.screenActive = true;
          //   var score = GameManager.Instance.score;
@@ -86,6 +90,7 @@ public class LeanAnnimations : MonoBehaviour
         }
 
         DataPersistenceManager.Instance.SaveGame();
+        print("first save on lose");
 
 
         LeanTween.scale(mainBlock, new Vector3(0.8f, 0.8f, 0.8f), 2.3f)/*.setDelay(0.7f)*/.setEase(LeanTweenType.easeOutElastic);//.setOnComplete(animateStars);
@@ -97,7 +102,7 @@ public class LeanAnnimations : MonoBehaviour
         LeanTween.scale(stars[1], new Vector3(10f, 10f, 1), 2f).setDelay(0.5f).setEaseOutElastic();
         LeanTween.scale(stars[2], new Vector3(8.5f, 8.5f, 1), 2f).setDelay(0.6f).setEaseOutElastic();
     }
-
+       
 
 
   /*  void animateStars()
@@ -111,22 +116,46 @@ public class LeanAnnimations : MonoBehaviour
     {
         print("close!!");
         LeanTween.scale(gameObject, Vector3.zero, 0.5f).setOnComplete(OnDisable);
-        //    Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
-     
+      
 
-        //  transform.LeanScale(Vector2.zero, 1.8f).;
-        if (GameOver.Instance.lose == true)
+        //lose not last coin
+
+        if (GameOver.Instance.lose == true && GameManager.Instance.coinNum>0)
         {
             Featured.Instance.lostGame = true;
         FindObjectOfType<AudioManager>().Play("coin");
             //   Invoke("RestartFromFeature", 0.2f);
+         
+            DataPersistenceManager.Instance.SaveGame();
+            print("save lose leananim before losinf a coin" + GameManager.Instance.coinNum);
             RestartFromFeature();
 
         }
-        else
-        {
+        //lose and last coin
 
-        Invoke("ActualRestart", 0.2f);
+        else if (GameOver.Instance.lose == true && GameManager.Instance.coinNum == 0)
+        {
+            FindObjectOfType<AudioManager>().Play("coin");
+
+            Featured.Instance.lostGame = true;
+            print("leananim losescreen coin = 0");
+           
+            /*nocoin activate */
+         //   noCoinScreen.SetActive(true);
+            GameManager.Instance.coinNotEnoughScreen.SetActive(true);
+          //  GameManager.Instance.coinNotEnough = true;
+            Featured.Instance.screenActive = true;
+            DataPersistenceManager.Instance.SaveGame();
+
+        }
+
+        //win
+
+        else if (GameOver.Instance.win==true)
+        {
+            DataPersistenceManager.Instance.SaveGame();
+
+            Invoke("ActualRestart", 0.2f);
         }
 
 
@@ -137,12 +166,15 @@ public class LeanAnnimations : MonoBehaviour
     void RestartFromFeature()
     {
         Featured.Instance.restartScene();
+        Featured.Instance.screenActive = false;
 
     }
     void ActualRestart()
     {
 
+        Featured.Instance.screenActive = false;
         Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+
 
     }
     /*    void DestroySelf()

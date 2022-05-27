@@ -89,7 +89,12 @@ public class Tiles : MonoBehaviour
         }
         else if(Featured.Instance.screenActive == false)
         {
+            if (win == false && GameOver.Instance.lose ==false)
+            {
+
+
            FindObjectOfType<AudioManager>().Play("jump", false);
+            }
          //   FindObjectOfType<AudioManager>().Play("right");
 
 

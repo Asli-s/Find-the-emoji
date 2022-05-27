@@ -46,7 +46,7 @@ public class PopupAnimNoCOins : MonoBehaviour
     }
     public void CloseMenuAnimation()
     {
-        LeanTween.scale(mainBlock, new Vector3(0f, 0f, 0f), .8f).setEaseInExpo().setOnComplete(SetFalse);
+        LeanTween.scale(mainBlock, new Vector3(0f, 0f, 1f), .8f).setEaseInExpo().setOnComplete(SetFalse);
         print("close");
     }
 }

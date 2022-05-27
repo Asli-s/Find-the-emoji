@@ -24,9 +24,16 @@ public class DataPersistenceManager : MonoBehaviour
         if (Instance != null)
         {
             Debug.LogError("already an instance created");
+            Destroy(Instance);
+            //
         }
         Instance = this;
-        print("datapersManager awake");
+      /*  if (Instance = null)
+        {
+            Instance = this;
+        }
+        Debug.LogError("already an instance created");
+        print("datapersManager awake");*/
     }
 
 

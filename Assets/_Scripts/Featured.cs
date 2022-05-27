@@ -80,7 +80,7 @@ public class Featured : MonoBehaviour
 
     public bool startCountDown = true;
 
-    bool alreadyClicked= false;
+    bool alreadyClicked = false;
     public bool clicked = false;
     public bool openTile = true;
     // Start is called before the first frame update
@@ -130,7 +130,7 @@ public class Featured : MonoBehaviour
         {
             if (clicked == true)
             {                                            //activate findScreen
-             
+
 
 
                 //temp change 04.05
@@ -139,9 +139,9 @@ public class Featured : MonoBehaviour
 
 
                 /*DEACTIVATE QUESTIONMARK*/
-              
 
-                if (health.GetComponent<HealthHearts>().health > 0  /*maybe comment out to have double pop sound*/ && alreadyClicked ==true)
+
+                if (health.GetComponent<HealthHearts>().health > 0  /*maybe comment out to have double pop sound*/ && alreadyClicked == true)
                 {
 
                     LeanTween.rotate(qmObjectAssignment, new Vector3(0, 0f, 7f), 0.1f);
@@ -196,15 +196,19 @@ public class Featured : MonoBehaviour
             thirdTimer = false;
 
 
-     //       questionMark.SetActive(true);
-       
+            //       questionMark.SetActive(true);
+
 
             //open tiles of board
-            if (clicked==true)
+            if (clicked == true)
             {
                 clicked = false;
-             print("enable questionmark");
-                FindObjectOfType<AudioManager>().Play("pop");
+                print("enable questionmark");
+                if (GameOver.Instance.lose == false && GameOver.Instance.win == false)
+                {
+
+                    FindObjectOfType<AudioManager>().Play("pop");
+                }
 
                 _allTiles = _board._nodes;
 
@@ -223,7 +227,7 @@ public class Featured : MonoBehaviour
 
             if (secondTimerEnd == true && additionalSecond == 0)
             {
-                   print("inside of second timer"); 
+                print("inside of second timer");
 
                 waitAnotherSecond = TimerOneSec2();
 
@@ -242,7 +246,7 @@ public class Featured : MonoBehaviour
             }
 
 
-        
+
 
 
 
@@ -253,10 +257,14 @@ public class Featured : MonoBehaviour
     private void deactivateQuestionMark()
     {
         print("play pop");
-        FindObjectOfType<AudioManager>().Play("pop");
+        if (GameOver.Instance.win == false && GameOver.Instance.lose == false)
+        {
+
+            FindObjectOfType<AudioManager>().Play("pop");
+        }
         qmObjectAssignment.SetActive(false);
         LeanTween.rotate(qmObjectAssignment, new Vector3(0, 0f, 0f), 0f);
-   
+
 
     }
 
@@ -275,17 +283,18 @@ public class Featured : MonoBehaviour
             coinCountText = GameManager.Instance.m_Object.text;
             coinCountNum = int.Parse(coinCountText);
             GameManager.Instance.coinNum = coinCountNum;
+            showAlert.SetActive(true);
 
-            if (coinCountNum > 0)
-            {
+            /*     if (coinCountNum > 0)
+                 {
 
-                showAlert.SetActive(true);
-            }
-            if (coinCountNum == 0)
-            {
-                showAlertNoCoin.SetActive(true);
-            }
+                 }
+                 if (coinCountNum == 0)
+                 {
+                     showAlertNoCoin.SetActive(true);
 
+                 }
+     */
         }
 
 
@@ -322,6 +331,8 @@ public class Featured : MonoBehaviour
 
                 screenActive = true;
                 showAlertNoCoin.SetActive(true);
+                GameManager.Instance.coinNotEnough = true;
+
             }
 
 
@@ -373,46 +384,83 @@ public class Featured : MonoBehaviour
 
      }*/
 
+    public void LoseCoinFromNoCoinScreen()
+    {
+        print("reestartscene from feature");
+        coinCountText = GameManager.Instance.m_Object.text;
+        coinCountNum = int.Parse(coinCountText);
+        GameManager.Instance.coinNum = coinCountNum;
+
+        if (coinCountNum > 0)
+        {
+            print("coinnum" + coinCountNum);
+            newNum = coinCountNum;
+            newNum--;
+
+
+            GameManager.Instance.coinNum = newNum;
+            print("gameman coinnum" + GameManager.Instance.coinNum);
+
+            GameManager.Instance.m_Object.text = newNum.ToString();
+            //          CountdownTimer.Instance.StartTimer();
+            FindObjectOfType<CountdownTimer>().StartTimer();
+            //
+        }
+        DataPersistenceManager.Instance.SaveGame();
+        Invoke("ActualRestart", 0.1f);
+
+
+    }
 
 
 
     public void restartScene() //NEW SCENE
     {
-/*restart coming from losing the game*/
-        if (lostGame == true)
+        //*restart coming from losing the game*//*
+        if (lostGame == true)// && GameOver.Instance.lose ==true)
         {
             print("reestartscene from feature");
             coinCountText = GameManager.Instance.m_Object.text;
             coinCountNum = int.Parse(coinCountText);
             GameManager.Instance.coinNum = coinCountNum;
 
-            if (coinCountNum > 0 )
+            if (coinCountNum > 0)
             {
-                print("coinnum"+coinCountNum);
+                print("coinnum" + coinCountNum);
                 newNum = coinCountNum;
                 newNum--;
 
 
                 GameManager.Instance.coinNum = newNum;
-                print("gameman coinnum" + GameManager.Instance.coinNum);
+                print(" restart gameman coinnum" + GameManager.Instance.coinNum);
 
                 GameManager.Instance.m_Object.text = newNum.ToString();
-      //          CountdownTimer.Instance.StartTimer();
+                //          CountdownTimer.Instance.StartTimer();
                 FindObjectOfType<CountdownTimer>().StartTimer();
+                //  DataPersistenceManager.Instance.SaveGame();
+
                 //
             }
-            if (coinCountNum == 0)
+            else if (coinCountNum == 0)
             {
                 showAlertNoCoin.SetActive(true);
+
+
+                GameManager.Instance.coinNotEnough = true;
+                print("lose coin but not enough from RESTART");
                 screenActive = true;
+                //     DataPersistenceManager.Instance.SaveGame();
+
             }
             lostGame = false;
-           
-        }
-/*restart coming from restart button*/
 
-        else
+
+        }
+        //*restart coming from restart button*//*
+
+          else
         {
+            print("else restartfreature");
             FindObjectOfType<AudioManager>().Play("coin");
 
             startCountDown = true;
@@ -432,34 +480,39 @@ public class Featured : MonoBehaviour
                 newNum = coinCountNum;
                 newNum--;
 
+                //    DataPersistenceManager.Instance.SaveGame();
 
                 GameManager.Instance.coinNum = newNum;
                 GameManager.Instance.m_Object.text = newNum.ToString();
                 //      CountdownTimer.Instance.StartTimer();
-                print("NEWNUM resteart" + newNum);
-               FindObjectOfType<CountdownTimer>().StartTimer();
+                print("NEWNUM resteart" + GameManager.Instance.coinNum);
+                FindObjectOfType<CountdownTimer>().StartTimer();
                 //
             }
             if (coinCountNum == 0 && screenActive == false)
             {
                 showAlertNoCoin.SetActive(true);
                 screenActive = true;
+                GameManager.Instance.coinNotEnough = true;
+
             }
 
         }
-            DataPersistenceManager.Instance.SaveGame();
-            Invoke("ActualRestart", 0.2f);
+        DataPersistenceManager.Instance.SaveGame();
+        print("SAVE GAME FROM LOSE RESTARTR");
+        Invoke("ActualRestart", 0.2f);
         //changed this 04.05
         //   Time.timeScale = 1f;
 
 
         //cALL SAVEDATA AT THIS POINT
-      
-    //    Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
 
-    }
+        //    Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
 
-    void ActualRestart()
+    } 
+
+   
+        void ActualRestart()
     {
         Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
 
@@ -573,6 +626,21 @@ public class Featured : MonoBehaviour
         print("close");
 
         PopUpAnimRestart.Instance.CloseMenuAnimation();
+
+
+        _board.pauseBoard();
+        // _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = true; });
+
+    }
+    public void clickedNoNoCoin()
+    {
+        //   screenActive = false;
+
+        //    tile.GetComponent<BoxCollider2D>().enabled = true;
+        //  showAlertRestart.SetActive(false); --> control from LoadMEnu() animation
+        print("close");
+
+        PopupAnimNoCOins.Instance.CloseMenuAnimation();
 
 
         _board.pauseBoard();
