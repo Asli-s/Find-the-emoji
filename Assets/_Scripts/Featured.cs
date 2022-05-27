@@ -448,7 +448,7 @@ public class Featured : MonoBehaviour
 
                 GameManager.Instance.coinNotEnough = true;
                 print("lose coin but not enough from RESTART");
-                screenActive = true;
+           //     screenActive = true;
                 //     DataPersistenceManager.Instance.SaveGame();
 
             }
@@ -492,7 +492,7 @@ public class Featured : MonoBehaviour
             if (coinCountNum == 0 && screenActive == false)
             {
                 showAlertNoCoin.SetActive(true);
-                screenActive = true;
+             //   screenActive = true;
                 GameManager.Instance.coinNotEnough = true;
 
             }

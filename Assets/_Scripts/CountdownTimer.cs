@@ -278,7 +278,10 @@ public class CountdownTimer : MonoBehaviour
             if (newNum == 1)
             {
                 GameManager.Instance.coinNotEnough = false;
-                FindObjectOfType<noCoinScreen>().coinButton.gameObject.SetActive(false);
+                FindObjectOfType<noCoinScreen>().coinButtonCover.gameObject.SetActive(false);
+                FindObjectOfType<noCoinScreen>().coinButton.interactable = true;
+
+
             }
             if (newNum < 5)
             {
