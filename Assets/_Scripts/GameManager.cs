@@ -173,11 +173,11 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.notEnoughCoins = this.coinNotEnough;
 
 /*
-        gameData.secondsLeft = 0;
+        gameData.secondsLeft = 00;
         gameData.timerActive = true;
-        gameData.minutesLeft = 1;*/
+        gameData.minutesLeft = 2;*/
 
-      gameData.coinNumber = this.coinNum;
+        gameData.coinNumber = this.coinNum;
     //   gameData.coinNumber =5;
 
     }

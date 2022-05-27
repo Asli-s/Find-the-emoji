@@ -107,20 +107,14 @@ public class TestTime : MonoBehaviour
         {
 
             GameManager.Instance.restarted = false;
-          //      GameManager.Instance.ChangeState(GameState.FeatureTile);
-       //     FirstScreen.SetActive(false);
-       /*     if (GameManager.Instance.coinNum < 5)
-            {
-
-                print("call next state from testtimer");
-            }*/
+       
 
 
         }
         else
         {
             GameManager.Instance.restarted = true;
-//            FirstScreen.SetActive(true);
+
 
 
         }
@@ -150,8 +144,17 @@ public class TestTime : MonoBehaviour
             GameManager.Instance.secondsLeft = 0;
             GameManager.Instance.minutesLeft = 0;
             TimerText.text = "full";
+            if(GameManager.Instance.restarted == true)
+            {
+                FirstScreen.SetActive(true);
+            }
+            else
+            {
+                FirstScreen.SetActive(false);
 
             GameManager.Instance.ChangeState(GameState.FeatureTile);
+            }
+
 
 
 
@@ -322,13 +325,17 @@ public class TestTime : MonoBehaviour
                 GameManager.Instance.minutesLeft = 0;
                 GameManager.Instance.activeCountDown = false;
                 FindObjectOfType<CountdownTimer>().timerStarted = false; ;
-                if(GameManager.Instance.restarted == false)
+                if (GameManager.Instance.restarted == true)
                 {
-                     GameManager.Instance.ChangeState(GameState.FeatureTile);
-
+                    FirstScreen.SetActive(true);
                 }
-                //needed
-                  GameManager.Instance.ChangeState(GameState.FeatureTile);
+                else
+                {
+                    FirstScreen.SetActive(false);
+
+                    GameManager.Instance.ChangeState(GameState.FeatureTile);
+                }
+
 
 
 
@@ -343,23 +350,20 @@ public class TestTime : MonoBehaviour
 
                 GameManager.Instance.m_Object.text = newNum.ToString();
                 FindObjectOfType<CountdownTimer>().StartTimer(minutes, seconds);
-              /*  if (GameManager.Instance.coinNum == 0 && GameManager.Instance.restarted ==true)
+            
+                if (GameManager.Instance.restarted == true)
                 {
-
-                    // GameManager.Instance.coinNotEnoughScreen.SetActive(true);
                     FirstScreen.SetActive(true);
-                }*/
-              /*   if(GameManager.Instance.restarted ==false)
-                {*/
-                    //needed
-                  //  FirstScreen.SetActive(false);
-                  GameManager.Instance.ChangeState(GameState.FeatureTile);
-
-            //    }
-              /*  else
+                }
+                else
                 {
-                    FirstScreen.SetActive(true)
-                }*/
+                    FirstScreen.SetActive(false);
+
+                    GameManager.Instance.ChangeState(GameState.FeatureTile);
+                }
+
+
+
             }
 
         }
@@ -371,22 +375,25 @@ public class TestTime : MonoBehaviour
             GameManager.Instance.activeCountDown = false;
             FindObjectOfType<CountdownTimer>().timerStarted = false; ;
             TimerText.text = "full";
-            //needed
-            //  GameManager.Instance.ChangeState(GameState.FeatureTile);
+          
+            if (GameManager.Instance.restarted == true)
+            {
+                FirstScreen.SetActive(true);
+            }
+            else
+            {
+                FirstScreen.SetActive(false);
 
-
-       /*     if (GameManager.Instance.restarted == false)
-            {*/
-                //needed
-                //  FirstScreen.SetActive(false);
                 GameManager.Instance.ChangeState(GameState.FeatureTile);
+            }
 
-       //     }
+
+
+            //     }
 
         }
 
-        //  FindObjectOfType<Timer>().starte();*/
-
+    
 
     }
 
