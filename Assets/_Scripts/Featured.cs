@@ -414,10 +414,12 @@ public class Featured : MonoBehaviour
 
 
 
+
+
+
     public void restartScene() //NEW SCENE
     {
-        //*restart coming from losing the game*//*
-        if (lostGame == true)// && GameOver.Instance.lose ==true)
+        if (lostGame == true)
         {
             print("reestartscene from feature");
             coinCountText = GameManager.Instance.m_Object.text;
@@ -448,17 +450,14 @@ public class Featured : MonoBehaviour
 
                 GameManager.Instance.coinNotEnough = true;
                 print("lose coin but not enough from RESTART");
-           //     screenActive = true;
-                //     DataPersistenceManager.Instance.SaveGame();
-
+            
             }
             lostGame = false;
 
 
         }
-        //*restart coming from restart button*//*
-
-          else
+    
+        else
         {
             print("else restartfreature");
             FindObjectOfType<AudioManager>().Play("coin");
@@ -470,8 +469,7 @@ public class Featured : MonoBehaviour
             _board.pauseBoard();
             _allTiles = _board._nodes;
 
-            //_allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
-            coinCountText = GameManager.Instance.m_Object.text;
+             coinCountText = GameManager.Instance.m_Object.text;
             coinCountNum = int.Parse(coinCountText);
             GameManager.Instance.coinNum = coinCountNum;
 
@@ -492,7 +490,7 @@ public class Featured : MonoBehaviour
             if (coinCountNum == 0 && screenActive == false)
             {
                 showAlertNoCoin.SetActive(true);
-             //   screenActive = true;
+                //   screenActive = true;
                 GameManager.Instance.coinNotEnough = true;
 
             }
@@ -501,18 +499,11 @@ public class Featured : MonoBehaviour
         DataPersistenceManager.Instance.SaveGame();
         print("SAVE GAME FROM LOSE RESTARTR");
         Invoke("ActualRestart", 0.2f);
-        //changed this 04.05
-        //   Time.timeScale = 1f;
+      
+    }
 
 
-        //cALL SAVEDATA AT THIS POINT
-
-        //    Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
-
-    } 
-
-   
-        void ActualRestart()
+    void ActualRestart()
     {
         Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
 
@@ -526,30 +517,9 @@ public class Featured : MonoBehaviour
 
         print("inside yes funct");
         additionalSecond = 1;
-        //start only after coroutíne ends
         _board.pauseBoard();
 
 
-        /* _allTiles = _board._nodes;
-
-         _allTiles.ForEach((tile) => {
-
-             int lastChildIndex = tile.transform.childCount - 1;
-             tile.transform.GetChild(lastChildIndex).gameObject.SetActive(true);
-
-             // tile.transform.GetChild(3).gameObject.SetActive(true)
-
-         });*/
-
-        /*  _featureTilePrefab.GetComponent<BoxCollider2D>().enabled = false;
-          _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });*/
-
-
-        ///////////changed 06.05 --instead coin lose life
-        /// extra
-        /// 
-
-        //    health.GetComponent<HealthHearts>().loseLife();
         HealthHearts.Instance.loseLife();
 
         showAlert.SetActive(false);
@@ -557,7 +527,7 @@ public class Featured : MonoBehaviour
 
         if (openTile == false)
         {
-             alreadyClicked = true;
+            alreadyClicked = true;
             secondsLeft = 2;
 
             openTile = true;
@@ -567,137 +537,64 @@ public class Featured : MonoBehaviour
 
 
 
-        ///////////changed 06.05 --instead coin lose life
-        ///
-        /*
-
-        showAlert.SetActive(false);
-        coinCountText = GameManager.Instance.m_Object.text;
-        
-
-        coinCountNum = int.Parse(coinCountText);
-
-        if (coinCountNum > 0 && openTile == false)
-        {
-             newNum = coinCountNum;
-            newNum--;
-
-        GameManager.Instance.coinNum = newNum;
-            GameManager.Instance.m_Object.text = newNum.ToString();
-
-        }
-        if (openTile == false)
-        {
-            secondsLeft = 3;
-        }
-        if (coinCountNum > 0)
-        {
-
-            openTile = true;
-            clicked = true;
-        }
-
-
-        */
-        //////
-
-
     }
     public void clickedNo()  //FEATURE TILE NO BUTTON
     {
-        // screenActive = false;
-        //   tile.GetComponent<BoxCollider2D>().enabled = true;
-        // showAlert.SetActive(false);  --> control from LoadMEnu() animation
+
         PopUpAnimFeature.Instance.CloseMenuAnimation();
 
         print("NOOOOO");
 
         _board.pauseBoard();
-        //   _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = true; });
 
 
     }
     public void clickedNoRestart()
     {
-        //   screenActive = false;
 
-        //    tile.GetComponent<BoxCollider2D>().enabled = true;
-        //  showAlertRestart.SetActive(false); --> control from LoadMEnu() animation
         print("close");
 
         PopUpAnimRestart.Instance.CloseMenuAnimation();
 
 
         _board.pauseBoard();
-        // _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = true; });
 
     }
     public void clickedNoNoCoin()
     {
-        //   screenActive = false;
-
-        //    tile.GetComponent<BoxCollider2D>().enabled = true;
-        //  showAlertRestart.SetActive(false); --> control from LoadMEnu() animation
         print("close");
 
         PopupAnimNoCOins.Instance.CloseMenuAnimation();
 
 
         _board.pauseBoard();
-        // _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = true; });
 
     }
     public void clickeBack()
     {
-        // screenActive = false;
-
-        //  tile.GetComponent<BoxCollider2D>().enabled = true;
         _board.pauseBoard();
-        //    _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = true; });
         PopupAnimNoCOins.Instance.CloseMenuAnimation();
 
-
-        //  showAlertNoCoin.SetActive(false);
     }
-    //function showAd
 
 
 
     void makeFeatureTile()
-
     {
-
         rnd = Random.Range(_minRange, _maxRange);
 
-        //random sprite given to tileprefab
 
         _prefabSpriteRenderer.sprite = _featureTilePrefab._gameObjects?[rnd];
 
-        //  tile = Instantiate(_featureTilePrefab, new Vector2((float)3 / 2, (10 / 2)-0.23f), Quaternion.identity);
-        tile = Instantiate(_featureTilePrefab/*, new Vector3((float)0,0,0), Quaternion.identity*/) /*as GameObject*/;
-
-        // findScreenImage 
+        tile = Instantiate(_featureTilePrefab);
 
         featureImage.sprite = tile._gameObjects?[rnd];
 
-        // print(tile.transform.localPosition);
-     
-        // tile.transform.localScale = new Vector3(2.22f,2.22f,2.22f);
-
-        //  tile.rectTransform.localScale = new Vector3(newScale, 1.0f, 1.0f);//This works
-
-
-
-
-        // tile.transform.parent = _parentObject1.transform;
 
         tile.transform.SetParent(_parentObject1.transform, false);
-        //tile.transform.localPosition = new Vector3(0,27, 0);
         tile.transform.localPosition = new Vector3(0, 0, 0);
         tile.GetComponent<BoxCollider2D>().enabled = false;
 
-
-        //    tile.GetComponent<BoxCollider2D>().enabled = false;
         screenActive = true;
         GameManager.Instance.ChangeState(GameState.ActivateFindScreen);
         instatiated = true;
@@ -706,7 +603,7 @@ public class Featured : MonoBehaviour
               tile.transform.GetChild(0).gameObject;
 
     }
-   
+
 
     public void setScreenActiveToTrue()
     {

@@ -12,7 +12,11 @@ public class noCoinScreen : MonoBehaviour
     [SerializeField] private GameObject ParentFeatureTile;
     [SerializeField] private GameObject PauseButton;
     [SerializeField] private GameObject RestartButton;
+    [SerializeField] private GameObject ParentBoardBackground;
+    [SerializeField] private GameObject featureTileBackground;
 
+
+    public GameObject mainBlock;
 
 
     void OnEnable()
@@ -27,7 +31,8 @@ public class noCoinScreen : MonoBehaviour
      
 
         }
-
+        ParentBoardBackground.SetActive(false);
+        featureTileBackground.SetActive(false);
         //DEACTIVATE PAUSE AND RESTART BUTTOnS
         PauseButton.SetActive(false);
         RestartButton.SetActive(false);
@@ -36,6 +41,8 @@ public class noCoinScreen : MonoBehaviour
         coinButtonCover.interactable = false;
 
         coinButton.interactable = false;
+        LeanTween.scale(mainBlock, new Vector3(1f, 1f, 1f), 2.3f).setEase(LeanTweenType.easeOutElastic);//.setOnComplete(animateStars);
+
 
         // disable when coin is one
 
@@ -43,23 +50,47 @@ public class noCoinScreen : MonoBehaviour
 
     // Update is called once per frame
 
+    void PlayCoinSound()
+    {
+        FindObjectOfType<AudioManager>().Play("coin");
+
+    }
+
+
     public void StartGame()
     {
         if(GameManager.Instance.coinNum > 0)
         {
-            GameManager.Instance.ChangeState(GameState.FeatureTile);
-            PauseButton.SetActive(true);
-            RestartButton.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("coin");
+
+            LeanTween.scale(mainBlock, new Vector3(0f, 0f, 0f), .4f).setEase(LeanTweenType.easeOutElastic);//.setOnComplete(animateStars);
+            PlayCoinSound();
+
+
+            Invoke("ChangeToPlay", 0.4f);
+
 
         }
     }
 
-
-
- /*   public void RestartButtonNoCoinScreen()
+    private void ChangeToPlay()
+    
     {
+        Featured.Instance.LoseCoinFromNoCoinScreen();
+        /*
+        PauseButton.SetActive(true);
+        RestartButton.SetActive(true);
+        ParentBoardBackground.SetActive(true);
+        featureTileBackground.SetActive(true);
+        GameManager.Instance.ChangeState(GameState.FeatureTile);*/
 
     }
-*/
+
+
+    /*   public void RestartButtonNoCoinScreen()
+       {
+
+       }
+   */
 
 }

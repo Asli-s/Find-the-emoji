@@ -38,10 +38,9 @@ public class GameOver : MonoBehaviour
     {
       //  GameManager.Instance.win += 1;
         win = true;
-        WinScreen.SetActive(true);
         score = GameManager.Instance.score;
-        FindObjectOfType<AudioManager>().Play("win", false);
-
+        FindObjectOfType<AudioManager>().Play("yay");
+        Invoke("ActivateWinScreen", 0.6f);
 
         _allTiles = _board._nodes;
         _tiles.GetComponent<BoxCollider2D>();
@@ -53,6 +52,13 @@ public class GameOver : MonoBehaviour
 
 
     }
+
+    private void ActivateWinScreen()
+    {
+        WinScreen.SetActive(true);
+
+    }
+
     public void Lose()
     {
     //    GameManager.Instance.lose += 1;

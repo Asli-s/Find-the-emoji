@@ -34,7 +34,7 @@ public class GameData
 
     public GameData()
     {
-        this.lastPos = "slow";
+        this.lastPos = "med";
         this.coinNumber  = 5;
         this.gameNumber = 0;
 

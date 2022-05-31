@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-
+using System;
+using System.Globalization;
 
 public class DataPersistenceManager : MonoBehaviour
 
@@ -28,12 +29,7 @@ public class DataPersistenceManager : MonoBehaviour
             //
         }
         Instance = this;
-      /*  if (Instance = null)
-        {
-            Instance = this;
-        }
-        Debug.LogError("already an instance created");
-        print("datapersManager awake");*/
+   
     }
 
 
@@ -131,6 +127,26 @@ public class DataPersistenceManager : MonoBehaviour
     public void changeScene()
     {
         SaveGame();
+    }
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            print("game paused ");
+            SaveGame();
+
+            GameManager.Instance.minimizedApp = true;
+        }
+        else
+        {
+   
+            LoadGame();
+            GameManager.Instance.callLoadAgain();
+         
+            print("not paused anymore");
+
+
+        }
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()

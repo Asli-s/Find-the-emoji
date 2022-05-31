@@ -85,23 +85,23 @@ public GameObject featureImageObject;
         // featureTileParent.SetActive(false);
 
         /*MOVE DOWN MAIN BLOCK */
-        LeanTween.moveLocal(mainBlock, new Vector3(0, 0, 0), 1.8f).setDelay(0f).setEaseOutElastic();
+        LeanTween.moveLocal(mainBlock, new Vector3(0, 0, 0), 1.9f).setDelay(0.2f).setEaseOutElastic();
         //LeanTween.moveLocal(mainBlock, new Vector3(0,0,0),1.5f).setDelay(0f).setEaseOutElastic();
 
 
 
         /*POP FFEATURE TILE IMAGE*/
-        LeanTween.scale(featureImageObject, new Vector3(3.7f, 3.7f, 3.7f), 1.6f).setDelay(0.3f).setEaseOutElastic(); //.setOnComplete(playSoundSlide);
+        LeanTween.scale(featureImageObject, new Vector3(3.7f, 3.7f, 3.7f), 1.6f).setDelay(0.5f).setEaseOutElastic(); //.setOnComplete(playSoundSlide);
      Invoke("playSoundSlide", 2.9f);
 
 
 
-        LeanTween.scale(backGround, Vector3.zero, 0.6f).setDelay(3.3f).setEaseOutElastic();
+        LeanTween.scale(backGround, Vector3.zero, 0.6f).setDelay(3.5f).setEaseOutElastic();
 
 
         /*FEATURE TILE MOVE UP*/
-        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 401, 0), .4f).setDelay(3.4f).setEaseOutExpo()/*.setOnComplete(scaleBack)*/;
-        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 401, 0),.3f).setDelay(3.8f).setEaseInElastic();
+        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 401, 0), .4f).setDelay(3.6f).setEaseOutExpo()/*.setOnComplete(scaleBack)*/;
+        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 401, 0),.3f).setDelay(4f).setEaseInElastic();
 
         //   LeanTween.move(featureImageObject.GetComponent<RectTransform>(),new Vector3(0,381,0),4f).setDelay(3.4f).setEaseOutElastic()/*.setOnComplete(scaleBack)*/;
 
@@ -109,7 +109,7 @@ public GameObject featureImageObject;
         /*FEATURE TILE SCALE BACK*/
         // LeanTween.scale(featureImageObject,  new Vector3(3,3,0), 1.6f).setDelay(2.6f).setEaseInBack();
 
-        LeanTween.scale(featureImageObject, new Vector3(3, 3, 0), 1.51f).setDelay(3.4f).setEaseInElastic().setOnComplete(playSound2); //.setOnComplete(featureTileAppear);
+        LeanTween.scale(featureImageObject, new Vector3(3, 3, 0), 1.51f).setDelay(3.6f).setEaseInElastic().setOnComplete(playSound2); //.setOnComplete(featureTileAppear);
 
 
 
