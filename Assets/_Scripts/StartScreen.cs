@@ -4,17 +4,57 @@ using UnityEngine;
 
 public class StartScreen : MonoBehaviour
 {
+    string coinCountText;
+    private int coinCountNum;
+    private int newNum;
 
     public void StrartScreen()
     {
-        if (GameManager.Instance.coinNum <= 5 && GameManager.Instance.restarted == true && GameManager.Instance.coinNum != 0)
+        if (GameManager.Instance.coinNum <= 5 &&/* GameManager.Instance.restarted == true &&*/ GameManager.Instance.coinNum > 0)
         {
-            gameObject.SetActive(false);
-            GameManager.Instance.ChangeState(GameState.FeatureTile);
+            Invoke("DeactivateStartScreen", 0.7f);
+
+
+            coinCountText = GameManager.Instance.m_Object.text;
+            coinCountNum = int.Parse(coinCountText);
+            GameManager.Instance.coinNum = coinCountNum;
+
+
+            print("coinnum" + coinCountNum);
+            newNum = coinCountNum;
+            newNum--;
+
+            if (coinCountNum == 5)
+            {
+                FindObjectOfType<CountdownTimer>().StartTimer(30, 0);
+
+                playCoinSound();
+            }
+            else
+            {
+            FindObjectOfType<AudioManager>().Play("coin");
+                playCoinSound();
+         //       print("coinSOUND!" );
+
+                //  FindObjectOfType<CountdownTimer>().StartTimer();
+
+            }
+
+            GameManager.Instance.coinNum = newNum;
+            print("gameman coinnum" + GameManager.Instance.coinNum);
+
+            GameManager.Instance.m_Object.text = newNum.ToString();
+
+
+            DataPersistenceManager.Instance.SaveGame();
+
             print("firstscreen coin not 0");
         }
-        else if (GameManager.Instance.coinNum == 0 && GameManager.Instance.restarted == true)
+
+        else if (GameManager.Instance.coinNum == 0 )
         {
+            FindObjectOfType<AudioManager>().Play("noCoin");
+
             gameObject.SetActive(false);
             print("firstscreen coin == 0");
 
@@ -23,5 +63,17 @@ public class StartScreen : MonoBehaviour
 
         }
     }
+    private void playCoinSound()
+    {
+        FindObjectOfType<AudioManager>().Play("coin");
 
+
+    }
+    private void DeactivateStartScreen()
+    {
+        GameManager.Instance.ChangeState(GameState.FeatureTile);
+
+        gameObject.SetActive(false);
+
+    }
 }

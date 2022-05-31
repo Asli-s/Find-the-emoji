@@ -26,6 +26,7 @@ public class LeanAnnimations : MonoBehaviour
          //   var score = GameManager.Instance.score;
         if(GameOver.Instance.win == true)
         {
+        FindObjectOfType<AudioManager>().Play("win", false);
             print("WIIN");
             for (int i = 0; i < stars.Length; i++)
             {
@@ -92,15 +93,29 @@ public class LeanAnnimations : MonoBehaviour
         DataPersistenceManager.Instance.SaveGame();
         print("first save on lose");
 
+        if (GameOver.Instance.win)
+        {
 
-        LeanTween.scale(mainBlock, new Vector3(0.8f, 0.8f, 0.8f), 2.3f)/*.setDelay(0.7f)*/.setEase(LeanTweenType.easeOutElastic);//.setOnComplete(animateStars);
+        LeanTween.scale(mainBlock, new Vector3(0.8f, 0.8f, 0.8f), 2.3f).setDelay(0.4f).setEase(LeanTweenType.easeOutElastic);//.setOnComplete(animateStars);
 
 
         //animate stars
 
-        LeanTween.scale(stars[0], new Vector3(8.5f, 8.5f, 1), 2f).setDelay(0.4f).setEaseOutElastic();
-        LeanTween.scale(stars[1], new Vector3(10f, 10f, 1), 2f).setDelay(0.5f).setEaseOutElastic();
-        LeanTween.scale(stars[2], new Vector3(8.5f, 8.5f, 1), 2f).setDelay(0.6f).setEaseOutElastic();
+        LeanTween.scale(stars[0], new Vector3(8.5f, 8.5f, 1), 2f).setDelay(0.6f).setEaseOutElastic();
+        LeanTween.scale(stars[1], new Vector3(10f, 10f, 1), 2f).setDelay(0.7f).setEaseOutElastic();
+        LeanTween.scale(stars[2], new Vector3(8.5f, 8.5f, 1), 2f).setDelay(0.8f).setEaseOutElastic();
+        }
+        else
+        {
+            LeanTween.scale(mainBlock, new Vector3(0.8f, 0.8f, 0.8f), 2.3f).setEase(LeanTweenType.easeOutElastic);//.setOnComplete(animateStars);
+
+
+            //animate stars
+
+            LeanTween.scale(stars[0], new Vector3(8.5f, 8.5f, 1), 2f).setDelay(0.4f).setEaseOutElastic();
+            LeanTween.scale(stars[1], new Vector3(10f, 10f, 1), 2f).setDelay(0.5f).setEaseOutElastic();
+            LeanTween.scale(stars[2], new Vector3(8.5f, 8.5f, 1), 2f).setDelay(0.6f).setEaseOutElastic();
+        }
     }
        
 

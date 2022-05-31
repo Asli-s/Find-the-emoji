@@ -8,10 +8,10 @@ using System.Globalization;
 
 public class GameManager : MonoBehaviour, IDataPersistence
 {
-    public int gameCount =0;
+    public int gameCount = 0;
     [SerializeField] public TMPro.TextMeshProUGUI m_Object;
     public int coinNum;
-    public int score= 0;
+    public int score = 0;
     public int lastPosition; // loaded pos
     public int lastPositionCurrent; // get currentPos
     public string positionStringLoad = "";
@@ -27,19 +27,23 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public string toSaveDatetimeString;
     public string savedate;
 
+
+
+    public bool minimizedApp = false;
+
     public DateTime toLoadDatetime;
     public string toLoadDatetimeString;
-    string loadDateStr;
+    public string loadDateStr;
 
     int prevlose;
     int nextlose;
 
-    public bool soundActive =true;
+    public bool soundActive = true;
     public bool musicActive = true;
 
 
-    public int secondsLeft=0;
-    public int minutesLeft=0;
+    public int secondsLeft = 0;
+    public int minutesLeft = 0;
     public bool activeCountDown;
 
     public GameObject findScreen;
@@ -52,51 +56,59 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     public bool restarted = false;
 
-     void Awake()
+    void Awake()
     {
         if (Instance == null) { Instance = this; }
         else Debug.Log("error");
-       
+
     }
     void Start()
     {
-      
+
         //set current scene as the one who gets saved
         // lastPositionCurrent = SceneManager.GetActiveScene().buildIndex;
         positionStringSave = SceneManager.GetActiveScene().name;
 
 
-        toLoadDatetime = DateTime.ParseExact(loadDateStr, "dd/MM/yyyy HH:mm:ss", CultureInfo.GetCultureInfo("de-DE"));
+        //   toLoadDatetime = DateTime.ParseExact(loadDateStr, "dd/MM/yyyy HH:mm:ss", CultureInfo.GetCultureInfo("de-DE"));
+        if (loadDateStr != "")
+        {
+
+            //   toLoadDatetime = DateTime.ParseExact(loadDateStr, "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+            toLoadDatetime = DateTime.ParseExact(loadDateStr, "MM/dd/yyyy HH:mm:ss zzz", CultureInfo.InvariantCulture);
+
+        }
 
 
         print(gameCount);
 
         m_Object.text = coinNum.ToString();
-      /*  if (coinNum > 0 || coinNotEnough == false)
-        {*/
+        /*  if (coinNum > 0 || coinNotEnough == false)
+          {*/
         ChangeState(
             GameState.CheckTimer);
-        //    findScreen.SetActive(true);
-        //loaad gameCount
 
-        //}
-     /*   else
-        {
-            coinNotEnoughScreen.SetActive(true);
-           
-
-        }*/
-        //load coinNum
-
-        //  toSaveDatetime = DateTime.Now;
     }
+
+    public void callLoadAgain()
+    {
+        if (minimizedApp == true)
+        {
+            toLoadDatetime = DateTime.ParseExact(loadDateStr, "MM/dd/yyyy HH:mm:ss zzz", CultureInfo.InvariantCulture);
+
+
+            TestTime.Instance.CalculateTime();
+        }
+
+    }
+
 
     public void LoadData(GameData gameData)
     {
         this.gameCount = gameData.gameNumber;
 
-       this.coinNum = gameData.coinNumber;
-     
+        this.coinNum = gameData.coinNumber;
+
         this.win = gameData.win;
         this.lose = gameData.lose;
 
@@ -108,11 +120,6 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         this.minutesLeft = gameData.minutesLeft;
         this.secondsLeft = gameData.secondsLeft;
-
-      /*  this.minutesLeft = 0;
-             this.secondsLeft =40;
-          this.coinNum =0;*/
-
 
 
         this.activeCountDown = gameData.timerActive;
@@ -128,20 +135,22 @@ public class GameManager : MonoBehaviour, IDataPersistence
         this.restarted = gameData.restarted;
 
         print(gameData);
-      
+
     }
-    public void SaveData( GameData gameData)
+    public void SaveData(GameData gameData)
     {
         Debug.Log("gamemanager savedata" + this.lose);
 
-        savedate = DateTime.Now.ToString(/*CultureInfo.InvariantCulture*/ CultureInfo.GetCultureInfo("de-DE"));
-     
+        //  savedate = DateTime.Now.ToString(/*CultureInfo.InvariantCulture*/ CultureInfo.GetCultureInfo("de-DE"));
+        savedate = DateTime.UtcNow.ToString("MM/dd/yyyy HH:mm:ss zzz", CultureInfo.InvariantCulture);//DateTimeStyles.AdjustToUniversal); //CultureInfo.GetCultureInfo("de-DE"));
+
+
 
         gameData.lastPos = positionStringSave;
-    
 
 
-      //  gameData.gameNumber = this.gameCount;
+
+        gameData.gameNumber = this.gameCount;
 
 
 
@@ -153,7 +162,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.score2 = this.score2;
         gameData.score3 = this.score3;
 
-        gameData.sound = this.soundActive ;
+        gameData.sound = this.soundActive;
         gameData.music = this.musicActive;
 
         gameData.savedTIme = this.savedate;
@@ -178,7 +187,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.minutesLeft = 2;*/
 
         gameData.coinNumber = this.coinNum;
-    //   gameData.coinNumber =5;
+        //   gameData.coinNumber =5;
 
     }
 
@@ -191,13 +200,13 @@ public class GameManager : MonoBehaviour, IDataPersistence
         print("GAMEMANAGER minLeft" + minutesLeft);
         print("GAMEMANAGER secLeft" + secondsLeft);
         print(loadDateStr);
-     /*   if (coinNum > 0) { 
-*/
-        switch ( newState)
+        /*   if (coinNum > 0) { 
+   */
+        switch (newState)
         {
             case GameState.CheckTimer:
                 TestTime.Instance.CalculateTime();
-                    break;
+                break;
 
             case GameState.FeatureTile:
                 print("gamestate featuretile");
@@ -213,10 +222,10 @@ public class GameManager : MonoBehaviour, IDataPersistence
                 {
                     coinNotEnough = true;
                 }*/
-                    break;
+                break;
 
             case GameState.GenerateGrid:
-               
+
                 Board.Instance?.GenerateGrid();
 
                 break;
@@ -227,45 +236,46 @@ public class GameManager : MonoBehaviour, IDataPersistence
                 break;
 
             case GameState.Win:
-                gameCount+= 1;
-               
+                gameCount += 1;
+                FindObjectOfType<AudioManager>().Play("yes");
+
                 win += 1;
                 GameOver.Instance.Win();
-                print("score"+ score);
+                print("score" + score);
                 //     SaveData();
-              
+
                 break;
             case GameState.Lose:
                 print("change state prevlose" + prevlose);
 
-                print("change state lose"+lose);
+                print("change state lose" + lose);
                 //lose = prevlose;
-                lose+=1;
-               // nextlose = lose;
+                lose += 1;
+                // nextlose = lose;
                 gameCount += 1;
-         //      this.lose = prevlose;
+                //      this.lose = prevlose;
                 print("change state lose" + nextlose);
 
                 GameOver.Instance.Lose();
-           //   DataPersistenceManager.Instance.SaveGame();
+                //   DataPersistenceManager.Instance.SaveGame();
                 print("score" + score);
 
-          //      SaveData();
+                //      SaveData();
                 break;
             case GameState.Restart:
                 coinNum -= 1;
 
                 GameOver.Instance.Restart();
-              
+
                 print("restart" + coinNum);
-          //      SaveData();
+                //      SaveData();
                 break;
 
 
             case GameState.changeToSlowScene:
-             
+
                 Menu.Instance.LoadSceneSlow();
-            
+
                 //      SaveData();
                 break;
 
@@ -279,32 +289,27 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
                 Menu.Instance.LoadSceneFast();
                 break;
-         /*   case GameState.NotEnoughCoins:
-                noCoinScreen.Instance.*/
+               
         }
-        }
-
-
-
     }
 
-    //onTileClicked
-    
-   
+}
+
+
 
 public enum GameState
 {
-    CheckTimer =0,
+    CheckTimer = 0,
     FeatureTile = 1,
-    GenerateGrid =2,
+    GenerateGrid = 2,
     ChoseTile = 3,
-    Win= 4,
-    Lose=5,
-    Restart=6,
-    changeToSlowScene=7,
+    Win = 4,
+    Lose = 5,
+    Restart = 6,
+    changeToSlowScene = 7,
     changeToMedScene = 8,
     changeToHardScene = 9,
-    ActivateFindScreen =10,
-    NotEnoughCoins =11,
+    ActivateFindScreen = 10,
+    NotEnoughCoins = 11,
 
 }

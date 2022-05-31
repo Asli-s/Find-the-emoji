@@ -27,6 +27,7 @@ public class Board : MonoBehaviour
     bool checkParentBoard = false;
 
 
+
     public float timeSpeed = 0.4f;
 
     [SerializeField] private GameObject _parentObject;
@@ -59,7 +60,7 @@ public class Board : MonoBehaviour
 
     int count = 0;
 
-    bool checkForPopFinish =false;
+    bool checkForPopFinish = false;
 
     GameObject singleNode;
 
@@ -99,7 +100,7 @@ public class Board : MonoBehaviour
 
 
 
-        
+
         //Dont call changesingle tile before generategrid is populated completely 
         // maybe while any tile sprite == firstsprite => get tile??
         if (gridPopulation == true)
@@ -147,32 +148,32 @@ public class Board : MonoBehaviour
         {
 
             singleNode = _nodes[i].transform.GetChild(0).gameObject;
-          
+
 
             LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
             DestroyTileChild();
-         
+
         }
 
         for (int x = 2; x < _nodes.Count - 1; x += 4)
         {
-          
 
-          //  print("count" + count);
+
+            //  print("count" + count);
             singleNode = _nodes[x].transform.GetChild(0).gameObject;
-          
+
             LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
             //Invoke("HideShowGameobject", count / 10);
             DestroyTileChild();
 
 
         }
-        
+
         for (int y = 1; y < _nodes.Count - 2; y += 4)
         {
-          
+
             singleNode = _nodes[y].transform.GetChild(0).gameObject;
-        
+
             LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
                                                                                                                           //  Invoke("HideShowGameobject", count / 10);
             DestroyTileChild();
@@ -181,10 +182,10 @@ public class Board : MonoBehaviour
 
         for (int z = 0; z < _nodes.Count - 3; z += 4)
         {
-           
+
 
             singleNode = _nodes[z].transform.GetChild(0).gameObject;
-       
+
             LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
                                                                                                                           //       Invoke("HideShowGameobject", count / 10);
             DestroyTileChild();
@@ -194,7 +195,7 @@ public class Board : MonoBehaviour
 
 
         if (count == 16)
-        {           
+        {
             gridPopulation = true;
         }
 
@@ -205,13 +206,13 @@ public class Board : MonoBehaviour
 
 
 
-                                    /*PLAY POP AUDIO*/
+    /*PLAY POP AUDIO*/
     void HideShowGameobject()
     {
-       if(GameOver.Instance.win == false && GameOver.Instance.lose == false)
+        if (GameOver.Instance.win == false && GameOver.Instance.lose == false)
         {
 
-        FindObjectOfType<AudioManager>().Play("pop");
+            FindObjectOfType<AudioManager>().Play("pop");
         }
 
     }
@@ -226,32 +227,32 @@ public class Board : MonoBehaviour
         count += 1;
     }
 
- /*   void disableLoop()
-    {
-        // audioManager.GetComponent<AudioSource>().loop = false;
-        print("stop the loop");
-        FindObjectOfType<AudioManager>().Play("jump", false, true);
+    /*   void disableLoop()
+       {
+           // audioManager.GetComponent<AudioSource>().loop = false;
+           print("stop the loop");
+           FindObjectOfType<AudioManager>().Play("jump", false, true);
 
-    }
-*/
+       }
+   */
 
     void checkTiles()
     {
         int childCountFour = 0;
-      
+
 
 
         for (int i = 0; i < 16; i++)
-        { 
+        {
             //children count should be three
-          if(  _nodes[i].transform.childCount ==4)
+            if (_nodes[i].transform.childCount == 4)
             {
                 childCountFour = 4;
             }
-     
+
 
         }
-        if(childCountFour == 0)
+        if (childCountFour == 0)
         {
             checkForPopFinish = true;
         }
@@ -290,9 +291,9 @@ public class Board : MonoBehaviour
                 //check if featureTile sprite appeared
                 if (alreadyAssigned == false && t.GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
                 {
-                   // print("appeared");
+                    // print("appeared");
                     appearCounter = 1;
-                  //  print(appearCounter);
+                    //  print(appearCounter);
                 }
 
 
@@ -325,12 +326,12 @@ public class Board : MonoBehaviour
 
     }
 
-   
+
 
     public void GenerateGrid()
     {
         featureTileSpriteRenderer = featureTile._featureTilePrefab.GetComponent<SpriteRenderer>();
-     //   print("board" + featureTileSpriteRenderer.sprite);
+        //   print("board" + featureTileSpriteRenderer.sprite);
 
         //chosenSpritesArray will contain 80 sprites
         for (int i = 0; i < 79; i++)
@@ -346,7 +347,7 @@ public class Board : MonoBehaviour
 
 
 
-        if(checkParentBoard == false)
+        if (checkParentBoard == false)
         {
             checkParentBoard = true;
             if (_parentObject.transform.childCount > 0)
@@ -364,13 +365,15 @@ public class Board : MonoBehaviour
         }
 
         _nodes = new List<Tiles>();
-       
-        if (_nodes.Count<16 && _parentObject.transform.childCount <16)
+        int count = 0;
+
+        if (_nodes.Count < 16 && _parentObject.transform.childCount < 16)
         {
             for (int x = 0; x < 4; x++)
             {
                 for (int y = 0; y < 4; y++)
                 {
+                    count = x + y;
 
                     Instance.getTile();
                     while (alreadyAssigned == true)
@@ -384,10 +387,18 @@ public class Board : MonoBehaviour
                         }
 
                     }
+                    print("Count" + count);
 
-                    Tiles node = Instantiate(_tilesPrefab, new Vector2(x, y), Quaternion.identity);
+                    //     Tiles node = Instantiate(_tilesPrefab, new Vector2(x*0.82f, y*0.82f),Quaternion.identity);
+                    //   node.transform.parent = _parentObject.transform;
+                    Tiles node = Instantiate(_tilesPrefab);
 
-                    node.transform.parent = _parentObject.transform;
+                    node.transform.SetParent(_parentObject.transform, false);
+                    //tile.transform.localPosition = new Vector3(0,27, 0);
+                    node.transform.localPosition = new Vector3((x * 7f) - 10.5f, (y * 7f) - 10.5f, 1);
+
+                    node.transform.localScale = new Vector3(0.656f, 0.656f, 0.65f);
+
                     _nodes.Add(node);
                     print(node);
 
@@ -402,7 +413,7 @@ public class Board : MonoBehaviour
 
 
         //  var center = new Vector2((float)_width / 2 - 0.5f, _height / 2 + 0.5f);
-        var center = new Vector2((float)_width / 2 - 0.5f, _height / 2 + 0.53f);
+        var center = new Vector2((float)_width / 2 - 0.81f, _height / 2 + 0.2f);
         Camera.main.transform.position = new Vector3(center.x, center.y, -10);
 
 
@@ -521,9 +532,9 @@ public class Board : MonoBehaviour
 
             if (_nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
             {
-              //  print("appeared changed tile");
+                //  print("appeared changed tile");
                 appearCounter += 1;
-               // print(appearCounter);
+                // print(appearCounter);
             }
 
         }
@@ -536,7 +547,7 @@ public class Board : MonoBehaviour
             //normal mode 
             if (paused == false && Featured.Instance.screenActive == false)
             {
-            //    print(paused);
+                //    print(paused);
                 button.GetComponent<Image>().sprite = buttonSpritePlay;
                 paused = true;
                 if (takingAway == true && secondsLeft > 0)
@@ -566,7 +577,7 @@ public class Board : MonoBehaviour
             else if (paused == true && Featured.Instance.screenActive == true)
             {
                 button.GetComponent<Image>().sprite = buttonSpritePause;
-              //  print(paused);
+                //  print(paused);
 
                 paused = false;
 
@@ -590,31 +601,26 @@ public class Board : MonoBehaviour
         //only after popanimation
 
 
-/*PAUSE IF NOT ALREADY PAUSED*/
-        if (paused == false && pausePanelActive == false && Featured.Instance.screenActive == false && gridPopulation ==true && checkForPopFinish ==true)
+        /*PAUSE IF NOT ALREADY PAUSED*/
+        if (paused == false && pausePanelActive == false && Featured.Instance.screenActive == false && gridPopulation == true && checkForPopFinish == true)
         {
             ThemeSound.Instance.audio.volume = 0.04f;
 
             button.GetComponent<Image>().sprite = buttonSpritePlay;
             paused = true;
-            //       print("pause");
-            //  StopCoroutine(Timer());
             StopCoroutine(StartTimer);
             pausePanelActive = true;
 
 
-            //activate panel
             PausePanel.SetActive(true);
         }
 
-/*START IF PAUSED*/
-
-        else if (paused == true && Featured.Instance.screenActive == false &&gridPopulation ==true && checkForPopFinish == true)// && Featured.Instance.screenActive == false && pausePanelActive == true)
-        {
+        else if (paused == true && Featured.Instance.screenActive == false && gridPopulation == true && checkForPopFinish == true) 
+        { 
             ThemeSound.Instance.audio.volume = 0.1f;
 
             button.GetComponent<Image>().sprite = buttonSpritePause;
-          //  print(paused);
+            //  print(paused);
 
             paused = false;
             pausePanelActive = false;
@@ -633,16 +639,11 @@ public class Board : MonoBehaviour
     public void changeClickedSingleTile(int positionIndex)
     {
         randomChosenTile = UnityEngine.Random.Range(_minRange, _width * _width);
-        //var specificTile = "";
         alreadyAssigned = false;
         rnd = UnityEngine.Random.Range(_minRange, _maxRange);
-        //define new maxrange -ex. 50
-        //make array with array[0] ==ftile + 49 rand. gameobjects
-
+     
         var randomChosenSprite = _tilesPrefab._gameObjects?[rnd];
-        // get node sprite
-        //       var nodeSprite = _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite;
-
+       
         _nodes.ForEach((t) =>
         {
             if (t.GetComponent<SpriteRenderer>().sprite == randomChosenSprite)
@@ -651,7 +652,6 @@ public class Board : MonoBehaviour
 
 
             }
-            // var freeNodes = _nodes.Where();
         });
         if (alreadyAssigned)
         {
@@ -662,27 +662,20 @@ public class Board : MonoBehaviour
             _nodes[positionIndex].GetComponent<SpriteRenderer>().sprite = randomChosenSprite;
             if (_nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
             {
-             //   print("appeared through clicked");
                 appearCounter += 1;
-             //   print(appearCounter);
-            }
+             }
 
         }
     }
 
-    /*   void restart()
-       {
-           //restarrt
-       }
-   */
+  
     IEnumerator Timer()
     {
         takingAway = true;
         yield return new WaitForSeconds(timeSpeed);
         secondsLeft--;
         takingAway = false;
-        //   print(secondsLeft);
-    }
+        }
 
     IEnumerator StartingTimer()
     {
@@ -690,6 +683,5 @@ public class Board : MonoBehaviour
         yield return new WaitForSeconds(1);
         secondsToStart--;
 
-        //   print(secondsLeft);
-    }
+        }
 }

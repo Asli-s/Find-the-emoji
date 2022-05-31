@@ -43,6 +43,8 @@ public class TestTime : MonoBehaviour
     private int newNum;
     double minuteDiff;
     [SerializeField] GameObject FirstScreen;
+    [SerializeField] GameObject NoCoinScreen;
+
 
 
     private void Awake()
@@ -64,21 +66,19 @@ public class TestTime : MonoBehaviour
         secondsLeft = GameManager.Instance.secondsLeft;
 
         savedTimeDisplay.text = GameManager.Instance.toLoadDatetime.ToString("HH:mm:ss");
-        NowTimeDisplay.text = DateTime.Now.ToString("HH:mm:ss");
+        NowTimeDisplay.text = DateTime.UtcNow.ToString("HH:mm:ss");
 
 
-        currentDateTimeStr = DateTime.Now.ToString(CultureInfo.GetCultureInfo("de-DE"));
+        //    currentDateTimeStr = DateTime.Now.ToString(CultureInfo.GetCultureInfo("de-DE"));
+        currentDateTimeStr = DateTime.UtcNow.ToString("MM/dd/yyyy HH:mm:ss zzz", CultureInfo.InvariantCulture);
 
 
         /*neccessary*/
 
         loadedDateTime = GameManager.Instance.toLoadDatetime;
-        currentDateTime = DateTime.ParseExact(currentDateTimeStr, "dd/MM/yyyy HH:mm:ss", CultureInfo.GetCultureInfo("de-DE"));
-
-
-        //  DateTime newDays = DateTime.Parse(loadedDateTimeStr, System.Globalization.CultureInfo.InvariantCulture).Date - DateTime.Parse(currentDateTimeStr, System.Globalization.CultureInfo.InvariantCulture).ToOADate;
-        // (DateTime.Parse(yourDate, System.Globalization.CultureInfo.InvariantCulture).Date - DateTime.Parse(DateTime.Today.ToString, System.Globalization.CultureInfo.InvariantCulture)).TotalDays;
-
+        // currentDateTime = DateTime.ParseExact(currentDateTimeStr, "dd/MM/yyyy HH:mm:ss", CultureInfo.GetCultureInfo("de-DE"));
+        //  currentDateTime = DateTime.ParseExact(currentDateTimeStr, "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+        currentDateTime = DateTime.ParseExact(currentDateTimeStr, "MM/dd/yyyy HH:mm:ss zzz", CultureInfo.InvariantCulture);
 
         print(currentDateTime);
 
@@ -94,24 +94,26 @@ public class TestTime : MonoBehaviour
         coinCountNum = int.Parse(coinCountText);
         GameManager.Instance.coinNum = coinCountNum;
 
-
+        print("loadedDateTime" + loadedDateTime);
 
         minutesDifference = (currentDateTime - loadedDateTime).TotalMinutes; /*whole time in minutes format */
 
         float newMinuteDifference = ToSingle(minutesDifference); /*conversion to float from double*/
+        print("mindiff" + minutesDifference);
 
         remainingMinutes = (int)Mathf.Floor(newMinuteDifference);  /*make whole minutes */
 
         remainingSeconds = (int)((minutesDifference - remainingMinutes) * 60); /*make whole seconds */
-        if (remainingMinutes == 0 && remainingSeconds <= 3)
+        print("remaining minutes and seconds" + remainingMinutes + remainingSeconds);
+        if (remainingMinutes == 0 && remainingSeconds <= 3 || GameManager.Instance.minimizedApp == true)
         {
 
             GameManager.Instance.restarted = false;
-       
+
 
 
         }
-        else
+        else if (GameManager.Instance.minimizedApp == false)
         {
             GameManager.Instance.restarted = true;
 
@@ -122,8 +124,8 @@ public class TestTime : MonoBehaviour
 
         if (GameManager.Instance.coinNum < 5)
         {
+            GameManager.Instance.activeCountDown = true;
 
-          
 
             minutesText.text = remainingMinutes.ToString();
             secondsText.text = remainingSeconds.ToString();
@@ -144,7 +146,7 @@ public class TestTime : MonoBehaviour
             GameManager.Instance.secondsLeft = 0;
             GameManager.Instance.minutesLeft = 0;
             TimerText.text = "full";
-            if(GameManager.Instance.restarted == true)
+            if (GameManager.Instance.restarted == true)
             {
                 FirstScreen.SetActive(true);
             }
@@ -152,7 +154,7 @@ public class TestTime : MonoBehaviour
             {
                 FirstScreen.SetActive(false);
 
-            GameManager.Instance.ChangeState(GameState.FeatureTile);
+                GameManager.Instance.ChangeState(GameState.FeatureTile);
             }
 
 
@@ -191,15 +193,7 @@ public class TestTime : MonoBehaviour
     {
         print("minutesLeft" + minLeft);
         print("secondsLeft" + secLeft);
-        /*  secondsLeft = 10;
-          minutesLeft = 5;*/
-        /*
-
-
-                minutes = minutesLeft;
-                seconds = secondsLeft;*/
-        //FindObjectOfType<CountdownTimer>().StartTimer(minLeft, secLeft);
-
+      
 
         print("minutes" + minutes);
         print("seconds" + seconds);
@@ -338,33 +332,59 @@ public class TestTime : MonoBehaviour
 
 
 
-
+                //ifnoscreen == active and newNum >0 ---> deactivate button
             }
-            else if(newNum <5)
+            else if (newNum < 5)
             {
-               
-                print("finally to start the timer from tesstimer");
-                print(minutes + "m" + seconds +" s"+ GameManager.Instance.activeCountDown);
-
-                GameManager.Instance.coinNum = newNum;
-
-                GameManager.Instance.m_Object.text = newNum.ToString();
-                FindObjectOfType<CountdownTimer>().StartTimer(minutes, seconds);
-            
-                if (GameManager.Instance.restarted == true)
-                {
-                    FirstScreen.SetActive(true);
-                }
-                else
-                {
-                    FirstScreen.SetActive(false);
-
-                    GameManager.Instance.ChangeState(GameState.FeatureTile);
-                }
-
 
 
             }
+
+            print("finally to start the timer from tesstimer");
+            print(minutes + "m" + seconds + " s" + GameManager.Instance.activeCountDown);
+
+            GameManager.Instance.coinNum = newNum;
+
+            GameManager.Instance.m_Object.text = newNum.ToString();
+
+
+
+            if (GameManager.Instance.restarted == true)
+            {
+                FirstScreen.SetActive(true);
+            }
+            else if (GameManager.Instance.minimizedApp == false && GameManager.Instance.restarted == false)
+            {
+                FirstScreen.SetActive(false);
+
+                GameManager.Instance.ChangeState(GameState.FeatureTile);
+            }
+            if (GameManager.Instance.minimizedApp == true && NoCoinScreen.activeSelf == true && GameManager.Instance.coinNum > 0 && GameManager.Instance.restarted == false)
+            {
+                FindObjectOfType<noCoinScreen>().coinButtonCover.gameObject.SetActive(false);
+                FindObjectOfType<noCoinScreen>().coinButton.interactable = true;
+
+            }
+            // set firstscreen active
+      /*      if (FirstScreen.activeSelf == true)
+            {
+                FirstScreen.SetActive(false);
+                FirstScreen.SetActive(true);
+            }*/
+            if (GameManager.Instance.minimizedApp == true)
+            {
+                GameManager.Instance.minimizedApp = false;
+            }
+
+
+
+
+            if (minutes == 0 && seconds == 0)
+            {
+                minutes = 29;
+                seconds = 59;
+            }
+            FindObjectOfType<CountdownTimer>().StartTimer(minutes, seconds);
 
         }
         else if (coinCountNum == 5)
@@ -375,7 +395,7 @@ public class TestTime : MonoBehaviour
             GameManager.Instance.activeCountDown = false;
             FindObjectOfType<CountdownTimer>().timerStarted = false; ;
             TimerText.text = "full";
-          
+
             if (GameManager.Instance.restarted == true)
             {
                 FirstScreen.SetActive(true);
@@ -393,7 +413,7 @@ public class TestTime : MonoBehaviour
 
         }
 
-    
+
 
     }
 

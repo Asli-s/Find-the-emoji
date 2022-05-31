@@ -38,42 +38,26 @@ public class CountdownTimer : MonoBehaviour
 
     private void Awake()
     {
-       /* if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-
-        }*/
-
-     //   DontDestroyOnLoad(transform.root.gameObject);
-        /*  if (Instance != null)
-           {
-               Destroy(this.gameObject);
-               Debug.LogError("already an instance countdown created");
-           }
-           Instance = this;
-           */
+       
     }
 
     private void Start()
     {
-        //DontDestroyOnLoad(transform.root.gameObject);
-/*
-  StartTimer();*/
+        
 
     }
-/*extra*/
+    /*extra*/
+
+    private void Update()
+    {
+       // print(Application.runInBackground);
+
+    }
 
 
 
 
-
-
-/**/
+    /**/
     public void StartTimer(int minute =0, int second=0)
     {
         timerStarted = GameManager.Instance.activeCountDown;
@@ -135,22 +119,21 @@ public class CountdownTimer : MonoBehaviour
 
 
         string text;
-        print(window.activeSelf);
-        while (window.activeSelf == true)
+        while (window.activeSelf == true && GameManager.Instance.minimizedApp ==false)
         { 
              text = "";
             if (timerSecondsLeft > 1)
-            {
+            {/*
                 if (timeLeft.Hours != 0)
                 {
                     text += timeLeft.Hours + "h ";
                     text += timeLeft.Minutes + "m";
                     yield return new WaitForSeconds(timeLeft.Seconds);
-                 /*   print("timeleft minutes" + timeLeft.Minutes);
+                 *//*   print("timeleft minutes" + timeLeft.Minutes);
                     print("timeleft sec" + timeLeft.Seconds);
-*/
+*//*
                 }
-                else if (timeLeft.Minutes != 0)
+                else*/ if (timeLeft.Minutes != 0)
                 {
                     TimeSpan ts = TimeSpan.FromSeconds(timerSecondsLeft);
                     if (ts.Minutes < 10)
@@ -203,14 +186,14 @@ public class CountdownTimer : MonoBehaviour
                     if(Mathf.FloorToInt((float)timerSecondsLeft) < 10)
                     {
                         text += "0"+ Mathf.FloorToInt((float)timerSecondsLeft) + "s";
-                        //     print("ts seconds" + timerSecondsLeft);
                         GameManager.Instance.secondsLeft = Mathf.FloorToInt((float)timerSecondsLeft);
+                            print(" seconds" + GameManager.Instance.secondsLeft);
                     }
                     else
                     {
                     text += Mathf.FloorToInt((float)timerSecondsLeft) + "s";
-               //     print("ts seconds" + timerSecondsLeft);
                     GameManager.Instance.secondsLeft = Mathf.FloorToInt((float)timerSecondsLeft );
+                   print(" seconds" + GameManager.Instance.secondsLeft);
 
                     }
 
@@ -218,7 +201,7 @@ public class CountdownTimer : MonoBehaviour
                 }
                 TimerText.text = text;
                 timerSecondsLeft -= Time.deltaTime;
-
+          //      print("timersec" + timerSecondsLeft);
                 yield return null;
             }
             else
@@ -236,7 +219,7 @@ public class CountdownTimer : MonoBehaviour
                 print(" ( GameManager.Instance.secondsLeft   " + GameManager.Instance.secondsLeft) ;
                 print(" (GameManager.Instance.minutesLeft   " + GameManager.Instance.minutesLeft);
 
-                if (coinCountNum < 5 && GameManager.Instance.activeCountDown ==true && GameManager.Instance.secondsLeft<=1 && GameManager.Instance.minutesLeft ==0)
+                if (coinCountNum < 5 && GameManager.Instance.activeCountDown == true && GameManager.Instance.secondsLeft <= 1 && GameManager.Instance.minutesLeft == 0)
                 {
                     print("call addlife from countdown");
                     AddLife();
@@ -275,19 +258,33 @@ public class CountdownTimer : MonoBehaviour
 
             GameManager.Instance.m_Object.text = newNum.ToString();
             //
-            if (newNum == 1)
+            print("coinnum" + newNum);
+            print("gamemananger coinnum" + GameManager.Instance.coinNum);
+            if (GameManager.Instance.coinNum == 1)
             {
-                GameManager.Instance.coinNotEnough = false;
-                FindObjectOfType<noCoinScreen>().coinButtonCover.gameObject.SetActive(false);
-                FindObjectOfType<noCoinScreen>().coinButton.interactable = true;
+                print("coinnum ==1");
+                GameManager.Instance.activeCountDown = true;
+                timerStarted = true;
 
+                StartTimer(30, 0);
+
+                if (FindObjectOfType<noCoinScreen>().isActiveAndEnabled)
+                {
+                    FindObjectOfType<noCoinScreen>().coinButtonCover.gameObject.SetActive(false);
+                    FindObjectOfType<noCoinScreen>().coinButton.interactable = true;
+                }
+            
+            
+                print("NEWNUM ADD LIFE" + newNum);
+        
 
             }
-            if (newNum < 5)
+           else if (newNum < 5 && newNum !=1)
             {
-              
 
 
+                GameManager.Instance.activeCountDown = true;
+                timerStarted = true;
 
                 GameManager.Instance.minutesLeft = 0;
                 GameManager.Instance.secondsLeft = 0;
