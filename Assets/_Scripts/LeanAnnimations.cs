@@ -26,7 +26,8 @@ public class LeanAnnimations : MonoBehaviour
          //   var score = GameManager.Instance.score;
         if(GameOver.Instance.win == true)
         {
-        FindObjectOfType<AudioManager>().Play("win", false);
+            //FindObjectOfType<PlayExtraSound>().Play(); /// play yay sound
+            FindObjectOfType<AudioManager>().Play("win", false);
             print("WIIN");
             for (int i = 0; i < stars.Length; i++)
             {

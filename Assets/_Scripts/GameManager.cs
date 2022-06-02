@@ -67,7 +67,27 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         //set current scene as the one who gets saved
         // lastPositionCurrent = SceneManager.GetActiveScene().buildIndex;
-        positionStringSave = SceneManager.GetActiveScene().name;
+
+        if (positionStringLoad == "med")
+        {
+   
+            Board.Instance.timeSpeed = 0.6f;
+        }
+        else
+            if (positionStringLoad == "hard")
+            {
+
+                Board.Instance.timeSpeed = 0.4f;
+            
+        }
+        else
+            if (positionStringLoad == "easy")
+        {
+
+            Board.Instance.timeSpeed = 1f;
+
+        }
+        // positionStringSave = SceneManager.GetActiveScene().name;
 
 
         //   toLoadDatetime = DateTime.ParseExact(loadDateStr, "dd/MM/yyyy HH:mm:ss", CultureInfo.GetCultureInfo("de-DE"));
@@ -146,7 +166,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
 
 
-        gameData.lastPos = positionStringSave;
+        gameData.lastPos = positionStringLoad;
 
 
 
