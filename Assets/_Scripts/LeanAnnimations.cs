@@ -111,7 +111,10 @@ public class LeanAnnimations : MonoBehaviour
             {
 
             Invoke("ActivateHighScore", 1f);
+
             }
+            Invoke("PlayYay", 0.4f);
+
         }
         else
         {
@@ -218,8 +221,13 @@ public class LeanAnnimations : MonoBehaviour
     void ActivateHighScore()
     {
      //   highScoreLabel.SetActive(true);
-        LeanTween.scale(highScoreLabel, new Vector3(1, 1, 1), 1f).setEaseInOutElastic();
+        LeanTween.scale(highScoreLabel.GetComponent<RectTransform>(), new Vector3(1, 1, 1), .3f).setEase(LeanTweenType.easeOutElastic);
     }
 
+    void PlayYay()
+    {
+        FindObjectOfType<AudioManager>().Play("yay", false);
+
+    }
 
 }

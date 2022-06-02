@@ -231,7 +231,7 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
     public void LoadSceneSlow()
     {
         GameManager.Instance.positionStringLoad="slow";
-        Board.Instance.timeSpeed =1f;
+        Board.Instance.timeSpeed =1.1f;
         DataPersistenceManager.Instance.SaveGame();
         showScreen();
 
@@ -243,7 +243,7 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
     {
 
         GameManager.Instance.positionStringLoad = "med";
-        Board.Instance.timeSpeed =0.6f;
+        Board.Instance.timeSpeed =0.8f;
         DataPersistenceManager.Instance.SaveGame();
         showScreen();
 
@@ -253,7 +253,7 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
     public void LoadSceneFast()
     {
         GameManager.Instance.positionStringLoad = "hard";
-        Board.Instance.timeSpeed =0.4f;
+        Board.Instance.timeSpeed =0.5f;
 
         DataPersistenceManager.Instance.SaveGame();
         showScreen();
