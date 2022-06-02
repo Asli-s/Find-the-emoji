@@ -159,7 +159,9 @@ public class LeanAnnimations : MonoBehaviour
             /*nocoin activate */
          //   noCoinScreen.SetActive(true);
             GameManager.Instance.coinNotEnoughScreen.SetActive(true);
-          //  GameManager.Instance.coinNotEnough = true;
+            FindObjectOfType<AudioManager>().Play("noCoin");
+
+            //  GameManager.Instance.coinNotEnough = true;
             Featured.Instance.screenActive = true;
             DataPersistenceManager.Instance.SaveGame();
 

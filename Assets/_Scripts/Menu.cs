@@ -48,8 +48,11 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
     {
         //  print(Featured.Instance.screenActive );
     }
+    private void Start()
+    {
+        MenuButtons();
+    }
 
-   
 
     private void MenuButtons()
     {
@@ -107,8 +110,6 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
         /* NO OTHER SCREENS ACTIVE*/
         if (openMenu == false && additionalMenu == false && _board.paused == false && findScreen.activeSelf == false && Featured.Instance.screenActive == false)//&& Board.Instance.pausePanelActive == false)
         {
-            MenuButtons();
-
             ThemeSound.Instance.audio.volume = 0.04f;
             //  print("first");
 
@@ -155,9 +156,11 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
 
         }
         /*MENU IS ACTIVE / STATS IS NOT ACTIVE --close the menu*/
-        else if (openMenu == true && additionalMenu == false && findScreen.activeSelf == false && Featured.Instance.screenActive == true)//&& Board.Instance.pausePanelActive == false)
+        else if (openMenu == true && additionalMenu == false && findScreen.activeSelf == false && Featured.Instance.screenActive == true)
         {
 
+
+            MenuButtons();
 
             openMenu = false;
             // MenuScreen.SetActive(false); -----> call close from menu script

@@ -18,6 +18,14 @@ public class Featured : MonoBehaviour
 
     public GameObject health;
 
+
+    //prevent Buttons from doubleClick
+    bool coinLoseClicked = false;
+    bool heartLoseClicked = false;
+    bool noCoinScreenCoinClicked = false;
+
+
+
     private SpriteRenderer _prefabSpriteRenderer;
     private int _minRange = 0;
     private int _maxRange = 0;
@@ -133,12 +141,6 @@ public class Featured : MonoBehaviour
 
 
 
-                //temp change 04.05
-                /*   findScreen.SetActive(true);*/
-                // screenActive = true;
-
-
-                /*DEACTIVATE QUESTIONMARK*/
 
 
                 if (health.GetComponent<HealthHearts>().health > 0  /*maybe comment out to have double pop sound*/ && alreadyClicked == true)
@@ -153,25 +155,7 @@ public class Featured : MonoBehaviour
                     alreadyClicked = false;
                 }
 
-                //pause the grid
-
-
-                /*             *//*  if (findScreenActivePauseBoard ==true &&alreadyInPause==false)
-                               {
-                                   alreadyInPause = true;
-                                   findScreenActivePauseBoard = false;
-                                   _board.pauseBoard();
-                               }
-               *//**/
-                //     print("activate findscreen gameobj");
-                //
-
-                //  _featureTilePrefab.GetComponent<BoxCollider2D>().enabled = false;
-                /*     tile.GetComponent<BoxCollider2D>().enabled = false;  // <-- feature tile disabled
-                     _featureTilePrefab.GetComponent<BoxCollider2D>().enabled = false;  // <-- feature tile disabled*/
-
-
-                //    _parentObject1.GetComponent<BoxCollider2D>().enabled = false;
+             
 
             }
             openTile = true;
@@ -206,7 +190,7 @@ public class Featured : MonoBehaviour
                 print("enable questionmark");
                 if (GameOver.Instance.lose == false && GameOver.Instance.win == false)
                 {
-
+                    heartLoseClicked = false;
                     FindObjectOfType<AudioManager>().Play("pop");
                 }
 
@@ -307,11 +291,7 @@ public class Featured : MonoBehaviour
         {
             print("Restart clicked");
             _allTiles = _board._nodes;
-            /*  tile.GetComponent<BoxCollider2D>().enabled = false;  // <-- feature tile disabled
-              _featureTilePrefab.GetComponent<BoxCollider2D>().enabled = false;  // <-- feature tile disabled
-
-
-              _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });*/
+           
 
             coinCountText = GameManager.Instance.m_Object.text;
 
@@ -383,7 +363,7 @@ public class Featured : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
 
      }*/
-
+ 
     public void LoseCoinFromNoCoinScreen()
     {
         print("reestartscene from feature");
@@ -391,8 +371,9 @@ public class Featured : MonoBehaviour
         coinCountNum = int.Parse(coinCountText);
         GameManager.Instance.coinNum = coinCountNum;
 
-        if (coinCountNum > 0)
+        if (coinCountNum > 0 && noCoinScreenCoinClicked== false)
         {
+            noCoinScreenCoinClicked = true;
             print("coinnum" + coinCountNum);
             newNum = coinCountNum;
             newNum--;
@@ -417,7 +398,7 @@ public class Featured : MonoBehaviour
 
 
 
-    public void restartScene() //NEW SCENE
+    public void restartScene() //NEW SCENE   //lost game or clicked yes on coin restarrt button
     {
         if (lostGame == true)
         {
@@ -473,8 +454,9 @@ public class Featured : MonoBehaviour
             coinCountNum = int.Parse(coinCountText);
             GameManager.Instance.coinNum = coinCountNum;
 
-            if (coinCountNum > 0 && screenActive == false)
+            if (coinCountNum > 0 && screenActive == false && coinLoseClicked==false)
             {
+                coinLoseClicked = true;
                 newNum = coinCountNum;
                 newNum--;
 
@@ -509,31 +491,39 @@ public class Featured : MonoBehaviour
 
     }
 
-    public void clickedYes()
+
+
+    public void clickedYes()  //Feature tile yes button
     {
-        FindObjectOfType<AudioManager>().Play("wrong");
-        startCountDown = true;
-
-
-        print("inside yes funct");
-        additionalSecond = 1;
-        _board.pauseBoard();
-
-
-        HealthHearts.Instance.loseLife();
-
-        showAlert.SetActive(false);
-        screenActive = false;
-
-        if (openTile == false)
+        if(heartLoseClicked == false)
         {
-            alreadyClicked = true;
-            secondsLeft = 2;
+            heartLoseClicked = true;
 
-            openTile = true;
-            clicked = true;
+            FindObjectOfType<AudioManager>().Play("wrong");
+            startCountDown = true;
 
+
+            print("inside yes funct");
+            additionalSecond = 1;
+            _board.pauseBoard();
+
+
+            HealthHearts.Instance.loseLife();
+
+            showAlert.SetActive(false);
+            screenActive = false;
+
+            if (openTile == false)
+            {
+                alreadyClicked = true;
+                secondsLeft = 2;
+
+                openTile = true;
+                clicked = true;
+
+            }
         }
+      
 
 
 
