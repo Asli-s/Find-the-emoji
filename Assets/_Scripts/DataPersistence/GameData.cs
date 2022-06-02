@@ -31,6 +31,11 @@ public class GameData
     public bool restarted ;
     public bool notEnoughCoins;
 
+    public int bestStreakStat;
+    public int bestStreak;
+    public int currentStreak;
+
+
 
     public GameData()
     {
@@ -61,5 +66,9 @@ public class GameData
         this.restarted = false;
 
         this.notEnoughCoins = false;
+
+        this.bestStreakStat = 0;
+        this.bestStreak = 0;
+        this.currentStreak = 0;
     }
 }

@@ -42,6 +42,14 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public bool musicActive = true;
 
 
+
+    public int bestStreak;
+    public int bestStreakStats;
+    public int currentStreak;
+
+
+
+
     public int secondsLeft = 0;
     public int minutesLeft = 0;
     public bool activeCountDown;
@@ -67,7 +75,27 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         //set current scene as the one who gets saved
         // lastPositionCurrent = SceneManager.GetActiveScene().buildIndex;
-        positionStringSave = SceneManager.GetActiveScene().name;
+
+        if (positionStringLoad == "med")
+        {
+   
+            Board.Instance.timeSpeed = 0.6f;
+        }
+        else
+            if (positionStringLoad == "hard")
+            {
+
+                Board.Instance.timeSpeed = 0.4f;
+            
+        }
+        else
+            if (positionStringLoad == "easy")
+        {
+
+            Board.Instance.timeSpeed = 1f;
+
+        }
+        // positionStringSave = SceneManager.GetActiveScene().name;
 
 
         //   toLoadDatetime = DateTime.ParseExact(loadDateStr, "dd/MM/yyyy HH:mm:ss", CultureInfo.GetCultureInfo("de-DE"));
@@ -79,7 +107,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         }
 
-
+        bestStreakStats = bestStreak;
         print(gameCount);
 
         m_Object.text = coinNum.ToString();
@@ -127,6 +155,10 @@ public class GameManager : MonoBehaviour, IDataPersistence
         this.soundActive = gameData.sound;
         this.musicActive = gameData.music;
 
+        this.bestStreakStats = gameData.bestStreakStat;
+        this.bestStreak = gameData.bestStreak;
+        this.currentStreak = gameData.currentStreak;
+
 
         positionStringLoad = gameData.lastPos;
 
@@ -146,13 +178,18 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
 
 
-        gameData.lastPos = positionStringSave;
+        gameData.lastPos = positionStringLoad;
 
 
 
         gameData.gameNumber = this.gameCount;
 
-
+        gameData.bestStreakStat = this.bestStreakStats;
+        gameData.bestStreak = this.bestStreak;
+        gameData.currentStreak = this.currentStreak;
+        /*  gameData.bestStreakStat =0;
+          gameData.bestStreak = 0;
+          gameData.currentStreak = 0;*/
 
 
         gameData.win = this.win;

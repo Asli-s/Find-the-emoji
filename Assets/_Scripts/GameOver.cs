@@ -25,6 +25,12 @@ public class GameOver : MonoBehaviour
     //activating screens
     public GameObject WinScreen;
     public GameObject LoseScreen;
+
+    [SerializeField] TMPro.TextMeshProUGUI currentStreakNum;
+    [SerializeField] TMPro.TextMeshProUGUI bestStreakNum;
+    int bestStreakOld = 0;
+    public bool newHighScore = false;
+
     // public GameObject WinScreen;
 
 
@@ -34,13 +40,32 @@ public class GameOver : MonoBehaviour
     {
         Instance = this;
     }
+    private void Start()
+    {
+
+    }
     public void Win()
     {
+        bestStreakOld = GameManager.Instance.bestStreak;
       //  GameManager.Instance.win += 1;
         win = true;
         score = GameManager.Instance.score;
-        FindObjectOfType<AudioManager>().Play("yay");
-        Invoke("ActivateWinScreen", 0.6f);
+     
+        Invoke("ActivateWinScreen", 0.4f);
+
+        GameManager.Instance.currentStreak += 1;
+
+        if (GameManager.Instance.currentStreak > GameManager.Instance.bestStreak)
+        {
+            GameManager.Instance.bestStreakStats = GameManager.Instance.currentStreak;
+            //activate highscore label
+            newHighScore = true;
+        }
+
+
+        currentStreakNum.text = GameManager.Instance.currentStreak.ToString();
+        bestStreakNum.text = bestStreakOld.ToString(); 
+            // GameManager.Instance.bestStreak.ToString();
 
         _allTiles = _board._nodes;
         _tiles.GetComponent<BoxCollider2D>();
@@ -48,8 +73,14 @@ public class GameOver : MonoBehaviour
         _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
         featureTile.transform.GetChild(0).gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
-   //     StopCoroutine(_board.StartTimer);
+        //     StopCoroutine(_board.StartTimer);
 
+
+
+
+        print("currStreak"+GameManager.Instance.currentStreak);
+        print("beststat"+GameManager.Instance.bestStreakStats);
+        print("best streak"+GameManager.Instance.bestStreak);
 
     }
 
@@ -61,7 +92,16 @@ public class GameOver : MonoBehaviour
 
     public void Lose()
     {
-    //    GameManager.Instance.lose += 1;
+        //    GameManager.Instance.lose += 1;
+
+        if (GameManager.Instance.currentStreak >= GameManager.Instance.bestStreak)
+        {
+            GameManager.Instance.bestStreak = GameManager.Instance.currentStreak;
+        }
+
+
+        GameManager.Instance.currentStreak= 0;
+
         lose = true;
         LoseScreen.SetActive(true);
         score = GameManager.Instance.score;

@@ -14,6 +14,10 @@ public class Statistics : MonoBehaviour
     [SerializeField] public TMPro.TextMeshProUGUI score2Stars;
     [SerializeField] public TMPro.TextMeshProUGUI score1Stars;
 
+    [SerializeField] public TMPro.TextMeshProUGUI bestStreak;
+
+
+
     float score1;
     float score2;
     float score3;
@@ -29,6 +33,18 @@ public class Statistics : MonoBehaviour
 
     private void OnEnable()
     {
+        if (GameManager.Instance.currentStreak >= GameManager.Instance.bestStreak)
+        {
+            bestStreak.text = GameManager.Instance.currentStreak.ToString();
+        }
+        else
+        {
+        bestStreak.text = GameManager.Instance.bestStreak.ToString();
+
+        }
+      
+
+
         playedGames.text = GameManager.Instance.gameCount.ToString();
         LostGames.text = GameManager.Instance.lose.ToString();
         WonGames.text = GameManager.Instance.win.ToString();

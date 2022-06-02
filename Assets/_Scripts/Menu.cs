@@ -48,29 +48,32 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
     {
         //  print(Featured.Instance.screenActive );
     }
-
-
-
     private void Start()
     {
-        levelName = SceneManager.GetActiveScene().name;
+        MenuButtons();
+    }
+
+
+    private void MenuButtons()
+    {
+     //   levelName = SceneManager.GetActiveScene().name;
 
         /*COLORING BUTTONS*/
 
-
-        if (levelName == "slow")
+        
+        if (GameManager.Instance.positionStringLoad == "slow")
         {
             buildIndex = 0;
         }
-        else if (levelName == "med")
+        else if (GameManager.Instance.positionStringLoad == "med")
         {
             buildIndex = 1;
         }
-        else if (levelName == "hard")
+        else if (GameManager.Instance.positionStringLoad == "hard")
         {
             buildIndex = 2;
         }
-        print(levelName);
+        print(GameManager.Instance.positionStringLoad);
 
 
         //   print(buildIndex);
@@ -101,6 +104,7 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
         //  print("now");
         /*   if (Featured.Instance.screenActive == false &&findFeatureScreenAnim.Instance.animEnded ==true)
            {*/
+
         print("inside showscreen");
 
         /* NO OTHER SCREENS ACTIVE*/
@@ -152,9 +156,11 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
 
         }
         /*MENU IS ACTIVE / STATS IS NOT ACTIVE --close the menu*/
-        else if (openMenu == true && additionalMenu == false && findScreen.activeSelf == false && Featured.Instance.screenActive == true)//&& Board.Instance.pausePanelActive == false)
+        else if (openMenu == true && additionalMenu == false && findScreen.activeSelf == false && Featured.Instance.screenActive == true)
         {
 
+
+            MenuButtons();
 
             openMenu = false;
             // MenuScreen.SetActive(false); -----> call close from menu script
@@ -202,7 +208,7 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
     }
 
 
-
+/*
     public void slowSceneLoaderClicked()
     {
 
@@ -221,37 +227,73 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
         GameManager.Instance.ChangeState(GameState.changeToHardScene);
     }
 
-
-
+*/
     public void LoadSceneSlow()
     {
+        GameManager.Instance.positionStringLoad="slow";
+        Board.Instance.timeSpeed =1f;
         DataPersistenceManager.Instance.SaveGame();
+        showScreen();
 
-        StopAllCoroutines();
+      //  StopAllCoroutines();
         /* GameManager.Instance.*/
-        SceneManager.LoadScene("slow");
 
     }
     public void LoadSceneMedium()
     {
+
+        GameManager.Instance.positionStringLoad = "med";
+        Board.Instance.timeSpeed =0.6f;
         DataPersistenceManager.Instance.SaveGame();
+        showScreen();
 
-        StopAllCoroutines();
-
-        SceneManager.LoadScene("med");
 
 
     }
     public void LoadSceneFast()
     {
+        GameManager.Instance.positionStringLoad = "hard";
+        Board.Instance.timeSpeed =0.4f;
+
         DataPersistenceManager.Instance.SaveGame();
-
-        StopAllCoroutines();
-
-        SceneManager.LoadScene("hard");
+        showScreen();
 
     }
 
 
-   
+
+
+
+    /*
+        public void LoadSceneSlow()
+        {
+            DataPersistenceManager.Instance.SaveGame();
+
+            StopAllCoroutines();
+            *//* GameManager.Instance.*//*
+            SceneManager.LoadScene("slow");
+
+        }
+        public void LoadSceneMedium()
+        {
+            DataPersistenceManager.Instance.SaveGame();
+
+            StopAllCoroutines();
+
+            SceneManager.LoadScene("med");
+
+
+        }
+        public void LoadSceneFast()
+        {
+            DataPersistenceManager.Instance.SaveGame();
+
+            StopAllCoroutines();
+
+            SceneManager.LoadScene("hard");
+
+        }
+    */
+
+
 }

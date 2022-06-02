@@ -15,7 +15,9 @@ public class LeanAnnimations : MonoBehaviour
     int score = 0;
 
     public GameObject noCoinScreen;
- 
+    public GameObject highScoreLabel;
+
+
 
     private void OnEnable()
     {
@@ -26,7 +28,8 @@ public class LeanAnnimations : MonoBehaviour
          //   var score = GameManager.Instance.score;
         if(GameOver.Instance.win == true)
         {
-        FindObjectOfType<AudioManager>().Play("win", false);
+            //FindObjectOfType<PlayExtraSound>().Play(); /// play yay sound
+            FindObjectOfType<AudioManager>().Play("win", false);
             print("WIIN");
             for (int i = 0; i < stars.Length; i++)
             {
@@ -104,6 +107,11 @@ public class LeanAnnimations : MonoBehaviour
         LeanTween.scale(stars[0], new Vector3(8.5f, 8.5f, 1), 2f).setDelay(0.6f).setEaseOutElastic();
         LeanTween.scale(stars[1], new Vector3(10f, 10f, 1), 2f).setDelay(0.7f).setEaseOutElastic();
         LeanTween.scale(stars[2], new Vector3(8.5f, 8.5f, 1), 2f).setDelay(0.8f).setEaseOutElastic();
+            if (GameOver.Instance.newHighScore == true)
+            {
+
+            Invoke("ActivateHighScore", 1f);
+            }
         }
         else
         {
@@ -158,7 +166,9 @@ public class LeanAnnimations : MonoBehaviour
             /*nocoin activate */
          //   noCoinScreen.SetActive(true);
             GameManager.Instance.coinNotEnoughScreen.SetActive(true);
-          //  GameManager.Instance.coinNotEnough = true;
+            FindObjectOfType<AudioManager>().Play("noCoin");
+
+            //  GameManager.Instance.coinNotEnough = true;
             Featured.Instance.screenActive = true;
             DataPersistenceManager.Instance.SaveGame();
 
@@ -204,6 +214,12 @@ public class LeanAnnimations : MonoBehaviour
         GameOver.Instance.win = false;
     }
 
+
+    void ActivateHighScore()
+    {
+     //   highScoreLabel.SetActive(true);
+        LeanTween.scale(highScoreLabel, new Vector3(1, 1, 1), 1f).setEaseInOutElastic();
+    }
 
 
 }

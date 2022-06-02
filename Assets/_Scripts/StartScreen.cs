@@ -8,8 +8,14 @@ public class StartScreen : MonoBehaviour
     private int coinCountNum;
     private int newNum;
 
+    bool clicked = false;
     public void StrartScreen()
     {
+       if (clicked == false)
+        {
+            clicked = true;
+
+
         if (GameManager.Instance.coinNum <= 5 &&/* GameManager.Instance.restarted == true &&*/ GameManager.Instance.coinNum > 0)
         {
             Invoke("DeactivateStartScreen", 0.7f);
@@ -62,6 +68,10 @@ public class StartScreen : MonoBehaviour
 
 
         }
+
+
+        }
+
     }
     private void playCoinSound()
     {
