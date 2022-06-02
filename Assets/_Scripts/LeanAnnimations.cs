@@ -15,7 +15,9 @@ public class LeanAnnimations : MonoBehaviour
     int score = 0;
 
     public GameObject noCoinScreen;
- 
+    public GameObject highScoreLabel;
+
+
 
     private void OnEnable()
     {
@@ -105,6 +107,11 @@ public class LeanAnnimations : MonoBehaviour
         LeanTween.scale(stars[0], new Vector3(8.5f, 8.5f, 1), 2f).setDelay(0.6f).setEaseOutElastic();
         LeanTween.scale(stars[1], new Vector3(10f, 10f, 1), 2f).setDelay(0.7f).setEaseOutElastic();
         LeanTween.scale(stars[2], new Vector3(8.5f, 8.5f, 1), 2f).setDelay(0.8f).setEaseOutElastic();
+            if (GameOver.Instance.newHighScore == true)
+            {
+
+            Invoke("ActivateHighScore", 1f);
+            }
         }
         else
         {
@@ -207,6 +214,12 @@ public class LeanAnnimations : MonoBehaviour
         GameOver.Instance.win = false;
     }
 
+
+    void ActivateHighScore()
+    {
+     //   highScoreLabel.SetActive(true);
+        LeanTween.scale(highScoreLabel, new Vector3(1, 1, 1), 1f).setEaseInOutElastic();
+    }
 
 
 }

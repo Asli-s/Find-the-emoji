@@ -117,6 +117,14 @@ public class TestTime : MonoBehaviour
         {
             GameManager.Instance.restarted = true;
 
+            if (GameManager.Instance.currentStreak >= GameManager.Instance.bestStreak)
+            {
+                GameManager.Instance.bestStreak = GameManager.Instance.currentStreak;
+            }
+
+            GameManager.Instance.currentStreak =0;
+
+
 
 
         }

@@ -42,6 +42,14 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public bool musicActive = true;
 
 
+
+    public int bestStreak;
+    public int bestStreakStats;
+    public int currentStreak;
+
+
+
+
     public int secondsLeft = 0;
     public int minutesLeft = 0;
     public bool activeCountDown;
@@ -99,7 +107,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         }
 
-
+        bestStreakStats = bestStreak;
         print(gameCount);
 
         m_Object.text = coinNum.ToString();
@@ -147,6 +155,10 @@ public class GameManager : MonoBehaviour, IDataPersistence
         this.soundActive = gameData.sound;
         this.musicActive = gameData.music;
 
+        this.bestStreakStats = gameData.bestStreakStat;
+        this.bestStreak = gameData.bestStreak;
+        this.currentStreak = gameData.currentStreak;
+
 
         positionStringLoad = gameData.lastPos;
 
@@ -172,7 +184,12 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         gameData.gameNumber = this.gameCount;
 
-
+        gameData.bestStreakStat = this.bestStreakStats;
+        gameData.bestStreak = this.bestStreak;
+        gameData.currentStreak = this.currentStreak;
+        /*  gameData.bestStreakStat =0;
+          gameData.bestStreak = 0;
+          gameData.currentStreak = 0;*/
 
 
         gameData.win = this.win;

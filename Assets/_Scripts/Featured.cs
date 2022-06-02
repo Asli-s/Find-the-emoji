@@ -422,7 +422,10 @@ public class Featured : MonoBehaviour
                 FindObjectOfType<CountdownTimer>().StartTimer();
                 //  DataPersistenceManager.Instance.SaveGame();
 
+
                 //
+              
+
             }
             else if (coinCountNum == 0)
             {
@@ -459,6 +462,12 @@ public class Featured : MonoBehaviour
                 coinLoseClicked = true;
                 newNum = coinCountNum;
                 newNum--;
+                if (GameManager.Instance.currentStreak >= GameManager.Instance.bestStreak)
+                {
+                    GameManager.Instance.bestStreak = GameManager.Instance.currentStreak;
+                }
+
+                GameManager.Instance.currentStreak = 0;
 
                 //    DataPersistenceManager.Instance.SaveGame();
 
