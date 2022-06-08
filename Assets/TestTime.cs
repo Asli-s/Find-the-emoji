@@ -45,6 +45,8 @@ public class TestTime : MonoBehaviour
     [SerializeField] GameObject FirstScreen;
     [SerializeField] GameObject NoCoinScreen;
 
+public    bool alreadyInGame = false;
+
 
 
     private void Awake()
@@ -105,15 +107,16 @@ public class TestTime : MonoBehaviour
 
         remainingSeconds = (int)((minutesDifference - remainingMinutes) * 60); /*make whole seconds */
         print("remaining minutes and seconds" + remainingMinutes + remainingSeconds);
-        if (remainingMinutes == 0 && remainingSeconds <= 3 || GameManager.Instance.minimizedApp == true)
+        if (remainingMinutes == 0 && remainingSeconds <= 2 || GameManager.Instance.minimizedApp == true)
         {
 
             GameManager.Instance.restarted = false;
+            alreadyInGame = false;
 
 
 
         }
-        else if (GameManager.Instance.minimizedApp == false)
+        else if (remainingMinutes >= 0 && remainingSeconds > 2 || GameManager.Instance.minimizedApp == false)
         {
             GameManager.Instance.restarted = true;
 
@@ -142,8 +145,8 @@ public class TestTime : MonoBehaviour
             
     */
 
-
-         /*   remainingMinutes += 140;*/
+/*
+            remainingMinutes += 140;*/
             CalculateLifesToAdd(minutesLeft, secondsLeft, remainingMinutes, remainingSeconds);
 
             //       }
@@ -153,16 +156,21 @@ public class TestTime : MonoBehaviour
         }
         else if (GameManager.Instance.coinNum == 5)
         {
+            print("test time coin nu 5");
             //   minutesDifference = 0;
             GameManager.Instance.activeCountDown = false;
             GameManager.Instance.secondsLeft = 0;
-            GameManager.Instance.minutesLeft = 0;
+            GameManager.Instance.minutesLeft = 30;
             TimerText.text = "full";
-            if (GameManager.Instance.restarted == true)
+
+            if (GameManager.Instance.restarted == true || FirstScreen.activeSelf == true )
             {
+            GameManager.Instance.minimizedApp = false;
                 FirstScreen.SetActive(true);
+                alreadyInGame = false;
+
             }
-            else
+            else if(alreadyInGame == true)
             {
                 FirstScreen.SetActive(false);
 
@@ -334,11 +342,11 @@ public class TestTime : MonoBehaviour
                 GameManager.Instance.minutesLeft = 0;
                 GameManager.Instance.activeCountDown = false;
                 FindObjectOfType<CountdownTimer>().timerStarted = false; ;
-                if (GameManager.Instance.restarted == true)
+                if (GameManager.Instance.restarted == true || FirstScreen.activeSelf == true)
                 {
                     FirstScreen.SetActive(true);
                 }
-                else
+                else if(alreadyInGame == true)
                 {
                     FirstScreen.SetActive(false);
 
@@ -368,13 +376,13 @@ public class TestTime : MonoBehaviour
                 {
                     FirstScreen.SetActive(true);
                 }
-                else if (GameManager.Instance.minimizedApp == false && GameManager.Instance.restarted == false)
+                else if (GameManager.Instance.minimizedApp == false && GameManager.Instance.restarted == false || FirstScreen.activeSelf == true && GameManager.Instance.minimizedApp == false && alreadyInGame == true)
                 {
                     FirstScreen.SetActive(false);
 
                     GameManager.Instance.ChangeState(GameState.FeatureTile);
                 }
-                if (GameManager.Instance.minimizedApp == true && NoCoinScreen.activeSelf == true && GameManager.Instance.coinNum > 0 && GameManager.Instance.restarted == false)
+                if (GameManager.Instance.minimizedApp == true && NoCoinScreen.activeSelf == true && GameManager.Instance.coinNum > 0 && GameManager.Instance.restarted == false &&alreadyInGame == true)
                 {
                     FindObjectOfType<noCoinScreen>().coinButtonCover.gameObject.SetActive(false);
                     FindObjectOfType<noCoinScreen>().coinButton.interactable = true;
@@ -405,22 +413,24 @@ public class TestTime : MonoBehaviour
         }
         else if (coinCountNum == 5)
         {
-
+            print("testtime coin 5");
             GameManager.Instance.secondsLeft = 0;
             GameManager.Instance.minutesLeft = 0;
             GameManager.Instance.activeCountDown = false;
             FindObjectOfType<CountdownTimer>().timerStarted = false; ;
             TimerText.text = "full";
 
-            if (GameManager.Instance.restarted == true)
-            {
-                FirstScreen.SetActive(true);
-            }
-            else
+            if (alreadyInGame == true)
             {
                 FirstScreen.SetActive(false);
 
                 GameManager.Instance.ChangeState(GameState.FeatureTile);
+            }
+            else
+            {
+                FirstScreen.SetActive(true);
+                alreadyInGame = false;
+
             }
 
 

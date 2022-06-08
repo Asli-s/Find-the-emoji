@@ -37,7 +37,7 @@ public class ThemeSound : MonoBehaviour
         if (GameManager.Instance.musicActive == true)
         {
             audio.volume = .1f;
-            audio.pitch = 1.1f;
+            audio.pitch = 1.09f;
 
             audio.Play();
         }
@@ -48,7 +48,7 @@ public class ThemeSound : MonoBehaviour
         if (GameManager.Instance.musicActive == false)
         {
             audio.volume = .1f;
-            audio.pitch = 1.1f;
+            audio.pitch = 1.09f;
 
             audio.Stop();
         }

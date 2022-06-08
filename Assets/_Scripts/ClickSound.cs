@@ -18,7 +18,7 @@ public class ClickSound : MonoBehaviour
         {
 
         audio.clip = clips[0];
-        audio.volume = 1;
+        audio.volume = 0.3f;
 
         audio.Play();
 

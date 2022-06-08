@@ -109,11 +109,12 @@ public class LeanAnnimations : MonoBehaviour
         LeanTween.scale(stars[2], new Vector3(8.5f, 8.5f, 1), 2f).setDelay(0.8f).setEaseOutElastic();
             if (GameOver.Instance.newHighScore == true)
             {
-
+                Invoke("Slash", 0.9f);
             Invoke("ActivateHighScore", 1f);
+                Invoke("PlayHighScore", 1.2f);
 
             }
-            Invoke("PlayYay", 0.4f);
+            Invoke("PlayYay", 0.8f);
 
         }
         else
@@ -157,6 +158,8 @@ public class LeanAnnimations : MonoBehaviour
             RestartFromFeature();
 
         }
+
+
         //lose and last coin
 
         else if (GameOver.Instance.lose == true && GameManager.Instance.coinNum == 0)
@@ -172,7 +175,7 @@ public class LeanAnnimations : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("noCoin");
 
             //  GameManager.Instance.coinNotEnough = true;
-            Featured.Instance.screenActive = true;
+            Featured.Instance.screenActive = false;
             DataPersistenceManager.Instance.SaveGame();
 
         }
@@ -223,10 +226,22 @@ public class LeanAnnimations : MonoBehaviour
      //   highScoreLabel.SetActive(true);
         LeanTween.scale(highScoreLabel.GetComponent<RectTransform>(), new Vector3(1, 1, 1), .3f).setEase(LeanTweenType.easeOutElastic);
     }
+    void Slash()
+    {
+        FindObjectOfType<PlayExtraSound>().Play("slash"); /// play yes sound
 
+    }
     void PlayYay()
     {
         FindObjectOfType<AudioManager>().Play("yay", false);
+
+    }
+    void PlayHighScore()
+    {
+
+        //        FindObjectOfType<AudioManager>().Play("highScore", false);
+                FindObjectOfType<AudioManager>().Play("highScoreNew", false);
+
 
     }
 

@@ -19,7 +19,7 @@ public class Board : MonoBehaviour
     /*[SerializeField] private SpriteRenderer _boardPrefab;*/
     private SpriteRenderer _tileSpriteRenderer;
     private int _minRange = 0;
-    private int _maxRange = 80;
+    private int _maxRange = 750;
 
     public GameObject PausePanel;
     public bool pausePanelActive = false;
@@ -270,7 +270,7 @@ public class Board : MonoBehaviour
 
         // _tileSpriteRenderer.sprite = _tilesPrefab?._gameObjects?[rnd];
 
-        rnd = UnityEngine.Random.Range(_minRange, 80);
+        rnd = UnityEngine.Random.Range(_minRange, 75);
 
         _tileSpriteRenderer.sprite = chosenSpritesArray[rnd];
 
@@ -333,8 +333,8 @@ public class Board : MonoBehaviour
         featureTileSpriteRenderer = featureTile._featureTilePrefab.GetComponent<SpriteRenderer>();
         //   print("board" + featureTileSpriteRenderer.sprite);
 
-        //chosenSpritesArray will contain 80 sprites
-        for (int i = 0; i < 79; i++)
+        //chosenSpritesArray will contain 80 sprites -->75
+        for (int i = 0; i < 74; i++)
         {
             rnd = UnityEngine.Random.Range(_minRange, _maxRange);
             chosenSpritesArray.Add(_tilesPrefab?._gameObjects?[rnd]);
@@ -485,7 +485,7 @@ public class Board : MonoBehaviour
         randomChosenTile = UnityEngine.Random.Range(_minRange, _width * _width);
         alreadyAssigned = false;
         // rnd = Random.Range(_minRange, _maxRange);
-        rnd = UnityEngine.Random.Range(_minRange, 80);
+        rnd = UnityEngine.Random.Range(_minRange,75);
 
         //    var randomChosenSprite = _tilesPrefab._gameObjects?[rnd];
         var randomChosenSprite = chosenSpritesArray[rnd];

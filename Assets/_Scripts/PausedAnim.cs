@@ -5,7 +5,7 @@ using UnityEngine;
 public class PausedAnim : MonoBehaviour
 {
     public static PausedAnim Instance;
-
+    bool alreadyClicked = false;
     // Start is called before the first frame update
     public CanvasGroup Fade;
 
@@ -22,17 +22,26 @@ public class PausedAnim : MonoBehaviour
     }
     private void OnEnable()
     {
+        alreadyClicked = false;
         Fade.LeanAlpha(0, 0);
 
-        Fade.LeanAlpha(1, 0.5f);
+        Fade.LeanAlpha(1, 0.2f);
+        Featured.Instance.screenActive = true;
+
 
     }
     public void ClosePauseScreen()
     {
         //LeanTween.alpha(gameObject, 0, 2f).setOnComplete(DeactivateScreen);
-        Fade.LeanAlpha(0, 0.5f).setOnComplete(DeactivateScreen);
+        if(alreadyClicked == false)
+        {
+            alreadyClicked = true;
+
+        Fade.LeanAlpha(0, 0.2f).setOnComplete(DeactivateScreen);
 
         Featured.Instance.screenActive = false;
+
+        }
 
     }
     void DeactivateScreen()

@@ -15,7 +15,7 @@ public class SoundMusicToggle : MonoBehaviour
     [SerializeField] Button soundButton; 
     [SerializeField] Button musicButton; 
 
-    void Start()
+    void OnEnable()
     {
         soundOn = GameManager.Instance.soundActive;
         musicOn = GameManager.Instance.musicActive;
@@ -34,7 +34,7 @@ public class SoundMusicToggle : MonoBehaviour
         }
         else if (musicOn == false)
         {
-            soundButton.image.sprite = musicOffSprite;
+            musicButton.image.sprite = musicOffSprite;
         }
 
 
@@ -59,6 +59,8 @@ public class SoundMusicToggle : MonoBehaviour
             ThemeSound.Instance.PlayThemeSong();
             musicButton.image.sprite = musicOnSprite; 
         }
+        DataPersistenceManager.Instance.SaveGame();
+
     }
 
 
@@ -79,6 +81,8 @@ public class SoundMusicToggle : MonoBehaviour
             soundButton.image.sprite = soundOnSprite;
 
         }
+        DataPersistenceManager.Instance.SaveGame();
+
     }
 
     // Update is called once per frame
