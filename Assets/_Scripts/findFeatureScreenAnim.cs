@@ -91,7 +91,7 @@ public GameObject featureImageObject;
 
 
         /*POP FFEATURE TILE IMAGE*/
-        LeanTween.scale(featureImageObject, new Vector3(3.7f, 3.7f, 3.7f), 1.6f).setDelay(0.5f).setEaseOutElastic(); //.setOnComplete(playSoundSlide);
+        LeanTween.scale(featureImageObject, new Vector3(3.5f, 3.5f, 3.7f), 1.5f).setDelay(0.5f).setEaseOutElastic(); //.setOnComplete(playSoundSlide);
      Invoke("playSoundSlide", 2.9f);
 
 
@@ -100,8 +100,11 @@ public GameObject featureImageObject;
 
 
         /*FEATURE TILE MOVE UP*/
-        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 401, 0), .4f).setDelay(3.6f).setEaseOutExpo()/*.setOnComplete(scaleBack)*/;
-        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 401, 0),.3f).setDelay(4f).setEaseInElastic();
+        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 375, 0), .4f).setDelay(3.6f).setEaseOutExpo()/*.setOnComplete(scaleBack)*/;
+        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 375, 0),.3f).setDelay(4f).setEaseInElastic();
+
+        /*LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 401, 0), .4f).setDelay(3.6f).setEaseOutExpo()*//*.setOnComplete(scaleBack)*//*;
+        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 401, 0), .3f).setDelay(4f).setEaseInElastic();*/
 
         //   LeanTween.move(featureImageObject.GetComponent<RectTransform>(),new Vector3(0,381,0),4f).setDelay(3.4f).setEaseOutElastic()/*.setOnComplete(scaleBack)*/;
 
@@ -109,13 +112,14 @@ public GameObject featureImageObject;
         /*FEATURE TILE SCALE BACK*/
         // LeanTween.scale(featureImageObject,  new Vector3(3,3,0), 1.6f).setDelay(2.6f).setEaseInBack();
 
-        LeanTween.scale(featureImageObject, new Vector3(3, 3, 0), 1.51f).setDelay(3.6f).setEaseInElastic().setOnComplete(playSound2); //.setOnComplete(featureTileAppear);
+        LeanTween.scale(featureImageObject, new Vector3(2.4f, 2.4f, 0), 1.51f).setDelay(3.6f).setEaseInElastic().setOnComplete(playSound2); //.setOnComplete(featureTileAppear);
+//        LeanTween.scale(featureImageObject, new Vector3(3f, 3f, 0), 1.51f).setDelay(3.6f).setEaseInElastic().setOnComplete(playSound2); //.setOnComplete(featureTileAppear);
 
 
 
     }
 
- 
+
 
     void featureTileAppear()
     {
@@ -123,7 +127,7 @@ public GameObject featureImageObject;
 
 
         featureTileParent.SetActive(true);
-        LeanTween.scale(featureTileParent, new Vector3(13,13f,1), 0).setOnComplete(disAbleSelf);
+        LeanTween.scale(featureTileParent, new Vector3(12,12f,1), 0).setOnComplete(disAbleSelf);
 
 
 

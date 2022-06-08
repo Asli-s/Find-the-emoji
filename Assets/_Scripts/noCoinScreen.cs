@@ -14,6 +14,7 @@ public class noCoinScreen : MonoBehaviour
     [SerializeField] private GameObject RestartButton;
     [SerializeField] private GameObject ParentBoardBackground;
     [SerializeField] private GameObject featureTileBackground;
+    [SerializeField] private GameObject rectBackGround;
 
 
     public GameObject mainBlock;
@@ -36,6 +37,7 @@ public class noCoinScreen : MonoBehaviour
         //DEACTIVATE PAUSE AND RESTART BUTTOnS
         PauseButton.SetActive(false);
         RestartButton.SetActive(false);
+        rectBackGround.SetActive(false);
 
         coinButtonCover.enabled = true;
         coinButtonCover.interactable = false;
@@ -76,6 +78,7 @@ public class noCoinScreen : MonoBehaviour
     private void ChangeToPlay()
     
     {
+        rectBackGround.SetActive(true);
         Featured.Instance.LoseCoinFromNoCoinScreen();
         /*
         PauseButton.SetActive(true);

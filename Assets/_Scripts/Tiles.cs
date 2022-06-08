@@ -105,7 +105,7 @@ public class Tiles : MonoBehaviour
             if (clickedTile == _featureTileSprite.sprite)
             {
                 //  FindObjectOfType<AudioManager>().Play("yes",false);
-               FindObjectOfType<PlayExtraSound>().Play(); /// play yes sound
+               FindObjectOfType<PlayExtraSound>().Play("win"); /// play yes sound
 
 
                 Debug.Log("win!");

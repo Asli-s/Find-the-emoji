@@ -14,7 +14,7 @@ public class StartScreen : MonoBehaviour
        if (clicked == false)
         {
             clicked = true;
-
+            TestTime.Instance.alreadyInGame = true;
 
         if (GameManager.Instance.coinNum <= 5 &&/* GameManager.Instance.restarted == true &&*/ GameManager.Instance.coinNum > 0)
         {
@@ -32,13 +32,24 @@ public class StartScreen : MonoBehaviour
 
             if (coinCountNum == 5)
             {
-                FindObjectOfType<CountdownTimer>().StartTimer(30, 0);
+                    print("coin num 5 startscreen");
+                    GameManager.Instance.coinNum = newNum;
+                    GameManager.Instance.m_Object.text = newNum.ToString();
+
+                    GameManager.Instance.minutesLeft = 30;
+                    GameManager.Instance.secondsLeft = 0;
+                    GameManager.Instance.activeCountDown = true;
+                    FindObjectOfType<CountdownTimer>().StartTimer(30, 0);
 
                 playCoinSound();
             }
             else
             {
-            FindObjectOfType<AudioManager>().Play("coin");
+
+                    GameManager.Instance.coinNum = newNum;
+                    GameManager.Instance.m_Object.text = newNum.ToString();
+
+                    FindObjectOfType<AudioManager>().Play("coin");
                 playCoinSound();
          //       print("coinSOUND!" );
 
@@ -46,10 +57,7 @@ public class StartScreen : MonoBehaviour
 
             }
 
-            GameManager.Instance.coinNum = newNum;
             print("gameman coinnum" + GameManager.Instance.coinNum);
-
-            GameManager.Instance.m_Object.text = newNum.ToString();
 
 
             DataPersistenceManager.Instance.SaveGame();

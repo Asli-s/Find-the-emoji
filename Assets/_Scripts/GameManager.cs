@@ -79,20 +79,20 @@ public class GameManager : MonoBehaviour, IDataPersistence
         if (positionStringLoad == "med")
         {
    
-            Board.Instance.timeSpeed = 0.6f;
+            Board.Instance.timeSpeed = 0.8f;
         }
         else
             if (positionStringLoad == "hard")
             {
 
-                Board.Instance.timeSpeed = 0.4f;
+                Board.Instance.timeSpeed = 0.5f;
             
         }
         else
             if (positionStringLoad == "easy")
         {
 
-            Board.Instance.timeSpeed = 1f;
+            Board.Instance.timeSpeed = 1.1f;
 
         }
         // positionStringSave = SceneManager.GetActiveScene().name;
@@ -185,8 +185,12 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.gameNumber = this.gameCount;
 
         gameData.bestStreakStat = this.bestStreakStats;
-        gameData.bestStreak = this.bestStreak;
+       gameData.bestStreak = this.bestStreak;
+     //gameData.bestStreak = 0;
+
         gameData.currentStreak = this.currentStreak;
+
+
         /*  gameData.bestStreakStat =0;
           gameData.bestStreak = 0;
           gameData.currentStreak = 0;*/
@@ -223,8 +227,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.timerActive = true;
         gameData.minutesLeft = 2;*/
 
-        gameData.coinNumber = this.coinNum;
-        //   gameData.coinNumber =5;
+       gameData.coinNumber = this.coinNum;
+    // gameData.coinNumber =5;
 
     }
 
