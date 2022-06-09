@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public string savedate;
 
 
+    public bool tablet = false;
+    public bool phone = false;
 
     public bool minimizedApp = false;
 
@@ -70,9 +72,21 @@ public class GameManager : MonoBehaviour, IDataPersistence
         else Debug.Log("error");
 
     }
+
+
+
+ 
+
+
+
+
     void Start()
     {
 
+
+        Screen.sleepTimeout = (int)0f;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        
         //set current scene as the one who gets saved
         // lastPositionCurrent = SceneManager.GetActiveScene().buildIndex;
 
@@ -114,7 +128,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
         /*  if (coinNum > 0 || coinNotEnough == false)
           {*/
         ChangeState(
-            GameState.CheckTimer);
+
+            GameState.CheckScreenSize);
 
     }
 
@@ -165,6 +180,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
         this.coinNotEnough = gameData.notEnoughCoins;
 
         this.restarted = gameData.restarted;
+
+        this.phone = gameData.isPhone;
+        this.tablet = gameData.isTablet;
 
         print(gameData);
 
@@ -228,8 +246,12 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.minutesLeft = 2;*/
 
        gameData.coinNumber = this.coinNum;
-    // gameData.coinNumber =5;
+   //    gameData.coinNumber =5;
 
+
+
+        gameData.isTablet = this.tablet;
+        gameData.isPhone = this.phone;
     }
 
 
@@ -245,6 +267,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
    */
         switch (newState)
         {
+            case GameState.CheckScreenSize:
+                UiScaler.Instance.CheckResolution();
+                break;
             case GameState.CheckTimer:
                 TestTime.Instance.CalculateTime();
                 break;
@@ -252,7 +277,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
             case GameState.FeatureTile:
                 print("gamestate featuretile");
                 Featured.Instance?.choseFeatureTile();
-
+                currentStreak += 1;
+                FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
                 break;
             case GameState.ActivateFindScreen:
                 print("gamestate activateFindScreen");
@@ -352,5 +378,6 @@ public enum GameState
     changeToHardScene = 9,
     ActivateFindScreen = 10,
     NotEnoughCoins = 11,
+    CheckScreenSize = 12,
 
 }

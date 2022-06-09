@@ -35,6 +35,8 @@ public class GameData
     public int bestStreak;
     public int currentStreak;
 
+    public bool isTablet ;
+    public bool isPhone ;
 
 
     public GameData()
@@ -70,5 +72,8 @@ public class GameData
         this.bestStreakStat = 0;
         this.bestStreak = 0;
         this.currentStreak = 0;
+
+        this.isPhone = false;
+        this.isTablet = false;
     }
 }

@@ -25,12 +25,21 @@ public class PopUpAnimFeature : MonoBehaviour
         Featured.Instance.screenActive = true;
         FindObjectOfType<AudioManager>().Play("appear");
 
-        LeanTween.scale(mainBlock, new Vector3(1,1,1), 0.8f).setEaseOutExpo();
-      /*  if (LeanTween.isTweening() ==false)
+        if (GameManager.Instance.tablet == true)
+        {
+            LeanTween.scale(mainBlock, new Vector3(0.7f, 0.7f, 1), 0.8f).setEaseOutExpo();
+
+        }
+        else
         {
 
-        LeanTween.scale(mainBlock, new Vector3(1f, 1f, 1f), 1.2f).setDelay(0.3f).setEaseOutElastic();
-        }*/
+            LeanTween.scale(mainBlock, new Vector3(1, 1, 1), 0.8f).setEaseOutExpo();
+        }
+        /*  if (LeanTween.isTweening() ==false)
+          {
+
+          LeanTween.scale(mainBlock, new Vector3(1f, 1f, 1f), 1.2f).setDelay(0.3f).setEaseOutElastic();
+          }*/
     }
     private void SetFalse()
 

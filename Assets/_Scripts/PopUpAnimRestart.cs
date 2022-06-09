@@ -25,7 +25,16 @@ public class PopUpAnimRestart : MonoBehaviour
         Featured.Instance.screenActive = true;
         FindObjectOfType<AudioManager>().Play("appear");
 
+        if(GameManager.Instance.tablet == true)
+        {
+            LeanTween.scale(mainBlock, new Vector3(0.7f, 0.7f, 1), 0.8f).setEaseOutExpo();
+
+        }
+        else
+        {
+
         LeanTween.scale(mainBlock, new Vector3(1,1,1), 0.8f).setEaseOutExpo();
+        }
       /*  if (LeanTween.isTweening() ==false)
         {
 

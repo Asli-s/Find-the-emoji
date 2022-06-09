@@ -43,7 +43,18 @@ public class noCoinScreen : MonoBehaviour
         coinButtonCover.interactable = false;
 
         coinButton.interactable = false;
-        LeanTween.scale(mainBlock, new Vector3(1f, 1f, 1f), 2.3f).setEase(LeanTweenType.easeOutElastic);//.setOnComplete(animateStars);
+
+        if (GameManager.Instance.tablet == true)
+        {
+            LeanTween.scale(mainBlock, new Vector3(0.7f, 0.7f, 1), 2.3f).setEase(LeanTweenType.easeOutElastic);
+
+        }
+        else
+        {
+
+            LeanTween.scale(mainBlock, new Vector3(1, 1, 1), 2.3f).setEase(LeanTweenType.easeOutElastic);
+        }
+     //   LeanTween.scale(mainBlock, new Vector3(1f, 1f, 1f), 2.3f).setEase(LeanTweenType.easeOutElastic);//.setOnComplete(animateStars);
 
 
         // disable when coin is one

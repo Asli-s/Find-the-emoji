@@ -141,7 +141,7 @@ public class Featured : MonoBehaviour
 
 
 
-
+                //shake featureTile image
 
                 if (health.GetComponent<HealthHearts>().health > 0  /*maybe comment out to have double pop sound*/ && alreadyClicked == true)
                 {
