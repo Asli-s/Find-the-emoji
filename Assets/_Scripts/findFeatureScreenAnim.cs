@@ -18,6 +18,8 @@ public GameObject featureImageObject;
     public GameObject backGround;
     public GameObject activateSelf;
 
+    public GameObject Instructions;
+
     private Sprite featureTileSprite;
 
     private int _width = 4;
@@ -85,10 +87,9 @@ public GameObject featureImageObject;
         // featureTileParent.SetActive(false);
 
         /*MOVE DOWN MAIN BLOCK */
-        LeanTween.moveLocal(mainBlock, new Vector3(0, 0, 0), 1.9f).setDelay(0.2f).setEaseOutElastic();
+        LeanTween.moveLocal(mainBlock, new Vector3(0, 0, 0), 2.1f).setDelay(0.2f).setEaseOutElastic().setOnComplete(CheckFirstTime);
         //LeanTween.moveLocal(mainBlock, new Vector3(0,0,0),1.5f).setDelay(0f).setEaseOutElastic();
-
-
+      
 
         /*POP FFEATURE TILE IMAGE*/
         LeanTween.scale(featureImageObject, new Vector3(3.5f, 3.5f, 3.7f), 1.5f).setDelay(0.5f).setEaseOutElastic(); //.setOnComplete(playSoundSlide);
@@ -115,6 +116,23 @@ public GameObject featureImageObject;
         LeanTween.scale(featureImageObject, new Vector3(2.4f, 2.4f, 0), 1.51f).setDelay(3.6f).setEaseInElastic().setOnComplete(playSound2); //.setOnComplete(featureTileAppear);
 //        LeanTween.scale(featureImageObject, new Vector3(3f, 3f, 0), 1.51f).setDelay(3.6f).setEaseInElastic().setOnComplete(playSound2); //.setOnComplete(featureTileAppear);
 
+
+
+    }
+
+    private void CheckFirstTime()
+    {
+        if (GameManager.Instance.firstTime == true)
+        {
+            Time.timeScale = 0;
+            GameManager.Instance.firstFindScreen = true;
+            Instructions.SetActive(true);
+
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
 
 
     }

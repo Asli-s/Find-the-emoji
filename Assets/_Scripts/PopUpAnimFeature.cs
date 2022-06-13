@@ -22,6 +22,8 @@ public class PopUpAnimFeature : MonoBehaviour
    
     
     {
+        Time.timeScale = 1;
+        print("heartanim");
         Featured.Instance.screenActive = true;
         FindObjectOfType<AudioManager>().Play("appear");
 

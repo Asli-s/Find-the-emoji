@@ -304,7 +304,7 @@ public class CountdownTimer : MonoBehaviour
                 GameManager.Instance.activeCountDown = false;
                 GameManager.Instance.secondsLeft = 0;
                 GameManager.Instance.minutesLeft = 0;
-                TimerText.text = "full";
+                TimerText.text = "  full";
 
             }
         }

@@ -17,7 +17,7 @@ public class LeanAnnimations : MonoBehaviour
     public GameObject noCoinScreen;
     public GameObject highScoreLabel;
 
-
+    public GameObject Instructions;
 
     private void OnEnable()
     {
@@ -224,7 +224,7 @@ public class LeanAnnimations : MonoBehaviour
     void ActivateHighScore()
     {
      //   highScoreLabel.SetActive(true);
-        LeanTween.scale(highScoreLabel.GetComponent<RectTransform>(), new Vector3(1, 1, 1), .3f).setEase(LeanTweenType.easeOutElastic);
+        LeanTween.scale(highScoreLabel.GetComponent<RectTransform>(), new Vector3(1, 1, 1), .3f).setEase(LeanTweenType.easeOutElastic).setOnComplete(InstructionFunction);
     }
     void Slash()
     {
@@ -245,4 +245,16 @@ public class LeanAnnimations : MonoBehaviour
 
     }
 
+
+    void InstructionFunction()
+    {
+
+
+        if (GameManager.Instance.firstTime == true)
+        {
+            GameManager.Instance.firstTime = false;
+        }
+        GameManager.Instance.firstWin = true;
+        Instructions.SetActive(true);
+    }
 }

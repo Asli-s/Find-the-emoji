@@ -19,13 +19,15 @@ public class Board : MonoBehaviour
     /*[SerializeField] private SpriteRenderer _boardPrefab;*/
     private SpriteRenderer _tileSpriteRenderer;
     private int _minRange = 0;
-    private int _maxRange = 750;
+    private int _maxRange = 65;
 
     public GameObject PausePanel;
     public bool pausePanelActive = false;
 
     bool checkParentBoard = false;
 
+    SpriteRenderer chosenTileFirstAppear;
+    Tiles chosenTileFirst;
 
 
     public float timeSpeed = 0.4f;
@@ -64,6 +66,17 @@ public class Board : MonoBehaviour
 
     GameObject singleNode;
 
+    public GameObject Instructions;
+    bool showFeatureText = false;
+
+    bool firstTimeapaused = false;
+    bool startPause = false;
+
+
+    bool instSetActive = false;
+    bool running = false;
+    bool activated = false;
+
     void Awake()
     {
 
@@ -93,30 +106,65 @@ public class Board : MonoBehaviour
         secondsLeft = originalSeconds;
         audioManager = FindObjectOfType<AudioManager>();
 
+        if(GameManager.Instance.firstTime == true)
+        {
+            _maxRange = 30;
+        }
 
     }
     private void Update()
     {
 
 
-
-
-        //Dont call changesingle tile before generategrid is populated completely 
-        // maybe while any tile sprite == firstsprite => get tile??
         if (gridPopulation == true)
         {
             if (checkForPopFinish == false)
             {
                 checkTiles();
             }
+            // first play featuretile instr 
+            else if (checkForPopFinish == true && GameManager.Instance.firstTime == true && showFeatureText == false && GameManager.Instance.firstFeatureTileAlreadyShown == false && instSetActive==false)
+            {
+                instSetActive = true;
+                GameManager.Instance.firstFeatureTile = true;
+                showFeatureText = true;
+                Instructions.SetActive(true);
+                GameManager.Instance.firstFeatureTileAlreadyShown = true;
+                Time.timeScale = 0;
+            }
+
+            // first play featuretile instr 
+
+            if (GameManager.Instance.firstFeatureTileAlreadyShown == true && GameManager.Instance.firstTime == true && Instructions.activeSelf == false && appearCounter == 1)
+            {
+                if (featureTile.openTile == false && activated ==false)
+                {
+                    activated = true;
+                    GameManager.Instance.firstBoardTile = true;
+                    Instructions.SetActive(true);
+
+                    _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
+                    chosenTileFirstAppear.sortingOrder = 30000;
+                    chosenTileFirst.GetComponent<BoxCollider2D>().enabled = true;
+                }
 
 
 
-            if (secondsToStart > 0)
+            }
+        /*    else if (GameManager.Instance.firstFeatureTileAlreadyShown == true && GameManager.Instance.firstTime == true && Instructions.activeSelf == false && appearCounter != 0 && running == false && paused == true)
+            {
+                running = true;
+                pauseBoard();
+                    }*/
+           
+       
+
+                if (secondsToStart > 0)
             {
                 toStartTimer = StartingTimer();
                 StartCoroutine(toStartTimer);
             }
+
             else if (secondsToStart <= 0)
             {
 
@@ -129,8 +177,19 @@ public class Board : MonoBehaviour
                 }
                 else if (takingAway == false && secondsLeft == 0 && paused == false)
                 {
-                    secondsLeft = originalSeconds;
-                    changeSingleTile();
+                    if(GameManager.Instance.firstTime == true)
+                    {
+                        if ( GameManager.Instance.firstFeatureTileAlreadyShown == true)
+                        {
+                            secondsLeft = originalSeconds;
+                            changeSingleTile();
+                        }
+                    }
+                    else
+                    {
+                        secondsLeft = originalSeconds;
+                        changeSingleTile();
+                    }
 
                 }
 
@@ -270,7 +329,7 @@ public class Board : MonoBehaviour
 
         // _tileSpriteRenderer.sprite = _tilesPrefab?._gameObjects?[rnd];
 
-        rnd = UnityEngine.Random.Range(_minRange, 75);
+        rnd = UnityEngine.Random.Range(_minRange, _maxRange);
 
         _tileSpriteRenderer.sprite = chosenSpritesArray[rnd];
 
@@ -291,8 +350,30 @@ public class Board : MonoBehaviour
                 //check if featureTile sprite appeared
                 if (alreadyAssigned == false && t.GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
                 {
-                    // print("appeared");
                     appearCounter = 1;
+                     print("appeared onstart " + appearCounter);
+                    if (appearCounter == 1 && GameManager.Instance.firstTime)
+                    {
+                        if (Featured.Instance.openTile == false && paused==false)
+                        {
+                            pauseBoard();
+                        }
+                        chosenTileFirstAppear = t.GetComponent<SpriteRenderer>();
+                        chosenTileFirst = t;
+                    }
+                  
+/* if (GameManager.Instance.firstTime == true &&appearCounter ==1)
+                {
+                    _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
+                    _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sortingOrder = 30000;
+                    _nodes[randomChosenTile].GetComponent<BoxCollider2D>().enabled = true;
+                }
+                    if(GameManager.Instance.firstTime == true)
+                    {
+                        _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
+                        t.GetComponent<SpriteRenderer>().sortingOrder = 30000;
+                        t.GetComponent<BoxCollider2D>().enabled = true;
+                    }*/
                     //  print(appearCounter);
                 }
 
@@ -334,7 +415,7 @@ public class Board : MonoBehaviour
         //   print("board" + featureTileSpriteRenderer.sprite);
 
         //chosenSpritesArray will contain 80 sprites -->75
-        for (int i = 0; i < 74; i++)
+        for (int i = 0; i < _maxRange-1; i++)
         {
             rnd = UnityEngine.Random.Range(_minRange, _maxRange);
             chosenSpritesArray.Add(_tilesPrefab?._gameObjects?[rnd]);
@@ -485,7 +566,7 @@ public class Board : MonoBehaviour
         randomChosenTile = UnityEngine.Random.Range(_minRange, _width * _width);
         alreadyAssigned = false;
         // rnd = Random.Range(_minRange, _maxRange);
-        rnd = UnityEngine.Random.Range(_minRange,75);
+        rnd = UnityEngine.Random.Range(_minRange,_maxRange);
 
         //    var randomChosenSprite = _tilesPrefab._gameObjects?[rnd];
         var randomChosenSprite = chosenSpritesArray[rnd];
@@ -532,9 +613,26 @@ public class Board : MonoBehaviour
 
             if (_nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
             {
-                //  print("appeared changed tile");
+
                 appearCounter += 1;
+               print("appeared changed tile" +appearCounter);
+                if (appearCounter==1 && GameManager.Instance.firstTime)
+                {
+                    if(Featured.Instance.openTile == true && paused ==false)
+                    {
+                        pauseBoard();
+                    }
+                    chosenTileFirstAppear = _nodes[randomChosenTile].GetComponent<SpriteRenderer>();
+                    chosenTileFirst = _nodes[randomChosenTile];
+                }
+               
                 // print(appearCounter);
+                /* if (GameManager.Instance.firstTime == true &&appearCounter ==1)
+                 {
+                     _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
+                     _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sortingOrder = 30000;
+                     _nodes[randomChosenTile].GetComponent<BoxCollider2D>().enabled = true;
+                 }*/
             }
 
         }

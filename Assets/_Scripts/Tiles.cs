@@ -20,7 +20,10 @@ public class Tiles : MonoBehaviour
     public Tiles _tile;
     private int positionInArray;
 
+
+    public GameObject Instructions;
     public GameObject firstSprite;
+    SpriteRenderer TileSpriteRenderer;
 
 
     void Awake()
@@ -100,11 +103,23 @@ public class Tiles : MonoBehaviour
 
      //       print("stillClicked!");
             clickedTile = GetComponent<SpriteRenderer>().sprite;
+            TileSpriteRenderer = GetComponent<SpriteRenderer>();
             //  print(clickedTile);
 
             if (clickedTile == _featureTileSprite.sprite)
             {
                 //  FindObjectOfType<AudioManager>().Play("yes",false);
+
+                if(GameManager.Instance.firstTime == true)
+                {
+                    print("win screen sorting order");
+                    gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                    Instructions.SetActive(false);
+                    GameManager.Instance.firstBoardTile = false;
+                }
+
+
+
                FindObjectOfType<PlayExtraSound>().Play("win"); /// play yes sound
 
 

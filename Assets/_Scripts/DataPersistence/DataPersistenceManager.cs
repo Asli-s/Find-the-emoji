@@ -53,7 +53,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void LoadGame()
     {
 
-        this.gameData = dataHandler.Load();
+        this.gameData = dataHandler?.Load();
 
         if(this.gameData == null)
         {
@@ -61,9 +61,9 @@ public class DataPersistenceManager : MonoBehaviour
             NewGame();
         }
 
-        foreach(IDataPersistence dataPersistenceObject in dataPersistenceObjects)
+        foreach(IDataPersistence dataPersistenceObject in dataPersistenceObjects ?? new List<IDataPersistence> { null })
         {
-            dataPersistenceObject.LoadData( gameData);
+            dataPersistenceObject?.LoadData( gameData);
         }
 
         Debug.Log("loaded coinnum" + gameData.coinNumber);
@@ -140,7 +140,7 @@ public class DataPersistenceManager : MonoBehaviour
         else
         {
    
-            LoadGame();
+            DataPersistenceManager.Instance.LoadGame();
             GameManager.Instance.callLoadAgain();
          
             print("not paused anymore");

@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 using System;
 using System.Globalization;
 
+
+
+/**/
+
+
 public class GameManager : MonoBehaviour, IDataPersistence
 {
     public int gameCount = 0;
@@ -22,6 +27,20 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public int score1;
     public int score2;
     public int score3;
+
+
+    public bool adNoCoinScreenClicked = false;
+
+
+    public bool firstTime = false;
+    public bool firstFindScreen = false;
+    public bool firstFeatureTile = false;
+    public bool firstFeatureTileAlreadyShown = false;
+    
+
+    public bool firstBoardTile = false;
+    public bool firstWin = false;
+
 
     public DateTime toSaveDatetime;
     public string toSaveDatetimeString;
@@ -82,7 +101,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     void Start()
     {
-
+/**/
+        
+/**/
 
         Screen.sleepTimeout = (int)0f;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -173,6 +194,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
         this.bestStreakStats = gameData.bestStreakStat;
         this.bestStreak = gameData.bestStreak;
         this.currentStreak = gameData.currentStreak;
+        /*  this.bestStreakStats =0;
+          this.bestStreak =0;
+          this.currentStreak = 0;*/
 
 
         positionStringLoad = gameData.lastPos;
@@ -186,6 +210,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         print(gameData);
 
+
+        this.firstTime = gameData.firstTime;
     }
     public void SaveData(GameData gameData)
     {
@@ -202,16 +228,14 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         gameData.gameNumber = this.gameCount;
 
-        gameData.bestStreakStat = this.bestStreakStats;
+      /*  gameData.bestStreakStat = this.bestStreakStats;
        gameData.bestStreak = this.bestStreak;
-     //gameData.bestStreak = 0;
-
-        gameData.currentStreak = this.currentStreak;
+        gameData.currentStreak = this.currentStreak;*/
 
 
-        /*  gameData.bestStreakStat =0;
-          gameData.bestStreak = 0;
-          gameData.currentStreak = 0;*/
+        gameData.bestStreakStat = 0;
+        gameData.bestStreak = 0;
+        gameData.currentStreak = 0;
 
 
         gameData.win = this.win;
@@ -245,13 +269,17 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.timerActive = true;
         gameData.minutesLeft = 2;*/
 
-       gameData.coinNumber = this.coinNum;
-   //    gameData.coinNumber =5;
+  /*  gameData.coinNumber =5;*/
 
 
+      gameData.coinNumber = this.coinNum;
 
         gameData.isTablet = this.tablet;
         gameData.isPhone = this.phone;
+
+
+       /* gameData.firstTime =true;*/
+        gameData.firstTime =this.firstTime;
     }
 
 

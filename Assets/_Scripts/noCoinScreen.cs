@@ -8,6 +8,13 @@ public class noCoinScreen : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] public Button coinButtonCover;
     [SerializeField] public Button coinButton;
+
+    [SerializeField] public Button AdButton;
+
+
+
+
+
     [SerializeField] private GameObject ParentBoard;
     [SerializeField] private GameObject ParentFeatureTile;
     [SerializeField] private GameObject PauseButton;
@@ -15,10 +22,9 @@ public class noCoinScreen : MonoBehaviour
     [SerializeField] private GameObject ParentBoardBackground;
     [SerializeField] private GameObject featureTileBackground;
     [SerializeField] private GameObject rectBackGround;
-
-
+ 
     public GameObject mainBlock;
-
+    bool coinButtonActive = false;
 
     void OnEnable()
     {
@@ -44,6 +50,8 @@ public class noCoinScreen : MonoBehaviour
 
         coinButton.interactable = false;
 
+     
+
         if (GameManager.Instance.tablet == true)
         {
             LeanTween.scale(mainBlock, new Vector3(0.7f, 0.7f, 1), 2.3f).setEase(LeanTweenType.easeOutElastic);
@@ -68,6 +76,7 @@ public class noCoinScreen : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("coin");
 
     }
+
 
 
     public void StartGame()
@@ -100,6 +109,52 @@ public class noCoinScreen : MonoBehaviour
 
     }
 
+
+
+    public void ChangeToAdButtonClicked()
+    {
+        GameManager.Instance.adNoCoinScreenClicked = true;
+    }
+
+    private void Update()
+    {
+        if (coinButton.interactable == true && coinButtonActive ==false)
+        {
+            // animate 
+            coinButtonActive = true;
+            LeanTween.scale(coinButton.gameObject, new Vector3(1.9f, 3.2f, 1), 1f).setEaseInElastic().setOnComplete(scaleBackUp);
+        }
+    }
+
+    void scaleBackUp()
+    {
+        LeanTween.scale(coinButton.gameObject, new Vector3(2.3f, 3.2f, 1), 1f).setEaseOutElastic().setOnComplete(ActivateCoinButton);
+
+    }
+    void ActivateCoinButton()
+    {
+        if (coinButton.interactable == true)
+        {
+            coinButtonActive = false;
+        }
+
+    }
+
+
+    public void ChangeButtonToAlreadyClicked()
+    {
+        if(GameManager.Instance.coinNum > 0)
+        {
+            AdButton.interactable = false;
+            coinButton.interactable = true;
+            coinButtonCover.gameObject.SetActive( false);
+            GameManager.Instance.adNoCoinScreenClicked = false;
+
+            //darken text of adbutton
+
+        }
+
+    }
 
     /*   public void RestartButtonNoCoinScreen()
        {
