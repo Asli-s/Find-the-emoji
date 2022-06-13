@@ -243,8 +243,9 @@ public class UiScaler : MonoBehaviour
                 rectTransformButtonPos.localScale = new Vector3(1f, 1f, 1.0f);
 
             }
-
+         
             GameManager.Instance.ChangeState(GameState.CheckTimer);
+           
         }
         else
         {

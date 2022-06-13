@@ -161,7 +161,7 @@ public    bool alreadyInGame = false;
             GameManager.Instance.activeCountDown = false;
             GameManager.Instance.secondsLeft = 0;
             GameManager.Instance.minutesLeft = 30;
-            TimerText.text = "full";
+            TimerText.text = "  full";
 
             if (GameManager.Instance.restarted == true || FirstScreen.activeSelf == true )
             {
@@ -336,15 +336,15 @@ public    bool alreadyInGame = false;
                 GameManager.Instance.coinNum = newNum;
 
                 GameManager.Instance.m_Object.text = newNum.ToString();
-                TimerText.text = "full";
+                TimerText.text = "  full";
 
                 GameManager.Instance.secondsLeft = 0;
                 GameManager.Instance.minutesLeft = 0;
                 GameManager.Instance.activeCountDown = false;
                 FindObjectOfType<CountdownTimer>().timerStarted = false; ;
-                if (GameManager.Instance.restarted == true || FirstScreen.activeSelf == true)
+                if (GameManager.Instance?.restarted == true || FirstScreen?.activeSelf == true)
                 {
-                    FirstScreen.SetActive(true);
+                    FirstScreen?.SetActive(true);
                 }
                 else if(alreadyInGame == true)
                 {
@@ -372,9 +372,9 @@ public    bool alreadyInGame = false;
 
 
 
-                if (GameManager.Instance.restarted == true)
+                if (GameManager.Instance?.restarted == true)
                 {
-                    FirstScreen.SetActive(true);
+                    FirstScreen?.SetActive(true);
                 }
                 else if (GameManager.Instance.minimizedApp == false && GameManager.Instance.restarted == false || FirstScreen.activeSelf == true && GameManager.Instance.minimizedApp == false && alreadyInGame == true)
                 {
@@ -418,7 +418,7 @@ public    bool alreadyInGame = false;
             GameManager.Instance.minutesLeft = 0;
             GameManager.Instance.activeCountDown = false;
             FindObjectOfType<CountdownTimer>().timerStarted = false; ;
-            TimerText.text = "full";
+            TimerText.text = "  full";
 
             if (alreadyInGame == true)
             {

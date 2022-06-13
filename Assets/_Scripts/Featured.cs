@@ -92,6 +92,14 @@ public class Featured : MonoBehaviour
     public bool clicked = false;
     public bool openTile = true;
     // Start is called before the first frame update
+
+    public GameObject Instructions;
+    bool functionCalled = false;
+
+
+
+
+
     void Awake()
     {
 
@@ -192,7 +200,13 @@ public class Featured : MonoBehaviour
                 {
                     heartLoseClicked = false;
                     FindObjectOfType<AudioManager>().Play("pop");
+                    if (Instructions.activeSelf == true && functionCalled == false)
+                    {
+                        functionCalled = true;
+                        clickedYesFirstTime();
+                    }
                 }
+              
 
                 _allTiles = _board._nodes;
 
@@ -500,12 +514,34 @@ public class Featured : MonoBehaviour
 
     }
 
+   void clickedYesFirstTime()
+    {
+        if (GameManager.Instance.firstTime == true)
+        {
+            Instructions.SetActive(false);
+            GameManager.Instance.firstFeatureTile = false;
+            _allTiles = _board._nodes;
+
+            _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = true; });
+
+            if (_board.appearCounter == 0 )
+                {
+                    _board.PauseButton();
+                }
+
+        }
+      
+    }
 
 
     public void clickedYes()  //Feature tile yes button
     {
         if(heartLoseClicked == false)
         {
+           if(GameManager.Instance.firstTime == false)
+            {
+                _board.pauseBoard();
+            }
             heartLoseClicked = true;
 
             FindObjectOfType<AudioManager>().Play("wrong");
@@ -514,7 +550,6 @@ public class Featured : MonoBehaviour
 
             print("inside yes funct");
             additionalSecond = 1;
-            _board.pauseBoard();
 
 
             HealthHearts.Instance.loseLife();
@@ -539,12 +574,15 @@ public class Featured : MonoBehaviour
     }
     public void clickedNo()  //FEATURE TILE NO BUTTON
     {
-
         PopUpAnimFeature.Instance.CloseMenuAnimation();
 
         print("NOOOOO");
+        if (Instructions.activeSelf ==false)
+        {   
 
-        _board.pauseBoard();
+            _board.pauseBoard();
+        }
+    
 
 
     }
@@ -575,6 +613,50 @@ public class Featured : MonoBehaviour
         PopupAnimNoCOins.Instance.CloseMenuAnimation();
 
     }
+
+
+    void UpdateText()
+    {
+        GameManager.Instance.m_Object.text = GameManager.Instance.coinNum.ToString();
+        DataPersistenceManager.Instance.SaveGame();
+    }
+
+    public void AddCoin()
+    {
+        coinCountText = GameManager.Instance.m_Object.text;
+        coinCountNum = int.Parse(coinCountText);
+      //  GameManager.Instance.coinNum = coinCountNum;
+        newNum = coinCountNum;
+
+        print("Addcoin function");
+        if (GameManager.Instance.coinNum == 0)
+        {
+            newNum += 1;
+            GameManager.Instance.coinNum = newNum;
+            UpdateText();
+     
+        }
+
+        if (GameManager.Instance.adNoCoinScreenClicked == false)
+        {
+            clickedNoNoCoin();
+        }
+      else if(
+             GameManager.Instance.adNoCoinScreenClicked == true)
+        {
+            FindObjectOfType<noCoinScreen>()?.ChangeButtonToAlreadyClicked();
+        }
+        Debug.Log("ADDCOIINN " + GameManager.Instance.coinNum);
+
+        ///if nocoinscreen active --->deactivate ad button  ----> activate use coin button 
+        ///little animation use coin button to grab attention
+
+     
+
+    }
+
+
+
 
 
 

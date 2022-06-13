@@ -9,6 +9,18 @@ public class StartScreen : MonoBehaviour
     private int newNum;
 
     bool clicked = false;
+    public GameObject Particles;
+    public GameObject Button;
+
+    private void OnEnable()
+    {
+        Particles.SetActive(true);
+        LeanTween.scale(Button, new Vector3(0,1f,1f), 0);
+
+        LeanTween.scale(Button, new Vector3(0.8f, 1f, 1f), 1.8f).setDelay(0.6f).setEase(LeanTweenType.easeOutElastic);
+        Invoke("PlaySlide", 0.3f);
+    }
+
     public void StrartScreen()
     {
        if (clicked == false)
@@ -92,6 +104,12 @@ public class StartScreen : MonoBehaviour
         GameManager.Instance.ChangeState(GameState.FeatureTile);
 
         gameObject.SetActive(false);
+        Particles.SetActive(false);
+    }
+    void PlaySlide()
+    {
+      
+        FindObjectOfType<AudioManager>().Play("swoosh");
 
     }
 }

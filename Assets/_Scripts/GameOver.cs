@@ -53,6 +53,8 @@ public class GameOver : MonoBehaviour
      
         Invoke("ActivateWinScreen", 0.4f);
 
+     
+
 
         if (GameManager.Instance.currentStreak > GameManager.Instance.bestStreak)
         {

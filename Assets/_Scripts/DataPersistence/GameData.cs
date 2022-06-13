@@ -39,6 +39,9 @@ public class GameData
     public bool isPhone ;
 
 
+    public bool firstTime;
+
+
     public GameData()
     {
         this.lastPos = "med";
@@ -75,5 +78,7 @@ public class GameData
 
         this.isPhone = false;
         this.isTablet = false;
+
+        this.firstTime = true;
     }
 }
