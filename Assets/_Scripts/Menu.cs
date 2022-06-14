@@ -105,77 +105,80 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
         /*   if (Featured.Instance.screenActive == false &&findFeatureScreenAnim.Instance.animEnded ==true)
            {*/
 
-        print("inside showscreen");
-
-        /* NO OTHER SCREENS ACTIVE*/
-        if (openMenu == false && additionalMenu == false && _board.paused == false && findScreen.activeSelf == false && Featured.Instance.screenActive == false)//&& Board.Instance.pausePanelActive == false)
-        {
-            ThemeSound.Instance.audio.volume = 0.04f;
-            //  print("first");
-
-            _board.pauseBoard();
-            _allTiles = _board._nodes;
-            /* _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
-             featureTile.transform.GetChild(0).gameObject.GetComponent<BoxCollider2D>().enabled = false;*/
-
-
-
-            //   StopCoroutine(_board.StartTimer); -->>test this 03.05
-            openMenu = true;
-            //   Featured.Instance.screenActive = true;
-            MenuScreen.SetActive(true);
-            Button.GetComponent<Image>().sprite = closeMenuSprite;
-
-
-        }
-
-        /* NO OTHER SCREENS ACTIVE but board is already paused*/
-
-        else if (openMenu == false && additionalMenu == false && _board.paused == true && findScreen.activeSelf == false && Featured.Instance.screenActive == false)// && Board.Instance.pausePanelActive == false)
-        {
-            _allTiles = _board._nodes;
-
-            openMenu = true;
-            //      Featured.Instance.screenActive = true;
-
-            MenuScreen.SetActive(true);
-            Button.GetComponent<Image>().sprite = closeMenuSprite;
-        }
-
-        /*MENU IS ACTIVE AND STATS IS ACTIVE --open stats*/
-        else if (additionalMenu == true && openMenu == true && findScreen.activeSelf == false && Featured.Instance.screenActive == true)// && Board.Instance.pausePanelActive == false)
-        {
-            //   print("third");
-
-            Button.GetComponent<Image>().sprite = closeMenuSprite;
-            additionalMenu = false;
-            additionalScreenStats.SetActive(false);
-            //         Featured.Instance.screenActive = true;
-
-
-
-        }
-        /*MENU IS ACTIVE / STATS IS NOT ACTIVE --close the menu*/
-        else if (openMenu == true && additionalMenu == false && findScreen.activeSelf == false && Featured.Instance.screenActive == true)
+        if (GameManager.Instance.notClickable == false)
         {
 
+            print("inside showscreen");
 
-            MenuButtons();
+            /* NO OTHER SCREENS ACTIVE*/
+            if (openMenu == false && additionalMenu == false && _board.paused == false && findScreen.activeSelf == false && Featured.Instance.screenActive == false)//&& Board.Instance.pausePanelActive == false)
+            {
+                ThemeSound.Instance.audio.volume = 0.04f;
+                //  print("first");
 
-            openMenu = false;
-            // MenuScreen.SetActive(false); -----> call close from menu script
-            MenuAnim.Instance.CloseMenuAnim();
+                _board.pauseBoard();
+                _allTiles = _board._nodes;
+                /* _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
+                 featureTile.transform.GetChild(0).gameObject.GetComponent<BoxCollider2D>().enabled = false;*/
 
-            ThemeSound.Instance.audio.volume = 0.1f;
 
-            Button.GetComponent<Image>().sprite = openMenuSprite;
 
-            _board.pauseBoard();
+                //   StopCoroutine(_board.StartTimer); -->>test this 03.05
+                openMenu = true;
+                //   Featured.Instance.screenActive = true;
+                MenuScreen.SetActive(true);
+                Button.GetComponent<Image>().sprite = closeMenuSprite;
 
+
+            }
+
+            /* NO OTHER SCREENS ACTIVE but board is already paused*/
+
+            else if (openMenu == false && additionalMenu == false && _board.paused == true && findScreen.activeSelf == false && Featured.Instance.screenActive == false)// && Board.Instance.pausePanelActive == false)
+            {
+                _allTiles = _board._nodes;
+
+                openMenu = true;
+                //      Featured.Instance.screenActive = true;
+
+                MenuScreen.SetActive(true);
+                Button.GetComponent<Image>().sprite = closeMenuSprite;
+            }
+
+            /*MENU IS ACTIVE AND STATS IS ACTIVE --open stats*/
+            else if (additionalMenu == true && openMenu == true && findScreen.activeSelf == false && Featured.Instance.screenActive == true)// && Board.Instance.pausePanelActive == false)
+            {
+                //   print("third");
+
+                Button.GetComponent<Image>().sprite = closeMenuSprite;
+                additionalMenu = false;
+                additionalScreenStats.SetActive(false);
+                //         Featured.Instance.screenActive = true;
+
+
+
+            }
+            /*MENU IS ACTIVE / STATS IS NOT ACTIVE --close the menu*/
+            else if (openMenu == true && additionalMenu == false && findScreen.activeSelf == false && Featured.Instance.screenActive == true)
+            {
+
+
+                MenuButtons();
+
+                openMenu = false;
+                // MenuScreen.SetActive(false); -----> call close from menu script
+                MenuAnim.Instance.CloseMenuAnim();
+
+                ThemeSound.Instance.audio.volume = 0.1f;
+
+                Button.GetComponent<Image>().sprite = openMenuSprite;
+
+                _board.pauseBoard();
+
+            }
+
+            /*    else { return; }*/
         }
-
-        /*    else { return; }*/
-
     }
 
 

@@ -142,13 +142,14 @@ public class LeanAnnimations : MonoBehaviour
     public void Close()
     {
         print("close!!");
-        LeanTween.scale(gameObject, Vector3.zero, 0.5f).setOnComplete(OnDisable);
       
 
         //lose not last coin
 
         if (GameOver.Instance.lose == true && GameManager.Instance.coinNum>0)
         {
+            LeanTween.scale(gameObject, Vector3.zero, 0.5f).setOnComplete(OnDisable);
+
             Featured.Instance.lostGame = true;
         FindObjectOfType<AudioManager>().Play("coin");
             //   Invoke("RestartFromFeature", 0.2f);
@@ -164,6 +165,7 @@ public class LeanAnnimations : MonoBehaviour
 
         else if (GameOver.Instance.lose == true && GameManager.Instance.coinNum == 0)
         {
+        LeanTween.scale(gameObject, Vector3.zero, 0.5f).setOnComplete(OnDisable);
             FindObjectOfType<AudioManager>().Play("coin");
 
             Featured.Instance.lostGame = true;
@@ -182,8 +184,10 @@ public class LeanAnnimations : MonoBehaviour
 
         //win
 
-        else if (GameOver.Instance.win==true)
+        else if (GameOver.Instance.win==true && GameManager.Instance.notClickable == false)
         {
+            LeanTween.scale(gameObject, Vector3.zero, 0.5f).setOnComplete(OnDisable);
+
             DataPersistenceManager.Instance.SaveGame();
 
             Invoke("ActualRestart", 0.2f);
@@ -253,8 +257,8 @@ public class LeanAnnimations : MonoBehaviour
         if (GameManager.Instance.firstTime == true)
         {
             GameManager.Instance.firstTime = false;
-        }
         GameManager.Instance.firstWin = true;
         Instructions.SetActive(true);
+        }
     }
 }

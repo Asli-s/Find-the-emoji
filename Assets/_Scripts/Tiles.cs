@@ -115,7 +115,10 @@ public class Tiles : MonoBehaviour
                     print("win screen sorting order");
                     gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
                     Instructions.SetActive(false);
+                    GameManager.Instance.notClickable = false;
+
                     GameManager.Instance.firstBoardTile = false;
+                    Featured.Instance.screenActive = false;
                 }
 
 

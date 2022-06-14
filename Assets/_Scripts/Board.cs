@@ -77,6 +77,8 @@ public class Board : MonoBehaviour
     bool running = false;
     bool activated = false;
 
+    bool promo = false;
+
     void Awake()
     {
 
@@ -106,9 +108,13 @@ public class Board : MonoBehaviour
         secondsLeft = originalSeconds;
         audioManager = FindObjectOfType<AudioManager>();
 
-        if(GameManager.Instance.firstTime == true)
+        if (GameManager.Instance.firstTime == true)
         {
             _maxRange = 30;
+        }
+
+        else if (promo == true){
+            _maxRange = 18;
         }
 
     }
@@ -351,7 +357,7 @@ public class Board : MonoBehaviour
                 if (alreadyAssigned == false && t.GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
                 {
                     appearCounter = 1;
-                     print("appeared onstart " + appearCounter);
+                    print("appeared onstart " + appearCounter);
                     if (appearCounter == 1 && GameManager.Instance.firstTime)
                     {
                         if (Featured.Instance.openTile == false && paused==false)
@@ -460,7 +466,9 @@ public class Board : MonoBehaviour
                     while (alreadyAssigned == true)
                     {
                         getTile();
+                      /*appearCounter = 1;*/
                         Debug.Log(" tile already in board");
+
                         //little fix?!
                         if (alreadyAssigned == false)
                         {
@@ -580,12 +588,10 @@ public class Board : MonoBehaviour
             if (t.GetComponent<SpriteRenderer>().sprite == randomChosenSprite)
             {
                 alreadyAssigned = true;
+                
 
-
+                // var freeNodes = _nodes.Where();
             }
-
-
-            // var freeNodes = _nodes.Where();
         });
 
         if (alreadyAssigned)
@@ -697,39 +703,41 @@ public class Board : MonoBehaviour
     {
 
         //only after popanimation
-
-
-        /*PAUSE IF NOT ALREADY PAUSED*/
-        if (paused == false && pausePanelActive == false && Featured.Instance.screenActive == false && gridPopulation == true && checkForPopFinish == true)
+        if (GameManager.Instance.notClickable == false)
         {
-            ThemeSound.Instance.audio.volume = 0.04f;
 
-            button.GetComponent<Image>().sprite = buttonSpritePlay;
-            paused = true;
-            StopCoroutine(StartTimer);
-            pausePanelActive = true;
+            /*PAUSE IF NOT ALREADY PAUSED*/
+            if (paused == false && pausePanelActive == false && Featured.Instance.screenActive == false && gridPopulation == true && checkForPopFinish == true)
+            {
+                ThemeSound.Instance.audio.volume = 0.04f;
 
-
-            PausePanel.SetActive(true);
-        }
-
-        else if (paused == true && Featured.Instance.screenActive == false && gridPopulation == true && checkForPopFinish == true) 
-        { 
-            ThemeSound.Instance.audio.volume = 0.1f;
-
-            button.GetComponent<Image>().sprite = buttonSpritePause;
-            //  print(paused);
-
-            paused = false;
-            pausePanelActive = false;
-
-            StartTimer = Timer();
-
-            StartCoroutine(StartTimer);
-            secondsLeft = originalSeconds;
+                button.GetComponent<Image>().sprite = buttonSpritePlay;
+                paused = true;
+                StopCoroutine(StartTimer);
+                pausePanelActive = true;
 
 
+                PausePanel.SetActive(true);
+            }
 
+            else if (paused == true && Featured.Instance.screenActive == false && gridPopulation == true && checkForPopFinish == true)
+            {
+                ThemeSound.Instance.audio.volume = 0.1f;
+
+                button.GetComponent<Image>().sprite = buttonSpritePause;
+                //  print(paused);
+
+                paused = false;
+                pausePanelActive = false;
+
+                StartTimer = Timer();
+
+                StartCoroutine(StartTimer);
+                secondsLeft = originalSeconds;
+
+
+
+            }
         }
     }
 
