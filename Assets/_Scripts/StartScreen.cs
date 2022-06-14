@@ -16,8 +16,16 @@ public class StartScreen : MonoBehaviour
     {
         Particles.SetActive(true);
         LeanTween.scale(Button, new Vector3(0,1f,1f), 0);
+        if (GameManager.Instance.phone)
+        {
 
         LeanTween.scale(Button, new Vector3(0.8f, 1f, 1f), 1.8f).setDelay(0.6f).setEase(LeanTweenType.easeOutElastic);
+        }
+        else
+        {
+        LeanTween.scale(Button, new Vector3(0.8f, 0.8f, 1f), 1.8f).setDelay(0.6f).setEase(LeanTweenType.easeOutElastic);
+
+        }
         Invoke("PlaySlide", 0.3f);
     }
 

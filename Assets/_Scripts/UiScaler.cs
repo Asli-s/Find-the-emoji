@@ -73,6 +73,25 @@ public class UiScaler : MonoBehaviour
 
 
 
+    //instructions
+
+
+    public GameObject FindInstr;
+    private RectTransform FindInstrRect;
+
+    public GameObject FeatureInstr;
+    private RectTransform FeatureInstrRect;
+
+    public GameObject BoardInstr;
+    private RectTransform BoardInstrRect;
+
+    public GameObject WinInstr;
+    private RectTransform WinInstrRect;
+
+
+
+
+
 
 
     //popups
@@ -105,6 +124,10 @@ public class UiScaler : MonoBehaviour
             var aspectRatio = Mathf.Max(Screen.width, Screen.height) / Mathf.Min(Screen.width, Screen.height);
              isTablet = (DeviceDiagonalSizeInInches() > 6.5f && aspectRatio < 2f);
             print("tablet"+ isTablet);
+
+
+/*TABLET*/
+
             if (isTablet)
             {
                 GameManager.Instance.tablet = true;
@@ -171,10 +194,27 @@ public class UiScaler : MonoBehaviour
                 rectTransformButtonPos.anchoredPosition = new Vector3(0,258f, 1);
                 rectTransformButtonPos.localScale = new Vector3(0.8f, 0.8f, 1.0f);
 
+                // instructions
+                FindInstrRect = FindInstr.GetComponent<RectTransform>();
+                FindInstrRect.localScale = new Vector3(0.8f, 0.8f, 1);
 
+
+                FeatureInstrRect = FeatureInstr.GetComponent<RectTransform>();
+                FeatureInstrRect.localScale = new Vector3(0.8f, 0.8f, 1);
+
+
+                BoardInstrRect = BoardInstr.GetComponent<RectTransform>();
+                BoardInstrRect.localScale = new Vector3(0.8f, 0.8f, 1);
+
+
+                WinInstrRect = WinInstr.GetComponent<RectTransform>();
+                WinInstrRect.localScale = new Vector3(0.8f, 0.8f, 1);
 
 
             }
+
+
+            /*PHONE*/
             else
             {
                 GameManager.Instance.phone = true;
@@ -242,11 +282,30 @@ public class UiScaler : MonoBehaviour
                 rectTransformButtonPos.anchoredPosition = new Vector3(0, 364f, 1);
                 rectTransformButtonPos.localScale = new Vector3(1f, 1f, 1.0f);
 
+                //instructions
+
+                FindInstrRect = FindInstr.GetComponent<RectTransform>();
+                FindInstrRect.localScale = new Vector3(1f, 1f, 1);
+
+
+                FeatureInstrRect = FeatureInstr.GetComponent<RectTransform>();
+                FeatureInstrRect.localScale = new Vector3(1f, 1f, 1);
+
+
+                BoardInstrRect = BoardInstr.GetComponent<RectTransform>();
+                BoardInstrRect.localScale = new Vector3(1f, 1f, 1);
+
+
+                WinInstrRect = WinInstr.GetComponent<RectTransform>();
+                WinInstrRect.localScale = new Vector3(1f,1f, 1);
+
             }
          
             GameManager.Instance.ChangeState(GameState.CheckTimer);
            
         }
+
+        // if(not saved)
         else
         {
 
@@ -339,6 +398,25 @@ public class UiScaler : MonoBehaviour
                 rectTransformButtonPos.anchoredPosition = new Vector3(0, 258f, 1);
                 rectTransformButtonPos.localScale = new Vector3(0.8f, 0.8f, 1.0f);
 
+
+                // instructions
+                FindInstrRect = FindInstr.GetComponent<RectTransform>();
+                FindInstrRect.localScale = new Vector3(0.8f, 0.8f, 1);
+
+
+                FeatureInstrRect = FeatureInstr.GetComponent<RectTransform>();
+                FeatureInstrRect.localScale = new Vector3(0.8f, 0.8f, 1);
+
+
+                BoardInstrRect = BoardInstr.GetComponent<RectTransform>();
+                BoardInstrRect.localScale = new Vector3(0.8f, 0.8f, 1);
+
+
+                WinInstrRect = WinInstr.GetComponent<RectTransform>();
+                WinInstrRect.localScale = new Vector3(0.8f, 0.8f, 1);
+
+
+
             }
             else if(GameManager.Instance.phone == true)
             {
@@ -402,6 +480,25 @@ public class UiScaler : MonoBehaviour
                 rectTransformButtonPos = ButtonPos.GetComponent<RectTransform>();
                 rectTransformButtonPos.anchoredPosition = new Vector3(0, 364f, 1);
                 rectTransformButtonPos.localScale = new Vector3(1f,1f, 1.0f);
+
+
+                //instructions
+
+                FindInstrRect = FindInstr.GetComponent<RectTransform>();
+                FindInstrRect.localScale = new Vector3(1f, 1f, 1);
+
+
+                FeatureInstrRect = FeatureInstr.GetComponent<RectTransform>();
+                FeatureInstrRect.localScale = new Vector3(1f, 1f, 1);
+
+
+                BoardInstrRect = BoardInstr.GetComponent<RectTransform>();
+                BoardInstrRect.localScale = new Vector3(1f, 1f, 1);
+
+
+                WinInstrRect = WinInstr.GetComponent<RectTransform>();
+                WinInstrRect.localScale = new Vector3(1f, 1f, 1);
+
 
             }
             GameManager.Instance.ChangeState(GameState.CheckTimer);
