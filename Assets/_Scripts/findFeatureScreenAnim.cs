@@ -97,12 +97,12 @@ public GameObject featureImageObject;
 
 
 
-        LeanTween.scale(backGround, Vector3.zero, 0.6f).setDelay(3.5f).setEaseOutElastic();
+        LeanTween.scale(backGround, Vector3.zero, 0.3f).setDelay(3.5f).setEaseOutElastic();
 
 
         /*FEATURE TILE MOVE UP*/
-        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 375, 0), .4f).setDelay(3.6f).setEaseOutExpo()/*.setOnComplete(scaleBack)*/;
-        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 375, 0),.3f).setDelay(4f).setEaseInElastic();
+        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 375, 0), .3f).setDelay(3.5f).setEaseOutExpo()/*.setOnComplete(scaleBack)*/;
+        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 375, 0),.3f).setDelay(3.8f).setEaseInElastic();
 
         /*LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 401, 0), .4f).setDelay(3.6f).setEaseOutExpo()*//*.setOnComplete(scaleBack)*//*;
         LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 401, 0), .3f).setDelay(4f).setEaseInElastic();*/

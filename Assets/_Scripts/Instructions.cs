@@ -20,8 +20,21 @@ public class Instructions : MonoBehaviour
 
     public Board Board;
 
+    public GameObject MenuButton;
+    public GameObject PauseButton;
+    public GameObject RestartButton;
+
+
+
     private void OnEnable()
     {
+
+
+
+        GameManager.Instance.notClickable = true;
+
+
+
       //  if() coming from findscreen activate obj1
       if(GameManager.Instance.firstFindScreen == true)
         {
@@ -30,13 +43,14 @@ public class Instructions : MonoBehaviour
       else if (GameManager.Instance.firstFeatureTile == true)
         { // featureprefab sorting 
             featureTileText.SetActive(true);
+            Featured.Instance.instruction = true;
           
            FeatureTileObj= FeatureTile.transform.GetChild(0).gameObject;
               FeatureTileObj.GetComponent<SpriteRenderer>().sortingOrder = 30000;
             FeatureTileObj.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 30005;
           //HeartPopUp.GetComponent<Canvas>().sortingOrder = 310000;
             Board.pauseBoard();
-            Button.SetActive(true);
+          //  Button.SetActive(true);
 
 
             _allTiles = Board._nodes;
@@ -47,6 +61,8 @@ public class Instructions : MonoBehaviour
         }
         else if (GameManager.Instance.firstBoardTile == true)
         {
+          
+
             featureTileText.SetActive(false);
             FeatureTileObj = FeatureTile.transform.GetChild(0).gameObject;
             FeatureTileObj.GetComponent<BoxCollider2D>().enabled = false;
@@ -62,7 +78,7 @@ public class Instructions : MonoBehaviour
 
             Board.pauseBoard();
 
-
+    
 
         }
         else if (GameManager.Instance.firstWin == true)
@@ -81,16 +97,22 @@ public class Instructions : MonoBehaviour
         {
             print("yess");
             gameObject.SetActive(false);
+
+                GameManager.Instance.notClickable = false;
+
             findScreenText.SetActive(false);
             Time.timeScale = 1;
                 GameManager.Instance.firstFindScreen = false;
                 findScreenText.SetActive(false);
+                Featured.Instance.screenActive = false;
 
-        }
+            }
             if (winText.activeSelf ==true)
             {
-                gameObject.SetActive(false);
+                GameManager.Instance.notClickable = false;
 
+                gameObject.SetActive(false);
+                Featured.Instance.screenActive = false;
             }
        /* else if (featureTileText.activeSelf == true)
             {

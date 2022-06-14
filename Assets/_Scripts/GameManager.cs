@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public bool adNoCoinScreenClicked = false;
 
 
+    public bool notClickable = false;
+
+
     public bool firstTime = false;
     public bool firstFindScreen = false;
     public bool firstFeatureTile = false;
@@ -264,22 +267,22 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         gameData.notEnoughCoins = this.coinNotEnough;
 
-/*
-        gameData.secondsLeft = 00;
-        gameData.timerActive = true;
-        gameData.minutesLeft = 2;*/
+        /*
+                gameData.secondsLeft = 00;
+                gameData.timerActive = true;
+                gameData.minutesLeft = 2;*/
 
-  /*  gameData.coinNumber =5;*/
+        gameData.coinNumber = 5;
 
 
-      gameData.coinNumber = this.coinNum;
+   /*     gameData.coinNumber = this.coinNum;*/
 
         gameData.isTablet = this.tablet;
         gameData.isPhone = this.phone;
 
 
-       /* gameData.firstTime =true;*/
-        gameData.firstTime =this.firstTime;
+        gameData.firstTime = true;
+        /*  gameData.firstTime =this.firstTime;*/
     }
 
 

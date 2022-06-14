@@ -22,8 +22,10 @@ public class Featured : MonoBehaviour
     //prevent Buttons from doubleClick
     bool coinLoseClicked = false;
     bool heartLoseClicked = false;
+
     bool noCoinScreenCoinClicked = false;
 
+   public bool instruction = false;
 
 
     private SpriteRenderer _prefabSpriteRenderer;
@@ -271,10 +273,18 @@ public class Featured : MonoBehaviour
     {
 
 
-        if (openTile == false/*e && !EventSystem.current.IsPointerOverGameObject()*/ && screenActive == false)
+        if (openTile == false/*e && !EventSystem.current.IsPointerOverGameObject()*/ && screenActive == false || instruction ==true)
         {
+           /* if(instruction == false)
+            {
+*/if(_board.paused == false)
+            {
 
             _board.pauseBoard();
+            }
+            
+
+            print("instruction" + instruction);
             _allTiles = _board._nodes;
 
             //        _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
@@ -301,37 +311,40 @@ public class Featured : MonoBehaviour
     public void restartClicked() //RESTART BUTTTON
     {
         print("restart function" + screenActive);
-        if (screenActive == false && Board.Instance.pausePanelActive == false)
+        if (GameManager.Instance.notClickable == false)
         {
-            print("Restart clicked");
-            _allTiles = _board._nodes;
-           
-
-            coinCountText = GameManager.Instance.m_Object.text;
-
-            coinCountNum = int.Parse(coinCountText);
-            GameManager.Instance.coinNum = coinCountNum;
-
-            if (coinCountNum > 0 && screenActive == false)
+            if (screenActive == false && Board.Instance.pausePanelActive == false)
             {
-                _board.pauseBoard();
+                print("Restart clicked");
+                _allTiles = _board._nodes;
 
-                screenActive = true;
-                showAlertRestart.SetActive(true);
+
+                coinCountText = GameManager.Instance.m_Object.text;
+
+                coinCountNum = int.Parse(coinCountText);
+                GameManager.Instance.coinNum = coinCountNum;
+
+                if (coinCountNum > 0 && screenActive == false)
+                {
+                    _board.pauseBoard();
+
+                    screenActive = true;
+                    showAlertRestart.SetActive(true);
+                }
+                if (coinCountNum == 0 && screenActive == false)
+                {
+                    _board.pauseBoard();
+
+                    screenActive = true;
+                    showAlertNoCoin.SetActive(true);
+                    GameManager.Instance.coinNotEnough = true;
+
+                }
+
+
+
+
             }
-            if (coinCountNum == 0 && screenActive == false)
-            {
-                _board.pauseBoard();
-
-                screenActive = true;
-                showAlertNoCoin.SetActive(true);
-                GameManager.Instance.coinNotEnough = true;
-
-            }
-
-
-
-
         }
 
 
@@ -514,7 +527,7 @@ public class Featured : MonoBehaviour
 
     }
 
-   void clickedYesFirstTime()
+   void clickedYesFirstTime()  /// yes featuretile for instruction
     {
         if (GameManager.Instance.firstTime == true)
         {
@@ -523,14 +536,21 @@ public class Featured : MonoBehaviour
             _allTiles = _board._nodes;
 
             _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = true; });
-
-            if (_board.appearCounter == 0 )
+            Featured.Instance.screenActive = false;
+            GameManager.Instance.notClickable = false;
+            if (_board.appearCounter !=1 && _board.paused ==true )
                 {
+                print("appeared? " + _board.appearCounter);
+                print("paused " + _board.paused);
+              ;
                     _board.PauseButton();
                 }
+            print("pasued?? "+_board.paused);
+           instruction = false;
+
 
         }
-      
+
     }
 
 
@@ -542,6 +562,7 @@ public class Featured : MonoBehaviour
             {
                 _board.pauseBoard();
             }
+         
             heartLoseClicked = true;
 
             FindObjectOfType<AudioManager>().Play("wrong");
