@@ -41,6 +41,12 @@ public class GameData
 
     public bool firstTime;
 
+    public int ExtraLive;
+    public int ExtraCoin;
+
+    public int ExtraSweetLolli;
+    public int ExtraSweetBonBon;
+
 
     public GameData()
     {
@@ -80,5 +86,13 @@ public class GameData
         this.isTablet = false;
 
         this.firstTime = true;
+
+
+        this.ExtraCoin = 0;
+        this.ExtraLive = 0;
+        this.ExtraSweetBonBon = 0;
+        this.ExtraSweetLolli = 0;
+
+
     }
 }

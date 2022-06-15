@@ -9,7 +9,7 @@ public class PopuPInventar : MonoBehaviour
     public static PopuPInventar Instance;
     public GameObject mainBlock;
     public Board _board;
-
+    public GameObject closingX;
 
     private void Awake()
 
@@ -35,16 +35,20 @@ public class PopuPInventar : MonoBehaviour
         if (GameManager.Instance.tablet == true)
         {
             LeanTween.scale(mainBlock, new Vector3(0.7f, 0.7f, 1), 0.8f).setEaseOutExpo().setOnComplete(ChangeScreenActive);
+            Invoke("AnimateX", 0.2f);
+
 
         }
         else
         {
 
             LeanTween.scale(mainBlock, new Vector3(1, 1, 1), 0.8f).setEaseOutExpo().setOnComplete(ChangeScreenActive);
+            Invoke("AnimateX", 0.2f);
+
         }
 
 
-        if(_board.paused == false)
+        if (_board.paused == false)
         {
             print("pausing board");
             _board.pauseBoard();
@@ -76,6 +80,14 @@ public class PopuPInventar : MonoBehaviour
 
         //  LeanTween.moveLocal(gameObject/*.GetComponent<RectTransform>()*/,new Vector3(0,1846, 89501.99f), 1f).setEaseInExpo();
     }
+    void AnimateX()
+    {
+
+
+        LeanTween.scale(closingX, new Vector3(1.7f, 1.7f, 1), 0.3f).setEaseInOutExpo();
+    
+    }
+
     public void CloseMenuAnimation()
     {
         if (_board.paused == true)
@@ -85,14 +97,18 @@ public class PopuPInventar : MonoBehaviour
             _board.pauseBoard();
         }
         LeanTween.scale(mainBlock, new Vector3(0f, 0f, 0f), .8f).setEaseInExpo().setOnComplete(SetFalse);
-
+        LeanTween.scale(closingX, new Vector3(0, 0, 0), 0.8f).setEaseOutExpo();
         print("close");
         
     }
 
     public void ActivatePOP()
     {
+        if(Board.Instance.gridPopulation == true)
+        {
+
         gameObject.SetActive(true);
+        }
      
     }
 

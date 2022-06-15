@@ -111,9 +111,9 @@ public    bool alreadyInGame = false;
         {
 
             GameManager.Instance.restarted = false;
-            //changed 15.06
-            //alreadyInGame = false;
-            
+         
+
+            //--->gets changed in startscreen after application pause 
            alreadyInGame = false;
 
 

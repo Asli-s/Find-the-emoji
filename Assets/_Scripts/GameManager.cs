@@ -29,6 +29,15 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public int score3;
 
 
+    public int ExtraLife=0;
+    public int ExtraCoin=0;
+    public int ExtraSweetBonbon=0;
+    public int ExtraSweetLolli=0;
+
+
+
+
+
     public bool adNoCoinScreenClicked = false;
 
 
@@ -149,11 +158,23 @@ public class GameManager : MonoBehaviour, IDataPersistence
         print(gameCount);
 
         m_Object.text = coinNum.ToString();
-        /*  if (coinNum > 0 || coinNotEnough == false)
+        /*  if (coinNum
+         *  > 0 || coinNotEnough == false)
           {*/
+
+        if(firstTime == true ||phone == false && tablet == false)
+        {
+
         ChangeState(
 
             GameState.CheckScreenSize);
+        }
+        else
+        {
+            ChangeState(
+
+           GameState.CheckTimer);
+        }
 
     }
 
@@ -200,6 +221,10 @@ public class GameManager : MonoBehaviour, IDataPersistence
         /*  this.bestStreakStats =0;
           this.bestStreak =0;
           this.currentStreak = 0;*/
+        this.ExtraSweetLolli = gameData.ExtraSweetLolli;
+        this.ExtraSweetBonbon = gameData.ExtraSweetBonBon;
+        this.ExtraLife = gameData.ExtraLive;
+        this.ExtraCoin = gameData.ExtraCoin;
 
 
         positionStringLoad = gameData.lastPos;
@@ -244,6 +269,15 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.win = this.win;
         gameData.lose = this.lose;
 
+        
+        gameData.ExtraSweetLolli = 1;
+      gameData.ExtraSweetBonBon = 1;
+        /*
+                gameData.ExtraSweetLolli = this.ExtraSweetLolli;
+              gameData.ExtraSweetBonBon = this.ExtraSweetBonbon ;*/
+        gameData.ExtraLive= this.ExtraLife ;
+      gameData.ExtraCoin = this.ExtraCoin ;
+
         gameData.score1 = this.score1;
         gameData.score2 = this.score2;
         gameData.score3 = this.score3;
@@ -273,12 +307,13 @@ public class GameManager : MonoBehaviour, IDataPersistence
                 gameData.minutesLeft = 2;*/
 
         gameData.coinNumber = 5;
+        gameData.isTablet = false;
+        gameData.isPhone = false;
 
+        /*     gameData.coinNumber = this.coinNum;*/
 
-   /*     gameData.coinNumber = this.coinNum;*/
-
-        gameData.isTablet = this.tablet;
-        gameData.isPhone = this.phone;
+        /*  gameData.isTablet = this.tablet;
+          gameData.isPhone = this.phone;*/
 
 
         gameData.firstTime = this.firstTime;
@@ -303,6 +338,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
                 break;
             case GameState.CheckTimer:
                 TestTime.Instance.CalculateTime();
+                Sweets.Instance.DisplaySweetCount();
                 break;
 
             case GameState.FeatureTile:

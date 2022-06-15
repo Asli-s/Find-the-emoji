@@ -62,7 +62,7 @@ public class Board : MonoBehaviour
 
     int count = 0;
 
-    bool checkForPopFinish = false;
+  public  bool checkForPopFinish = false;
 
     GameObject singleNode;
 
