@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PopupShop : MonoBehaviour
+public class PopupAlreadyUsedAxe : MonoBehaviour
 {
-
     // Start is called before the first frame update
-    public static PopupShop Instance;
+    // Start is called before the first frame update
+    public static PopupAlreadyUsedAxe Instance;
     public GameObject mainBlock;
     public Board _board;
     public GameObject closingX;
@@ -18,7 +18,7 @@ public class PopupShop : MonoBehaviour
         {
             Instance = this;
         }
-        //   this.GetComponent<RectTransform>().localPosition = new Vector3(0, 1846, 89501.99f);
+       
     }
     private void OnEnable()
 
@@ -36,7 +36,6 @@ public class PopupShop : MonoBehaviour
         {
             LeanTween.scale(mainBlock, new Vector3(0.7f, 0.7f, 1), 0.8f).setEaseOutExpo().setOnComplete(ChangeScreenActive);
             Invoke("AnimateX", 0.2f);
-
 
 
         }
@@ -77,6 +76,7 @@ public class PopupShop : MonoBehaviour
     {
         Featured.Instance.screenActive = false;
 
+        Sweets.Instance.lolliClicked = false;
 
         gameObject.SetActive(false);
 
@@ -106,12 +106,7 @@ public class PopupShop : MonoBehaviour
 
     public void ActivatePOP()
     {
-     if(Board.Instance.gridPopulation == true)
-        {
-
-
         gameObject.SetActive(true);
-        }
 
     }
 

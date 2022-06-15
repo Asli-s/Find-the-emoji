@@ -76,6 +76,8 @@ public class DataPersistenceManager : MonoBehaviour
         Debug.Log("loaded score3" + " " + gameData.score3);
 
         Debug.Log("load  dateTime = " + gameData.savedTIme);
+        Debug.Log("load extrasweetlolli" + " " + gameData.ExtraSweetLolli);
+
 
 
         print("load minutes" + gameData.
@@ -113,6 +115,8 @@ public class DataPersistenceManager : MonoBehaviour
          secondsLeft);
         print("activecountd" + gameData.
          timerActive);
+        Debug.Log("save extrasweetlolli" + " " + gameData.ExtraSweetLolli);
+
 
 
         dataHandler.Save(gameData);
