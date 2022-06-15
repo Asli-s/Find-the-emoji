@@ -703,6 +703,7 @@ public class Board : MonoBehaviour
     {
 
         //only after popanimation
+
         if (GameManager.Instance.notClickable == false)
         {
 

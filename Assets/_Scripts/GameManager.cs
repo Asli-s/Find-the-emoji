@@ -281,7 +281,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.isPhone = this.phone;
 
 
-        gameData.firstTime = true;
+        gameData.firstTime = this.firstTime;
         /*  gameData.firstTime =this.firstTime;*/
     }
 
