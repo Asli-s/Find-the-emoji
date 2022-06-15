@@ -111,7 +111,10 @@ public    bool alreadyInGame = false;
         {
 
             GameManager.Instance.restarted = false;
-            alreadyInGame = false;
+            //changed 15.06
+            //alreadyInGame = false;
+            
+           alreadyInGame = false;
 
 
 
@@ -165,13 +168,15 @@ public    bool alreadyInGame = false;
 
             if (GameManager.Instance.restarted == true || FirstScreen.activeSelf == true )
             {
+                print("firtscreen");
             GameManager.Instance.minimizedApp = false;
                 FirstScreen.SetActive(true);
                 alreadyInGame = false;
 
             }
-            else if(alreadyInGame == true)
+            else if (GameManager.Instance.restarted == false)
             {
+                print("start game");
                 FirstScreen.SetActive(false);
 
                 GameManager.Instance.ChangeState(GameState.FeatureTile);

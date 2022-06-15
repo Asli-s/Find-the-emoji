@@ -206,7 +206,7 @@ public class LeanAnnimations : MonoBehaviour
     }
     void ActualRestart()
     {
-
+        print("start new scene");
         Featured.Instance.screenActive = false;
         Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
 
