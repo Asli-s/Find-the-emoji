@@ -26,6 +26,8 @@ public class Tiles : MonoBehaviour
     SpriteRenderer TileSpriteRenderer;
 
 
+    public GameObject glassScreen;
+
     void Awake()
        
     {
@@ -121,9 +123,20 @@ public class Tiles : MonoBehaviour
                     Featured.Instance.screenActive = false;
                 }
 
+                if (GameManager.Instance.glassSearch == true)
+                {
+                    print("win screen sorting order");
+                    gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                  
+                    GameManager.Instance.notClickable = false;
+                    glassScreen.SetActive(false);
+                   //deactivate backPanel 
+                   //deactivate glassanim
+                    Featured.Instance.screenActive = false;
+                }
 
 
-               FindObjectOfType<PlayExtraSound>().Play("win"); /// play yes sound
+                FindObjectOfType<PlayExtraSound>().Play("win"); /// play yes sound
 
 
                 Debug.Log("win!");

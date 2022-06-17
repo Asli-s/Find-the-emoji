@@ -37,6 +37,12 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
 
 
+    public GameObject SweetCoverHammer;
+    public GameObject SweetCoverGlass;
+
+
+
+
 
     public bool adNoCoinScreenClicked = false;
 
@@ -80,7 +86,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public int bestStreakStats;
     public int currentStreak;
 
-
+    public bool glassSearch = false;
 
 
     public int secondsLeft = 0;
@@ -306,11 +312,11 @@ public class GameManager : MonoBehaviour, IDataPersistence
                 gameData.timerActive = true;
                 gameData.minutesLeft = 2;*/
 
-        gameData.coinNumber = 5;
+    //    gameData.coinNumber = 5;
         gameData.isTablet = false;
         gameData.isPhone = false;
 
-        /*     gameData.coinNumber = this.coinNum;*/
+             gameData.coinNumber = this.coinNum;
 
         /*  gameData.isTablet = this.tablet;
           gameData.isPhone = this.phone;*/
@@ -328,9 +334,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
         GameState = newState;
         print("GAMEMANAGER minLeft" + minutesLeft);
         print("GAMEMANAGER secLeft" + secondsLeft);
-        print(loadDateStr);
-        /*   if (coinNum > 0) { 
-   */
+     
+        SweetCoverGlass.SetActive(true);
+        SweetCoverHammer.SetActive(true); //---> deactivate in board / checktiles
         switch (newState)
         {
             case GameState.CheckScreenSize:

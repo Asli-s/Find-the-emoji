@@ -10,19 +10,23 @@ public class Sweets : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI SweetBonbon;
 
     public GameObject LolliAnim;
+    public GameObject GlassAnim;
+
 
     public CanvasGroup backgroundPanel;
     public GameObject backgroundPanelGameObject;
 
 
-    [SerializeField] private GameObject AlreadyUsedAlert;
+    [SerializeField] private GameObject AlreadyUsedAlertHammer;
     [SerializeField] private Board _board;
 
 
   public  bool lolliClicked = false;
-    bool bonbonClicked = false;
+  public  bool bonbonClicked = false;
 
-    public bool alreadyUsed = false;
+    public bool alreadyUsedLolli = false;
+    public bool alreadyUsedBonbon = false;
+
 
     private void Awake()
     {
@@ -50,7 +54,7 @@ public class Sweets : MonoBehaviour
             {
                 print("lolli clicked");
                 lolliClicked = true;
-                if (GameManager.Instance.ExtraSweetLolli > 0 && alreadyUsed == false)
+                if (GameManager.Instance.ExtraSweetLolli > 0 && alreadyUsedLolli == false)
                 {
                     // reduce one 
                     // open featureTile not close --> try destroy child object
@@ -62,11 +66,11 @@ public class Sweets : MonoBehaviour
                     backgroundPanel.LeanAlpha(1, 0.2f);
                     LolliAnim.SetActive(true);
 
-                    alreadyUsed = true;
+                    alreadyUsedLolli = true;
                 }
-                else if (alreadyUsed == true)
+                else if (alreadyUsedLolli == true)
                 {
-                    AlreadyUsedAlert.SetActive(true);
+                    AlreadyUsedAlertHammer.SetActive(true);
                    
 
                     // ypu already used this 
@@ -85,26 +89,36 @@ public class Sweets : MonoBehaviour
 
     public void UseBonbon()
     {
-        if (bonbonClicked == false)
+        if (_board.checkForPopFinish == true)
         {
-            bonbonClicked = true;
-            if (GameManager.Instance.ExtraSweetBonbon > 0)
+            if (bonbonClicked == false)
             {
-                // reduce one 
-                // open featureTile not close --> try destroy child object
-                backgroundPanel.LeanAlpha(0, 0);
+                bonbonClicked = true;
+                if (GameManager.Instance.ExtraSweetBonbon > 0 && alreadyUsedBonbon ==false)
+                {
+                    // reduce one 
+                    // open featureTile not close --> try destroy child object
 
-                backgroundPanel.LeanAlpha(1, 0.2f);
-                bonbonClicked = false;
+                    backgroundPanelGameObject.SetActive(true);
 
-            }
-            else
-            {
-                //showAlert (sorry not enough sweets)
-                bonbonClicked = false;
+                    backgroundPanel.LeanAlpha(0, 0);
+
+                    GlassAnim.SetActive(true);
+                    backgroundPanel.LeanAlpha(1, 0.2f);
+                   // bonbonClicked = false;
+                    alreadyUsedBonbon = true;
+                }
+                else if(alreadyUsedBonbon == true)
+                {
+                    //activate already used or active alert
+                }
+                else
+                {
+                    //showAlert (sorry not enough sweets)
+                    bonbonClicked = false;
+                }
             }
         }
-
 
 
 

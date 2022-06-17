@@ -56,12 +56,12 @@ public class LolliAnim : MonoBehaviour
     {
         CrackParent.SetActive(true);
 
-        LeanTween.moveLocal(Left.GetComponent<RectTransform>().gameObject, new Vector3(-50,0,0), .4f);
-        LeanTween.moveLocal(Right.GetComponent<RectTransform>().gameObject, new Vector3(50, 0, 0), .4f);
-        LeanTween.moveLocal(Top.GetComponent<RectTransform>().gameObject, new Vector3(50, 0, 0), .4f);   
-        LeanTween.moveLocal(Bottom.GetComponent<RectTransform>().gameObject, new Vector3(-50, 0, 0), .4f);
+        LeanTween.moveLocal(Left.GetComponent<RectTransform>().gameObject, new Vector3(-50,0,0), .5f);
+        LeanTween.moveLocal(Right.GetComponent<RectTransform>().gameObject, new Vector3(50, 0, 0), .5f);
+        LeanTween.moveLocal(Top.GetComponent<RectTransform>().gameObject, new Vector3(50, 0, 0), .5f);   
+        LeanTween.moveLocal(Bottom.GetComponent<RectTransform>().gameObject, new Vector3(-50, 0, 0), 54f);
 
-        Invoke("OpenTile",0.7f);
+        Invoke("OpenTile",0.8f);
     }
 
     void OpenTile()

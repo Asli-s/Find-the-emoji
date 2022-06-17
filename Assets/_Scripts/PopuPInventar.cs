@@ -103,13 +103,13 @@ public class PopuPInventar : MonoBehaviour
     }
 
     public void ActivatePOP()
-    {
+    {/*
         if(Board.Instance.gridPopulation == true)
         {
 
-        gameObject.SetActive(true);
-        }
+        }*/
      
+        gameObject.SetActive(true);
     }
 
   
