@@ -79,6 +79,15 @@ public class Board : MonoBehaviour
 
     bool promo = false;
 
+    public int appearedForSeach = 0;
+   public bool resetappearedForSeachCounter = false;
+    bool pauseOnce = false;
+
+  public  bool foundSearchedTile = false;
+    public GlassAnim GlassAnim;
+
+
+
     void Awake()
     {
 
@@ -138,6 +147,7 @@ public class Board : MonoBehaviour
                 GameManager.Instance.firstFeatureTileAlreadyShown = true;
                 Time.timeScale = 0;
             }
+            
 
             // first play featuretile instr 
 
@@ -157,13 +167,40 @@ public class Board : MonoBehaviour
 
 
             }
-        /*    else if (GameManager.Instance.firstFeatureTileAlreadyShown == true && GameManager.Instance.firstTime == true && Instructions.activeSelf == false && appearCounter != 0 && running == false && paused == true)
+            /*    if(GameManager.Instance.glassSearch == true&& resetappearedForSeachCounter ==false )
+                      {
+
+                          resetappearedForSeachCounter = true;
+                        //  appearedForSeach = 0;
+                      }*/
+            if (appearedForSeach == 1 && GameManager.Instance.glassSearch == true && resetappearedForSeachCounter == true && foundSearchedTile == false)
             {
-                running = true;
-                pauseBoard();
-                    }*/
-           
+                foundSearchedTile = true;
+                
+                if (paused == false && pauseOnce ==false)
+                {
+                    Featured.Instance.screenActive = false;
+                    pauseOnce = true;
+                    pauseBoard();
+
+                }
+                _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
+                chosenTileFirst.GetComponent<BoxCollider2D>().enabled = true;
+                chosenTileFirstAppear.sortingOrder = 30000;
+
+
+                print("place vector of searched tile");
+                GlassAnim.goalVector =    chosenTileFirst.transform.position;
+                // bring glass to position
+            }
        
+
+
+
+
+
+
+
 
                 if (secondsToStart > 0)
             {
@@ -203,6 +240,35 @@ public class Board : MonoBehaviour
         }
 
     }
+
+
+  public  void checkCurrentNodes()
+    {
+
+        _nodes.ForEach((t) =>
+        {
+            if (t.GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
+            {
+                // isINCurrentNodes
+                appearedForSeach = 1;
+                chosenTileFirstAppear = t.GetComponent<SpriteRenderer>();
+                chosenTileFirst = t;
+
+            }
+            
+
+
+        });
+        if(paused == true && appearedForSeach ==0) //start board again
+        {
+            Featured.Instance.screenActive = true;
+
+            print("start board again");
+            pauseBoard();
+            timeSpeed = 0.1f;
+        }
+    }
+
 
 
     public void PopSprite()
@@ -301,7 +367,7 @@ public class Board : MonoBehaviour
        }
    */
 
-    void checkTiles()
+    void checkTiles()  //check if everything popped
     {
         int childCountFour = 0;
 
@@ -320,6 +386,9 @@ public class Board : MonoBehaviour
         if (childCountFour == 0)
         {
             checkForPopFinish = true;
+
+            GameManager.Instance.SweetCoverGlass.SetActive(false);
+            GameManager.Instance.SweetCoverHammer.SetActive(false);
         }
 
     }
@@ -357,6 +426,7 @@ public class Board : MonoBehaviour
                 if (alreadyAssigned == false && t.GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
                 {
                     appearCounter = 1;
+                    appearedForSeach = 1;
                     print("appeared onstart " + appearCounter);
                     if (appearCounter == 1 && GameManager.Instance.firstTime)
                     {
@@ -367,19 +437,28 @@ public class Board : MonoBehaviour
                         chosenTileFirstAppear = t.GetComponent<SpriteRenderer>();
                         chosenTileFirst = t;
                     }
-                  
-/* if (GameManager.Instance.firstTime == true &&appearCounter ==1)
-                {
-                    _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
-                    _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sortingOrder = 30000;
-                    _nodes[randomChosenTile].GetComponent<BoxCollider2D>().enabled = true;
-                }
-                    if(GameManager.Instance.firstTime == true)
+                    if (appearedForSeach == 1 && GameManager.Instance.glassSearch ==true)
                     {
-                        _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
-                        t.GetComponent<SpriteRenderer>().sortingOrder = 30000;
-                        t.GetComponent<BoxCollider2D>().enabled = true;
-                    }*/
+                        if (Featured.Instance.openTile == false && paused == false)
+                        {
+                            Featured.Instance.screenActive = false;
+                            pauseBoard();
+                        }
+                        chosenTileFirstAppear = t.GetComponent<SpriteRenderer>();
+                        chosenTileFirst = t;
+                    }
+                    /* if (GameManager.Instance.firstTime == true &&appearCounter ==1)
+                                    {
+                                        _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
+                                        _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sortingOrder = 30000;
+                                        _nodes[randomChosenTile].GetComponent<BoxCollider2D>().enabled = true;
+                                    }
+                                        if(GameManager.Instance.firstTime == true)
+                                        {
+                                            _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
+                                            t.GetComponent<SpriteRenderer>().sortingOrder = 30000;
+                                            t.GetComponent<BoxCollider2D>().enabled = true;
+                                        }*/
                     //  print(appearCounter);
                 }
 
@@ -621,6 +700,7 @@ public class Board : MonoBehaviour
             {
 
                 appearCounter += 1;
+                appearedForSeach += 1;
                print("appeared changed tile" +appearCounter);
                 if (appearCounter==1 && GameManager.Instance.firstTime)
                 {
@@ -631,7 +711,16 @@ public class Board : MonoBehaviour
                     chosenTileFirstAppear = _nodes[randomChosenTile].GetComponent<SpriteRenderer>();
                     chosenTileFirst = _nodes[randomChosenTile];
                 }
-               
+                if (appearedForSeach == 1 && GameManager.Instance.glassSearch ==true)
+                {
+                    if ( paused == false)
+                    {
+                        Featured.Instance.screenActive = false;
+                        pauseBoard();
+                    }
+                    chosenTileFirstAppear = _nodes[randomChosenTile].GetComponent<SpriteRenderer>();
+                    chosenTileFirst = _nodes[randomChosenTile];
+                }
                 // print(appearCounter);
                 /* if (GameManager.Instance.firstTime == true &&appearCounter ==1)
                  {
@@ -770,6 +859,7 @@ public class Board : MonoBehaviour
             if (_nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
             {
                 appearCounter += 1;
+                appearedForSeach += 1;
              }
 
         }

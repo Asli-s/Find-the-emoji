@@ -46,6 +46,7 @@ public class GameOver : MonoBehaviour
     }
     public void Win()
     {
+
         bestStreakOld = GameManager.Instance.bestStreak;
       //  GameManager.Instance.win += 1;
         win = true;

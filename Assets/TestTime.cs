@@ -174,7 +174,7 @@ public    bool alreadyInGame = false;
                 alreadyInGame = false;
 
             }
-            else if (GameManager.Instance.restarted == false)
+            else if (alreadyInGame == false)
             {
                 print("start game");
                 FirstScreen.SetActive(false);
