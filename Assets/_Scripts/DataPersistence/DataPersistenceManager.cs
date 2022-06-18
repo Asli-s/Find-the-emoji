@@ -138,15 +138,16 @@ public class DataPersistenceManager : MonoBehaviour
         {
             print("game paused ");
             SaveGame();
-
+            print("my current streak on pause" + GameManager.Instance.currentStreak);
             GameManager.Instance.minimizedApp = true;
         }
         else
         {
-   
+
             DataPersistenceManager.Instance.LoadGame();
             GameManager.Instance.callLoadAgain();
          
+            print("my current streak on start after pausse" + GameManager.Instance.currentStreak);
             print("not paused anymore");
 
 

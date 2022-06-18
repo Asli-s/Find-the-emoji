@@ -129,7 +129,7 @@ public    bool alreadyInGame = false;
             }
 
             GameManager.Instance.currentStreak =0;
-
+            print("currentstreak reset if game is restarted");
 
 
 
@@ -351,13 +351,17 @@ public    bool alreadyInGame = false;
                 {
                     FirstScreen?.SetActive(true);
                 }
-                else if(alreadyInGame == true)
+                else if(alreadyInGame == false)
+                {
+                    FirstScreen.SetActive(true);
+
+                   // GameManager.Instance.ChangeState(GameState.FeatureTile);
+                }
+                else if (alreadyInGame == true)
                 {
                     FirstScreen.SetActive(false);
 
-                    GameManager.Instance.ChangeState(GameState.FeatureTile);
                 }
-
 
 
                 //ifnoscreen == active and newNum >0 ---> deactivate button

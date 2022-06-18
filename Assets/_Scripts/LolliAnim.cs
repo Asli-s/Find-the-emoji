@@ -35,7 +35,7 @@ public class LolliAnim : MonoBehaviour
             print("paused?? " + Board.Instance.paused);
             Board.Instance.pauseBoard();
         }
-            LeanTween.moveLocal(Lolli.GetComponent<RectTransform>().gameObject, new Vector3(160, 291, 1), 1.2f).setEaseOutElastic();
+            LeanTween.moveLocal(Lolli.GetComponent<RectTransform>().gameObject, new Vector3(159.5f, 291, 1), 1.2f).setEaseOutElastic();
         LeanTween.rotate(Lolli.GetComponent<RectTransform>().gameObject, new Vector3(0,0 , -70), 1f).setEaseOutElastic().setDelay(.8f);
 
 
