@@ -35,6 +35,8 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
     public bool additionalMenu = false;
     // Start is called before the first frame update
 
+    bool gameWasPausedBefore = false;
+
 
     private void Awake()
     {
@@ -105,18 +107,31 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
         /*   if (Featured.Instance.screenActive == false &&findFeatureScreenAnim.Instance.animEnded ==true)
            {*/
 
+        if (_board.paused == false)
+        {
+            gameWasPausedBefore = false;
+        }
+        else{
+            gameWasPausedBefore = true;
+
+        }
+
+
         if (GameManager.Instance.notClickable == false)
         {
 
             print("inside showscreen");
 
-            /* NO OTHER SCREENS ACTIVE*/
+            /* NO OTHER SCREENS ACTIVE - open the menu*/
             if (openMenu == false && additionalMenu == false && _board.paused == false && findScreen.activeSelf == false && Featured.Instance.screenActive == false)//&& Board.Instance.pausePanelActive == false)
             {
                 ThemeSound.Instance.audio.volume = 0.04f;
                 //  print("first");
+                if(gameWasPausedBefore == false)
+                {
 
                 _board.pauseBoard();
+                }
                 _allTiles = _board._nodes;
                 /* _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
                  featureTile.transform.GetChild(0).gameObject.GetComponent<BoxCollider2D>().enabled = false;*/
@@ -172,8 +187,11 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
                 ThemeSound.Instance.audio.volume = 0.1f;
 
                 Button.GetComponent<Image>().sprite = openMenuSprite;
+                if(gameWasPausedBefore ==false )
+                {
 
                 _board.pauseBoard();
+                }
 
             }
 

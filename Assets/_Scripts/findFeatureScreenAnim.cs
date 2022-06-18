@@ -92,7 +92,7 @@ public GameObject featureImageObject;
       
 
         /*POP FFEATURE TILE IMAGE*/
-        LeanTween.scale(featureImageObject, new Vector3(3.5f, 3.5f, 3.7f), 1.5f).setDelay(0.5f).setEaseOutElastic(); //.setOnComplete(playSoundSlide);
+        LeanTween.scale(featureImageObject, new Vector3(2.9f, 2.9f, 3.7f), .6f).setDelay(0.5f).setEaseInOutElastic(); //.setOnComplete(playSoundSlide);
      Invoke("playSoundSlide", 2.9f);
 
 
@@ -113,7 +113,7 @@ public GameObject featureImageObject;
         /*FEATURE TILE SCALE BACK*/
         // LeanTween.scale(featureImageObject,  new Vector3(3,3,0), 1.6f).setDelay(2.6f).setEaseInBack();
 
-        LeanTween.scale(featureImageObject, new Vector3(2.4f, 2.4f, 0), 1.51f).setDelay(3.6f).setEaseInElastic().setOnComplete(playSound2); //.setOnComplete(featureTileAppear);
+        LeanTween.scale(featureImageObject, new Vector3(2.2f, 2.2f, 0), 1.51f).setDelay(3.6f).setEaseInElastic().setOnComplete(playSound2); //.setOnComplete(featureTileAppear);
 //        LeanTween.scale(featureImageObject, new Vector3(3f, 3f, 0), 1.51f).setDelay(3.6f).setEaseInElastic().setOnComplete(playSound2); //.setOnComplete(featureTileAppear);
 
 
