@@ -9,13 +9,16 @@ public class BonusFirstAlert : MonoBehaviour
     bool clicked = false;
 
     public GameObject featureTileBonus;
-
+    public CanvasGroup backPanelFade;
+    public GameObject backPanelObject;
 
     private void OnEnable()
     {
 
 
         LeanTween.scale(mainBlock, new Vector3(0.7f, 0.7f, 1), 0.8f).setEaseOutExpo();
+        backPanelObject.SetActive(true);
+                    backPanelFade.LeanAlpha(0.9f, 0.2f);
 
 
 
@@ -35,7 +38,7 @@ public class BonusFirstAlert : MonoBehaviour
                 gameObject.SetActive(false);
                 Board.Instance.GenerateBonusGrid();
 
-                FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+              //  FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
                 GameManager.Instance.bonusOn = true;
                 print("gridpop firstalert" + Board.Instance.gridPopulation);
                 featureTileBonus.SetActive(true);

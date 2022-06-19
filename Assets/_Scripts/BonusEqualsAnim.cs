@@ -15,7 +15,9 @@ public class BonusEqualsAnim : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI presentText;
     [SerializeField] TMPro.TextMeshProUGUI goldText;
 
+
     //    public GameObject // nextscreen
+    public GameObject BackToGame;
 
 
 
@@ -54,7 +56,8 @@ public class BonusEqualsAnim : MonoBehaviour
             {
                 clicked = true;
                 gameObject.SetActive(false);
-              //  BonusEqualsScreen.SetActive(true);
+                //  BonusEqualsScreen.SetActive(true);
+                BackToGame.SetActive(true);
             }
         }
     }

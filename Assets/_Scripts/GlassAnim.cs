@@ -11,7 +11,10 @@ public class GlassAnim : MonoBehaviour
     [SerializeField] private GameObject Glass;
     public GameObject backgroundPanelGameObject;
     public Vector3 goalVector = new Vector3(0, 0, 0);
-    Vector3[] vectorList = new[] { new Vector3(-206f,-463f,  1f), new Vector3(39f, 236f, 1f), new Vector3(335, -342, 1f) };
+    //  Vector3[] vectorList = new[] { new Vector3(-206f,-463f,  1f), new Vector3(39f, 236f, 1f), new Vector3(335, -342, 1f) };
+
+    Vector3[] vectorList = new[] { new Vector3(-238f,-250f,  100000f), new Vector3(63f, 178f, 100000f), new Vector3(241, -377, 100000f) };
+
     int posInArray = 0;
     public CanvasGroup backPanel;
 
@@ -27,7 +30,7 @@ public class GlassAnim : MonoBehaviour
             print("paused?? " + Board.Instance.paused);
             Board.Instance.pauseBoard();
         }
-
+        Board.Instance.ResizeArray();
         Board.Instance.appearedForSeach = 0;
         Board.Instance.resetappearedForSeachCounter = true;
 
@@ -64,8 +67,10 @@ public class GlassAnim : MonoBehaviour
         else
         {
             print("goalvector " + goalVector);
+            Glass.transform.SetParent(Board.Instance._parentObject.transform, false);
+            Glass.transform.localScale = new Vector3(4f, 4f, 4f);
 
-            LeanTween.moveLocal(Glass.GetComponent<RectTransform>().gameObject, goalVector, .5f).setOnComplete(DeactiveGameObject);
+            LeanTween.moveLocal(Glass.GetComponent<RectTransform>().gameObject, goalVector, .7f).setOnComplete(DeactiveGameObject);
             backPanel.LeanAlpha(1, 0.2f);
            // Glass.SetActive(false);
 
@@ -98,9 +103,13 @@ public class GlassAnim : MonoBehaviour
         }
         else
         {
-            print("goalvector " + goalVector);
+                    Glass.transform.SetParent(Board.Instance._parentObject.transform, false);
+            Glass.transform.localScale=new Vector3(4f, 4f, 4f);
 
-            LeanTween.moveLocal(Glass.GetComponent<RectTransform>().gameObject, goalVector, .5f).setOnComplete(DeactiveGameObject);
+            print("goalvector " + goalVector);
+            
+
+            LeanTween.moveLocal(Glass.GetComponent<RectTransform>().gameObject, goalVector, .7f).setOnComplete(DeactiveGameObject);
             backPanel.LeanAlpha(1, 0.2f);
 
         }
@@ -142,7 +151,7 @@ public class GlassAnim : MonoBehaviour
             Board.Instance.pauseBoard();
         }*/
         Sweets.Instance.bonbonClicked = false;
-        Glass.SetActive(false);
+       // Glass.SetActive(false);
     //    Featured.Instance.screenActive = false;
 
  /*       backgroundPanelGameObject.SetActive(false);
