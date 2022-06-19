@@ -107,6 +107,8 @@ public    bool alreadyInGame = false;
 
         remainingSeconds = (int)((minutesDifference - remainingMinutes) * 60); /*make whole seconds */
         print("remaining minutes and seconds" + remainingMinutes + remainingSeconds);
+
+        print("CURRRENT STREAK" + GameManager.Instance.currentStreak);
         if (remainingMinutes == 0 && remainingSeconds <= 2 || GameManager.Instance.minimizedApp == true)
         {
 
@@ -178,8 +180,11 @@ public    bool alreadyInGame = false;
             {
                 print("start game");
                 FirstScreen.SetActive(false);
+                if(GameManager.Instance.bonusOn == false)
+                {
 
                 GameManager.Instance.ChangeState(GameState.FeatureTile);
+                }
             }
 
 
@@ -388,8 +393,10 @@ public    bool alreadyInGame = false;
                 else if (GameManager.Instance.minimizedApp == false && GameManager.Instance.restarted == false || FirstScreen.activeSelf == true && GameManager.Instance.minimizedApp == false && alreadyInGame == true)
                 {
                     FirstScreen.SetActive(false);
+                    if(GameManager.Instance.bonusOn == false){
 
                     GameManager.Instance.ChangeState(GameState.FeatureTile);
+                    }
                 }
                 if (GameManager.Instance.minimizedApp == true && NoCoinScreen.activeSelf == true && GameManager.Instance.coinNum > 0 && GameManager.Instance.restarted == false &&alreadyInGame == true)
                 {
@@ -432,8 +439,11 @@ public    bool alreadyInGame = false;
             if (alreadyInGame == true)
             {
                 FirstScreen.SetActive(false);
+                if (GameManager.Instance.bonusOn == false)
+                {
 
                 GameManager.Instance.ChangeState(GameState.FeatureTile);
+                }
             }
             else
             {

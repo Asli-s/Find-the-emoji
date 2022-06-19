@@ -325,7 +325,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.isTablet = false;
         gameData.isPhone = false;
 
-        // gameData.coinNumber = this.coinNum;
+       //  gameData.coinNumber = this.coinNum;
         gameData.coinNumber = 5;
 
         /*  gameData.isTablet = this.tablet;
@@ -358,10 +358,15 @@ public class GameManager : MonoBehaviour, IDataPersistence
                 break;
 
             case GameState.FeatureTile:
-                print("gamecount" + gameCount);
-                if(gameCount !=1)//currentstreak== 20)
+                currentStreak += 1;
+                print("streak" + currentStreak);
+
+                if (currentStreak == 2 || currentStreak ==5)//currentstreak== 20)
                 {
                     BonusFirstAlert.SetActive(true);
+                    //  currentStreak += 1;
+                    FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+
 
                     //bonus 
                     //  generategrrid bonus
@@ -369,9 +374,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
                 else
                 {
 
-                Featured.Instance?.choseFeatureTile();
-                currentStreak += 1;
-                FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+                    Featured.Instance?.choseFeatureTile();
+                    //  currentStreak += 1;
+                    FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
                 }
                 break;
             case GameState.ActivateFindScreen:
