@@ -35,12 +35,15 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public int ExtraSweetLolli=0;
 
 
+    public int goldBag = 0;
 
+    public bool bonusOn =false;
 
     public GameObject SweetCoverHammer;
     public GameObject SweetCoverGlass;
 
-
+    public GameObject BonusScreen;
+    public GameObject BonusFirstAlert;
 
 
 
@@ -233,6 +236,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
         this.ExtraLife = gameData.ExtraLive;
         this.ExtraCoin = gameData.ExtraCoin;
 
+        this.goldBag = gameData.goldBag;
+
 
         positionStringLoad = gameData.lastPos;
 
@@ -279,6 +284,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
         
         gameData.ExtraSweetLolli = 1;
       gameData.ExtraSweetBonBon = 1;
+        gameData.goldBag = this.goldBag;
+
+        
         /*
                 gameData.ExtraSweetLolli = this.ExtraSweetLolli;
               gameData.ExtraSweetBonBon = this.ExtraSweetBonbon ;*/
@@ -350,10 +358,21 @@ public class GameManager : MonoBehaviour, IDataPersistence
                 break;
 
             case GameState.FeatureTile:
-                print("gamestate featuretile");
+                print("gamecount" + gameCount);
+                if(gameCount !=1)//currentstreak== 20)
+                {
+                    BonusFirstAlert.SetActive(true);
+
+                    //bonus 
+                    //  generategrrid bonus
+                }
+                else
+                {
+
                 Featured.Instance?.choseFeatureTile();
                 currentStreak += 1;
                 FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+                }
                 break;
             case GameState.ActivateFindScreen:
                 print("gamestate activateFindScreen");
@@ -431,7 +450,16 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
                 Menu.Instance.LoadSceneFast();
                 break;
-               
+            case GameState.WinBonus:
+
+                //show win screen continue
+                //
+                BonusScreen.SetActive(true);
+                BonusWin.Instance.ActivateBonusScreen();
+
+                //      SaveData();
+                break;
+
         }
     }
 
@@ -454,5 +482,6 @@ public enum GameState
     ActivateFindScreen = 10,
     NotEnoughCoins = 11,
     CheckScreenSize = 12,
+    WinBonus=13,
 
 }
