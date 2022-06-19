@@ -21,6 +21,9 @@ public class Tiles : MonoBehaviour
     private int positionInArray;
 
 
+  
+
+
     public GameObject Instructions;
     public GameObject firstSprite;
     SpriteRenderer TileSpriteRenderer;
@@ -94,83 +97,109 @@ public class Tiles : MonoBehaviour
         }
         else if(Featured.Instance.screenActive == false)
         {
-            if (win == false && GameOver.Instance.lose ==false)
+            if (win == false && GameOver.Instance.lose ==false && GameManager.Instance.bonusOn ==false)
             {
 
 
            FindObjectOfType<AudioManager>().Play("jump", false);
             }
-         //   FindObjectOfType<AudioManager>().Play("right");
+     
+            //   FindObjectOfType<AudioManager>().Play("right");
 
 
-     //       print("stillClicked!");
+            //       print("stillClicked!");
             clickedTile = GetComponent<SpriteRenderer>().sprite;
             TileSpriteRenderer = GetComponent<SpriteRenderer>();
             //  print(clickedTile);
-
-            if (clickedTile == _featureTileSprite.sprite)
+            if (GameManager.Instance.bonusOn == false)
             {
-                //  FindObjectOfType<AudioManager>().Play("yes",false);
-
-                if(GameManager.Instance.firstTime == true)
+                if (clickedTile == _featureTileSprite.sprite)
                 {
-                    print("win screen sorting order");
-                    gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
-                    Instructions.SetActive(false);
-                    GameManager.Instance.notClickable = false;
+                    //  FindObjectOfType<AudioManager>().Play("yes",false);
 
-                    GameManager.Instance.firstBoardTile = false;
-                    Featured.Instance.screenActive = false;
+                    if (GameManager.Instance.firstTime == true)
+                    {
+                        print("win screen sorting order");
+                        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                        Instructions.SetActive(false);
+                        GameManager.Instance.notClickable = false;
+
+                        GameManager.Instance.firstBoardTile = false;
+                        Featured.Instance.screenActive = false;
+                    }
+
+                    if (GameManager.Instance.glassSearch == true)
+                    {
+                        print("win screen sorting order");
+                        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+
+                        GameManager.Instance.notClickable = false;
+                        glassScreen.SetActive(false);
+                        //deactivate backPanel 
+                        //deactivate glassanim
+                        Featured.Instance.screenActive = false;
+                    }
+
+
+                    FindObjectOfType<PlayExtraSound>().Play("win"); /// play yes sound
+
+
+                    Debug.Log("win!");
+                    win = true;
+                    GameManager.Instance.ChangeState(GameState.Win);
+                    // enable highlight 
+                    _highlight.SetActive(true);
+
+                }
+                else if (clickedTile != _featureTileSprite.sprite)
+                {
+                    positionInArray =
+                          _board._nodes.FindIndex(x => x.Equals(_tile));
+                    //     health.GetComponent<HealthHearts>().loseLife();
+                    HealthHearts.Instance.loseLife();
+                    //  print(health.GetComponent<HealthHearts>().health);
+
+
+
+
+                    // }
+
+
+
                 }
 
-                if (GameManager.Instance.glassSearch == true)
-                {
-                    print("win screen sorting order");
-                    gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
-                  
-                    GameManager.Instance.notClickable = false;
-                    glassScreen.SetActive(false);
-                   //deactivate backPanel 
-                   //deactivate glassanim
-                    Featured.Instance.screenActive = false;
-                }
 
-
-                FindObjectOfType<PlayExtraSound>().Play("win"); /// play yes sound
-
-
-                Debug.Log("win!");
-                win = true;
-                GameManager.Instance.ChangeState(GameState.Win);
-                // enable highlight 
-                _highlight.SetActive(true);
 
             }
-            else if (clickedTile != _featureTileSprite.sprite)
+
+            else if (GameManager.Instance.bonusOn == true)
             {
-                positionInArray =
-                      _board._nodes.FindIndex(x => x.Equals(_tile));
-           //     health.GetComponent<HealthHearts>().loseLife();
-                HealthHearts.Instance.loseLife();
-              //  print(health.GetComponent<HealthHearts>().health);
+                if(clickedTile != Board.Instance.blackSprite)
+                {
 
+                   
+                    if(Board.Instance.stopCounting == false)
+                    {
+                        FindObjectOfType<AudioManager>().Play("jump", false);
 
+                        _highlight.SetActive(true);
 
+                        positionInArray = _board._nodes.FindIndex(x => x.Equals(_tile));
+                        Board.Instance.changeBonusClickedSingleTile(positionInArray);
 
-                // }
+                        Board.Instance.bonusCounter += 1;
+                    }
 
-
-
-            }
-
-
-
-
+                    print("bonuscounter " + Board.Instance.bonusCounter);
+                }
+            
+                // counter 
+                            }
         }
 
 
 
-
+     
 
     }
     /*    private void OnMouseExit()

@@ -9,12 +9,19 @@ public class squareScript : MonoBehaviour
     {
 
         //set active after , oneanable after 6s delete 
+        if(GameManager.Instance.bonusOn == false)
+        {
+
         Destroy(gameObject, 6f);
+        }
+        else
+        {
+        //    Invoke("DelayedDeactivation", 0.01f);
+        }
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+  //
+
 }

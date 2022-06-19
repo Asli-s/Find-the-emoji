@@ -24,6 +24,15 @@ public class Board : MonoBehaviour
     public GameObject PausePanel;
     public bool pausePanelActive = false;
 
+    public Sprite presentSprite;
+    public Sprite blackSprite;
+
+
+    public int bonusTileCount = 0;
+    public int bonusCounter=0;
+    public bool stopCounting =false;
+
+
     bool checkParentBoard = false;
 
     SpriteRenderer chosenTileFirstAppear;
@@ -86,7 +95,7 @@ public class Board : MonoBehaviour
   public  bool foundSearchedTile = false;
     public GlassAnim GlassAnim;
 
-
+    bool bonusPopped =false;
 
     void Awake()
     {
@@ -228,6 +237,11 @@ public class Board : MonoBehaviour
                             changeSingleTile();
                         }
                     }
+                    else if(GameManager.Instance.bonusOn ==true)
+                    {
+                        secondsLeft = originalSeconds;
+                        changeSingleBonusTile();
+                    }
                     else
                     {
                         secondsLeft = originalSeconds;
@@ -238,7 +252,12 @@ public class Board : MonoBehaviour
 
             }
         }
-
+else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonusPopped ==false)
+        {
+            bonusPopped = true;
+            PopBonus();
+            print("PopBonus from update");
+        }
     }
 
 
@@ -500,6 +519,7 @@ public class Board : MonoBehaviour
         //   print("board" + featureTileSpriteRenderer.sprite);
 
         //chosenSpritesArray will contain 80 sprites -->75
+        //   limiting array to chose from
         for (int i = 0; i < _maxRange-1; i++)
         {
             rnd = UnityEngine.Random.Range(_minRange, _maxRange);
@@ -597,6 +617,262 @@ public class Board : MonoBehaviour
 
 
 
+    private Tiles getBonusTile()
+    {
+
+
+        // _tileSpriteRenderer.sprite = _tilesPrefab?._gameObjects?[rnd];
+
+        bonusTileCount += 1;
+        _tileSpriteRenderer.sprite = presentSprite;
+
+
+       /* if (_nodes != null)
+        {
+            _nodes.ForEach((t) =>
+            {
+              
+                //print(featureTile.tile.GetComponent<SpriteRenderer>().sprite);//.GetComponent<SpriteRenderer>().sprite);
+
+                //check if featureTile sprite appeared
+                if (alreadyAssigned == false && t.GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
+                {
+                    appearCounter = 1;
+                    appearedForSeach = 1;
+                    print("appeared onstart " + appearCounter);
+                    if (appearCounter == 1 && GameManager.Instance.firstTime)
+                    {
+                        if (Featured.Instance.openTile == false && paused == false)
+                        {
+                            pauseBoard();
+                        }
+                        chosenTileFirstAppear = t.GetComponent<SpriteRenderer>();
+                        chosenTileFirst = t;
+                    }
+                    if (appearedForSeach == 1 && GameManager.Instance.glassSearch == true)
+                    {
+                        if (Featured.Instance.openTile == false && paused == false)
+                        {
+                            Featured.Instance.screenActive = false;
+                            pauseBoard();
+                        }
+                        chosenTileFirstAppear = t.GetComponent<SpriteRenderer>();
+                        chosenTileFirst = t;
+                    }
+                    *//* if (GameManager.Instance.firstTime == true &&appearCounter ==1)
+                                    {
+                                        _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
+                                        _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sortingOrder = 30000;
+                                        _nodes[randomChosenTile].GetComponent<BoxCollider2D>().enabled = true;
+                                    }
+                                        if(GameManager.Instance.firstTime == true)
+                                        {
+                                            _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
+                                            t.GetComponent<SpriteRenderer>().sortingOrder = 30000;
+                                            t.GetComponent<BoxCollider2D>().enabled = true;
+                                        }*//*
+                    //  print(appearCounter);
+                }
+
+
+
+            });
+        }
+
+        //added 02.05*/
+
+        //change to  first sprite 
+
+
+
+        /*   else if(findScreenFinished == false )// && population is completed)
+           {
+               _tileSpriteRenderer.sprite = firstSprite;
+
+           }*/
+
+
+
+        /* else if(findScreenFinished =true && gridPopulation ==false)
+         {
+             GenerateGrid();    ____________----->  call NEW generategrid at this point 
+             gridPopulation = true;
+         }*/
+        return _tilesPrefab;
+
+
+
+    }
+
+
+    public void GenerateBonusGrid()
+    {
+        //   featureTileSpriteRenderer = featureTile._featureTilePrefab.GetComponent<SpriteRenderer>();
+        //   print("board" + featureTileSpriteRenderer.sprite);
+
+        //chosenSpritesArray will contain 80 sprites -->75
+
+
+        //   showFeatureText bonus count in featuretile?
+
+
+        Featured.Instance.screenActive = false;
+
+
+        //  print("length of chosenSpritesArray" + chosenSpritesArray.Count);
+
+        timeSpeed = .1f;
+        //fix number of tiles/ array pop?
+        //or getbonustile counter when 50 changeState
+
+        if (checkParentBoard == false)
+        {
+            checkParentBoard = true;
+            if (_parentObject.transform.childCount > 0)
+
+            {
+                var childCount = _parentObject.transform.childCount;
+                for (int i = childCount - 1; i >= 0; i--)
+                {
+                    GameObject.DestroyImmediate(_parentObject.transform.GetChild(i).gameObject);
+                }
+                _nodes.Clear();
+            }
+
+
+        }
+
+        _nodes = new List<Tiles>();
+        int count = 0;
+
+        if (_nodes.Count < 16 && _parentObject.transform.childCount < 16)
+        {
+            for (int x = 0; x < 4; x++)
+            {
+                for (int y = 0; y < 4; y++)
+                {
+                    count = x + y;
+
+                    Instance.getBonusTile();
+                    //getBonusTIle
+                 
+                 
+                    Tiles node = Instantiate(_tilesPrefab);
+
+                    node.transform.SetParent(_parentObject.transform, false);
+                    //tile.transform.localPosition = new Vector3(0,27, 0);
+                    node.transform.localPosition = new Vector3((x * 7f) - 10.5f, (y * 7f) - 10.5f, 1);
+
+                    node.transform.localScale = new Vector3(0.656f, 0.656f, 0.65f);
+
+                    _nodes.Add(node);
+                    print(node);
+
+                }
+
+
+
+            }
+        }
+
+
+
+
+        //  var center = new Vector2((float)_width / 2 - 0.5f, _height / 2 + 0.5f);
+        var center = new Vector2((float)_width / 2 - 0.81f, _height / 2 + 0.2f);
+        Camera.main.transform.position = new Vector3(center.x, center.y, -10);
+
+        GameManager.Instance.ChangeState(GameState.ChoseTile);
+
+    }
+
+    public void changeSingleTile()
+    {
+
+
+        randomChosenTile = UnityEngine.Random.Range(_minRange, _width * _width);
+        alreadyAssigned = false;
+        // rnd = Random.Range(_minRange, _maxRange);
+        rnd = UnityEngine.Random.Range(_minRange, _maxRange);
+
+        //    var randomChosenSprite = _tilesPrefab._gameObjects?[rnd];
+        var randomChosenSprite = chosenSpritesArray[rnd];
+
+        // get node sprite
+        var nodeSprite = _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite;
+        //chose random tile
+        _nodes.ForEach((t) =>
+        {
+            //random tile check duplicate
+            if (t.GetComponent<SpriteRenderer>().sprite == randomChosenSprite)
+            {
+                alreadyAssigned = true;
+
+
+                // var freeNodes = _nodes.Where();
+            }
+        });
+
+        if (alreadyAssigned)
+        {
+            changeSingleTile();
+        }
+        else if (alreadyAssigned == false)
+        {
+            //set new sprite for single tile
+            _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite = randomChosenSprite;
+            //set child sprite active for 1s
+
+            //   _nodes[randomChosenTile].
+            /*       particleName=  Instantiate(particleInstance);
+                     particleName.transform.parent = _parentObject.transform;*/
+
+
+
+
+            //FindObjectOfType<AudioManager>().Play("click");
+
+
+
+
+
+            if (_nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
+            {
+
+                appearCounter += 1;
+                appearedForSeach += 1;
+                print("appeared changed tile" + appearCounter);
+                if (appearCounter == 1 && GameManager.Instance.firstTime)
+                {
+                    if (Featured.Instance.openTile == true && paused == false)
+                    {
+                        pauseBoard();
+                    }
+                    chosenTileFirstAppear = _nodes[randomChosenTile].GetComponent<SpriteRenderer>();
+                    chosenTileFirst = _nodes[randomChosenTile];
+                }
+                if (appearedForSeach == 1 && GameManager.Instance.glassSearch == true)
+                {
+                    if (paused == false)
+                    {
+                        Featured.Instance.screenActive = false;
+                        pauseBoard();
+                    }
+                    chosenTileFirstAppear = _nodes[randomChosenTile].GetComponent<SpriteRenderer>();
+                    chosenTileFirst = _nodes[randomChosenTile];
+                }
+                // print(appearCounter);
+                /* if (GameManager.Instance.firstTime == true &&appearCounter ==1)
+                 {
+                     _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
+                     _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sortingOrder = 30000;
+                     _nodes[randomChosenTile].GetComponent<BoxCollider2D>().enabled = true;
+                 }*/
+            }
+
+        }
+    }
+
 
 
     /*GENERATE GRID ORIGINAL FUNCTION*/
@@ -646,41 +922,47 @@ public class Board : MonoBehaviour
 
     }
 */
-    public void changeSingleTile()
+    void PopBonus()
+    {
+        if (Board.Instance.gridPopulation == false)
+        {
+
+            Board.Instance.PopSprite();
+
+
+        }
+    }
+
+    public void changeSingleBonusTile()
     {
 
-
-        randomChosenTile = UnityEngine.Random.Range(_minRange, _width * _width);
-        alreadyAssigned = false;
-        // rnd = Random.Range(_minRange, _maxRange);
-        rnd = UnityEngine.Random.Range(_minRange,_maxRange);
-
+        bonusTileCount += 1;
+      
         //    var randomChosenSprite = _tilesPrefab._gameObjects?[rnd];
-        var randomChosenSprite = chosenSpritesArray[rnd];
+        randomChosenTile = UnityEngine.Random.Range(_minRange, _width * _width);
 
-        // get node sprite
+
+        // get random nodes sprite
         var nodeSprite = _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite;
         //chose random tile
         _nodes.ForEach((t) =>
         {
-            //random tile check duplicate
-            if (t.GetComponent<SpriteRenderer>().sprite == randomChosenSprite)
-            {
-                alreadyAssigned = true;
-                
+       //     changes from black  to orange immediately
 
-                // var freeNodes = _nodes.Where();
+         if(   t.GetComponent<SpriteRenderer>().sprite == blackSprite)
+            {
+
+                //deactivate highlight?
+                t.transform.GetChild(1).gameObject.SetActive(false);
+              // t .GetComponent<SpriteRenderer>().sprite = presentSprite;
             }
         });
+        // changes randomly
+       _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite = presentSprite;
 
-        if (alreadyAssigned)
-        {
-            changeSingleTile();
-        }
-        else if (alreadyAssigned == false)
-        {
-            //set new sprite for single tile
-            _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite = randomChosenSprite;
+
+
+
             //set child sprite active for 1s
 
             //   _nodes[randomChosenTile].
@@ -694,44 +976,28 @@ public class Board : MonoBehaviour
 
 
 
-
-
-            if (_nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
+        if(bonusTileCount == 50)
+        {
+            stopCounting = true;
+            if(paused == false)
             {
-
-                appearCounter += 1;
-                appearedForSeach += 1;
-               print("appeared changed tile" +appearCounter);
-                if (appearCounter==1 && GameManager.Instance.firstTime)
-                {
-                    if(Featured.Instance.openTile == true && paused ==false)
-                    {
-                        pauseBoard();
-                    }
-                    chosenTileFirstAppear = _nodes[randomChosenTile].GetComponent<SpriteRenderer>();
-                    chosenTileFirst = _nodes[randomChosenTile];
-                }
-                if (appearedForSeach == 1 && GameManager.Instance.glassSearch ==true)
-                {
-                    if ( paused == false)
-                    {
-                        Featured.Instance.screenActive = false;
-                        pauseBoard();
-                    }
-                    chosenTileFirstAppear = _nodes[randomChosenTile].GetComponent<SpriteRenderer>();
-                    chosenTileFirst = _nodes[randomChosenTile];
-                }
-                // print(appearCounter);
-                /* if (GameManager.Instance.firstTime == true &&appearCounter ==1)
-                 {
-                     _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
-                     _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sortingOrder = 30000;
-                     _nodes[randomChosenTile].GetComponent<BoxCollider2D>().enabled = true;
-                 }*/
+                pauseBoard();
+                GameManager.Instance.ChangeState(GameState.WinBonus);
             }
-
         }
+      
+           
+       
     }
+/*   void ChangeToOrange()
+    {
+        _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite = presentSprite;
+
+    }*/
+
+
+
+
     public void pauseBoard()
     {
         //print("here");
@@ -832,14 +1098,31 @@ public class Board : MonoBehaviour
     }
 
 
-    public void changeClickedSingleTile(int positionIndex)
+    public void changeBonusClickedSingleTile(int positionIndex)
     {
         randomChosenTile = UnityEngine.Random.Range(_minRange, _width * _width);
         alreadyAssigned = false;
         rnd = UnityEngine.Random.Range(_minRange, _maxRange);
      
         var randomChosenSprite = _tilesPrefab._gameObjects?[rnd];
-       
+
+        _nodes.ForEach((t) =>
+        {
+
+            _nodes[positionIndex].GetComponent<SpriteRenderer>().sprite = blackSprite;
+
+        });
+    }
+
+
+    public void changeClickedSingleTile(int positionIndex)
+    {
+        randomChosenTile = UnityEngine.Random.Range(_minRange, _width * _width);
+        alreadyAssigned = false;
+        rnd = UnityEngine.Random.Range(_minRange, _maxRange);
+
+        var randomChosenSprite = _tilesPrefab._gameObjects?[rnd];
+
         _nodes.ForEach((t) =>
         {
             if (t.GetComponent<SpriteRenderer>().sprite == randomChosenSprite)
@@ -860,12 +1143,12 @@ public class Board : MonoBehaviour
             {
                 appearCounter += 1;
                 appearedForSeach += 1;
-             }
+            }
 
         }
     }
 
-  
+
     IEnumerator Timer()
     {
         takingAway = true;

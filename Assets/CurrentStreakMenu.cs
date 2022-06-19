@@ -10,8 +10,18 @@ public class CurrentStreakMenu : MonoBehaviour
 
     public void ChangeCurrStreak()
     {
+        if(GameManager.Instance.bonusOn == true)
+        {
+            currTextNum.text = "bonus";
+
+        }
+        else
+        {
 
         currTextNum.text = GameManager.Instance.currentStreak.ToString();
+
+        }
+
     }
 
 }

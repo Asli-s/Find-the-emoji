@@ -47,6 +47,8 @@ public class GameData
     public int ExtraSweetLolli;
     public int ExtraSweetBonBon;
 
+    public int goldBag;
+
 
     public GameData()
     {
@@ -93,6 +95,7 @@ public class GameData
         this.ExtraSweetBonBon = 0;
         this.ExtraSweetLolli = 0;
 
+        this.goldBag = 0;
 
     }
 }
