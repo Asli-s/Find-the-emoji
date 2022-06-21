@@ -20,6 +20,7 @@ public class Tiles : MonoBehaviour
     public Tiles _tile;
     private int positionInArray;
 
+    public GameObject glassObject;
 
   
 
@@ -97,10 +98,14 @@ public class Tiles : MonoBehaviour
         }
         else if(Featured.Instance.screenActive == false)
         {
-            if (win == false && GameOver.Instance.lose ==false && GameManager.Instance.bonusOn ==false)
+            clickedTile = GetComponent<SpriteRenderer>().sprite;
+            TileSpriteRenderer = GetComponent<SpriteRenderer>();
+            //  print(clickedTile);
+
+            if (win == false && GameOver.Instance.lose ==false && GameManager.Instance.bonusOn ==false && clickedTile != Board.Instance.randomPresent)
             {
 
-
+              
            FindObjectOfType<AudioManager>().Play("jump", false);
             }
      
@@ -108,9 +113,7 @@ public class Tiles : MonoBehaviour
 
 
             //       print("stillClicked!");
-            clickedTile = GetComponent<SpriteRenderer>().sprite;
-            TileSpriteRenderer = GetComponent<SpriteRenderer>();
-            //  print(clickedTile);
+          
             if (GameManager.Instance.bonusOn == false)
             {
                 if (clickedTile == _featureTileSprite.sprite)
@@ -135,8 +138,13 @@ public class Tiles : MonoBehaviour
 
                         GameManager.Instance.notClickable = false;
                         glassScreen.SetActive(false);
+
                         //deactivate backPanel 
                         //deactivate glassanim
+
+                        glassObject.SetActive(false);
+
+
                         Featured.Instance.screenActive = false;
                     }
 
@@ -151,7 +159,7 @@ public class Tiles : MonoBehaviour
                     _highlight.SetActive(true);
 
                 }
-                else if (clickedTile != _featureTileSprite.sprite)
+                else if (clickedTile != _featureTileSprite.sprite && clickedTile != Board.Instance.randomPresent)
                 {
                     positionInArray =
                           _board._nodes.FindIndex(x => x.Equals(_tile));
@@ -165,6 +173,18 @@ public class Tiles : MonoBehaviour
                     // }
 
 
+
+                }
+                else if(clickedTile == Board.Instance.randomPresent)
+                {
+
+                    //anim get essential
+                    FindObjectOfType<AudioManager>().Play("win", false);
+
+                    positionInArray =
+                         _board._nodes.FindIndex(x => x.Equals(_tile));
+                    GameManager.Instance.ChangeState(GameState.GetEssential);
+                    Board.Instance.changeClickedSingleTile(positionInArray);
 
                 }
 

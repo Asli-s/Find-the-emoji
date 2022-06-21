@@ -12,9 +12,17 @@ public class BonusFirstAlert : MonoBehaviour
     public CanvasGroup backPanelFade;
     public GameObject backPanelObject;
 
+    public GameObject pauseButton;
+    public GameObject restartButtom;
+
+
+
+
     private void OnEnable()
     {
-
+        pauseButton.SetActive(false);
+        restartButtom.SetActive(false);
+        PresentTimer.Instance.StopThisCoroutine();
 
         LeanTween.scale(mainBlock, new Vector3(0.7f, 0.7f, 1), 0.8f).setEaseOutExpo();
         backPanelObject.SetActive(true);
@@ -42,7 +50,7 @@ public class BonusFirstAlert : MonoBehaviour
                 GameManager.Instance.bonusOn = true;
                 print("gridpop firstalert" + Board.Instance.gridPopulation);
                 featureTileBonus.SetActive(true);
-
+                GameManager.Instance.popBonus = true;
 
                // print("gridpop firstalert" + Board.Instance.gridPopulation);
             }

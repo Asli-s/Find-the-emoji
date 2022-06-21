@@ -107,15 +107,8 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
         /*   if (Featured.Instance.screenActive == false &&findFeatureScreenAnim.Instance.animEnded ==true)
            {*/
 
-        if (_board.paused == false)
-        {
-            gameWasPausedBefore = false;
-        }
-        else{
-            gameWasPausedBefore = true;
-
-        }
-
+       
+        print("gamePasued before  " + gameWasPausedBefore);
 
         if (GameManager.Instance.notClickable == false)
         {
@@ -127,10 +120,20 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
             {
                 ThemeSound.Instance.audio.volume = 0.04f;
                 //  print("first");
-                if(gameWasPausedBefore == false)
+                if (_board.paused == false)
+                {
+                    gameWasPausedBefore = false;
+                }
+                else
+                {
+                    gameWasPausedBefore = true;
+
+                }
+                if (gameWasPausedBefore == false)
                 {
 
                 _board.pauseBoard();
+                    print("pasue board");
                 }
                 _allTiles = _board._nodes;
                 /* _allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
@@ -191,6 +194,7 @@ public class Menu : MonoBehaviour   //   ,IDataPersistence
                 {
 
                 _board.pauseBoard();
+                    print("boarrd activate again");
                 }
 
             }

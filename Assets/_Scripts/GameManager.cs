@@ -45,7 +45,10 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public GameObject BonusScreen;
     public GameObject BonusFirstAlert;
 
+    public GameObject EssentialScreen;
+    public int presTimerSeconds = 0;
 
+    public bool popBonus =false;
 
     public bool adNoCoinScreenClicked = false;
 
@@ -67,6 +70,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public string toSaveDatetimeString;
     public string savedate;
 
+    public bool findScreenGameActive = false;
 
     public bool tablet = false;
     public bool phone = false;
@@ -84,6 +88,12 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public bool musicActive = true;
 
 
+
+    public bool nextEssentialHeart=false;
+    public bool nextEssentialCoin=false;
+
+
+    public bool gameActive;
 
     public int bestStreak;
     public int bestStreakStats;
@@ -105,6 +115,10 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public bool coinNotEnough = false;
 
     public bool restarted = false;
+
+    public bool firstPresent = false;
+
+    public bool presTimerActive;
 
     void Awake()
     {
@@ -128,9 +142,12 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         Screen.sleepTimeout = (int)0f;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        
+
         //set current scene as the one who gets saved
         // lastPositionCurrent = SceneManager.GetActiveScene().buildIndex;
+
+        findScreenGameActive = false;
+        bonusOn = false;
 
         if (positionStringLoad == "med")
         {
@@ -218,6 +235,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         this.minutesLeft = gameData.minutesLeft;
         this.secondsLeft = gameData.secondsLeft;
 
+        this.gameActive = gameData.gameActive;
 
         this.activeCountDown = gameData.timerActive;
 
@@ -248,10 +266,17 @@ public class GameManager : MonoBehaviour, IDataPersistence
         this.phone = gameData.isPhone;
         this.tablet = gameData.isTablet;
 
+        this.firstPresent = gameData.firstPresent;
+
+       this.presTimerSeconds = gameData.presentTimerSec;
+
         print(gameData);
+
+        this.findScreenGameActive = gameData.findScreenActiveGame;
 
 
         this.firstTime = gameData.firstTime;
+        this.presTimerActive = gameData.presTImerActive;
     }
     public void SaveData(GameData gameData)
     {
@@ -273,6 +298,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.currentStreak = this.currentStreak;
 
 
+
+        gameData.gameActive = this.gameActive;
+
       /*  gameData.bestStreakStat = 0;
         gameData.bestStreak = 0;*/
    /*     gameData.currentStreak = 0;
@@ -281,12 +309,18 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.win = this.win;
         gameData.lose = this.lose;
 
+        gameData.findScreenActiveGame = this.findScreenGameActive;
+
         
         gameData.ExtraSweetLolli = 1;
       gameData.ExtraSweetBonBon = 1;
         gameData.goldBag = this.goldBag;
 
-        
+
+         gameData.firstPresent= this.firstPresent ;
+  gameData.presentTimerSec = this.presTimerSeconds     ;
+
+        gameData.presTImerActive = this.presTimerActive;
         /*
                 gameData.ExtraSweetLolli = this.ExtraSweetLolli;
               gameData.ExtraSweetBonBon = this.ExtraSweetBonbon ;*/
@@ -333,6 +367,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
 
         gameData.firstTime = this.firstTime;
+
+
         /*  gameData.firstTime =this.firstTime;*/
     }
 
@@ -344,6 +380,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
         GameState = newState;
         print("GAMEMANAGER minLeft" + minutesLeft);
         print("GAMEMANAGER secLeft" + secondsLeft);
+
+
      
         SweetCoverGlass.SetActive(true);
         SweetCoverHammer.SetActive(true); //---> deactivate in board / checktiles
@@ -358,21 +396,23 @@ public class GameManager : MonoBehaviour, IDataPersistence
                 break;
 
             case GameState.FeatureTile:
-                currentStreak += 1;
                 print("streak" + currentStreak);
 
+                    currentStreak += 1;
                 if (currentStreak == 2 || currentStreak ==5)//currentstreak== 20)
                 {
                     BonusFirstAlert.SetActive(true);
                     //  currentStreak += 1;
                     FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
-
+                    bonusOn = true;
 
                     //bonus 
                     //  generategrrid bonus
                 }
                 else
                 {
+                    //  currentStreak += 1;
+                    findScreenGameActive = true;
 
                     Featured.Instance?.choseFeatureTile();
                     //  currentStreak += 1;
@@ -464,6 +504,13 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
                 //      SaveData();
                 break;
+            case GameState.GetEssential:
+
+                //activate essentialscreen 
+                //if essential activate this else that
+                EssentialScreen.SetActive(true);
+
+                break;
 
         }
     }
@@ -488,5 +535,6 @@ public enum GameState
     NotEnoughCoins = 11,
     CheckScreenSize = 12,
     WinBonus=13,
+    GetEssential=14,
 
 }

@@ -22,7 +22,7 @@ public class BonusWin : MonoBehaviour
 
     public void ActivateBonusScreen()
     {
-
+        GameManager.Instance.popBonus = false;
 
         print("  GameManager.Instance.bonusOn " + GameManager.Instance.bonusOn);
     

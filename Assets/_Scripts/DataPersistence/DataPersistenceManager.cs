@@ -126,6 +126,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        GameManager.Instance.gameActive = false;
         SaveGame();
     }
     public void changeScene()

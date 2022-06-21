@@ -267,7 +267,7 @@ public class UiScaler : MonoBehaviour
                 heartsRect.localScale = new Vector3(2f, 1.8f, 1.0f);
                 //coin
                 coinsRect = coins.GetComponent<RectTransform>();
-                coinsRect.localScale = new Vector3(1f, 0.9f, 1.0f);
+                coinsRect.localScale = new Vector3(0.9f, 0.8f, 1.0f);
                 //menuButton
                 menuButRect = menuBut.GetComponent<RectTransform>();
                 menuButRect.localScale = new Vector3(1f, 0.9f, 1.0f);
@@ -466,7 +466,7 @@ public class UiScaler : MonoBehaviour
                 heartsRect.localScale = new Vector3(2f, 1.8f, 1.0f);
                 //coin
                 coinsRect = coins.GetComponent<RectTransform>();
-                coinsRect.localScale = new Vector3(1f, 0.9f, 1.0f);
+                coinsRect.localScale = new Vector3(0.9f, 0.8f, 1.0f);
                 //menuButton
                 menuButRect = menuBut.GetComponent<RectTransform>();
                 menuButRect.localScale = new Vector3(1f, 0.9f, 1.0f);
