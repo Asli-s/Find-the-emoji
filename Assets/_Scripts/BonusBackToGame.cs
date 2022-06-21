@@ -27,7 +27,8 @@ public class BonusBackToGame : MonoBehaviour
     }
     private void ActualRestart()
     {
-       // Featured.Instance.restartScene();
+        // Featured.Instance.restartScene();
+        PresentTimer.Instance.StartThisCoroutine();
 
         GameManager.Instance.bonusOn = false;
         Featured.Instance.screenActive = false;

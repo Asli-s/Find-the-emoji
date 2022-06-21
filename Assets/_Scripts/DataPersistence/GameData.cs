@@ -49,6 +49,19 @@ public class GameData
 
     public int goldBag;
 
+    public bool firstPresent;
+      public int presentTimerSec;
+    public bool presTImerActive;
+
+    public bool gameActive;
+
+    public bool findScreenActiveGame;
+
+
+   /* public bool nextEssentialHeart;
+    public bool nextEssential;
+
+*/
 
     public GameData()
     {
@@ -97,5 +110,15 @@ public class GameData
 
         this.goldBag = 0;
 
+        this.firstPresent = false;
+
+        this.presentTimerSec = 0;
+        this.presTImerActive = false;
+        this.gameActive= false;
+
+        this.findScreenActiveGame = false;
+
     }
+
+
 }

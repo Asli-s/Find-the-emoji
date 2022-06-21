@@ -61,6 +61,8 @@ public class StartScreen : MonoBehaviour
                     GameManager.Instance.activeCountDown = true;
                     FindObjectOfType<CountdownTimer>().StartTimer(30, 0);
 
+                    PresentTimer.Instance.StartPresentTimer();
+
                 playCoinSound();
             }
             else
@@ -71,13 +73,15 @@ public class StartScreen : MonoBehaviour
 
                     FindObjectOfType<AudioManager>().Play("coin");
                 playCoinSound();
-         //       print("coinSOUND!" );
+                    PresentTimer.Instance.StartPresentTimer();
 
-                //  FindObjectOfType<CountdownTimer>().StartTimer();
+                    //       print("coinSOUND!" );
 
-            }
+                    //  FindObjectOfType<CountdownTimer>().StartTimer();
 
-            print("gameman coinnum" + GameManager.Instance.coinNum);
+                }
+
+                print("gameman coinnum" + GameManager.Instance.coinNum);
 
 
             DataPersistenceManager.Instance.SaveGame();
@@ -110,6 +114,7 @@ public class StartScreen : MonoBehaviour
     private void DeactivateStartScreen()
     {
         GameManager.Instance.ChangeState(GameState.FeatureTile);
+        GameManager.Instance.gameActive = true;
 
         gameObject.SetActive(false);
         Particles.SetActive(false);

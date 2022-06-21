@@ -113,10 +113,18 @@ public    bool alreadyInGame = false;
         {
 
             GameManager.Instance.restarted = false;
-         
 
+           // GameManager.Instance.presTimerSeconds += remainingMinutes * 60 + remainingSeconds;
+
+            alreadyInGame = false;
+        /*    if(alreadyInGame == true)
+            {
+
+                PresentTimer.Instance?.StartPresentTimer();
+            }*/
+            
             //--->gets changed in startscreen after application pause 
-           alreadyInGame = false;
+          // after comeback why change??
 
 
 
@@ -124,7 +132,6 @@ public    bool alreadyInGame = false;
         else if (remainingMinutes >= 0 && remainingSeconds > 2 || GameManager.Instance.minimizedApp == false)
         {
             GameManager.Instance.restarted = true;
-
             if (GameManager.Instance.currentStreak >= GameManager.Instance.bestStreak)
             {
                 GameManager.Instance.bestStreak = GameManager.Instance.currentStreak;
@@ -168,7 +175,7 @@ public    bool alreadyInGame = false;
             GameManager.Instance.minutesLeft = 30;
             TimerText.text = "  full";
 
-            if (GameManager.Instance.restarted == true || FirstScreen.activeSelf == true )
+            if (GameManager.Instance.restarted == true || FirstScreen.activeSelf == true  ||GameManager.Instance.gameActive ==false)
             {
                 print("firtscreen");
             GameManager.Instance.minimizedApp = false;
@@ -176,14 +183,21 @@ public    bool alreadyInGame = false;
                 alreadyInGame = false;
 
             }
-            else if (alreadyInGame == false)
+            else if (GameManager.Instance.gameActive==true)// && alreadyInGame  == false)
             {
                 print("start game");
                 FirstScreen.SetActive(false);
-                if(GameManager.Instance.bonusOn == false)
+       /*       if(GameManager.Instance.presTimerActive==false || GameManager.Instance.presTimerSeconds == 0)
                 {
 
-                GameManager.Instance.ChangeState(GameState.FeatureTile);
+                }*/
+                    PresentTimer.Instance.StartPresentTimer();
+
+                
+                if (GameManager.Instance.bonusOn == false && GameManager.Instance.findScreenGameActive ==false)// && GameManager.Instance.restarted == true)
+                {
+
+              GameManager.Instance.ChangeState(GameState.FeatureTile);
                 }
             }
 
@@ -352,17 +366,17 @@ public    bool alreadyInGame = false;
                 GameManager.Instance.minutesLeft = 0;
                 GameManager.Instance.activeCountDown = false;
                 FindObjectOfType<CountdownTimer>().timerStarted = false; ;
-                if (GameManager.Instance?.restarted == true || FirstScreen?.activeSelf == true)
+                if (GameManager.Instance?.restarted == true || FirstScreen?.activeSelf == true ||GameManager.Instance.gameActive ==false)
                 {
                     FirstScreen?.SetActive(true);
                 }
-                else if(alreadyInGame == false)
+              /*  else if(alreadyInGame == false)
                 {
                     FirstScreen.SetActive(true);
 
                    // GameManager.Instance.ChangeState(GameState.FeatureTile);
-                }
-                else if (alreadyInGame == true)
+                }*/
+                 if (GameManager.Instance.gameActive ==true)
                 {
                     FirstScreen.SetActive(false);
 
@@ -424,6 +438,10 @@ public    bool alreadyInGame = false;
                     seconds = 59;
                 }
                 FindObjectOfType<CountdownTimer>().StartTimer(minutes, seconds);
+            
+                PresentTimer.Instance.StartPresentTimer();
+                
+              //  PresentTimer
             }
 
         }
@@ -436,13 +454,19 @@ public    bool alreadyInGame = false;
             FindObjectOfType<CountdownTimer>().timerStarted = false; ;
             TimerText.text = "  full";
 
-            if (alreadyInGame == true)
+            if (GameManager.Instance.gameActive==true)
             {
                 FirstScreen.SetActive(false);
+               
+
+                    PresentTimer.Instance.StartPresentTimer();
+                
                 if (GameManager.Instance.bonusOn == false)
                 {
 
-                GameManager.Instance.ChangeState(GameState.FeatureTile);
+
+              //  GameManager.Instance.ChangeState(GameState.FeatureTile);
+                 
                 }
             }
             else
