@@ -191,11 +191,11 @@ public    bool alreadyInGame = false;
                 {
 
                 }*/
-                    PresentTimer.Instance.StartPresentTimer();
 
                 
                 if (GameManager.Instance.bonusOn == false && GameManager.Instance.findScreenGameActive ==false)// && GameManager.Instance.restarted == true)
                 {
+                    PresentTimer.Instance.StartPresentTimer();
 
               GameManager.Instance.ChangeState(GameState.FeatureTile);
                 }
@@ -370,16 +370,28 @@ public    bool alreadyInGame = false;
                 {
                     FirstScreen?.SetActive(true);
                 }
-              /*  else if(alreadyInGame == false)
-                {
-                    FirstScreen.SetActive(true);
+                /*  else if(alreadyInGame == false)
+                  {
+                      FirstScreen.SetActive(true);
 
-                   // GameManager.Instance.ChangeState(GameState.FeatureTile);
-                }*/
-                 if (GameManager.Instance.gameActive ==true)
+                     // GameManager.Instance.ChangeState(GameState.FeatureTile);
+                  }*/
+                else if (GameManager.Instance.gameActive == true)// && alreadyInGame  == false)
                 {
+                    print("start game but lifestoadd ==5");
                     FirstScreen.SetActive(false);
+                    /*       if(GameManager.Instance.presTimerActive==false || GameManager.Instance.presTimerSeconds == 0)
+                             {
 
+                             }*/
+
+
+                    if (GameManager.Instance.bonusOn == false && GameManager.Instance.findScreenGameActive == false)// && GameManager.Instance.restarted == true)
+                    {
+                    PresentTimer.Instance.StartPresentTimer();
+
+                        GameManager.Instance.ChangeState(GameState.FeatureTile);
+                    }
                 }
 
 
@@ -400,18 +412,38 @@ public    bool alreadyInGame = false;
 
 
 
-                if (GameManager.Instance?.restarted == true)
+                if (GameManager.Instance.gameActive == false)
                 {
                     FirstScreen?.SetActive(true);
                 }
-                else if (GameManager.Instance.minimizedApp == false && GameManager.Instance.restarted == false || FirstScreen.activeSelf == true && GameManager.Instance.minimizedApp == false && alreadyInGame == true)
-                {
-                    FirstScreen.SetActive(false);
-                    if(GameManager.Instance.bonusOn == false){
+                /* else if (GameManager.Instance.minimizedApp == false && GameManager.Instance.restarted == false || FirstScreen.activeSelf == true && GameManager.Instance.minimizedApp == false && alreadyInGame == true)
+                 {
+                     FirstScreen.SetActive(false);
+                     if (GameManager.Instance.bonusOn == false && GameManager.Instance.findScreenGameActive == false)// && GameManager.Instance.restarted == true)
+                     {
 
-                    GameManager.Instance.ChangeState(GameState.FeatureTile);
+                         GameManager.Instance.ChangeState(GameState.FeatureTile);
+                     }
+                 }*/
+                else if (GameManager.Instance.gameActive == true)// && alreadyInGame  == false)
+                {
+                    print("start game from calculate");
+                    FirstScreen.SetActive(false);
+                    /*       if(GameManager.Instance.presTimerActive==false || GameManager.Instance.presTimerSeconds == 0)
+                             {
+
+                             }*/
+
+
+                    if (GameManager.Instance.bonusOn == false && GameManager.Instance.findScreenGameActive == false)// && GameManager.Instance.restarted == true)
+                    {
+                    PresentTimer.Instance.StartPresentTimer();
+
+                        GameManager.Instance.ChangeState(GameState.FeatureTile);
                     }
                 }
+
+
                 if (GameManager.Instance.minimizedApp == true && NoCoinScreen.activeSelf == true && GameManager.Instance.coinNum > 0 && GameManager.Instance.restarted == false &&alreadyInGame == true)
                 {
                     FindObjectOfType<noCoinScreen>().coinButtonCover.gameObject.SetActive(false);
@@ -439,7 +471,7 @@ public    bool alreadyInGame = false;
                 }
                 FindObjectOfType<CountdownTimer>().StartTimer(minutes, seconds);
             
-                PresentTimer.Instance.StartPresentTimer();
+              //  PresentTimer.Instance.StartPresentTimer();
                 
               //  PresentTimer
             }
@@ -454,19 +486,21 @@ public    bool alreadyInGame = false;
             FindObjectOfType<CountdownTimer>().timerStarted = false; ;
             TimerText.text = "  full";
 
-            if (GameManager.Instance.gameActive==true)
+              if (GameManager.Instance.gameActive == true)// && alreadyInGame  == false)
             {
+                print("start game full5 but calculate");
                 FirstScreen.SetActive(false);
-               
+                /*       if(GameManager.Instance.presTimerActive==false || GameManager.Instance.presTimerSeconds == 0)
+                         {
 
-                    PresentTimer.Instance.StartPresentTimer();
-                
-                if (GameManager.Instance.bonusOn == false)
+                         }*/
+
+
+                if (GameManager.Instance.bonusOn == false && GameManager.Instance.findScreenGameActive == false)// && GameManager.Instance.restarted == true)
                 {
+                PresentTimer.Instance.StartPresentTimer();
 
-
-              //  GameManager.Instance.ChangeState(GameState.FeatureTile);
-                 
+                    GameManager.Instance.ChangeState(GameState.FeatureTile);
                 }
             }
             else

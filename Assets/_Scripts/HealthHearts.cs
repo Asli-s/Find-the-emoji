@@ -73,5 +73,24 @@ public class HealthHearts : MonoBehaviour
         }
     }
 
-   
+    public void addHealth()
+    {
+        health += 1;
+        if (health ==3)
+        {
+            //  print("health bigger 0");
+            setMaxHealth();
+
+            //ACTIVATE TO CHANGE SINGLE TILE AFTER CLICKED
+            // _board.changeClickedSingleTile(positionIndex);
+        } else if (health ==2)
+        {
+
+            hearts[1].sprite = fullHeart;
+
+        }
+      
+
+    }
+
 }

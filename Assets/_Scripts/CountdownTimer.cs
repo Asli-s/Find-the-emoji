@@ -22,7 +22,8 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] int minute;
     [SerializeField] int second;
 
-
+    IEnumerator displayTimer;
+    IEnumerator realTimer;
 
 
 
@@ -77,8 +78,12 @@ public class CountdownTimer : MonoBehaviour
             TimeSpan time = new TimeSpan(hour, minute, second);
             timerEnd = timerBeginn.Add(time);
             timerStarted = true;
-            StartCoroutine(actualTimer());
-            StartCoroutine(DisplayTime());
+
+            displayTimer = DisplayTime();
+            realTimer = actualTimer();
+
+            StartCoroutine(displayTimer);
+            StartCoroutine(realTimer);
 
         }
         else if(  GameManager.Instance.minutesLeft ==0 && GameManager.Instance.secondsLeft ==0) 
@@ -95,8 +100,11 @@ public class CountdownTimer : MonoBehaviour
             TimeSpan time = new TimeSpan(hour, minute, second);
             timerEnd = timerBeginn.Add(time);
             timerStarted = true;
-            StartCoroutine(actualTimer());
-            StartCoroutine(DisplayTime());
+            displayTimer = DisplayTime();
+            realTimer = actualTimer();
+
+            StartCoroutine(displayTimer);
+            StartCoroutine(realTimer);
         }
        
   /*      }*/
@@ -282,6 +290,7 @@ public class CountdownTimer : MonoBehaviour
            else if (newNum < 5 && newNum !=1)
             {
 
+                print("new coutndown");
 
                 GameManager.Instance.activeCountDown = true;
                 timerStarted = true;
@@ -296,11 +305,13 @@ public class CountdownTimer : MonoBehaviour
             }
             else if(newNum ==5)
             {
+                print("set max");
                 newNum = 5;
                 GameManager.Instance.coinNum = 5;
 
                 GameManager.Instance.m_Object.text = newNum.ToString();
-
+               StopCoroutine(displayTimer);
+                StopCoroutine(realTimer);
                 GameManager.Instance.activeCountDown = false;
                 GameManager.Instance.secondsLeft = 0;
                 GameManager.Instance.minutesLeft = 0;
