@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     public GameObject SweetCoverHammer;
     public GameObject SweetCoverGlass;
+    public GameObject InvCoverHammer;
+    public GameObject ShopCoverGlass;
 
     public GameObject BonusScreen;
     public GameObject BonusFirstAlert;
@@ -359,8 +361,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.isTablet = false;
         gameData.isPhone = false;
 
-       //  gameData.coinNumber = this.coinNum;
-        gameData.coinNumber = 5;
+         gameData.coinNumber = this.coinNum;
+      //  gameData.coinNumber = 5;
 
         /*  gameData.isTablet = this.tablet;
           gameData.isPhone = this.phone;*/
@@ -383,8 +385,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
 
      
-        SweetCoverGlass.SetActive(true);
-        SweetCoverHammer.SetActive(true); //---> deactivate in board / checktiles
+    
         switch (newState)
         {
             case GameState.CheckScreenSize:
@@ -405,13 +406,15 @@ public class GameManager : MonoBehaviour, IDataPersistence
                     //  currentStreak += 1;
                     FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
                     bonusOn = true;
-
+                    SweetCoverGlass.SetActive(false);
+                  SweetCoverHammer.SetActive(false);
                     //bonus 
                     //  generategrrid bonus
                 }
                 else
                 {
                     //  currentStreak += 1;
+                    bonusOn = false;
                     findScreenGameActive = true;
 
                     Featured.Instance?.choseFeatureTile();
@@ -421,6 +424,10 @@ public class GameManager : MonoBehaviour, IDataPersistence
                 break;
             case GameState.ActivateFindScreen:
                 print("gamestate activateFindScreen");
+                SweetCoverGlass.SetActive(true);
+                SweetCoverHammer.SetActive(true); //---> deactivate in board / checktiles
+                InvCoverHammer.SetActive(true);
+                ShopCoverGlass.SetActive(true); //---> deactivate in board / checktiles
 
                 findScreen.SetActive(true);
                 findFeatureScreenAnim.Instance?.startFindScreenAnimation();

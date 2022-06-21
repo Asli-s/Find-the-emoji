@@ -420,7 +420,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
     void checkTiles()  //check if everything popped
     {
         int childCountFour = 0;
-
+        print("checktiles");
 
 
         for (int i = 0; i < 16; i++)
@@ -436,10 +436,16 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
         if (childCountFour == 0)
         {
             checkForPopFinish = true;
-            if(GameManager.Instance.bonusOn == false)
+            print("checktiles finished");
+
+            if (GameManager.Instance.bonusOn == false)
             {
+                print("checktiles bonus on ==false");
+
                 GameManager.Instance.SweetCoverGlass.SetActive(false);
                 GameManager.Instance.SweetCoverHammer.SetActive(false);
+                GameManager.Instance.ShopCoverGlass.SetActive(false);
+                GameManager.Instance.InvCoverHammer.SetActive(false); //---> deactivate in board / checktiles
             }
 
           

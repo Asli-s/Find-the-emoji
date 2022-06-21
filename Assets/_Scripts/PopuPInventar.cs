@@ -9,7 +9,32 @@ public class PopuPInventar : MonoBehaviour
     public static PopuPInventar Instance;
     public GameObject mainBlock;
     public Board _board;
+
     public GameObject closingX;
+
+    [SerializeField] TMPro.TextMeshProUGUI HeartDisplay;
+    [SerializeField] TMPro.TextMeshProUGUI CoinDisplay;
+
+    [SerializeField] public GameObject notEnoughCoinsAlert;
+    [SerializeField] public GameObject notEnoughHeartsAlert;
+    [SerializeField] public GameObject successAlert;
+
+  //  [SerializeField] public GameObject maxCoinAlert;
+    [SerializeField] public GameObject maxHeartAlert;
+
+
+
+
+
+
+    // [SerializeField] TMPro.TextMeshProUGUI TimerText;
+
+    /*
+        private int newNum = 0;
+        private int  coinCountNum =0;
+
+    */
+
 
     private void Awake()
 
@@ -24,12 +49,28 @@ public class PopuPInventar : MonoBehaviour
 
 
     {
+        Featured.Instance.screenActive = false;
+
+        if (_board.paused == false)
+        {
+            print("pausing board");
+            _board.pauseBoard();
+        }
+        FindObjectOfType<AudioManager>().Play("appear");
+
+        print("Hearts" + GameManager.Instance.ExtraLife);
+        print("Cois" + GameManager.Instance.ExtraCoin);
+
+
+
+        HeartDisplay.text = GameManager.Instance.ExtraLife.ToString();
+        CoinDisplay.text = GameManager.Instance.ExtraCoin.ToString();
+
 
 
         Time.timeScale = 1;
-     
-       
-        FindObjectOfType<AudioManager>().Play("appear");
+
+      
         
 
         if (GameManager.Instance.tablet == true)
@@ -46,18 +87,13 @@ public class PopuPInventar : MonoBehaviour
             Invoke("AnimateX", 0.2f);
 
         }
-
-
-        if (_board.paused == false)
-        {
-            print("pausing board");
-            _board.pauseBoard();
-        }
+    
         /*  if (LeanTween.isTweening() ==false)
           {
 
           LeanTween.scale(mainBlock, new Vector3(1f, 1f, 1f), 1.2f).setDelay(0.3f).setEaseOutElastic();
           }*/
+
     }
 
 
@@ -99,18 +135,112 @@ public class PopuPInventar : MonoBehaviour
         LeanTween.scale(mainBlock, new Vector3(0f, 0f, 0f), .8f).setEaseInExpo().setOnComplete(SetFalse);
         LeanTween.scale(closingX, new Vector3(0, 0, 0), 0.8f).setEaseOutExpo();
         print("close");
+
         
     }
 
     public void ActivatePOP()
-    {/*
+    {
         if(Board.Instance.gridPopulation == true)
         {
 
-        }*/
-     
         gameObject.SetActive(true);
+        }
+     
     }
 
-  
+
+    public void UseCoin()
+    {
+        if (GameManager.Instance.coinNum < 5 && GameManager.Instance.ExtraCoin > 0)
+        {
+            GameManager.Instance.ExtraCoin -= 1;
+            FindObjectOfType<CountdownTimer>().AddLife();
+            CoinDisplay.text = GameManager.Instance.ExtraCoin.ToString();
+            DataPersistenceManager.Instance.SaveGame();
+            successAlert.SetActive(true);
+            //success alert
+        }
+        /* newNum = GameManager.Instance.coinNum; 
+
+         newNum += 1;
+
+
+         //after adding life
+         if (newNum == 5)
+         {
+             print("newnum >5 with added lifes");
+            // newNum = 5;
+             GameManager.Instance.coinNum = newNum;
+
+             GameManager.Instance.m_Object.text = newNum.ToString();
+             TimerText.text = "  full";
+
+             print(newNum);
+         }
+         else if (newNum < 5)
+         {
+             GameManager.Instance.coinNum = newNum;
+             GameManager.Instance.m_Object.text = newNum.ToString();
+
+
+
+         }*/
+
+        /*  if (lifesToAdd ==1 && newNum== 1)
+          {
+              GameManager.Instance.coinNotEnough = false;
+              Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+
+
+
+
+        CoinDisplay.text = GameManager.Instance.ExtraCoin.ToString();
+}
+        */
+        //alert successfullly added coin
+
+
+
+        else if(GameManager.Instance.coinNum ==5)
+    {
+            //max coins setactive
+            maxHeartAlert.SetActive(true);
+    }
+    else if(GameManager.Instance.ExtraCoin == 0)
+    {
+            //not enough coins
+            notEnoughCoinsAlert.SetActive(true);
+    }
+
+    }
+
+
+
+    public void UseHeart()
+{
+    if (HealthHearts.Instance.health <3 && GameManager.Instance.ExtraLife>0)//health <3)
+    {
+            GameManager.Instance.ExtraLife -= 1;
+            HeartDisplay.text = GameManager.Instance.ExtraLife.ToString();
+            HealthHearts.Instance.addHealth();
+            successAlert.SetActive(true);
+            DataPersistenceManager.Instance.SaveGame();
+
+        }
+        else if(GameManager.Instance.ExtraLife ==0)
+    {
+            //not enough setactive
+            notEnoughHeartsAlert.SetActive(true);
+
+    }
+    else if (HealthHearts.Instance.health == 3)
+        {
+            maxHeartAlert.SetActive(true);
+            //already max
+        }
+
+    }
+
+
 }
