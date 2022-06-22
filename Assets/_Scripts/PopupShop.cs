@@ -11,6 +11,27 @@ public class PopupShop : MonoBehaviour
     public Board _board;
     public GameObject closingX;
 
+    bool buyCoinCLicked = false;
+    bool buyHeartCLicked = false;
+    bool buyHammerCLicked = false;
+    bool buyGlassCLicked = false;
+
+    public GameObject successAlert;
+    public GameObject notEnoughGoldAlert;
+
+
+    int coinCost = 150;
+    int heartCost = 100;
+    int hammerCost = 200;
+    int glassCost = 300;
+
+    [SerializeField] TMPro.TextMeshProUGUI goldDisplay;
+
+    [SerializeField] TMPro.TextMeshProUGUI hammerText;
+    [SerializeField] TMPro.TextMeshProUGUI glassText;
+
+
+
     private void Awake()
 
     {
@@ -24,7 +45,7 @@ public class PopupShop : MonoBehaviour
 
 
     {
-
+        goldDisplay.text = GameManager.Instance.goldBag.ToString();
 
         Time.timeScale = 1;
 
@@ -48,6 +69,7 @@ public class PopupShop : MonoBehaviour
 
 
         }
+        Featured.Instance.screenActive = false;
 
 
         if (_board.paused == false)
@@ -55,6 +77,8 @@ public class PopupShop : MonoBehaviour
             print("pausing board");
             _board.pauseBoard();
         }
+        Featured.Instance.screenActive = true;
+
         /*  if (LeanTween.isTweening() ==false)
           {
 
@@ -114,6 +138,153 @@ public class PopupShop : MonoBehaviour
 */
         gameObject.SetActive(true);
     }
+
+
+    //BUTTONS
+    #region Buttons
+
+
+    public void BuyHammer()
+    {
+
+        if(buyHammerCLicked == false)
+        {
+
+            buyHammerCLicked = true;
+            if(GameManager.Instance.goldBag >= hammerCost)
+            {
+                GameManager.Instance.goldBag -= hammerCost;
+                goldDisplay.text = GameManager.Instance.goldBag.ToString();
+
+                GameManager.Instance.ExtraSweetLolli += 1;
+                hammerText.text = GameManager.Instance.ExtraSweetLolli.ToString();
+
+                buyHammerCLicked = false;
+                successAlert.SetActive(true);
+                
+
+            }
+            else
+            {
+                notEnoughGoldAlert.SetActive(true);
+
+                buyHammerCLicked = false;
+
+
+            }
+
+        }
+    }
+
+    public void BuyGlass()
+    {
+        if (buyGlassCLicked == false)
+        {
+
+            buyGlassCLicked = true;
+            if (GameManager.Instance.goldBag >= glassCost)
+            {
+                GameManager.Instance.goldBag -= glassCost;
+                goldDisplay.text = GameManager.Instance.goldBag.ToString();
+
+                GameManager.Instance.ExtraSweetBonbon += 1; // bonbon -> glass
+                glassText.text = GameManager.Instance.ExtraSweetBonbon.ToString();
+
+                buyGlassCLicked = false;
+                successAlert.SetActive(true);
+
+
+            }
+            else
+            {
+                notEnoughGoldAlert.SetActive(true);
+
+                buyGlassCLicked = false;
+
+
+            }
+
+        }
+    }
+    public void BuyHealth()
+    {
+        if (buyHeartCLicked == false)
+        {
+
+            buyHeartCLicked = true;
+            if (GameManager.Instance.goldBag >= heartCost)
+            {
+                GameManager.Instance.goldBag -= heartCost;
+                goldDisplay.text = GameManager.Instance.goldBag.ToString();
+
+                GameManager.Instance.ExtraLife += 1; // bonbon -> glass
+             //   glassText.text = GameManager.Instance.ExtraSweetBonbon.ToString();
+
+                buyHeartCLicked = false;
+                successAlert.SetActive(true);
+
+
+            }
+            else
+            {
+                notEnoughGoldAlert.SetActive(true);
+
+                buyHeartCLicked = false;
+
+
+            }
+
+        }
+    }
+    public void BuyCoin()
+    {
+        if (buyCoinCLicked == false)
+        {
+
+            buyCoinCLicked = true;
+            if (GameManager.Instance.goldBag >= coinCost)
+            {
+                GameManager.Instance.goldBag -= coinCost;
+                goldDisplay.text = GameManager.Instance.goldBag.ToString();
+
+                GameManager.Instance.ExtraCoin += 1; // bonbon -> glass
+              //  glassText.text = GameManager.Instance.ExtraCoin.ToString();
+
+                buyCoinCLicked = false;
+                successAlert.SetActive(true);
+
+
+            }
+            else
+            {
+                notEnoughGoldAlert.SetActive(true);
+
+                buyCoinCLicked = false;
+
+
+            }
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #endregion
+
 
 
 }
