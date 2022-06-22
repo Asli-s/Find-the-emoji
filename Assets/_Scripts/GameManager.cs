@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public int ExtraLife=0;
     public int ExtraCoin=0;
     public int ExtraSweetBonbon=0;
-    public int ExtraSweetLolli=0;
+    public int ExtraSweetLolli=0; //hammer?
 
 
     public int goldBag = 0;
@@ -313,9 +313,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         gameData.findScreenActiveGame = this.findScreenGameActive;
 
-        
+      /*  
         gameData.ExtraSweetLolli = 1;
-      gameData.ExtraSweetBonBon = 1;
+      gameData.ExtraSweetBonBon = 1;*/
         gameData.goldBag = this.goldBag;
 
 
@@ -323,9 +323,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
   gameData.presentTimerSec = this.presTimerSeconds     ;
 
         gameData.presTImerActive = this.presTimerActive;
-        /*
-                gameData.ExtraSweetLolli = this.ExtraSweetLolli;
-              gameData.ExtraSweetBonBon = this.ExtraSweetBonbon ;*/
+
+        gameData.ExtraSweetLolli = this.ExtraSweetLolli;
+        gameData.ExtraSweetBonBon = this.ExtraSweetBonbon;
         gameData.ExtraLive= this.ExtraLife ;
       gameData.ExtraCoin = this.ExtraCoin ;
 

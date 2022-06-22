@@ -11,7 +11,7 @@ public class noCoinScreen : MonoBehaviour
 
     [SerializeField] public Button AdButton;
 
-
+    public static noCoinScreen Instance;
 
 
 
@@ -25,6 +25,18 @@ public class noCoinScreen : MonoBehaviour
  
     public GameObject mainBlock;
     bool coinButtonActive = false;
+    bool startGameClicked = false;
+
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+
+        }
+    }
+
 
     void OnEnable()
     {
@@ -50,6 +62,7 @@ public class noCoinScreen : MonoBehaviour
 
         coinButton.interactable = false;
 
+       
      
 
         if (GameManager.Instance.tablet == true)
@@ -81,8 +94,11 @@ public class noCoinScreen : MonoBehaviour
 
     public void StartGame()
     {
-        if(GameManager.Instance.coinNum > 0)
+        if(GameManager.Instance.coinNum > 0 &&startGameClicked ==false)
         {
+            startGameClicked = true;
+            GameManager.Instance.gameActive = true;
+
             FindObjectOfType<AudioManager>().Play("coin");
 
             LeanTween.scale(mainBlock, new Vector3(0f, 0f, 0f), .4f).setEase(LeanTweenType.easeOutElastic);//.setOnComplete(animateStars);
@@ -99,6 +115,8 @@ public class noCoinScreen : MonoBehaviour
     
     {
         rectBackGround.SetActive(true);
+        startGameClicked = false;
+
         Featured.Instance.LoseCoinFromNoCoinScreen();
         /*
         PauseButton.SetActive(true);
