@@ -46,6 +46,9 @@ public class GoogleAdsScript : MonoBehaviour
         if(rewardedCompleted == true && callOnce ==false)
         {
             callOnce = true;
+
+            GameManager.Instance.watchedAd = true;
+
             Featured.Instance?.AddCoin();
 
         }
@@ -116,7 +119,6 @@ public class GoogleAdsScript : MonoBehaviour
                         + amount.ToString() + " " + type);
 
         rewardedCompleted = true;
-      
 
     }
 

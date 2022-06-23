@@ -39,6 +39,10 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     public bool bonusOn =false;
 
+
+    public bool watchedAd = false;
+
+
     public GameObject SweetCoverHammer;
     public GameObject SweetCoverGlass;
     public GameObject InvCoverHammer;
@@ -90,6 +94,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public bool musicActive = true;
 
 
+    public bool noCoinSCreenActive = false;
 
     public bool nextEssentialHeart=false;
     public bool nextEssentialCoin=false;
@@ -127,6 +132,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
         if (Instance == null) { Instance = this; }
         else Debug.Log("error");
 
+      
+
     }
 
 
@@ -150,6 +157,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         findScreenGameActive = false;
         bonusOn = false;
+        noCoinSCreenActive = false;
 
         if (positionStringLoad == "med")
         {
@@ -279,6 +287,10 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         this.firstTime = gameData.firstTime;
         this.presTimerActive = gameData.presTImerActive;
+
+        this.noCoinSCreenActive = gameData.noCoinScreenActive;
+
+
     }
     public void SaveData(GameData gameData)
     {
@@ -370,6 +382,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         gameData.firstTime = this.firstTime;
 
+        gameData.noCoinScreenActive = this.noCoinSCreenActive;
 
         /*  gameData.firstTime =this.firstTime;*/
     }
@@ -398,8 +411,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
             case GameState.FeatureTile:
                 print("streak" + currentStreak);
+               noCoinSCreenActive = false;
 
-                    currentStreak += 1;
+                currentStreak += 1;
                 if (currentStreak == 2 || currentStreak ==5)//currentstreak== 20)
                 {
                     BonusFirstAlert.SetActive(true);
@@ -427,7 +441,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
                 SweetCoverGlass.SetActive(true);
                 SweetCoverHammer.SetActive(true); //---> deactivate in board / checktiles
                 InvCoverHammer.SetActive(true);
-                ShopCoverGlass.SetActive(true); //---> deactivate in board / checktiles
+                ShopCoverGlass.SetActive(true); //---> deactivate in board / checktiles or nocoinSCreen
 
                 findScreen.SetActive(true);
                 findFeatureScreenAnim.Instance?.startFindScreenAnimation();

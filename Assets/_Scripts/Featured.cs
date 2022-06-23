@@ -648,7 +648,7 @@ public class Featured : MonoBehaviour
         newNum = coinCountNum;
 
         print("Addcoin function");
-        if (GameManager.Instance.coinNum == 0)
+        if (GameManager.Instance.coinNum == 0 || GameManager.Instance.watchedAd ==true )
         {
             newNum += 1;
             GameManager.Instance.coinNum = newNum;
@@ -670,8 +670,8 @@ public class Featured : MonoBehaviour
         ///if nocoinscreen active --->deactivate ad button  ----> activate use coin button 
         ///little animation use coin button to grab attention
 
-     
 
+        DataPersistenceManager.Instance.SaveGame();
     }
 
 

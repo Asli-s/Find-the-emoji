@@ -27,7 +27,7 @@ public class PopUpAnimRestart : MonoBehaviour
 
         if(GameManager.Instance.tablet == true)
         {
-            LeanTween.scale(mainBlock, new Vector3(0.7f, 0.7f, 1), 0.8f).setEaseOutExpo();
+            LeanTween.scale(mainBlock, new Vector3(0.7f, 0.7f, 1), 0.8f).setEaseOutElastic();
 
         }
         else

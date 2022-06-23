@@ -232,17 +232,17 @@ public class UiScaler : MonoBehaviour
                 rectTransformFindScreen.localScale = new Vector3(1f, 1f, 1.0f);
                 //Win Screen
                 rectTransformWinScreen = winScreen.GetComponent<RectTransform>();
-                rectTransformWinScreen.localScale = new Vector3(1f, 1f, 1.0f);
+                rectTransformWinScreen.localScale = new Vector3(0.9f,0.9f, 1.0f);
                 //Lose Screen
                 rectTransformLoseScreen = loseScreen.GetComponent<RectTransform>();
-                rectTransformLoseScreen.localScale = new Vector3(1f, 1f, 1.0f);
+                rectTransformLoseScreen.localScale = new Vector3(0.9f, 0.9f, 1.0f);
 
                 //menu Screen
                 rectTransformMenuScreen = menuScreen.GetComponent<RectTransform>();
-                rectTransformMenuScreen.localScale = new Vector3(1f, 1f, 1.0f);
+                rectTransformMenuScreen.localScale = new Vector3(0.85f, 0.85f, 1.0f);
                 //Lose Screen
                 rectTransformStatsScreen = statsScreen.GetComponent<RectTransform>();
-                rectTransformStatsScreen.localScale = new Vector3(1f,1f, 1.0f);
+                rectTransformStatsScreen.localScale = new Vector3(0.85f,0.85f, 1.0f);
                 //menuPanel Screen
                 rectTransformMenuBackgroundPanel = menuBackgroundPanel.GetComponent<RectTransform>();
                 rectTransformMenuBackgroundPanel.localScale = new Vector3(1f, 1f, 1.0f);
@@ -432,17 +432,17 @@ public class UiScaler : MonoBehaviour
                 rectTransformFindScreen.localScale = new Vector3(1f, 1f, 1.0f);
                 //Win Screen
                 rectTransformWinScreen = winScreen.GetComponent<RectTransform>();
-                rectTransformWinScreen.localScale = new Vector3(1f, 1f, 1.0f);
+                rectTransformWinScreen.localScale = new Vector3(.9f, .9f, 1.0f);
                 //Lose Screen
                 rectTransformLoseScreen = loseScreen.GetComponent<RectTransform>();
-                rectTransformLoseScreen.localScale = new Vector3(1f, 1f, 1.0f);
+                rectTransformLoseScreen.localScale = new Vector3(.9f, .9f, 1.0f);
 
                 //menu Screen
                 rectTransformMenuScreen = menuScreen.GetComponent<RectTransform>();
-                rectTransformMenuScreen.localScale = new Vector3(1f, 1f, 1.0f);
+                rectTransformMenuScreen.localScale = new Vector3(0.85f, 0.851f, 1.0f);
                 //Lose Screen
                 rectTransformStatsScreen = statsScreen.GetComponent<RectTransform>();
-                rectTransformStatsScreen.localScale = new Vector3(1f, 1f, 1.0f);
+                rectTransformStatsScreen.localScale = new Vector3(0.85f, 0.85f, 1.0f);
                 //menuPanel Screen
                 rectTransformMenuBackgroundPanel = menuBackgroundPanel.GetComponent<RectTransform>();
                 rectTransformMenuBackgroundPanel.localScale = new Vector3(1f, 1f, 1.0f);

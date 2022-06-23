@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 using System.Globalization;
+using Unity.Rendering;
 
 public class DataPersistenceManager : MonoBehaviour
 
@@ -127,6 +128,7 @@ public class DataPersistenceManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         GameManager.Instance.gameActive = false;
+        print("GameManager gameACTIVE?!" + GameManager.Instance.gameActive);
         SaveGame();
     }
     public void changeScene()
@@ -141,10 +143,15 @@ public class DataPersistenceManager : MonoBehaviour
             SaveGame();
             print("my current streak on pause" + GameManager.Instance.currentStreak);
             GameManager.Instance.minimizedApp = true;
+           
         }
         else
         {
-
+           /* if (UnityEngine.Rendering.SplashScreen.isFinished == true)
+            {
+                GameManager.Instance.gameActive = false;
+            }
+           */
             DataPersistenceManager.Instance.LoadGame();
             GameManager.Instance.callLoadAgain();
          
@@ -155,11 +162,17 @@ public class DataPersistenceManager : MonoBehaviour
         }
     }
 
+
+
+  
+
+
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
         return new List<IDataPersistence>(dataPersistenceObjects);
     }
+
 
 
 }

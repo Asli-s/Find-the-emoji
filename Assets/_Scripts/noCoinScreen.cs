@@ -40,7 +40,10 @@ public class noCoinScreen : MonoBehaviour
 
     void OnEnable()
     {
+       GameManager.Instance.InvCoverHammer.SetActive(false);
+        GameManager.Instance.ShopCoverGlass.SetActive(false);
         Featured.Instance.screenActive = false;
+        GameManager.Instance.noCoinSCreenActive = true;
         //destroy feature tile && all nodes in board!!
         if(GameOver.Instance.lose == true)
         {
@@ -61,6 +64,7 @@ public class noCoinScreen : MonoBehaviour
         coinButtonCover.interactable = false;
 
         coinButton.interactable = false;
+
 
        
      
