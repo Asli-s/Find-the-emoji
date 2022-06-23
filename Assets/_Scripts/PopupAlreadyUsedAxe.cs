@@ -9,7 +9,7 @@ public class PopupAlreadyUsedAxe : MonoBehaviour
     public static PopupAlreadyUsedAxe Instance;
     public GameObject mainBlock;
     public Board _board;
-    public GameObject closingX;
+   // public GameObject closingX;
 
     private void Awake()
 
@@ -35,7 +35,7 @@ public class PopupAlreadyUsedAxe : MonoBehaviour
         if (GameManager.Instance.tablet == true)
         {
             LeanTween.scale(mainBlock, new Vector3(0.7f, 0.7f, 1), 0.8f).setEaseOutExpo().setOnComplete(ChangeScreenActive);
-            Invoke("AnimateX", 0.2f);
+          //  Invoke("AnimateX", 0.2f);
 
 
         }
@@ -43,7 +43,7 @@ public class PopupAlreadyUsedAxe : MonoBehaviour
         {
 
             LeanTween.scale(mainBlock, new Vector3(1, 1, 1), 0.8f).setEaseOutExpo().setOnComplete(ChangeScreenActive);
-            Invoke("AnimateX", 0.2f);
+        //    Invoke("AnimateX", 0.2f);
 
 
         }
@@ -82,14 +82,14 @@ public class PopupAlreadyUsedAxe : MonoBehaviour
 
         //  LeanTween.moveLocal(gameObject/*.GetComponent<RectTransform>()*/,new Vector3(0,1846, 89501.99f), 1f).setEaseInExpo();
     }
-    void AnimateX()
+/*    void AnimateX()
     {
 
 
         LeanTween.scale(closingX, new Vector3(1.7f, 1.7f, 1), 0.3f).setEaseInOutExpo();
 
     }
-
+*/
     public void CloseMenuAnimation()
     {
         if (_board.paused == true)
@@ -99,7 +99,7 @@ public class PopupAlreadyUsedAxe : MonoBehaviour
             _board.pauseBoard();
         }
         LeanTween.scale(mainBlock, new Vector3(0f, 0f, 0f), .8f).setEaseInExpo().setOnComplete(SetFalse);
-        LeanTween.scale(closingX, new Vector3(0, 0, 0), 0.8f).setEaseOutExpo();
+    //    LeanTween.scale(closingX, new Vector3(0, 0, 0), 0.8f).setEaseOutExpo();
         print("close");
 
     }

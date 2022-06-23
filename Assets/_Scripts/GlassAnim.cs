@@ -144,12 +144,13 @@ public class GlassAnim : MonoBehaviour
     void DeactiveGameObject()
     {
         //after anim completion deactivate gameobject;
-     /*   if (Board.Instance.paused == true)
-        {
-            Featured.Instance.screenActive = true;
-            print("paused?? " + Board.Instance.paused);
-            Board.Instance.pauseBoard();
-        }*/
+        /*   if (Board.Instance.paused == true)
+           {
+               Featured.Instance.screenActive = true;
+               print("paused?? " + Board.Instance.paused);
+               Board.Instance.pauseBoard();
+           }*/
+       // GameManager.Instance.SweetCoverGlass.SetActive(true);
         Sweets.Instance.bonbonClicked = false;
        // Glass.SetActive(false);
     //    Featured.Instance.screenActive = false;

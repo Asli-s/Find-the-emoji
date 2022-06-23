@@ -55,7 +55,7 @@ public class PopupShop : MonoBehaviour
 
         if (GameManager.Instance.tablet == true)
         {
-            LeanTween.scale(mainBlock, new Vector3(0.7f, 0.7f, 1), 0.4f).setEaseOutElastic().setOnComplete(ChangeScreenActive);
+            LeanTween.scale(mainBlock, new Vector3(0.7f, 0.7f, 1), 1.7f).setEaseOutElastic().setOnComplete(ChangeScreenActive);
             Invoke("AnimateX", 0.2f);
 
 
@@ -64,7 +64,7 @@ public class PopupShop : MonoBehaviour
         else
         {
 
-            LeanTween.scale(mainBlock, new Vector3(1, 1, 1), 0.4f).setEaseOutElastic().setOnComplete(ChangeScreenActive);
+            LeanTween.scale(mainBlock, new Vector3(1, 1, 1), 1.7f).setEaseOutElastic().setOnComplete(ChangeScreenActive);
             Invoke("AnimateX", 0.2f);
 
 
