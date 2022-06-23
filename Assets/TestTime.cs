@@ -143,6 +143,16 @@ public    bool alreadyInGame = false;
 
 
         }
+         if(remainingMinutes >= 0 && remainingSeconds > 2 &&GameManager.Instance.minimizedApp == false)
+        {
+            print("resetted????ß");
+            GameManager.Instance.gameActive = false;
+
+        }
+    /*    else if(remainingMinutes > 2 )
+        {
+
+        }*/
         print("reSTArted" + GameManager.Instance.restarted);
 
         if (GameManager.Instance.coinNum < 5)
@@ -175,11 +185,16 @@ public    bool alreadyInGame = false;
             GameManager.Instance.minutesLeft = 30;
             TimerText.text = "  full";
 
-            if (GameManager.Instance.restarted == true || FirstScreen.activeSelf == true  ||GameManager.Instance.gameActive ==false)
+            if (GameManager.Instance.restarted == true || FirstScreen.activeSelf == true  ||GameManager.Instance.gameActive ==false )
             {
                 print("firtscreen");
+
             GameManager.Instance.minimizedApp = false;
+                if(GameManager.Instance.noCoinSCreenActive == false)
+                {
+
                 FirstScreen.SetActive(true);
+                }
                 alreadyInGame = false;
 
             }
@@ -368,7 +383,11 @@ public    bool alreadyInGame = false;
                 FindObjectOfType<CountdownTimer>().timerStarted = false; ;
                 if (GameManager.Instance?.restarted == true || FirstScreen?.activeSelf == true ||GameManager.Instance.gameActive ==false)
                 {
+                    if (GameManager.Instance.noCoinSCreenActive == false)
+                    {
+
                     FirstScreen?.SetActive(true);
+                    }
                 }
                 /*  else if(alreadyInGame == false)
                   {
@@ -414,7 +433,13 @@ public    bool alreadyInGame = false;
 
                 if (GameManager.Instance.gameActive == false)
                 {
-                    FirstScreen?.SetActive(true);
+
+
+                    if (GameManager.Instance.noCoinSCreenActive == false)
+                    {
+
+                        FirstScreen?.SetActive(true);
+                    }
                 }
                 /* else if (GameManager.Instance.minimizedApp == false && GameManager.Instance.restarted == false || FirstScreen.activeSelf == true && GameManager.Instance.minimizedApp == false && alreadyInGame == true)
                  {
@@ -505,7 +530,11 @@ public    bool alreadyInGame = false;
             }
             else
             {
-                FirstScreen.SetActive(true);
+                if (GameManager.Instance.noCoinSCreenActive == false)
+                {
+
+                    FirstScreen?.SetActive(true);
+                }
                 alreadyInGame = false;
 
             }

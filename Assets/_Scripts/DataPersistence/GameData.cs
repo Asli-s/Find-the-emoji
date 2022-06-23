@@ -57,6 +57,8 @@ public class GameData
 
     public bool findScreenActiveGame;
 
+    public bool noCoinScreenActive;
+
 
    /* public bool nextEssentialHeart;
     public bool nextEssential;
@@ -117,6 +119,7 @@ public class GameData
         this.gameActive= false;
 
         this.findScreenActiveGame = false;
+        this.noCoinScreenActive = false;
 
     }
 

@@ -320,7 +320,7 @@ public class CountdownTimer : MonoBehaviour
             }
         }
 
-
+        DataPersistenceManager.Instance.SaveGame();
 
     }
 

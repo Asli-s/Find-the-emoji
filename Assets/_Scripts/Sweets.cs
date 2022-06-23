@@ -60,13 +60,19 @@ public class Sweets : MonoBehaviour
                     // open featureTile not close --> try destroy child object
 
                     //animation
+
+                    GameManager.Instance.ExtraSweetLolli -= 1;
+                    SweetLolli.text = GameManager.Instance.ExtraSweetLolli.ToString();
+
+                    alreadyUsedLolli = true;
+
                     backgroundPanelGameObject.SetActive(true);
                     backgroundPanel.LeanAlpha(0, 0);
 
                     backgroundPanel.LeanAlpha(1, 0.2f);
                     LolliAnim.SetActive(true);
+                    DataPersistenceManager.Instance.SaveGame();
 
-                    alreadyUsedLolli = true;
                 }
                 else if (alreadyUsedLolli == true)
                 {
@@ -98,15 +104,20 @@ public class Sweets : MonoBehaviour
                 {
                     // reduce one 
                     // open featureTile not close --> try destroy child object
+                    GameManager.Instance.ExtraSweetBonbon -= 1;
+                    SweetBonbon.text = GameManager.Instance.ToString();
 
                     backgroundPanelGameObject.SetActive(true);
 
-                    backgroundPanel.LeanAlpha(0, 0);
 
+                    backgroundPanel.LeanAlpha(0, 0);
+                    alreadyUsedBonbon = true;
                     GlassAnim.SetActive(true);
                     backgroundPanel.LeanAlpha(1, 0.2f);
+                    DataPersistenceManager.Instance.SaveGame();
+
                    // bonbonClicked = false;
-                    alreadyUsedBonbon = true;
+                   // alreadyUsedBonbon = true;
                 }
                 else if(alreadyUsedBonbon == true)
                 {

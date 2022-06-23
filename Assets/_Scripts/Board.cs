@@ -330,7 +330,12 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
             singleNode = _nodes[i].transform.GetChild(0).gameObject;
 
 
-            LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+            // LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+            //     LeanTween.scale(singleNode, new Vector3(.7f, .7f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+            LeanTween.scale(singleNode, new Vector3(.59f, .59f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+
+            //    LeanTween.scale(singleNode, new Vector3(.8f, .8f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+
             DestroyTileChild();
 
         }
@@ -342,7 +347,13 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
             //  print("count" + count);
             singleNode = _nodes[x].transform.GetChild(0).gameObject;
 
-            LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
+            //    LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
+            //   LeanTween.scale(singleNode, new Vector3(.8f, .8f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+            //       LeanTween.scale(singleNode, new Vector3(.7f, .7f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+            LeanTween.scale(singleNode, new Vector3(.59f, .59f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+
+
+
             //Invoke("HideShowGameobject", count / 10);
             DestroyTileChild();
 
@@ -354,8 +365,10 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
 
             singleNode = _nodes[y].transform.GetChild(0).gameObject;
 
-            LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
-                                                                                                                          //  Invoke("HideShowGameobject", count / 10);
+            //    LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
+            LeanTween.scale(singleNode, new Vector3(.59f, .59f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+
+            //  Invoke("HideShowGameobject", count / 10);
             DestroyTileChild();
 
         }
@@ -366,8 +379,11 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
 
             singleNode = _nodes[z].transform.GetChild(0).gameObject;
 
-            LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
-                                                                                                                          //       Invoke("HideShowGameobject", count / 10);
+            //   LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
+            LeanTween.scale(singleNode, new Vector3(.59f, .59f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+                                                                                                                           //     LeanTween.scale(singleNode, new Vector3(.7f, .7f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+
+            //       Invoke("HideShowGameobject", count / 10);
             DestroyTileChild();
 
 
@@ -401,10 +417,10 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
 
     void DestroyTileChild()
     {
-        Invoke("HideShowGameobject", (count + 0.01f) / 10);
+        Invoke("HideShowGameobject", (count + 0.019f) / 9.5f);
 
         print("Destroy!!");
-        Destroy(singleNode, (count + 1.7f) / 10);
+        Destroy(singleNode, (count + 1.3f) / 9.5f);
         count += 1;
     }
 

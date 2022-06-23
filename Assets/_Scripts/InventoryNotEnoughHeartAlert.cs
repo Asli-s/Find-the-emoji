@@ -19,7 +19,7 @@ public class InventoryNotEnoughHeartAlert : MonoBehaviour
     {
         clicked = false;
         animCompleted = false;
-        LeanTween.scale(mainBlock, new Vector3(1f, 1f, 1), 0.5f).setEaseOutExpo().setOnComplete(ChangeScreenActive);
+        LeanTween.scale(mainBlock, new Vector3(1f, 1f, 1), 0.1f).setEaseOutElastic().setOnComplete(ChangeScreenActive);
         Featured.Instance.screenActive = true;
 
     }
@@ -51,7 +51,7 @@ public class InventoryNotEnoughHeartAlert : MonoBehaviour
             if (clicked == false)
             {
                 clicked = true;
-                LeanTween.scale(mainBlock, new Vector3(0f, 0f, 1), 0.5f).setEaseOutExpo().setOnComplete(changeScreenActive);
+                LeanTween.scale(mainBlock, new Vector3(0f, 0f, 1), 0.1f).setEaseOutElastic().setOnComplete(changeScreenActive);
 
               
 
