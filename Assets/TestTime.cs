@@ -45,6 +45,8 @@ public class TestTime : MonoBehaviour
     [SerializeField] GameObject FirstScreen;
     [SerializeField] GameObject NoCoinScreen;
 
+
+
 public    bool alreadyInGame = false;
 
 
@@ -63,6 +65,9 @@ public    bool alreadyInGame = false;
 
     public void CalculateTime()
     {
+
+      
+
 
         minutesLeft = GameManager.Instance.minutesLeft;
         secondsLeft = GameManager.Instance.secondsLeft;

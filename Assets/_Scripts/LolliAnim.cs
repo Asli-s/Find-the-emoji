@@ -84,7 +84,7 @@ public class LolliAnim : MonoBehaviour
         Sweets.Instance.lolliClicked = false;
         gameObject.SetActive(false);
         Featured.Instance.screenActive = false;
-
+   //     GameManager.Instance.SweetCoverHammer.SetActive(true);
         backgroundPanelGameObject.SetActive(false);
           Lolli.GetComponent<RectTransform>().transform.localPosition = new Vector3(0, -1200, 1);
         Lolli.GetComponent<RectTransform>().transform.localScale = new Vector3(1.7f, 1.7f,1);

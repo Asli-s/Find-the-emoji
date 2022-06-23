@@ -21,7 +21,14 @@ public class Sweets : MonoBehaviour
     [SerializeField] private Board _board;
 
 
-  public  bool lolliClicked = false;
+
+    [SerializeField] private GameObject NotEnoughAxe;
+    [SerializeField] private GameObject NotEnoughGlass;
+
+
+
+
+    public bool lolliClicked = false;
   public  bool bonbonClicked = false;
 
     public bool alreadyUsedLolli = false;
@@ -84,6 +91,7 @@ public class Sweets : MonoBehaviour
                 else if (GameManager.Instance.ExtraSweetLolli == 0)
                 {
                     //showAlert (sorry not enough sweets)
+                    NotEnoughAxe.SetActive(true);
                     lolliClicked = false;
                 }
             }
@@ -105,7 +113,7 @@ public class Sweets : MonoBehaviour
                     // reduce one 
                     // open featureTile not close --> try destroy child object
                     GameManager.Instance.ExtraSweetBonbon -= 1;
-                    SweetBonbon.text = GameManager.Instance.ToString();
+                    SweetBonbon.text = GameManager.Instance.ExtraSweetBonbon.ToString();
 
                     backgroundPanelGameObject.SetActive(true);
 
@@ -123,9 +131,11 @@ public class Sweets : MonoBehaviour
                 {
                     //activate already used or active alert
                 }
-                else
+                else if(GameManager.Instance.ExtraSweetBonbon == 0)
                 {
                     //showAlert (sorry not enough sweets)
+                    //  NotEnoughGlass.SetActive(true);
+                    NotEnoughGlass.SetActive(true);
                     bonbonClicked = false;
                 }
             }

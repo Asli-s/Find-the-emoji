@@ -10,6 +10,11 @@ public class UiScaler : MonoBehaviour
     bool isTablet = false;
 
 
+
+    // public GameObject Controls;
+    //  public Camera cam;
+    public GameObject canvas;
+
     public GameObject Game;
     private RectTransform rectTransformGame;
 
@@ -93,7 +98,7 @@ public class UiScaler : MonoBehaviour
 
 
 
-
+    new Vector3 transformedVector;
     //popups
 
 
@@ -119,11 +124,76 @@ public class UiScaler : MonoBehaviour
     // Start is called before the first frame update
     public  void CheckResolution()
     {// presist tablet or phone settings? 
+
+        /* print("screen height is " + Screen.height);
+         print("lower position of height is " + ( (Screen.height / 4) -50));
+         Vector3 screenPos = cam.WorldToScreenPoint(ControlButtons.transform.position);
+         print("screen position" + screenPos);
+         Debug.Log("target is " + screenPos.y + " pixels from the top??");
+         print("target vector" +ControlButtons.transform.tr(screenPos.x, (Screen.height / 4) - 50, screenPos.z));*/
+
+
+      
+
+        //    transformedVector = cam.transform.TransformPoint(screenPos.x, (Screen.height / 4) - 50, screenPos.z);
+
+
         if (GameManager.Instance.tablet == false && GameManager.Instance.phone == false)
         {
             var aspectRatio = Mathf.Max(Screen.width, Screen.height) / Mathf.Min(Screen.width, Screen.height);
              isTablet = (DeviceDiagonalSizeInInches() > 6.5f && aspectRatio < 2f);
+
+
+
+            print("aspectratio" + aspectRatio);
+
             print("tablet"+ isTablet);
+
+
+            if(aspectRatio < 2) // tablet or squarish phone
+            {
+                float h = canvas.GetComponent<RectTransform>().rect.height;
+                print("canvas height" + h);
+
+
+                //buttons
+                float targetHeight = h / 7;
+                float ultimateTargetHeight = targetHeight * 6;
+                print("target height" + targetHeight);
+                print("ultimate target height" + ultimateTargetHeight);
+
+
+                //LOGO POs
+                //    LogoImage.GetComponent<RectTransform>().transform.localPosition += new Vector3(0, -(targetHeight*2), 1);
+                LogoImage.GetComponent<RectTransform>().transform.localPosition += new Vector3(0, -(targetHeight + targetHeight ), 1);
+
+
+
+
+
+                // C. Button Pos
+                ControlButtons.GetComponent<RectTransform>().transform.localPosition += new Vector3(0, -(ultimateTargetHeight), 1);
+
+                print("control buttons position " + ControlButtons.GetComponent<RectTransform>().transform.localPosition);
+            }
+
+            else // rect longer phones
+            {
+                float h = canvas.GetComponent<RectTransform>().rect.height;
+                print("canvas height" + h);
+          
+                float targetHeight = h / 5;
+                float ultimateTargetHeight = targetHeight * 4;
+                print("target height" + targetHeight);
+                print("ultimate target height" + ultimateTargetHeight);
+
+
+                LogoImage.GetComponent<RectTransform>().transform.localPosition += new Vector3(0, -(targetHeight + targetHeight/2), 1);
+
+                ControlButtons.GetComponent<RectTransform>().transform.localPosition += new Vector3(0, -(ultimateTargetHeight), 1);
+
+                print("control buttons position " + ControlButtons.GetComponent<RectTransform>().transform.localPosition);
+            }
 
 
 /*TABLET*/
@@ -186,7 +256,7 @@ public class UiScaler : MonoBehaviour
 
                 //LOGO 
                 rectTransformLogoImage = LogoImage.GetComponent<RectTransform>();
-                rectTransformLogoImage.anchoredPosition = new Vector3(7, 247f, 1);
+            //    rectTransformLogoImage.anchoredPosition = new Vector3(7, 247f, 1);
                 rectTransformLogoImage.localScale = new Vector3(0.9f, 0.8f, 1.0f);
 
                 //FirstScreenButton
@@ -245,7 +315,7 @@ public class UiScaler : MonoBehaviour
                 rectTransformStatsScreen.localScale = new Vector3(0.85f,0.85f, 1.0f);
                 //menuPanel Screen
                 rectTransformMenuBackgroundPanel = menuBackgroundPanel.GetComponent<RectTransform>();
-                rectTransformMenuBackgroundPanel.localScale = new Vector3(1f, 1f, 1.0f);
+                rectTransformMenuBackgroundPanel.localScale = new Vector3(1f, .85f, 1.0f);
 
 
                 //menuPanel Middle Objects
@@ -274,7 +344,7 @@ public class UiScaler : MonoBehaviour
 
                 //LOGO 
                 rectTransformLogoImage = LogoImage.GetComponent<RectTransform>();
-                rectTransformLogoImage.anchoredPosition = new Vector3(7, 400f, 1);
+               // rectTransformLogoImage.anchoredPosition = new Vector3(7, 400f, 1);
                 rectTransformLogoImage.localScale = new Vector3(1.1f, 1, 1.0f);
 
                 //FirstScreenButton
@@ -390,7 +460,7 @@ public class UiScaler : MonoBehaviour
 
                 //LOGO 
                 rectTransformLogoImage = LogoImage.GetComponent<RectTransform>();
-                rectTransformLogoImage.anchoredPosition = new Vector3(7, 247f, 1);
+            //    rectTransformLogoImage.anchoredPosition = new Vector3(7, 247f, 1);
                 rectTransformLogoImage.localScale = new Vector3(0.9f, 0.8f, 1.0f);
 
                 //FirstScreenButton
@@ -445,7 +515,7 @@ public class UiScaler : MonoBehaviour
                 rectTransformStatsScreen.localScale = new Vector3(0.85f, 0.85f, 1.0f);
                 //menuPanel Screen
                 rectTransformMenuBackgroundPanel = menuBackgroundPanel.GetComponent<RectTransform>();
-                rectTransformMenuBackgroundPanel.localScale = new Vector3(1f, 1f, 1.0f);
+                rectTransformMenuBackgroundPanel.localScale = new Vector3(1f, 0.85f, 1.0f);
 
 
                 //menuPanel Middle Objects
@@ -473,7 +543,7 @@ public class UiScaler : MonoBehaviour
 
                 //LOGO 
                 rectTransformLogoImage = LogoImage.GetComponent<RectTransform>();
-                rectTransformLogoImage.anchoredPosition = new Vector3(7, 400f, 1);
+             //   rectTransformLogoImage.anchoredPosition = new Vector3(7, 400f, 1);
                 rectTransformLogoImage.localScale = new Vector3(1.1f, 1, 1.0f);
 
                 //FirstScreenButton

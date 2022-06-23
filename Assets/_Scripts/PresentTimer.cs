@@ -159,7 +159,7 @@ public    IEnumerator presentTimer  ()
             GameManager.Instance.presTimerSeconds = duration;
 
 
-     print("duration" + duration);
+  //   print("duration" + duration);
             if(duration == 0)
             {
                 /*if (GameManager.Instance.firstPresent == false)

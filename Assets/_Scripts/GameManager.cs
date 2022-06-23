@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public int score2;
     public int score3;
 
+    [SerializeField] public GameObject BonusBackGroundImage;
+
 
     public int ExtraLife=0;
     public int ExtraCoin=0;
@@ -154,6 +156,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         //set current scene as the one who gets saved
         // lastPositionCurrent = SceneManager.GetActiveScene().buildIndex;
+        BonusBackGroundImage.SetActive(false);
 
         findScreenGameActive = false;
         bonusOn = false;
@@ -416,6 +419,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
                 currentStreak += 1;
                 if (currentStreak == 2 || currentStreak ==5)//currentstreak== 20)
                 {
+                    BonusBackGroundImage.SetActive(true);
                     BonusFirstAlert.SetActive(true);
                     //  currentStreak += 1;
                     FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
