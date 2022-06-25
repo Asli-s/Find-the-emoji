@@ -13,7 +13,7 @@ public class FeaturedPrefab : MonoBehaviour
     private void OnMouseDown()
     {
 
-        if (Featured.Instance.instruction == false &&EventSystem.current.IsPointerOverGameObject() && Featured.Instance.screenActive == true || Board.Instance.pausePanelActive == true && EventSystem.current.IsPointerOverGameObject())
+        if (Featured.Instance.instruction == false &&EventSystem.current.IsPointerOverGameObject() && Featured.Instance.screenActive == true ||GameManager.Instance.glassSearch == true || Board.Instance.pausePanelActive == true && EventSystem.current.IsPointerOverGameObject() )
         {
               print("gui"+ EventSystem.current.IsPointerOverGameObject());
             //It means clicked on panel. So we do not consider this as click on game Object. Hence returning. 
@@ -31,7 +31,7 @@ public class FeaturedPrefab : MonoBehaviour
             //clicked directly on game object. 
 
 
-            if (Featured.Instance.findScreen.activeSelf == false && Featured.Instance.screenActive == false && Board.Instance.gridPopulation == true )//
+            if (Featured.Instance.findScreen.activeSelf == false && Featured.Instance.screenActive == false && Board.Instance.gridPopulation == true && GameManager.Instance.glassSearch ==false)//
             {
                 FindObjectOfType<ClickSound>().Click();
                 //print("feauturetiile clicked");

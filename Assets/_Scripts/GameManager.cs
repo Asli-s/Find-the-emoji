@@ -40,10 +40,18 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public int goldBag = 0;
 
     public bool bonusOn =false;
+    public bool yellowPresentBonus = false;
+    public bool greenPresentBonus = false;
+    public bool bluePresentBonus = false;
+    public bool darkBluePresentBonus = false;
+    public bool redPresentBonus = false;
+    public bool lilaPresentBonus = false;
+    public bool rainbowPresentBonus = false;
 
 
     public bool watchedAd = false;
 
+    public bool bonusCollectAsManyAlertActive = false;
 
     public GameObject SweetCoverHammer;
     public GameObject SweetCoverGlass;
@@ -257,8 +265,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         this.bestStreakStats = gameData.bestStreakStat;
         this.bestStreak = gameData.bestStreak;
-     this.currentStreak = gameData.currentStreak;
-    
+          this.currentStreak = gameData.currentStreak;
+       
+
         /*  this.bestStreakStats =0;
           this.bestStreak =0;
           this.currentStreak = 0;*/
@@ -328,21 +337,29 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         gameData.findScreenActiveGame = this.findScreenGameActive;
 
-      /*  
-        gameData.ExtraSweetLolli = 1;
-      gameData.ExtraSweetBonBon = 1;*/
-        gameData.goldBag = this.goldBag;
+        /*  
+          gameData.ExtraSweetLolli = 1;
+        gameData.ExtraSweetBonBon = 1;*/
+         gameData.goldBag = this.goldBag;
+        // gameData.goldBag = 1000;
 
 
-         gameData.firstPresent= this.firstPresent ;
+        gameData.firstPresent= this.firstPresent ;
   gameData.presentTimerSec = this.presTimerSeconds     ;
 
         gameData.presTImerActive = this.presTimerActive;
 
         gameData.ExtraSweetLolli = this.ExtraSweetLolli;
         gameData.ExtraSweetBonBon = this.ExtraSweetBonbon;
+
+        /*  gameData.ExtraSweetLolli = 50;
+          gameData.ExtraSweetBonBon = 50;*/
+
+
         gameData.ExtraLive= this.ExtraLife ;
       gameData.ExtraCoin = this.ExtraCoin ;
+     //  gameData.ExtraCoin =50;
+
 
         gameData.score1 = this.score1;
         gameData.score2 = this.score2;
@@ -417,18 +434,112 @@ public class GameManager : MonoBehaviour, IDataPersistence
                noCoinSCreenActive = false;
 
                 currentStreak += 1;
-                if (currentStreak == 2 || currentStreak ==5)//currentstreak== 20)
-                {
+              /*  if (currentStreak == 2 || currentStreak ==3 || currentStreak == 4 || currentStreak == 5 ||currentStreak ==6 || currentStreak == 7|| currentStreak == 8)//currentstreak== 20)
+                {*/
+
+                    if(currentStreak == 20) // 20
+                    {
+                         yellowPresentBonus = true;
+                    // rainbowPresentBonus = true;
+
                     BonusBackGroundImage.SetActive(true);
                     BonusFirstAlert.SetActive(true);
                     //  currentStreak += 1;
                     FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
                     bonusOn = true;
                     SweetCoverGlass.SetActive(false);
-                  SweetCoverHammer.SetActive(false);
+                    SweetCoverHammer.SetActive(false);
+
+                }
+                    else if(currentStreak == 60) // 60
+                    {
+                        greenPresentBonus = true;
+
+                    BonusBackGroundImage.SetActive(true);
+                    BonusFirstAlert.SetActive(true);
+                    //  currentStreak += 1;
+                    FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+                    bonusOn = true;
+                    SweetCoverGlass.SetActive(false);
+                    SweetCoverHammer.SetActive(false);
+                    //  rainbowPresentBonus = true;
+
+
+                }
+                    else if (currentStreak == 110) //110
+                    {
+                        bluePresentBonus = true;
+
+                    BonusBackGroundImage.SetActive(true);
+                    BonusFirstAlert.SetActive(true);
+                    //  currentStreak += 1;
+                    FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+                    bonusOn = true;
+                    SweetCoverGlass.SetActive(false);
+                    SweetCoverHammer.SetActive(false);
+                }
+                    else if (currentStreak == 170 || currentStreak == 1730 || currentStreak == 1760 || currentStreak == 1830 || currentStreak == 1860) // 170  //1730 //1760 //1830 //1860
+                    {
+                        darkBluePresentBonus = true;
+
+                    BonusBackGroundImage.SetActive(true);
+                    BonusFirstAlert.SetActive(true);
+                    //  currentStreak += 1;
+                    FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+                    bonusOn = true;
+                    SweetCoverGlass.SetActive(false);
+                    SweetCoverHammer.SetActive(false);
+                }
+                    else if (currentStreak == 240 || currentStreak == 1050 || currentStreak == 1150 || currentStreak == 1250 || currentStreak == 1350 || currentStreak == 1450 || currentStreak == 1550 || currentStreak == 1650 || currentStreak == 1930 || currentStreak == 1960) // 240 //1050 // 1150 //1250//1350 // 1450 //1550 // 1650 //1930 // 1960
+                    {
+                        redPresentBonus = true;
+
+                    BonusBackGroundImage.SetActive(true);
+                    BonusFirstAlert.SetActive(true);
+                    //  currentStreak += 1;
+                    FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+                    bonusOn = true;
+                    SweetCoverGlass.SetActive(false);
+                    SweetCoverHammer.SetActive(false);
+                }
+                    else if (currentStreak == 320 || currentStreak == 410 || currentStreak == 600 || currentStreak == 700 || currentStreak == 800 || currentStreak == 900 || currentStreak == 1100 || currentStreak == 1200 || currentStreak == 1300 || currentStreak == 1400 || currentStreak == 1500 || currentStreak == 1600 || currentStreak == 1700 || currentStreak == 1800 || currentStreak == 1900)  // <200 >500 && cstreak % 100 ==0
+                    // 320 //410 // 600 // 700 //800 //900 // 1100 //1200 //1300 /1400 //1600 //1700 /1800 //1900
+                    {
+                        lilaPresentBonus = true;
+
+                    BonusBackGroundImage.SetActive(true);
+                    BonusFirstAlert.SetActive(true);
+                    //  currentStreak += 1;
+                    FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+                    bonusOn = true;
+                    SweetCoverGlass.SetActive(false);
+                    SweetCoverHammer.SetActive(false);
+                }
+                    else if (currentStreak ==500 || currentStreak == 1000 || currentStreak == 1500 || currentStreak >= 2000 && currentStreak %100 == 0 /*|| currentStreak == 2100 || currentStreak == 2200 || currentStreak == 2300 || currentStreak == 2400 || currentStreak == 2500 || currentStreak == 2600 || currentStreak == 2700 || currentStreak == 2800 || currentStreak == 2900 || currentStreak == 3000 || currentStreak == 3100 || currentStreak == 3200 || currentStreak == 3300 || currentStreak == 3400 || currentStreak == 3500 || currentStreak == 3600 || currentStreak == 3700 || currentStreak == 3800 || currentStreak == 3900 || currentStreak == 4000*/ ) //500 // 1000 //1500 //2000 //2100 //2200 //2300 //2400 // 2500 // 2600 //2700 // 2800 //2900 //3000...
+                    {
+                        rainbowPresentBonus = true;
+
+                    BonusBackGroundImage.SetActive(true);
+                    BonusFirstAlert.SetActive(true);
+                    //  currentStreak += 1;
+                    FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+                    bonusOn = true;
+                    SweetCoverGlass.SetActive(false);
+                    SweetCoverHammer.SetActive(false);
+                }
+
+                 //   rainbowPresentBonus = true;
+/*
+                    BonusBackGroundImage.SetActive(true);
+                    BonusFirstAlert.SetActive(true);
+                    //  currentStreak += 1;
+                    FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+                    bonusOn = true;
+                    SweetCoverGlass.SetActive(false);
+                  SweetCoverHammer.SetActive(false);*/
                     //bonus 
                     //  generategrrid bonus
-                }
+                
                 else
                 {
                     //  currentStreak += 1;

@@ -64,7 +64,9 @@ public class PopupShop : MonoBehaviour
         else
         {
 
-            LeanTween.scale(mainBlock, new Vector3(1, 1, 1), 1.7f).setEaseOutElastic().setOnComplete(ChangeScreenActive);
+            LeanTween.scale(mainBlock, new Vector3(0.9f, 0.9f, 1), 1f).setEaseOutExpo().setOnComplete(ChangeScreenActive);
+            LeanTween.scale(mainBlock, new Vector3(1, 1, 1), 1.2f).setDelay(.2f).setEaseOutElastic().setOnComplete(ChangeScreenActive);
+
             Invoke("AnimateX", 0.2f);
 
 
