@@ -22,7 +22,13 @@ public class noCoinScreen : MonoBehaviour
     [SerializeField] private GameObject ParentBoardBackground;
     [SerializeField] private GameObject featureTileBackground;
     [SerializeField] private GameObject rectBackGround;
- 
+
+
+    [SerializeField] private GameObject blockText;
+
+   
+    
+
     public GameObject mainBlock;
     bool coinButtonActive = false;
     bool startGameClicked = false;
@@ -40,7 +46,10 @@ public class noCoinScreen : MonoBehaviour
 
     void OnEnable()
     {
-       GameManager.Instance.InvCoverHammer.SetActive(false);
+
+        blockText.SetActive(true);
+
+        GameManager.Instance.InvCoverHammer.SetActive(false);
         GameManager.Instance.ShopCoverGlass.SetActive(false);
         Featured.Instance.screenActive = false;
         GameManager.Instance.noCoinSCreenActive = true;
@@ -143,6 +152,7 @@ public class noCoinScreen : MonoBehaviour
         if (coinButton.interactable == true && coinButtonActive ==false)
         {
             // animate 
+            blockText.SetActive(false);
             coinButtonActive = true;
             LeanTween.scale(coinButton.gameObject, new Vector3(1.9f, 3.2f, 1), 1f).setEaseInElastic().setOnComplete(scaleBackUp);
         }

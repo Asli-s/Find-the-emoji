@@ -195,13 +195,13 @@ public class CountdownTimer : MonoBehaviour
                     {
                         text += "0"+ Mathf.FloorToInt((float)timerSecondsLeft) + "s";
                         GameManager.Instance.secondsLeft = Mathf.FloorToInt((float)timerSecondsLeft);
-                            print(" seconds" + GameManager.Instance.secondsLeft);
+                      //      print(" seconds" + GameManager.Instance.secondsLeft);
                     }
                     else
                     {
                     text += Mathf.FloorToInt((float)timerSecondsLeft) + "s";
                     GameManager.Instance.secondsLeft = Mathf.FloorToInt((float)timerSecondsLeft );
-                   print(" seconds" + GameManager.Instance.secondsLeft);
+          //         print(" seconds" + GameManager.Instance.secondsLeft);
 
                     }
 

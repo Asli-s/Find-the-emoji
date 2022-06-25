@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartScreen : MonoBehaviour
 {
@@ -12,8 +13,12 @@ public class StartScreen : MonoBehaviour
     public GameObject Particles;
     public GameObject Button;
 
+    public GameObject coinBackground;
+  //  public RawImage 
+
     private void OnEnable()
     {
+        coinBackground.GetComponent<RawImage>().enabled = false;
         Particles.SetActive(true);
         LeanTween.scale(Button, new Vector3(0,1f,1f), 0);
         if (GameManager.Instance.phone)
@@ -113,6 +118,7 @@ public class StartScreen : MonoBehaviour
     }
     private void DeactivateStartScreen()
     {
+        coinBackground.GetComponent<RawImage>().enabled = true;
         GameManager.Instance.ChangeState(GameState.FeatureTile);
         GameManager.Instance.gameActive = true;
 

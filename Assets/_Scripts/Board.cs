@@ -134,7 +134,7 @@ public class Board : MonoBehaviour
 
         if (GameManager.Instance.firstTime == true)
         {
-            _maxRange = 30;
+            _maxRange = 17;
         }
 
         else if (promo == true){
