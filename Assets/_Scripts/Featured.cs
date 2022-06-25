@@ -271,7 +271,7 @@ public class Featured : MonoBehaviour
     {
 
 
-        if (openTile == false/*e && !EventSystem.current.IsPointerOverGameObject()*/ && screenActive == false || instruction ==true)
+        if (openTile == false/*e && !EventSystem.current.IsPointerOverGameObject()*/ && screenActive == false && GameManager.Instance.glassSearch == false || instruction ==true )
         {
            /* if(instruction == false)
             {

@@ -26,6 +26,18 @@ public class Board : MonoBehaviour
 
     //bonus
     public Sprite presentSpriteYellow;
+    public Sprite presentSpriteGreen;
+    public Sprite presentSpriteBlue;
+    public Sprite presentSpriteDarkBlue;
+    public Sprite presentSpriteRed;
+    public Sprite presentSpriteLila;
+    public Sprite presentSpriteRainbow;
+
+    private Sprite currentPresentSprite;
+
+
+
+
     public Sprite blackSprite;
 
 
@@ -152,13 +164,14 @@ public class Board : MonoBehaviour
         if (gridPopulation == true)
         {
         //    print("gridPop ==true");
-            if (GameManager.Instance.bonusOn == true && bonusPopped == false)
+            if (GameManager.Instance.bonusOn == true )//&& bonusPopped == false)
             {
 
-                PopBonus();
-                bonusPopped = true;
+              //  PopBonus();
+              //  bonusPopped = true;
                 if (checkForPopFinish == false)
                 {
+              //      Featured.Instance.screenActive = true;
                     checkTiles();
                 }
 
@@ -280,10 +293,12 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
         {
             print("gridPop ==false");
 
-            PopBonus();
+         //   PopBonus();
             bonusPopped = true;
             if (checkForPopFinish == false)
             {
+           //     Featured.Instance.screenActive = true;
+
                 checkTiles();
             }
           
@@ -332,7 +347,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
 
             // LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
             //     LeanTween.scale(singleNode, new Vector3(.7f, .7f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
-            LeanTween.scale(singleNode, new Vector3(.59f, .59f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+            LeanTween.scale(singleNode, new Vector3(.57f, .57f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
 
             //    LeanTween.scale(singleNode, new Vector3(.8f, .8f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
 
@@ -350,7 +365,9 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
             //    LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
             //   LeanTween.scale(singleNode, new Vector3(.8f, .8f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
             //       LeanTween.scale(singleNode, new Vector3(.7f, .7f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
-            LeanTween.scale(singleNode, new Vector3(.59f, .59f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+            //     LeanTween.scale(singleNode, new Vector3(.59f, .59f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+            LeanTween.scale(singleNode, new Vector3(.57f, .57f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+
 
 
 
@@ -366,7 +383,9 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
             singleNode = _nodes[y].transform.GetChild(0).gameObject;
 
             //    LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
-            LeanTween.scale(singleNode, new Vector3(.59f, .59f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+            //   LeanTween.scale(singleNode, new Vector3(.59f, .59f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+            LeanTween.scale(singleNode, new Vector3(.57f, .57f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+
 
             //  Invoke("HideShowGameobject", count / 10);
             DestroyTileChild();
@@ -380,7 +399,9 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
             singleNode = _nodes[z].transform.GetChild(0).gameObject;
 
             //   LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
-            LeanTween.scale(singleNode, new Vector3(.59f, .59f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+         //   LeanTween.scale(singleNode, new Vector3(.59f, .59f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+            LeanTween.scale(singleNode, new Vector3(.57f, .57f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+
                                                                                                                            //     LeanTween.scale(singleNode, new Vector3(.7f, .7f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
 
             //       Invoke("HideShowGameobject", count / 10);
@@ -438,7 +459,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
         int childCountFour = 0;
         print("checktiles");
 
-
+     //   Featured.Instance.screenActive = false;
         for (int i = 0; i < 16; i++)
         {
             //children count should be three
@@ -446,11 +467,12 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
             {
                 childCountFour = 4;
             }
-
+            print("childcounter should not be 4" + childCountFour);
 
         }
         if (childCountFour == 0)
         {
+           // Featured.Instance.screenActive = false;
             checkForPopFinish = true;
             print("checktiles finished");
 
@@ -464,8 +486,10 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
                 GameManager.Instance.InvCoverHammer.SetActive(false); //---> deactivate in board / checktiles
             }
 
-          
+
+
         }
+      
 
     }
 
@@ -703,7 +727,43 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
         // _tileSpriteRenderer.sprite = _tilesPrefab?._gameObjects?[rnd];
 
         bonusTileCount += 1;
-        _tileSpriteRenderer.sprite = presentSpriteYellow;
+
+        if (GameManager.Instance.yellowPresentBonus)
+        {
+            currentPresentSprite = presentSpriteYellow;
+        }
+        else if (GameManager.Instance.greenPresentBonus)
+        {
+            currentPresentSprite = presentSpriteGreen;
+
+        }
+        else if (GameManager.Instance.bluePresentBonus)
+        {
+            currentPresentSprite = presentSpriteBlue;
+
+        }
+        else if (GameManager.Instance.darkBluePresentBonus)
+        {
+            currentPresentSprite = presentSpriteDarkBlue;
+
+        }
+        else if (GameManager.Instance.redPresentBonus)
+        {
+            currentPresentSprite = presentSpriteRed;
+
+        }
+        else if (GameManager.Instance.lilaPresentBonus)
+        {
+            currentPresentSprite = presentSpriteLila;
+
+        }
+        else if (GameManager.Instance.rainbowPresentBonus)
+        {
+            currentPresentSprite = presentSpriteRainbow;
+
+        }
+
+        _tileSpriteRenderer.sprite = currentPresentSprite;
 
 
         return _tilesPrefab;
@@ -952,10 +1012,12 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
 
     }
 */
-    void PopBonus()
+   public void PopBonus()
     {
         print("POP iTT");
-            Board.Instance.PopSprite();
+        GameManager.Instance.bonusCollectAsManyAlertActive = false;
+
+        Board.Instance.PopSprite();
       /*  if (Board.Instance.gridPopulation == false)
         {
 
@@ -989,7 +1051,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
             }
         });
         // changes randomly
-       _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite = presentSpriteYellow;
+       _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite = currentPresentSprite;
 
 
 

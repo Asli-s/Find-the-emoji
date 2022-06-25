@@ -28,6 +28,15 @@ public class BonusBackToGame : MonoBehaviour
     private void ActualRestart()
     {
         // Featured.Instance.restartScene();
+        GameManager.Instance.yellowPresentBonus = false;
+        GameManager.Instance.greenPresentBonus = false;
+        GameManager.Instance.bluePresentBonus = false;
+        GameManager.Instance.darkBluePresentBonus = false;
+        GameManager.Instance.redPresentBonus = false;
+        GameManager.Instance.lilaPresentBonus = false;
+        GameManager.Instance.rainbowPresentBonus = false;
+
+
         PresentTimer.Instance.StartThisCoroutine();
 
         GameManager.Instance.bonusOn = false;

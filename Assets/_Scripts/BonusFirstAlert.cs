@@ -15,16 +15,19 @@ public class BonusFirstAlert : MonoBehaviour
     public GameObject pauseButton;
     public GameObject restartButtom;
 
+    [SerializeField] private GameObject BonusCollectAsMany;
+
 
 
 
     private void OnEnable()
     {
         pauseButton.SetActive(false);
+                featureTileBonus.SetActive(true);
         restartButtom.SetActive(false);
         PresentTimer.Instance.StopThisCoroutine();
 
-        LeanTween.scale(mainBlock, new Vector3(0.7f, 0.7f, 1), 0.8f).setEaseOutExpo();
+        LeanTween.scale(mainBlock, new Vector3(0.7f, 0.7f, 1), 0.8f).setEaseOutElastic();
         backPanelObject.SetActive(true);
                     backPanelFade.LeanAlpha(.3f, 0.2f);
 
@@ -44,15 +47,19 @@ public class BonusFirstAlert : MonoBehaviour
 
                 clicked = true;
                 gameObject.SetActive(false);
-                Board.Instance.GenerateBonusGrid();
-
-              //  FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+                BonusCollectAsMany.SetActive(true);
                 GameManager.Instance.bonusOn = true;
-                print("gridpop firstalert" + Board.Instance.gridPopulation);
                 featureTileBonus.SetActive(true);
-                GameManager.Instance.popBonus = true;
 
-               // print("gridpop firstalert" + Board.Instance.gridPopulation);
+                /*   Board.Instance.GenerateBonusGrid();
+
+                 //  FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+                   GameManager.Instance.bonusOn = true;
+                   print("gridpop firstalert" + Board.Instance.gridPopulation);
+                   featureTileBonus.SetActive(true);
+                   GameManager.Instance.popBonus = true;
+
+                  // print("gridpop firstalert" + Board.Instance.gridPopulation);*/
             }
         }
 

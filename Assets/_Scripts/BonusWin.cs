@@ -28,8 +28,8 @@ public class BonusWin : MonoBehaviour
     
         //addgold
         //if orange else 2x or 3x
-        GameManager.Instance.goldBag += Board.Instance.bonusCounter;
-        DataPersistenceManager.Instance.SaveGame();
+       // GameManager.Instance.goldBag += Board.Instance.bonusCounter;
+        //DataPersistenceManager.Instance.SaveGame();
         
         bonusText.text = Board.Instance.bonusCounter.ToString();
         showScreen();

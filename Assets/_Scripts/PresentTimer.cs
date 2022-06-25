@@ -88,7 +88,9 @@ public class PresentTimer : MonoBehaviour
         }
         else if( GameManager.Instance.presTimerActive == false || GameManager.Instance.presTimerSeconds ==0)
         {
-            toAppearSeconds = 20;
+            // toAppearSeconds = 20;
+            toAppearMinutes = UnityEngine.Random.Range(5, 16);
+            toAppearSeconds = 60 * toAppearMinutes;
             GameManager.Instance.presTimerActive = true;
 
             GameManager.Instance.presTimerSeconds = toAppearSeconds;
@@ -159,7 +161,7 @@ public    IEnumerator presentTimer  ()
             GameManager.Instance.presTimerSeconds = duration;
 
 
-  //   print("duration" + duration);
+    print("duration" + duration);
             if(duration == 0)
             {
                 /*if (GameManager.Instance.firstPresent == false)

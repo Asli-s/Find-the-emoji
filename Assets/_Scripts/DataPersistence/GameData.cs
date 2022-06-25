@@ -105,12 +105,12 @@ public class GameData
         this.firstTime = true;
 
 
-        this.ExtraCoin = 20;
-        this.ExtraLive = 20;
-        this.ExtraSweetBonBon = 20;
-        this.ExtraSweetLolli = 20;
+        this.ExtraCoin = 0;
+        this.ExtraLive = 0;
+        this.ExtraSweetBonBon = 0;
+        this.ExtraSweetLolli = 0;
 
-        this.goldBag = 10000;
+        this.goldBag = 0;
 
         this.firstPresent = false;
 

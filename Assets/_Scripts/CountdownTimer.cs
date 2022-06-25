@@ -310,12 +310,19 @@ public class CountdownTimer : MonoBehaviour
                 GameManager.Instance.coinNum = 5;
 
                 GameManager.Instance.m_Object.text = newNum.ToString();
-               StopCoroutine(displayTimer);
-                StopCoroutine(realTimer);
+                TimerText.text = "  full";
+                print("STOOOP COUROUTINE!!");
                 GameManager.Instance.activeCountDown = false;
                 GameManager.Instance.secondsLeft = 0;
                 GameManager.Instance.minutesLeft = 0;
-                TimerText.text = "  full";
+                timerStarted = false;
+
+               StopCoroutine(displayTimer);
+                StopAllCoroutines();
+                StopCoroutine(realTimer);
+
+                DataPersistenceManager.Instance.SaveGame();
+
 
             }
         }

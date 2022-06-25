@@ -96,7 +96,8 @@ public class Tiles : MonoBehaviour
             print("gui"+ EventSystem.current.IsPointerOverGameObject());
             return;
         }
-        else if(Featured.Instance.screenActive == false)
+       
+        else if(Featured.Instance.screenActive == false && GameManager.Instance.bonusCollectAsManyAlertActive == false)
         {
             clickedTile = GetComponent<SpriteRenderer>().sprite;
             TileSpriteRenderer = GetComponent<SpriteRenderer>();
@@ -194,7 +195,7 @@ public class Tiles : MonoBehaviour
 
             else if (GameManager.Instance.bonusOn == true)
             {
-                if(clickedTile != Board.Instance.blackSprite)
+                if(clickedTile != Board.Instance.blackSprite && gameObject.transform.childCount!=4)
                 {
 
                    

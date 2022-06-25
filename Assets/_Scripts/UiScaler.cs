@@ -345,7 +345,7 @@ public class UiScaler : MonoBehaviour
                 //LOGO 
                 rectTransformLogoImage = LogoImage.GetComponent<RectTransform>();
                // rectTransformLogoImage.anchoredPosition = new Vector3(7, 400f, 1);
-                rectTransformLogoImage.localScale = new Vector3(1.1f, 1, 1.0f);
+                rectTransformLogoImage.localScale = new Vector3(1f, 0.9f, 1.0f);
 
                 //FirstScreenButton
                 rectTransformButtonPos = ButtonPos.GetComponent<RectTransform>();
@@ -544,7 +544,7 @@ public class UiScaler : MonoBehaviour
                 //LOGO 
                 rectTransformLogoImage = LogoImage.GetComponent<RectTransform>();
              //   rectTransformLogoImage.anchoredPosition = new Vector3(7, 400f, 1);
-                rectTransformLogoImage.localScale = new Vector3(1f, 1, 1.0f);
+                rectTransformLogoImage.localScale = new Vector3(1f, 0.9f, 1.0f);
 
                 //FirstScreenButton
                 rectTransformButtonPos = ButtonPos.GetComponent<RectTransform>();
