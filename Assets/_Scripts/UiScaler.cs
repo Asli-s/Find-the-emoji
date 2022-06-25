@@ -165,7 +165,7 @@ public class UiScaler : MonoBehaviour
 
                 //LOGO POs
                 //    LogoImage.GetComponent<RectTransform>().transform.localPosition += new Vector3(0, -(targetHeight*2), 1);
-                LogoImage.GetComponent<RectTransform>().transform.localPosition += new Vector3(0, -(targetHeight + targetHeight ), 1);
+                LogoImage.GetComponent<RectTransform>().transform.localPosition += new Vector3(0, -(targetHeight + targetHeight+targetHeight/3 ), 1);
 
 
 
@@ -188,7 +188,7 @@ public class UiScaler : MonoBehaviour
                 print("ultimate target height" + ultimateTargetHeight);
 
 
-                LogoImage.GetComponent<RectTransform>().transform.localPosition += new Vector3(0, -(targetHeight + targetHeight/2), 1);
+                LogoImage.GetComponent<RectTransform>().transform.localPosition += new Vector3(0, -(targetHeight + (targetHeight/3*2)), 1);
 
                 ControlButtons.GetComponent<RectTransform>().transform.localPosition += new Vector3(0, -(ultimateTargetHeight), 1);
 
@@ -257,7 +257,7 @@ public class UiScaler : MonoBehaviour
                 //LOGO 
                 rectTransformLogoImage = LogoImage.GetComponent<RectTransform>();
             //    rectTransformLogoImage.anchoredPosition = new Vector3(7, 247f, 1);
-                rectTransformLogoImage.localScale = new Vector3(0.9f, 0.8f, 1.0f);
+                rectTransformLogoImage.localScale = new Vector3(1f,1f, 1.0f);
 
                 //FirstScreenButton
                 rectTransformButtonPos = ButtonPos.GetComponent<RectTransform>();
@@ -321,7 +321,7 @@ public class UiScaler : MonoBehaviour
                 //menuPanel Middle Objects
                 rectTransformMenuMiddleObjects = menuMiddleObjects.GetComponent<RectTransform>();
                 //    rectTransformMenuMiddleObjects.localPosition = new Vector3(0f,0f, 1.0f);
-                rectTransformMenuMiddleObjects.anchoredPosition = new Vector3(0, 0, 0);
+                rectTransformMenuMiddleObjects.anchoredPosition = new Vector3(0, 20, 0);
 
 
                 //menuPanel Main!
@@ -521,7 +521,7 @@ public class UiScaler : MonoBehaviour
                 //menuPanel Middle Objects
                 rectTransformMenuMiddleObjects = menuMiddleObjects.GetComponent<RectTransform>();
                 //   rectTransformMenuMiddleObjects.localPosition = new Vector3(0f, 0f, 1.0f);
-                rectTransformMenuMiddleObjects.anchoredPosition = new Vector3(0, 0, 0);
+                rectTransformMenuMiddleObjects.anchoredPosition = new Vector3(0,20, 0);
 
 
                 //menuPanel Main!
@@ -544,7 +544,7 @@ public class UiScaler : MonoBehaviour
                 //LOGO 
                 rectTransformLogoImage = LogoImage.GetComponent<RectTransform>();
              //   rectTransformLogoImage.anchoredPosition = new Vector3(7, 400f, 1);
-                rectTransformLogoImage.localScale = new Vector3(1.1f, 1, 1.0f);
+                rectTransformLogoImage.localScale = new Vector3(1f, 1, 1.0f);
 
                 //FirstScreenButton
                 rectTransformButtonPos = ButtonPos.GetComponent<RectTransform>();
