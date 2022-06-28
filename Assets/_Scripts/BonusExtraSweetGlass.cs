@@ -13,6 +13,9 @@ public class BonusExtraSweetGlass : MonoBehaviour
     public GameObject BonusExtraHammer; // from Glass;
 
 
+   
+
+
     private void OnEnable()
     {
         // 60 - green +1 hammer

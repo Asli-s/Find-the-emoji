@@ -831,7 +831,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
                     //tile.transform.localPosition = new Vector3(0,27, 0);
                     node.transform.localPosition = new Vector3((x * 7f) - 10.5f, (y * 7f) - 10.5f, 1);
 
-                    node.transform.localScale = new Vector3(0.656f, 0.656f, 0.65f);
+                    node.transform.localScale = new Vector3(0.6559f, 0.6559f, 0.65f);
 
                     _nodes.Add(node);
                     print(node);

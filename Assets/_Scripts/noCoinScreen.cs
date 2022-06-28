@@ -12,6 +12,7 @@ public class noCoinScreen : MonoBehaviour
     [SerializeField] public Button AdButton;
 
     public static noCoinScreen Instance;
+    public GameObject adGameObject;
 
 
 
@@ -46,6 +47,7 @@ public class noCoinScreen : MonoBehaviour
 
     void OnEnable()
     {
+        adGameObject.SetActive(true);
 
         blockText.SetActive(true);
 
@@ -145,6 +147,10 @@ public class noCoinScreen : MonoBehaviour
     public void ChangeToAdButtonClicked()
     {
         GameManager.Instance.adNoCoinScreenClicked = true;
+        //activate ad gamobject
+      //  adGameObject.SetActive(true);
+        GoogleAdsScript.Instance.ShowRewardedVideo();
+
     }
 
     private void Update()

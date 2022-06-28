@@ -9,7 +9,10 @@ public class PopupAlreadyUsedAxe : MonoBehaviour
     public static PopupAlreadyUsedAxe Instance;
     public GameObject mainBlock;
     public Board _board;
-   // public GameObject closingX;
+    // public GameObject closingX;
+    bool clicked = false;
+
+
 
     private void Awake()
 
@@ -26,7 +29,7 @@ public class PopupAlreadyUsedAxe : MonoBehaviour
     {
 
 
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
 
 
         FindObjectOfType<AudioManager>().Play("appear");
@@ -47,13 +50,15 @@ public class PopupAlreadyUsedAxe : MonoBehaviour
 
 
         }
-
+        Featured.Instance.screenActive = false;
 
         if (_board.paused == false)
         {
             print("pausing board");
             _board.pauseBoard();
         }
+        Featured.Instance.screenActive = true;
+
         /*  if (LeanTween.isTweening() ==false)
           {
 
@@ -98,6 +103,7 @@ public class PopupAlreadyUsedAxe : MonoBehaviour
 
             _board.pauseBoard();
         }
+        clicked = false;
         LeanTween.scale(mainBlock, new Vector3(0f, 0f, 0f), .8f).setEaseInExpo().setOnComplete(SetFalse);
     //    LeanTween.scale(closingX, new Vector3(0, 0, 0), 0.8f).setEaseOutExpo();
         print("close");
@@ -110,5 +116,19 @@ public class PopupAlreadyUsedAxe : MonoBehaviour
 
     }
 
+    void Update()
+    {
 
+
+        if (Input.GetMouseButtonUp(0))
+        {
+
+
+            if (clicked == false)
+            {
+                clicked = true;
+                CloseMenuAnimation();
+            }
+        }
+    }
 }

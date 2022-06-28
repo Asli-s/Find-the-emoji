@@ -174,6 +174,8 @@ public class PopuPInventar : MonoBehaviour
         {
             coinUseClicked = true;
 
+            print("GameManager.Instance.coinNum + GameManager.Instance.ExtraCoin" + GameManager.Instance.coinNum + GameManager.Instance.ExtraCoin);
+
             if (GameManager.Instance.coinNum < 5 && GameManager.Instance.ExtraCoin > 0)
             {
                 GameManager.Instance.ExtraCoin -= 1;

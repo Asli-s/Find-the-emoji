@@ -7,6 +7,7 @@ public class ThemeSound : MonoBehaviour
     // Start is called before the first frame update
     public static ThemeSound Instance;
    new public AudioSource audio;
+   
 
     private void Awake()
     {
@@ -22,7 +23,7 @@ public class ThemeSound : MonoBehaviour
 
         DontDestroyOnLoad(transform.root.gameObject);
         audio = gameObject.GetComponent<AudioSource>();
-        
+        AudioSettings.OnAudioConfigurationChanged += OnAudioConfigurationChanged;
     }
     private void Start()
     {/*
@@ -53,5 +54,30 @@ public class ThemeSound : MonoBehaviour
             audio.Stop();
         }
 
+       
     }
+
+
+
+
+
+
+
+
+
+    void OnAudioConfigurationChanged(bool deviceWasChanged)
+    {
+        Debug.Log(deviceWasChanged ? "Device was changed" : "Reset was called");
+        if (deviceWasChanged)
+        {
+            /*AudioConfiguration config = AudioSettings.GetConfiguration();
+            config.dspBufferSize = 64;
+            AudioSettings.Reset(config);*/
+            PlayThemeSong();
+        }
+     //   GetComponent<AudioSource>().Play();
+    }
+
+
+
 }

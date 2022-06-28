@@ -188,7 +188,7 @@ public class UiScaler : MonoBehaviour
                 print("ultimate target height" + ultimateTargetHeight);
 
 
-                LogoImage.GetComponent<RectTransform>().transform.localPosition += new Vector3(0, -(targetHeight + (targetHeight/3*2)), 1);
+                LogoImage.GetComponent<RectTransform>().transform.localPosition += new Vector3(0, -(targetHeight + (targetHeight/2)), 1);
 
                 ControlButtons.GetComponent<RectTransform>().transform.localPosition += new Vector3(0, -(ultimateTargetHeight), 1);
 
@@ -329,7 +329,7 @@ public class UiScaler : MonoBehaviour
                 //  rectTransformMenuPanel.localPosition = new Vector3(0f, -120f, 1.0f);
                 rectTransformMenuPanel.anchoredPosition = new Vector3(0, -120f, 0);
 
-                rectTransformMenuPanel.localScale = new Vector3(1f, 1.1f, 1.0f);
+                rectTransformMenuPanel.localScale = new Vector3(1f, 1.12f, 1.0f);
 
 
                 //hearts
@@ -529,7 +529,7 @@ public class UiScaler : MonoBehaviour
                 //    rectTransformMenuPanel.localPosition = new Vector3(0f, -120f, 1.0f);
                 rectTransformMenuPanel.anchoredPosition = new Vector3(0, -120f, 0);
 
-                rectTransformMenuPanel.localScale = new Vector3(1f, 1.1f, 1.0f);
+                rectTransformMenuPanel.localScale = new Vector3(1f, 1.12f, 1.0f);
 
                 //hearts
                 heartsRect = hearts.GetComponent<RectTransform>();
