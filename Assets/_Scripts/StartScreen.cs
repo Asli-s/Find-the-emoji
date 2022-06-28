@@ -97,8 +97,9 @@ public class StartScreen : MonoBehaviour
         else if (GameManager.Instance.coinNum == 0 )
         {
             FindObjectOfType<AudioManager>().Play("noCoin");
+                coinBackground.GetComponent<RawImage>().enabled = true;
 
-            gameObject.SetActive(false);
+                gameObject.SetActive(false);
             print("firstscreen coin == 0");
 
             GameManager.Instance.coinNotEnoughScreen.SetActive(true);

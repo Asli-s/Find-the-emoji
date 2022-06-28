@@ -6,6 +6,8 @@ using System;
 
 public class GoogleAdsScript : MonoBehaviour
 {
+    public static GoogleAdsScript Instance;
+
 
     #region Variables
 
@@ -15,6 +17,18 @@ public class GoogleAdsScript : MonoBehaviour
     bool callOnce = false;
 
     #endregion
+
+
+
+  void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+    }
+
+
 
 
     // Start is called before the first frame update
@@ -50,6 +64,7 @@ public class GoogleAdsScript : MonoBehaviour
             GameManager.Instance.watchedAd = true;
 
             Featured.Instance?.AddCoin();
+            gameObject.SetActive(false);
 
         }
     }

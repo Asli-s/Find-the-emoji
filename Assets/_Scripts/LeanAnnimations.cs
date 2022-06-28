@@ -18,6 +18,8 @@ public class LeanAnnimations : MonoBehaviour
     public GameObject highScoreLabel;
 
     public GameObject Instructions;
+    Image panelImage;
+
 
     private void OnEnable()
     {
@@ -142,7 +144,10 @@ public class LeanAnnimations : MonoBehaviour
     public void Close()
     {
         print("close!!");
-      
+        panelImage = gameObject.transform.GetChild(0).GetComponent<Image>();
+        Color panelImageColor = panelImage.color;
+        panelImageColor.a = 0;
+        panelImage.color = panelImageColor;
 
         //lose not last coin
 
