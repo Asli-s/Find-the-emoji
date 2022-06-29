@@ -67,7 +67,7 @@ public class GlassAnim : MonoBehaviour
         }
         else
         {
-            FindObjectOfType<AudioManager>().Play("right");
+            FindObjectOfType<AudioManager>().Play("yes");
 
             print("goalvector " + goalVector);
             Glass.transform.SetParent(Board.Instance._parentObject.transform, false);
@@ -106,7 +106,7 @@ public class GlassAnim : MonoBehaviour
         }
         else
         {
-            FindObjectOfType<AudioManager>().Play("right");
+            FindObjectOfType<AudioManager>().Play("yes");
 
             Glass.transform.SetParent(Board.Instance._parentObject.transform, false);
             Glass.transform.localScale=new Vector3(4f, 4f, 4f);

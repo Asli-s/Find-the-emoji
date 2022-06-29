@@ -51,6 +51,7 @@ public class LolliAnim : MonoBehaviour
         //scale down
         LeanTween.scale(Lolli.GetComponent<RectTransform>(), new Vector3(0f, 0f, 1), .2f).setDelay(2.5f).setOnComplete(DeactiveGameObject);
 
+
     }
 
     void PlayCrackSound()
@@ -69,6 +70,8 @@ public class LolliAnim : MonoBehaviour
     {
         Destroy(featureTileParent.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject);
         CrackParent.SetActive(false);
+        FindObjectOfType<AudioManager>().Play("bubble");
+
 
 
     }

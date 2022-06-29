@@ -50,6 +50,7 @@ public class noCoinScreen : MonoBehaviour
         adGameObject.SetActive(true);
 
         blockText.SetActive(true);
+        FindObjectOfType<HealthHearts>().setMaxHealth();
 
         GameManager.Instance.InvCoverHammer.SetActive(false);
         GameManager.Instance.ShopCoverGlass.SetActive(false);
@@ -160,13 +161,25 @@ public class noCoinScreen : MonoBehaviour
             // animate 
             blockText.SetActive(false);
             coinButtonActive = true;
-            LeanTween.scale(coinButton.gameObject, new Vector3(1.9f, 3.2f, 1), 1f).setEaseInElastic().setOnComplete(scaleBackUp);
+            if (startGameClicked == false)
+            {
+                FindObjectOfType<AudioManager>().Play("stretch");
+
+            }
+
+            LeanTween.scale(coinButton.gameObject, new Vector3(2.5f, 3.1f, 1), 3f).setEaseInOutElastic().setOnComplete(scaleBackUp);
         }
     }
 
     void scaleBackUp()
     {
-        LeanTween.scale(coinButton.gameObject, new Vector3(2.3f, 3.2f, 1), 1f).setEaseOutElastic().setOnComplete(ActivateCoinButton);
+        if(startGameClicked == false)
+        {
+            FindObjectOfType<AudioManager>().Play("bubble");
+
+        }
+
+        LeanTween.scale(coinButton.gameObject, new Vector3(2.3f, 3.4f, 1), 1.3f).setEaseOutElastic().setOnComplete(ActivateCoinButton);
 
     }
     void ActivateCoinButton()

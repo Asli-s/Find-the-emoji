@@ -165,7 +165,9 @@ public GameObject featureImageObject;
 
     void playSoundSlide()
     {
-        FindObjectOfType<AudioManager>().Play("slide");
+        FindObjectOfType<AudioManager>().Play("swipe", false);
+
+       // FindObjectOfType<AudioManager>().Play("slide");
      
 
     }

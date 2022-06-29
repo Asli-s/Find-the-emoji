@@ -17,7 +17,9 @@ public class SuccessAlert : MonoBehaviour
 
     private void OnEnable()
     {
-        FindObjectOfType<AudioManager>().Play("success");
+        // FindObjectOfType<AudioManager>().Play("success");
+        FindObjectOfType<PlayExtraSound>().Play("success");
+
 
         clicked = false;
         animCompleted = false;
