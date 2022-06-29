@@ -14,21 +14,28 @@ public class StartScreen : MonoBehaviour
     public GameObject Button;
 
     public GameObject coinBackground;
+    public GameObject Logo;
   //  public RawImage 
 
     private void OnEnable()
     {
+        Logo.transform.localScale = Vector3.zero;
         coinBackground.GetComponent<RawImage>().enabled = false;
         Particles.SetActive(true);
+
+        LeanTween.scale(Logo, new Vector3(1,0.9f,1), 0.5f).setEaseInBounce();
+
+
         LeanTween.scale(Button, new Vector3(0,1f,1f), 0);
+        
         if (GameManager.Instance.phone)
         {
 
-        LeanTween.scale(Button, new Vector3(0.8f, 1f, 1f), 1.8f).setDelay(0.6f).setEase(LeanTweenType.easeOutElastic);
+        LeanTween.scale(Button, new Vector3(0.8f, 1f, 1f), 1.8f).setDelay(1f).setEase(LeanTweenType.easeOutElastic);
         }
         else
         {
-        LeanTween.scale(Button, new Vector3(0.8f, 0.8f, 1f), 1.8f).setDelay(0.6f).setEase(LeanTweenType.easeOutElastic);
+        LeanTween.scale(Button, new Vector3(0.8f, 0.8f, 1f), 1.8f).setDelay(1f).setEase(LeanTweenType.easeOutElastic);
 
         }
         Invoke("PlaySlide", 0.3f);

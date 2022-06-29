@@ -35,8 +35,9 @@ public class LolliAnim : MonoBehaviour
             print("paused?? " + Board.Instance.paused);
             Board.Instance.pauseBoard();
         }
+        FindObjectOfType<AudioManager>().Play("slide");
             LeanTween.moveLocal(Lolli.GetComponent<RectTransform>().gameObject, new Vector3(150.5f, 245, 1), 1.2f).setEaseOutElastic();
-        LeanTween.rotate(Lolli.GetComponent<RectTransform>().gameObject, new Vector3(0,0 , -70), 1f).setEaseOutElastic().setDelay(.8f);
+        LeanTween.rotate(Lolli.GetComponent<RectTransform>().gameObject, new Vector3(0,0 , -70), 1f).setEaseOutElastic().setDelay(.8f).setOnComplete(Crack);
 
 
         //animate hit
@@ -70,6 +71,10 @@ public class LolliAnim : MonoBehaviour
         CrackParent.SetActive(false);
 
 
+    }
+    void Crack()
+    {
+        FindObjectOfType<AudioManager>().Play("crack");
     }
 
     void DeactiveGameObject()

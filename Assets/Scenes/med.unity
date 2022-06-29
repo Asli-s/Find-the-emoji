@@ -10642,7 +10642,7 @@ RectTransform:
   m_GameObject: {fileID: 193277466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children: []
   m_Father: {fileID: 1700621075}
   m_RootOrder: 2
@@ -33415,7 +33415,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 38}
+  m_AnchoredPosition: {x: 0, y: 35}
   m_SizeDelta: {x: 900, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &867161461
@@ -54666,7 +54666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -291, y: -90}
+  m_AnchoredPosition: {x: -290.99994, y: -90}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1511018527
@@ -56343,7 +56343,7 @@ RectTransform:
   m_GameObject: {fileID: 1539616650}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.18, y: 2.18, z: 1}
+  m_LocalScale: {x: 2.19, y: 2.19, z: 1}
   m_Children:
   - {fileID: 674836873}
   m_Father: {fileID: 1231790389}
@@ -61331,6 +61331,7 @@ MonoBehaviour:
   Particles: {fileID: 156318010}
   Button: {fileID: 204355672}
   coinBackground: {fileID: 2041409374}
+  Logo: {fileID: 1901228645}
 --- !u!114 &1700621077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62514,7 +62515,7 @@ MonoBehaviour:
   - name: right
     audioClip: {fileID: 8300000, guid: ab21acea6bef3b943bfac2dbc84d9fa5, type: 3}
     volume: 0.22
-    pitch: 1.41
+    pitch: 2.26
     loop: 0
     source: {fileID: 0}
   - name: jump
@@ -62543,7 +62544,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: slide
     audioClip: {fileID: 8300000, guid: 0ccc727670a47a8498c333d5cf62d279, type: 3}
-    volume: 0.06
+    volume: 0.362
     pitch: 1.23
     loop: 0
     source: {fileID: 0}
@@ -62593,6 +62594,30 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: dbf62e37bd596204598410bfd0be1eaa, type: 3}
     volume: 0.186
     pitch: 2.74
+    loop: 0
+    source: {fileID: 0}
+  - name: crack
+    audioClip: {fileID: 8300000, guid: bd5299b944e0c0d48a6226103cc1f696, type: 3}
+    volume: 0.529
+    pitch: 2.74
+    loop: 0
+    source: {fileID: 0}
+  - name: glass
+    audioClip: {fileID: 8300000, guid: 23d2b1945ff729a40afe6796b49d6d3a, type: 3}
+    volume: 0.126
+    pitch: 0.89
+    loop: 0
+    source: {fileID: 0}
+  - name: success
+    audioClip: {fileID: 8300000, guid: f7ced5758a916c3458089448e02753d8, type: 3}
+    volume: 0.554
+    pitch: 1.71
+    loop: 0
+    source: {fileID: 0}
+  - name: bubbleClick
+    audioClip: {fileID: 8300000, guid: 4b6661e77c2103a4eba7e969516fb2e0, type: 3}
+    volume: 0.554
+    pitch: 2.03
     loop: 0
     source: {fileID: 0}
 --- !u!82 &1771702012
@@ -62651,7 +62676,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.505
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -67600,7 +67625,7 @@ RectTransform:
   m_GameObject: {fileID: 1901228645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children: []
   m_Father: {fileID: 1224212310}
   m_RootOrder: 4
@@ -67630,7 +67655,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 17e37158f7d7b854b81d1fb5beb7ae80, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 615d46a4c5542c34eb893add43f50380, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

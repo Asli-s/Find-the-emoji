@@ -67,6 +67,7 @@ public class Sweets : MonoBehaviour
                     // open featureTile not close --> try destroy child object
 
                     //animation
+                    FindObjectOfType<ClickSound>().Click();
 
                     GameManager.Instance.ExtraSweetLolli -= 1;
                     SweetLolli.text = GameManager.Instance.ExtraSweetLolli.ToString();
@@ -112,6 +113,9 @@ public class Sweets : MonoBehaviour
                 {
                     // reduce one 
                     // open featureTile not close --> try destroy child object
+                    //   FindObjectOfType<AudioManager>().Play("bubbleClick");
+                    FindObjectOfType<ClickSound>().Click();
+
                     GameManager.Instance.ExtraSweetBonbon -= 1;
                     SweetBonbon.text = GameManager.Instance.ExtraSweetBonbon.ToString();
 
