@@ -184,7 +184,9 @@ public class Tiles : MonoBehaviour
                 {
 
                     //anim get essential
-                    FindObjectOfType<AudioManager>().Play("magic", false);
+                    //
+                    //  FindObjectOfType<AudioManager>().Play("magic", false);
+                    FindObjectOfType<PlayExtraSound>().Play("present");
 
                     positionInArray =
                          _board._nodes.FindIndex(x => x.Equals(_tile));

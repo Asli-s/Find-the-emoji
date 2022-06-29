@@ -22,6 +22,7 @@ public class BonusFirstAlert : MonoBehaviour
 
     private void OnEnable()
     {
+        FindObjectOfType<AudioManager>().Play("bonus");
         pauseButton.SetActive(false);
                 featureTileBonus.SetActive(true);
         restartButtom.SetActive(false);
@@ -29,7 +30,7 @@ public class BonusFirstAlert : MonoBehaviour
 
         LeanTween.scale(mainBlock, new Vector3(0.7f, 0.7f, 1), 0.8f).setEaseOutElastic();
         backPanelObject.SetActive(true);
-                    backPanelFade.LeanAlpha(.3f, 0.2f);
+                    backPanelFade.LeanAlpha(.7f, 0.2f);
 
 
 

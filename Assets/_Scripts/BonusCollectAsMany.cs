@@ -9,6 +9,10 @@ public class BonusCollectAsMany : MonoBehaviour
     bool clicked = false;
 
    public GameObject featureTileBonus;
+
+    public GameObject ThemeAudio;
+    private AudioSource ThemeAudioSource;
+
   /*  public CanvasGroup backPanelFade;
     public GameObject backPanelObject;*/
 
@@ -20,6 +24,10 @@ public class BonusCollectAsMany : MonoBehaviour
 
     private void OnEnable()
     {
+        ThemeAudio = GameObject.Find("Audio Source themesong");
+       // ThemeAudio.SetActive(true);
+        ThemeAudioSource = ThemeAudio.GetComponent<AudioSource>();
+
         GameManager.Instance.bonusCollectAsManyAlertActive = true;
 
 
@@ -43,6 +51,8 @@ public class BonusCollectAsMany : MonoBehaviour
 
             if (clicked == false)
             {
+                ThemeAudioSource.pitch = 1.26f;
+                ThemeAudioSource.volume = 0.17f;
 
                 clicked = true;
                 gameObject.SetActive(false);

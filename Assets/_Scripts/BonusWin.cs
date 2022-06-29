@@ -12,12 +12,28 @@ public class BonusWin : MonoBehaviour
     bool clicked = false;
     public GameObject BonusEqualsScreen;
 
+    public GameObject ThemeAudio;
+    private AudioSource ThemeAudioSource;
+
+
     private void Awake()
     {
         if(Instance == null)
         {
             Instance = this;
         }
+    }
+    
+    private void OnEnable()
+    {
+        FindObjectOfType<AudioManager>().Play("success");
+        ThemeAudio = GameObject.Find("Audio Source themesong");
+
+        ThemeAudioSource = ThemeAudio.GetComponent<AudioSource>();
+        ThemeAudioSource.pitch = 1.1f;
+        ThemeAudioSource.volume = .1f;
+
+
     }
 
     public void ActivateBonusScreen()
@@ -40,8 +56,8 @@ public class BonusWin : MonoBehaviour
     {
 
 
-        LeanTween.scale(mainBlock, new Vector3(1f, 1f, 0.8f), .6f).setEase(LeanTweenType.easeOutElastic).setOnComplete(ChangeAnimationComplete);
-
+        LeanTween.scale(mainBlock, new Vector3(1f, 1f, 0.8f), .6f).setEase(LeanTweenType.easeOutElastic);/*.setOnComplete(ChangeAnimationComplete);*/
+        Invoke("ChangeAnimationComplete", 1f);
     }
 
 
@@ -57,6 +73,7 @@ public class BonusWin : MonoBehaviour
             print("panel clicked");
             if(animated == true && clicked == false)
             {
+
                 gameObject.SetActive(false);
                 clicked = true;
                 BonusEqualsScreen.SetActive(true);

@@ -11,6 +11,8 @@ public class BonusBackToGame : MonoBehaviour
 
     private void OnEnable()
     {
+        FindObjectOfType<AudioManager>().Play("appear");
+
         LeanTween.scale(mainBlock, new Vector3(1f, 1f, 1), 0.8f).setEaseOutExpo();
 
     }
@@ -35,9 +37,15 @@ public class BonusBackToGame : MonoBehaviour
         GameManager.Instance.redPresentBonus = false;
         GameManager.Instance.lilaPresentBonus = false;
         GameManager.Instance.rainbowPresentBonus = false;
+        GameManager.Instance.rainbowPresentBonus2 = false;
+        GameManager.Instance.rainbowPresentBonus3 = false;
+        GameManager.Instance.rainbowPresentBonus4 = false;
+        GameManager.Instance.rainbowPresentBonus5 = false;
+        GameManager.Instance.rainbowPresentBonus6 = false;
 
 
-        PresentTimer.Instance.StartThisCoroutine();
+
+    PresentTimer.Instance.StartThisCoroutine();
 
         GameManager.Instance.bonusOn = false;
         Featured.Instance.screenActive = false;
