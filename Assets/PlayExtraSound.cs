@@ -25,7 +25,7 @@ public class PlayExtraSound : MonoBehaviour
             if (name == "win") {
                 audio.clip = clips[0];
                 audio.pitch = 1.8f;
-                audio.volume = 0.5f;
+                audio.volume = 0.2f;
 
             }
             else if( name == "slash")
@@ -38,8 +38,26 @@ public class PlayExtraSound : MonoBehaviour
             else if (name == "success")
             {
                 audio.clip = clips[2];
-                audio.pitch = 1.71f;
-                audio.volume = 0.554f;
+                audio.pitch = 1.4f;
+                audio.volume = 0.21f;
+
+            }
+            else if (name == "present")
+            {
+
+              
+                    audio.clip = clips[3];
+                    audio.pitch = 1.1f;
+                    audio.volume = 0.12f;
+
+                
+            }
+            else if (name == "click")
+            {
+
+                audio.clip = clips[4];
+                audio.pitch = 1.1f;
+                audio.volume = .6f;
 
             }
 

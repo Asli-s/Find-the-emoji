@@ -180,6 +180,8 @@ public class PopuPInventar : MonoBehaviour
 
             if (GameManager.Instance.coinNum < 5 && GameManager.Instance.ExtraCoin > 0)
             {
+                FindObjectOfType<PlayExtraSound>().Play("success");
+
                 GameManager.Instance.ExtraCoin -= 1;
                 FindObjectOfType<CountdownTimer>().AddLife();
                 CoinDisplay.text = GameManager.Instance.ExtraCoin.ToString();
@@ -232,6 +234,8 @@ public class PopuPInventar : MonoBehaviour
             else if (GameManager.Instance.coinNum == 5)
             {
                 //max coins setactive
+                FindObjectOfType<AudioManager>().Play("close");
+
                 maxHeartAlert.SetActive(true);
                 coinUseClicked = false;
 
@@ -239,6 +243,8 @@ public class PopuPInventar : MonoBehaviour
             else if (GameManager.Instance.ExtraCoin == 0)
             {
                 //not enough coins
+                FindObjectOfType<AudioManager>().Play("close");
+
                 notEnoughCoinsAlert.SetActive(true);
                 coinUseClicked = false;
 
@@ -257,6 +263,8 @@ public class PopuPInventar : MonoBehaviour
 
             if (HealthHearts.Instance.health < 3 && GameManager.Instance.ExtraLife > 0 && GameManager.Instance.noCoinSCreenActive ==false)//health <3)
             {
+                FindObjectOfType<PlayExtraSound>().Play("success");
+
                 GameManager.Instance.ExtraLife -= 1;
                 HeartDisplay.text = GameManager.Instance.ExtraLife.ToString();
                 HealthHearts.Instance.addHealth();
@@ -268,6 +276,8 @@ public class PopuPInventar : MonoBehaviour
             }
             else if(GameManager.Instance.noCoinSCreenActive == true)
             {
+                FindObjectOfType<AudioManager>().Play("close");
+
                 // alert not in game yet
                 notInGameYet.SetActive(true);
                 heartUseCLicked = false;
@@ -276,6 +286,8 @@ public class PopuPInventar : MonoBehaviour
             else if (GameManager.Instance.ExtraLife == 0)
             {
                 //not enough setactive
+                FindObjectOfType<AudioManager>().Play("close");
+
                 notEnoughHeartsAlert.SetActive(true);
                 heartUseCLicked = false;
 
@@ -283,6 +295,8 @@ public class PopuPInventar : MonoBehaviour
             }
             else if (HealthHearts.Instance.health == 3)
             {
+                FindObjectOfType<AudioManager>().Play("close");
+
                 maxHeartAlert.SetActive(true);
                 heartUseCLicked = false;
 

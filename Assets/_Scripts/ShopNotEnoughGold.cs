@@ -17,7 +17,6 @@ public class ShopNotEnoughGold : MonoBehaviour
 
     private void OnEnable()
     {
-        FindObjectOfType<AudioManager>().Play("close");
 
         clicked = false;
         animCompleted = false;

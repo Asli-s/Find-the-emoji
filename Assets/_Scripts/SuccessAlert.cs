@@ -18,12 +18,11 @@ public class SuccessAlert : MonoBehaviour
     private void OnEnable()
     {
         // FindObjectOfType<AudioManager>().Play("success");
-        FindObjectOfType<PlayExtraSound>().Play("success");
 
 
         clicked = false;
         animCompleted = false;
-        LeanTween.scale(alertText.gameObject, new Vector3(1f, 1f, 1), 0.6f).setEaseOutElastic().setOnComplete(ChangeScreenActive);
+        LeanTween.scale(alertText.gameObject, new Vector3(1f, 1f, 1), 0.8f).setDelay(0.1f).setEaseOutElastic().setOnComplete(ChangeScreenActive);
         Featured.Instance.screenActive = true;
 
     }

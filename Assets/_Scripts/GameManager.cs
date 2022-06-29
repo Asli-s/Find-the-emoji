@@ -47,6 +47,12 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public bool redPresentBonus = false;
     public bool lilaPresentBonus = false;
     public bool rainbowPresentBonus = false;
+    public bool rainbowPresentBonus2 = false;
+    public bool rainbowPresentBonus3 = false;
+    public bool rainbowPresentBonus4 = false;
+    public bool rainbowPresentBonus5 = false;
+    public bool rainbowPresentBonus6 = false;
+   
 
 
     public bool watchedAd = false;
@@ -322,6 +328,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.bestStreakStat = this.bestStreakStats;
        gameData.bestStreak = this.bestStreak;
         gameData.currentStreak = this.currentStreak;
+      //  gameData.currentStreak = 1274;
+
 
 
 
@@ -437,8 +445,21 @@ public class GameManager : MonoBehaviour, IDataPersistence
               /*  if (currentStreak == 2 || currentStreak ==3 || currentStreak == 4 || currentStreak == 5 ||currentStreak ==6 || currentStreak == 7|| currentStreak == 8)//currentstreak== 20)
                 {*/
 
-                    if(currentStreak == 20) // 20
+                //yellow 
+                //green
+                //blue
+                //darkBlue
+                //red
+                //lila 
+                //rainbow
+
+
+
+                    if(currentStreak == 25 || currentStreak == 50 || currentStreak == 75 || currentStreak == 100  ) // 20
                     {
+
+                    // 0-100
+
                          yellowPresentBonus = true;
                     // rainbowPresentBonus = true;
 
@@ -451,8 +472,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
                     SweetCoverHammer.SetActive(false);
 
                 }
-                    else if(currentStreak == 60) // 60
+                    else if( currentStreak == 125 || currentStreak == 150 || currentStreak == 175 || currentStreak == 200) // 60
                     {
+                    //100-200
                         greenPresentBonus = true;
 
                     BonusBackGroundImage.SetActive(true);
@@ -466,8 +488,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
 
                 }
-                    else if (currentStreak == 110) //110
+                    else if (currentStreak == 300 || currentStreak == 225 || currentStreak == 250 || currentStreak == 275) //110
                     {
+                    //200-300
                         bluePresentBonus = true;
 
                     BonusBackGroundImage.SetActive(true);
@@ -478,8 +501,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
                     SweetCoverGlass.SetActive(false);
                     SweetCoverHammer.SetActive(false);
                 }
-                    else if (currentStreak == 170 || currentStreak == 1730 || currentStreak == 1760 || currentStreak == 1830 || currentStreak == 1860) // 170  //1730 //1760 //1830 //1860
+                    else if (currentStreak == 400 || currentStreak == 325|| currentStreak == 350|| currentStreak == 375) // 170  //1730 //1760 //1830 //1860
                     {
+                    //300-400
                         darkBluePresentBonus = true;
 
                     BonusBackGroundImage.SetActive(true);
@@ -490,8 +514,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
                     SweetCoverGlass.SetActive(false);
                     SweetCoverHammer.SetActive(false);
                 }
-                    else if (currentStreak == 240 || currentStreak == 1050 || currentStreak == 1150 || currentStreak == 1250 || currentStreak == 1350 || currentStreak == 1450 || currentStreak == 1550 || currentStreak == 1650 || currentStreak == 1930 || currentStreak == 1960) // 240 //1050 // 1150 //1250//1350 // 1450 //1550 // 1650 //1930 // 1960
+                    else if (currentStreak == 500 || currentStreak == 425 || currentStreak == 450 || currentStreak == 475/* || currentStreak == 1350 || currentStreak == 1450 || currentStreak == 1550 || currentStreak == 1650 || currentStreak == 1930 || currentStreak == 1960*/) // 240 //1050 // 1150 //1250//1350 // 1450 //1550 // 1650 //1930 // 1960
                     {
+                    //400-500
                         redPresentBonus = true;
 
                     BonusBackGroundImage.SetActive(true);
@@ -502,9 +527,10 @@ public class GameManager : MonoBehaviour, IDataPersistence
                     SweetCoverGlass.SetActive(false);
                     SweetCoverHammer.SetActive(false);
                 }
-                    else if (currentStreak == 320 || currentStreak == 410 || currentStreak == 600 || currentStreak == 700 || currentStreak == 800 || currentStreak == 900 || currentStreak == 1100 || currentStreak == 1200 || currentStreak == 1300 || currentStreak == 1400 || currentStreak == 1500 || currentStreak == 1600 || currentStreak == 1700 || currentStreak == 1800 || currentStreak == 1900)  // <200 >500 && cstreak % 100 ==0
+                    else if (currentStreak == 600 || currentStreak == 525 || currentStreak == 575 || currentStreak == 550 /*|| currentStreak == 800 || currentStreak == 900 || currentStreak == 1100 || currentStreak == 1200 || currentStreak == 1300 || currentStreak == 1400 || currentStreak == 1500 || currentStreak == 1600 || currentStreak == 1700 || currentStreak == 1800 || currentStreak == 1900*/)  // <200 >500 && cstreak % 100 ==0
                     // 320 //410 // 600 // 700 //800 //900 // 1100 //1200 //1300 /1400 //1600 //1700 /1800 //1900
                     {
+                    //525-600
                         lilaPresentBonus = true;
 
                     BonusBackGroundImage.SetActive(true);
@@ -515,8 +541,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
                     SweetCoverGlass.SetActive(false);
                     SweetCoverHammer.SetActive(false);
                 }
-                    else if (currentStreak ==500 || currentStreak == 1000 || currentStreak == 1500 || currentStreak >= 2000 && currentStreak %100 == 0 /*|| currentStreak == 2100 || currentStreak == 2200 || currentStreak == 2300 || currentStreak == 2400 || currentStreak == 2500 || currentStreak == 2600 || currentStreak == 2700 || currentStreak == 2800 || currentStreak == 2900 || currentStreak == 3000 || currentStreak == 3100 || currentStreak == 3200 || currentStreak == 3300 || currentStreak == 3400 || currentStreak == 3500 || currentStreak == 3600 || currentStreak == 3700 || currentStreak == 3800 || currentStreak == 3900 || currentStreak == 4000*/ ) //500 // 1000 //1500 //2000 //2100 //2200 //2300 //2400 // 2500 // 2600 //2700 // 2800 //2900 //3000...
+                    else if (currentStreak ==625 || currentStreak == 700 || currentStreak == 650 || currentStreak == 675  /*|| currentStreak == 2100 || currentStreak == 2200 || currentStreak == 2300 || currentStreak == 2400 || currentStreak == 2500 || currentStreak == 2600 || currentStreak == 2700 || currentStreak == 2800 || currentStreak == 2900 || currentStreak == 3000 || currentStreak == 3100 || currentStreak == 3200 || currentStreak == 3300 || currentStreak == 3400 || currentStreak == 3500 || currentStreak == 3600 || currentStreak == 3700 || currentStreak == 3800 || currentStreak == 3900 || currentStreak == 4000*/ ) //500 // 1000 //1500 //2000 //2100 //2200 //2300 //2400 // 2500 // 2600 //2700 // 2800 //2900 //3000...
                     {
+                    //625-700
                         rainbowPresentBonus = true;
 
                     BonusBackGroundImage.SetActive(true);
@@ -527,22 +554,107 @@ public class GameManager : MonoBehaviour, IDataPersistence
                     SweetCoverGlass.SetActive(false);
                     SweetCoverHammer.SetActive(false);
                 }
+                else if (currentStreak == 725 || currentStreak == 750 || currentStreak == 775 || currentStreak == 800 /*|| currentStreak == 2100 || currentStreak == 2200 || currentStreak == 2300 || currentStreak == 2400 || currentStreak == 2500 || currentStreak == 2600 || currentStreak == 2700 || currentStreak == 2800 || currentStreak == 2900 || currentStreak == 3000 || currentStreak == 3100 || currentStreak == 3200 || currentStreak == 3300 || currentStreak == 3400 || currentStreak == 3500 || currentStreak == 3600 || currentStreak == 3700 || currentStreak == 3800 || currentStreak == 3900 || currentStreak == 4000*/ ) //500 // 1000 //1500 //2000 //2100 //2200 //2300 //2400 // 2500 // 2600 //2700 // 2800 //2900 //3000...
+                {
+                    //725-800
+                    rainbowPresentBonus2 = true;
 
-                 //   rainbowPresentBonus = true;
-/*
                     BonusBackGroundImage.SetActive(true);
                     BonusFirstAlert.SetActive(true);
                     //  currentStreak += 1;
                     FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
                     bonusOn = true;
                     SweetCoverGlass.SetActive(false);
-                  SweetCoverHammer.SetActive(false);*/
-                    //bonus 
-                    //  generategrrid bonus
-                
+                    SweetCoverHammer.SetActive(false);
+                }
+                else if (currentStreak == 825 || currentStreak == 850 || currentStreak == 875 || currentStreak == 900 /*|| currentStreak == 2100 || currentStreak == 2200 || currentStreak == 2300 || currentStreak == 2400 || currentStreak == 2500 || currentStreak == 2600 || currentStreak == 2700 || currentStreak == 2800 || currentStreak == 2900 || currentStreak == 3000 || currentStreak == 3100 || currentStreak == 3200 || currentStreak == 3300 || currentStreak == 3400 || currentStreak == 3500 || currentStreak == 3600 || currentStreak == 3700 || currentStreak == 3800 || currentStreak == 3900 || currentStreak == 4000*/ ) //500 // 1000 //1500 //2000 //2100 //2200 //2300 //2400 // 2500 // 2600 //2700 // 2800 //2900 //3000...
+                {
+                    //800-900
+                    rainbowPresentBonus3 = true;
+
+                    BonusBackGroundImage.SetActive(true);
+                    BonusFirstAlert.SetActive(true);
+                    //  currentStreak += 1;
+                    FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+                    bonusOn = true;
+                    SweetCoverGlass.SetActive(false);
+                    SweetCoverHammer.SetActive(false);
+                }
+                else if (currentStreak == 925 || currentStreak == 950 || currentStreak == 975 || currentStreak == 1000/*|| currentStreak == 2100 || currentStreak == 2200 || currentStreak == 2300 || currentStreak == 2400 || currentStreak == 2500 || currentStreak == 2600 || currentStreak == 2700 || currentStreak == 2800 || currentStreak == 2900 || currentStreak == 3000 || currentStreak == 3100 || currentStreak == 3200 || currentStreak == 3300 || currentStreak == 3400 || currentStreak == 3500 || currentStreak == 3600 || currentStreak == 3700 || currentStreak == 3800 || currentStreak == 3900 || currentStreak == 4000*/ ) //500 // 1000 //1500 //2000 //2100 //2200 //2300 //2400 // 2500 // 2600 //2700 // 2800 //2900 //3000...
+                {
+                    //1025 50 75 
+                    // 900 -1000
+                    rainbowPresentBonus4 = true;
+
+                    BonusBackGroundImage.SetActive(true);
+                    BonusFirstAlert.SetActive(true);
+                    //  currentStreak += 1;
+                    FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+                    bonusOn = true;
+                    SweetCoverGlass.SetActive(false);
+                    SweetCoverHammer.SetActive(false);
+                }
+                else if (currentStreak >= 1010 && currentStreak % 100 == 0 /*|| currentStreak == 2100 || currentStreak == 2200 || currentStreak == 2300 || currentStreak == 2400 || currentStreak == 2500 || currentStreak == 2600 || currentStreak == 2700 || currentStreak == 2800 || currentStreak == 2900 || currentStreak == 3000 || currentStreak == 3100 || currentStreak == 3200 || currentStreak == 3300 || currentStreak == 3400 || currentStreak == 3500 || currentStreak == 3600 || currentStreak == 3700 || currentStreak == 3800 || currentStreak == 3900 || currentStreak == 4000*/ ) //500 // 1000 //1500 //2000 //2100 //2200 //2300 //2400 // 2500 // 2600 //2700 // 2800 //2900 //3000...
+                {
+                    //1100 //1200 //1300 ....
+                    rainbowPresentBonus5 = true;
+
+                    BonusBackGroundImage.SetActive(true);
+                    BonusFirstAlert.SetActive(true);
+                    //  currentStreak += 1;
+                    FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+                    bonusOn = true;
+                    SweetCoverGlass.SetActive(false);
+                    SweetCoverHammer.SetActive(false);
+                }
+                else if ( currentStreak >= 1010 &&  (((float)currentStreak / 100) - (double) Math.Floor((double)currentStreak / 100)) *100==25  
+                    || currentStreak >= 1010 && ((float)currentStreak / 100 - (double)Math.Floor((double)currentStreak / 100)) * 100 == 50
+                    ||currentStreak >= 1010 && ((float)currentStreak / 100 - (double)Math.Floor((double)currentStreak / 100)) * 100 == 75
+                   )
+                {
+                    //1025 50 75 
+                    
+                    rainbowPresentBonus6 = true;
+
+                    BonusBackGroundImage.SetActive(true);
+                    BonusFirstAlert.SetActive(true);
+                    //  currentStreak += 1;
+                    FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+                    bonusOn = true;
+                    SweetCoverGlass.SetActive(false);
+                    SweetCoverHammer.SetActive(false);
+                }
+                /*  else if (currentStreak == 600 || currentStreak == 700 || currentStreak == 800 || currentStreak >= 900 && currentStreak % 100 == 0 *//*|| currentStreak == 2100 || currentStreak == 2200 || currentStreak == 2300 || currentStreak == 2400 || currentStreak == 2500 || currentStreak == 2600 || currentStreak == 2700 || currentStreak == 2800 || currentStreak == 2900 || currentStreak == 3000 || currentStreak == 3100 || currentStreak == 3200 || currentStreak == 3300 || currentStreak == 3400 || currentStreak == 3500 || currentStreak == 3600 || currentStreak == 3700 || currentStreak == 3800 || currentStreak == 3900 || currentStreak == 4000*//* ) //500 // 1000 //1500 //2000 //2100 //2200 //2300 //2400 // 2500 // 2600 //2700 // 2800 //2900 //3000...
+                  {
+                      rainbowPresentBonus6 = true;
+
+                      BonusBackGroundImage.SetActive(true);
+                      BonusFirstAlert.SetActive(true);
+                      //  currentStreak += 1;
+                      FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+                      bonusOn = true;
+                      SweetCoverGlass.SetActive(false);
+                      SweetCoverHammer.SetActive(false);
+                  }*/
+
+
+
+                //   rainbowPresentBonus = true;
+                /*
+                                    BonusBackGroundImage.SetActive(true);
+                                    BonusFirstAlert.SetActive(true);
+                                    //  currentStreak += 1;
+                                    FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
+                                    bonusOn = true;
+                                    SweetCoverGlass.SetActive(false);
+                                  SweetCoverHammer.SetActive(false);*/
+                //bonus 
+                //  generategrrid bonus
+
                 else
                 {
                     //  currentStreak += 1;
+                    print("is it 25? " + (((float)currentStreak / 100) - (double)Math.Floor((double)currentStreak / 100)) * 100);
                     bonusOn = false;
                     findScreenGameActive = true;
 

@@ -92,7 +92,7 @@ public class PresentTimer : MonoBehaviour
             toAppearMinutes = UnityEngine.Random.Range(5, 16);
             toAppearSeconds = 60 * toAppearMinutes;
 
-            toAppearSeconds = 5;
+         //   toAppearSeconds = 5;
             GameManager.Instance.presTimerActive = true;
 
             GameManager.Instance.presTimerSeconds = toAppearSeconds;

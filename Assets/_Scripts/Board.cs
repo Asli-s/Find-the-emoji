@@ -32,6 +32,11 @@ public class Board : MonoBehaviour
     public Sprite presentSpriteRed;
     public Sprite presentSpriteLila;
     public Sprite presentSpriteRainbow;
+    public Sprite presentSpriteRainbow2;
+    public Sprite presentSpriteRainbow3;
+    public Sprite presentSpriteRainbow4;
+    public Sprite presentSpriteRainbow5;
+    public Sprite presentSpriteRainbow6;
 
     private Sprite currentPresentSprite;
 
@@ -688,7 +693,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
                     //tile.transform.localPosition = new Vector3(0,27, 0);
                     node.transform.localPosition = new Vector3((x * 7f) - 10.5f, (y * 7f) - 10.5f, 1);
 
-                    node.transform.localScale = new Vector3(0.656f, 0.656f, 0.65f);
+                    node.transform.localScale = new Vector3(0.654f, 0.654f, 0.65f);
 
                     _nodes.Add(node);
                     print(node);
@@ -762,6 +767,32 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
             currentPresentSprite = presentSpriteRainbow;
 
         }
+        else if (GameManager.Instance.rainbowPresentBonus2)
+        {
+            currentPresentSprite = presentSpriteRainbow2;
+
+        }
+        else if (GameManager.Instance.rainbowPresentBonus3)
+        {
+            currentPresentSprite = presentSpriteRainbow3;
+
+        }
+        else if (GameManager.Instance.rainbowPresentBonus4)
+        {
+            currentPresentSprite = presentSpriteRainbow4;
+
+        }
+        else if (GameManager.Instance.rainbowPresentBonus5)
+        {
+            currentPresentSprite = presentSpriteRainbow5;
+
+        }
+        else if (GameManager.Instance.rainbowPresentBonus6)
+        {
+            currentPresentSprite = presentSpriteRainbow6;
+
+        }
+      
 
         _tileSpriteRenderer.sprite = currentPresentSprite;
 

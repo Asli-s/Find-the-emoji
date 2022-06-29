@@ -17,7 +17,7 @@ public class InventoryNotEnoughHeartAlert : MonoBehaviour
 
     private void OnEnable()
     {
-        FindObjectOfType<AudioManager>().Play("close");
+     //   FindObjectOfType<AudioManager>().Play("close");
 
         clicked = false;
         animCompleted = false;

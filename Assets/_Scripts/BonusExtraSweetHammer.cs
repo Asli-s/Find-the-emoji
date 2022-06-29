@@ -10,12 +10,15 @@ public class BonusExtraSweetHammer : MonoBehaviour
 
     [SerializeField] private TMPro.TextMeshProUGUI extraAmountNumber;
     public GameObject bonusBackToGame;
+    bool animateFinish = false;
 
     //public GameObject BonusExtraHammer from Glass
 
 
     private void OnEnable()
     {
+        FindObjectOfType<AudioManager>().Play("success");
+
         // 60 - green +1 hammer
         //110 turkis +1 glass
         //170  darjblue +1 hammer +1 glass
@@ -32,7 +35,7 @@ public class BonusExtraSweetHammer : MonoBehaviour
 
         Featured.Instance.screenActive = true;
 
-        if (GameManager.Instance.greenPresentBonus || GameManager.Instance.darkBluePresentBonus)
+        if (GameManager.Instance.yellowPresentBonus || GameManager.Instance.bluePresentBonus)
         {
 
             // 1 hammmer
@@ -41,7 +44,7 @@ public class BonusExtraSweetHammer : MonoBehaviour
 
         }
 
-        else if (GameManager.Instance.redPresentBonus || GameManager.Instance.lilaPresentBonus)
+        else if (GameManager.Instance.darkBluePresentBonus || GameManager.Instance.redPresentBonus)
         {
             // 2 hamer
             extraAmountNumber.text = "+2";
@@ -49,7 +52,7 @@ public class BonusExtraSweetHammer : MonoBehaviour
 
 
         }
-        else if (GameManager.Instance.rainbowPresentBonus)
+        else /*if (GameManager.Instance.lilaPresentBonus || GameManager.Instance.rainbowPresentBonus || GameManager.Instance.lilaPre)*/
         {
             // 3 hammer 
             extraAmountNumber.text = "+3";
@@ -59,7 +62,7 @@ public class BonusExtraSweetHammer : MonoBehaviour
         }
 
 
-        LeanTween.scale(mainBlock, new Vector3(0.8f, 0.8f, 1), 0.4f).setEaseOutElastic();
+        LeanTween.scale(mainBlock, new Vector3(0.8f, 0.8f, 1), 0.4f).setEaseOutElastic().setOnComplete(Change);
 
 
 
@@ -67,18 +70,23 @@ public class BonusExtraSweetHammer : MonoBehaviour
 
     }
 
+    void Change()
+    {
+        animateFinish = true;
+
+    }
     private void Update()
     {
         if (Input.GetMouseButtonUp(0))
         {
 
 
-            if (clicked == false)
+            if (clicked == false && animateFinish ==true)
             {
 
                 clicked = true;
                 gameObject.SetActive(false);
-
+                animateFinish = false;
                 bonusBackToGame.SetActive(true);
                 //  FindObjectOfType<CurrentStreakMenu>().ChangeCurrStreak();
                 //

@@ -25,7 +25,7 @@ public class StartScreen : MonoBehaviour
         coinBackground.GetComponent<RawImage>().enabled = false;
         Particles.SetActive(true);
 
-        LeanTween.scale(Logo, new Vector3(1,0.9f,1), 0.5f).setEaseInBounce();
+        LeanTween.scale(Logo, new Vector3(1,0.9f,1), 0.3f).setEaseInBounce();
 
 
         LeanTween.scale(Button, new Vector3(0,1f,1f), 0);

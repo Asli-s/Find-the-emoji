@@ -13,11 +13,13 @@ public class BonusExtraSweetGlass : MonoBehaviour
     public GameObject BonusExtraHammer; // from Glass;
 
 
-   
+    bool animateFinish = false;
 
 
     private void OnEnable()
     {
+        FindObjectOfType<AudioManager>().Play("success");
+
         // 60 - green +1 hammer
         //110 turkis +1 glass
         //170  darjblue +1 hammer +1 glass
@@ -32,9 +34,9 @@ public class BonusExtraSweetGlass : MonoBehaviour
 
 
 
-       
 
-        if (GameManager.Instance.bluePresentBonus || GameManager.Instance.darkBluePresentBonus || GameManager.Instance.redPresentBonus )
+
+        if (GameManager.Instance.greenPresentBonus || GameManager.Instance.bluePresentBonus || GameManager.Instance.darkBluePresentBonus )
         {
 
             // 1 hammmer
@@ -42,11 +44,18 @@ public class BonusExtraSweetGlass : MonoBehaviour
             GameManager.Instance.ExtraSweetBonbon += 1;
         }
 
-        else if (GameManager.Instance.lilaPresentBonus || GameManager.Instance.rainbowPresentBonus)
+        else if (GameManager.Instance.redPresentBonus || GameManager.Instance.lilaPresentBonus)
         {
             // 2 hamer
             extraAmountNumber.text = "+2";
             GameManager.Instance.ExtraSweetBonbon += 2;
+
+        }
+        else 
+        {
+            // 2 hamer
+            extraAmountNumber.text = "+3";
+            GameManager.Instance.ExtraSweetBonbon += 3;
 
         }
         /*   else if (GameManager.Instance.rainbowPresentBonus)
@@ -57,11 +66,17 @@ public class BonusExtraSweetGlass : MonoBehaviour
            }*/
 
 
-        LeanTween.scale(mainBlock, new Vector3(0.8f, 0.8f, 1), 0.4f).setEaseOutElastic();
+        LeanTween.scale(mainBlock, new Vector3(0.8f, 0.8f, 1), 0.4f).setEaseOutElastic().setOnComplete(Change);
+        ;
 
 
 
 
+
+    }
+    void Change()
+    {
+        animateFinish = true;
 
     }
 
@@ -71,13 +86,14 @@ public class BonusExtraSweetGlass : MonoBehaviour
         {
 
 
-            if (clicked == false)
+            if (clicked == false&& animateFinish ==true)
             {
 
                 clicked = true;
                 gameObject.SetActive(false);
+                animateFinish = false;
 
-                if (GameManager.Instance.bluePresentBonus)
+                if (GameManager.Instance.greenPresentBonus)
                 {
 
                 bonusBackToGame.SetActive(true);
