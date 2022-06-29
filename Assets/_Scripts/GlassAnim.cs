@@ -21,10 +21,11 @@ public class GlassAnim : MonoBehaviour
     private void OnEnable()
     {
 
+        FindObjectOfType<AudioManager>().Play("glass");
 
 
 
-                    GameManager.Instance.glassSearch = true;
+        GameManager.Instance.glassSearch = true;
         if (Board.Instance.paused == false)
         {
             print("paused?? " + Board.Instance.paused);
@@ -66,6 +67,8 @@ public class GlassAnim : MonoBehaviour
         }
         else
         {
+            FindObjectOfType<AudioManager>().Play("right");
+
             print("goalvector " + goalVector);
             Glass.transform.SetParent(Board.Instance._parentObject.transform, false);
             Glass.transform.localScale = new Vector3(4f, 4f, 4f);
@@ -103,7 +106,9 @@ public class GlassAnim : MonoBehaviour
         }
         else
         {
-                    Glass.transform.SetParent(Board.Instance._parentObject.transform, false);
+            FindObjectOfType<AudioManager>().Play("right");
+
+            Glass.transform.SetParent(Board.Instance._parentObject.transform, false);
             Glass.transform.localScale=new Vector3(4f, 4f, 4f);
 
             print("goalvector " + goalVector);

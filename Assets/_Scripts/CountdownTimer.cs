@@ -276,7 +276,7 @@ public class CountdownTimer : MonoBehaviour
 
                 StartTimer(30, 0);
 
-                if (noCoinScreen.Instance?.isActiveAndEnabled ==true)
+                if (GameManager.Instance.noCoinSCreenActive ==true)
                 {
                     noCoinScreen.Instance.coinButtonCover.gameObject.SetActive(false);
                     noCoinScreen.Instance.coinButton.interactable = true;

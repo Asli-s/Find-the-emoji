@@ -180,7 +180,7 @@ public class Tiles : MonoBehaviour
                 {
 
                     //anim get essential
-                    FindObjectOfType<AudioManager>().Play("win", false);
+                    FindObjectOfType<AudioManager>().Play("right", false);
 
                     positionInArray =
                          _board._nodes.FindIndex(x => x.Equals(_tile));
