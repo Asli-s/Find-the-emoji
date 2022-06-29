@@ -103,7 +103,7 @@ public class Tiles : MonoBehaviour
             TileSpriteRenderer = GetComponent<SpriteRenderer>();
             //  print(clickedTile);
 
-            if (win == false && GameOver.Instance.lose ==false && GameManager.Instance.bonusOn ==false && clickedTile != Board.Instance.randomPresent)
+            if (win == false && GameOver.Instance.lose ==false && GameManager.Instance.bonusOn ==false && clickedTile != Board.Instance.randomPresent && gameObject.transform.childCount != 4)
             {
 
               
@@ -165,7 +165,11 @@ public class Tiles : MonoBehaviour
                     positionInArray =
                           _board._nodes.FindIndex(x => x.Equals(_tile));
                     //     health.GetComponent<HealthHearts>().loseLife();
+                    if( gameObject.transform.childCount != 4)
+                    {
+
                     HealthHearts.Instance.loseLife();
+                    }
                     //  print(health.GetComponent<HealthHearts>().health);
 
 
@@ -180,7 +184,7 @@ public class Tiles : MonoBehaviour
                 {
 
                     //anim get essential
-                    FindObjectOfType<AudioManager>().Play("right", false);
+                    FindObjectOfType<AudioManager>().Play("magic", false);
 
                     positionInArray =
                          _board._nodes.FindIndex(x => x.Equals(_tile));

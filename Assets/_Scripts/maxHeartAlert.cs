@@ -17,6 +17,8 @@ public class maxHeartAlert : MonoBehaviour
 
     private void OnEnable()
     {
+
+        FindObjectOfType<AudioManager>().Play("close");
         clicked = false;
         animCompleted = false;
         LeanTween.scale(mainBlock, new Vector3(1f, 1f, 1), 0.5f).setEaseOutExpo().setOnComplete(ChangeScreenActive);

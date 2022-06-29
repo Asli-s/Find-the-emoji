@@ -27,12 +27,14 @@ public class PopupAlreadyUsedAxe : MonoBehaviour
 
 
     {
+        FindObjectOfType<AudioManager>().Play("close");
+
 
 
         //Time.timeScale = 1;
 
 
-        FindObjectOfType<AudioManager>().Play("appear");
+        //FindObjectOfType<AudioManager>().Play("appear");
 
 
         if (GameManager.Instance.tablet == true)

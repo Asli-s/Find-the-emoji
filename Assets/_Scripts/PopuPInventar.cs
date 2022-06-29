@@ -21,6 +21,8 @@ public class PopuPInventar : MonoBehaviour
 
   //  [SerializeField] public GameObject maxCoinAlert;
     [SerializeField] public GameObject maxHeartAlert;
+    [SerializeField] public GameObject notInGameYet;
+
 
 
     bool coinUseClicked = false;
@@ -157,7 +159,7 @@ public class PopuPInventar : MonoBehaviour
 
 
         }
-        else if (noCoinScreen.Instance.isActiveAndEnabled)
+        else if (GameManager.Instance.noCoinSCreenActive ==true)
         {
             gameObject.SetActive(true);
 
@@ -253,7 +255,7 @@ public class PopuPInventar : MonoBehaviour
         {
             heartUseCLicked = true;
 
-            if (HealthHearts.Instance.health < 3 && GameManager.Instance.ExtraLife > 0)//health <3)
+            if (HealthHearts.Instance.health < 3 && GameManager.Instance.ExtraLife > 0 && GameManager.Instance.noCoinSCreenActive ==false)//health <3)
             {
                 GameManager.Instance.ExtraLife -= 1;
                 HeartDisplay.text = GameManager.Instance.ExtraLife.ToString();
@@ -264,6 +266,13 @@ public class PopuPInventar : MonoBehaviour
 
 
             }
+            else if(GameManager.Instance.noCoinSCreenActive == true)
+            {
+                // alert not in game yet
+                notInGameYet.SetActive(true);
+                heartUseCLicked = false;
+            }
+
             else if (GameManager.Instance.ExtraLife == 0)
             {
                 //not enough setactive

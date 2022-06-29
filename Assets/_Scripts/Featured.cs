@@ -258,7 +258,8 @@ public class Featured : MonoBehaviour
         if (GameOver.Instance.win == false && GameOver.Instance.lose == false)
         {
 
-            FindObjectOfType<AudioManager>().Play("pop");
+          //  FindObjectOfType<AudioManager>().Play("pop");
+            FindObjectOfType<AudioManager>().Play("wrong");
         }
         qmObjectAssignment.SetActive(false);
         LeanTween.rotate(qmObjectAssignment, new Vector3(0, 0f, 0f), 0f);

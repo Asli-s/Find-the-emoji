@@ -35,6 +35,13 @@ public class PlayExtraSound : MonoBehaviour
                 audio.volume = 1;
 
             }
+            else if (name == "success")
+            {
+                audio.clip = clips[2];
+                audio.pitch = 1.71f;
+                audio.volume = 0.554f;
+
+            }
 
 
             audio.Play();

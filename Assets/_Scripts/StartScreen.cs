@@ -15,6 +15,8 @@ public class StartScreen : MonoBehaviour
 
     public GameObject coinBackground;
     public GameObject Logo;
+    bool coinButtonActive = true;
+    
   //  public RawImage 
 
     private void OnEnable()
@@ -31,14 +33,20 @@ public class StartScreen : MonoBehaviour
         if (GameManager.Instance.phone)
         {
 
-        LeanTween.scale(Button, new Vector3(0.8f, 1f, 1f), 1.8f).setDelay(1f).setEase(LeanTweenType.easeOutElastic);
+        LeanTween.scale(Button, new Vector3(0.8f, 1f, 1f), 1.8f).setDelay(1f).setEase(LeanTweenType.easeOutElastic).setOnComplete(activateAnim);
         }
         else
         {
-        LeanTween.scale(Button, new Vector3(0.8f, 0.8f, 1f), 1.8f).setDelay(1f).setEase(LeanTweenType.easeOutElastic);
+        LeanTween.scale(Button, new Vector3(0.8f, 0.8f, 1f), 1.8f).setDelay(1f).setEase(LeanTweenType.easeOutElastic).setOnComplete(activateAnim);
 
         }
         Invoke("PlaySlide", 0.3f);
+        Invoke("playStretchSound", 0.6f);
+       
+    }
+    void activateAnim()
+    {
+        coinButtonActive = false;
     }
 
     public void StrartScreen()
@@ -124,6 +132,13 @@ public class StartScreen : MonoBehaviour
 
 
     }
+
+    private void playStretchSound()
+    {
+        FindObjectOfType<AudioManager>().Play("pop");
+
+
+    }
     private void DeactivateStartScreen()
     {
         coinBackground.GetComponent<RawImage>().enabled = true;
@@ -139,4 +154,48 @@ public class StartScreen : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("swoosh");
 
     }
+
+
+
+
+    private void Update()
+    {
+        if ( coinButtonActive == false)
+        {
+            // animate 
+            //   blockText.SetActive(false);
+            if(clicked == false)
+            {
+
+            FindObjectOfType<AudioManager>().Play("stretch");
+            }
+
+            coinButtonActive = true;
+            //  LeanTween.scale(Button, new Vector3(0.6f, 1.2f, 1), 1f).setEaseInElastic().setOnComplete(scaleBackUp);
+              LeanTween.scale(Button, new Vector3(1f, .7f, 1), 2.6f).setEaseInOutElastic().setOnComplete(scaleBackUp);
+        }
+    }
+
+    void scaleBackUp()
+    {
+        //  LeanTween.scale(Button, new Vector3(.8f, 0.9f, 1), 1.6f).setEaseOutElastic().setOnComplete(ActivateCoinButton);
+        if(clicked == false)
+        {
+
+        FindObjectOfType<AudioManager>().Play("bubble");
+        }
+
+        LeanTween.scale(Button, new Vector3(0.7f, 1.1f, 1), 1.6f).setEaseOutElastic().setOnComplete(ActivateCoinButton);
+
+    }
+    void ActivateCoinButton()
+    {
+       
+            coinButtonActive = false;
+        
+
+    }
+
+
+
 }
