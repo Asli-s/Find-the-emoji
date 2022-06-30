@@ -1047,8 +1047,12 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
     {
         print("POP iTT");
         GameManager.Instance.bonusCollectAsManyAlertActive = false;
-
-        Board.Instance.PopSprite();
+        GameManager.Instance.SweetCoverGlass.SetActive(true);
+        GameManager.Instance.SweetCoverHammer.SetActive(true);
+        GameManager.Instance.ShopCoverGlass.SetActive(true);
+        GameManager.Instance.InvCoverHammer.SetActive(true); //---> deactivate in board / checktiles
+    
+    Board.Instance.PopSprite();
       /*  if (Board.Instance.gridPopulation == false)
         {
 

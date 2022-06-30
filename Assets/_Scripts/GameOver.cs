@@ -52,7 +52,7 @@ public class GameOver : MonoBehaviour
         win = true;
         score = GameManager.Instance.score;
      
-        Invoke("ActivateWinScreen", 0.4f);
+        Invoke("ActivateWinScreen", 0.2f);
 
      
 

@@ -328,7 +328,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.bestStreakStat = this.bestStreakStats;
        gameData.bestStreak = this.bestStreak;
         gameData.currentStreak = this.currentStreak;
-      //  gameData.currentStreak = 1274;
+       // gameData.currentStreak = 50;
 
 
 
@@ -440,10 +440,11 @@ public class GameManager : MonoBehaviour, IDataPersistence
             case GameState.FeatureTile:
                 print("streak" + currentStreak);
                noCoinSCreenActive = false;
-
-                currentStreak += 1;
-              /*  if (currentStreak == 2 || currentStreak ==3 || currentStreak == 4 || currentStreak == 5 ||currentStreak ==6 || currentStreak == 7|| currentStreak == 8)//currentstreak== 20)
-                {*/
+            //    currentStreak = 24;
+               currentStreak += 1;
+              
+                /*  if (currentStreak == 2 || currentStreak ==3 || currentStreak == 4 || currentStreak == 5 ||currentStreak ==6 || currentStreak == 7|| currentStreak == 8)//currentstreak== 20)
+                  {*/
 
                 //yellow 
                 //green
@@ -454,6 +455,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
                 //rainbow
 
 
+              //currentStreak += 25;
 
                     if(currentStreak == 25 || currentStreak == 50 || currentStreak == 75 || currentStreak == 100  ) // 20
                     {

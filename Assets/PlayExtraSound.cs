@@ -38,8 +38,8 @@ public class PlayExtraSound : MonoBehaviour
             else if (name == "success")
             {
                 audio.clip = clips[2];
-                audio.pitch = 1.4f;
-                audio.volume = 0.21f;
+                audio.pitch = 1.1f;
+                audio.volume = 0.1f;
 
             }
             else if (name == "present")
@@ -48,19 +48,27 @@ public class PlayExtraSound : MonoBehaviour
               
                     audio.clip = clips[3];
                     audio.pitch = 1.1f;
-                    audio.volume = 0.12f;
+                    audio.volume = 0.15f;
 
                 
             }
+            //featuretile anim in place pop sound
             else if (name == "click")
             {
 
                 audio.clip = clips[4];
-                audio.pitch = 1.1f;
-                audio.volume = .6f;
+                audio.pitch = 1f;
+                audio.volume = .04f;
 
             }
+            else if (name == "littlePop")
+            {
 
+                audio.clip = clips[5];
+                audio.pitch = 0.4f;
+                audio.volume = .02f;
+
+            }
 
             audio.Play();
 

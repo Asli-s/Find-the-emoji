@@ -25,7 +25,7 @@ public class StartScreen : MonoBehaviour
         coinBackground.GetComponent<RawImage>().enabled = false;
         Particles.SetActive(true);
 
-        LeanTween.scale(Logo, new Vector3(1,0.9f,1), 0.3f).setEaseInBounce();
+        LeanTween.scale(Logo, new Vector3(1,0.9f,1), 0.1f).setEaseOutBounce();
 
 
         LeanTween.scale(Button, new Vector3(0,1f,1f), 0);
@@ -172,7 +172,7 @@ public class StartScreen : MonoBehaviour
 
             coinButtonActive = true;
             //  LeanTween.scale(Button, new Vector3(0.6f, 1.2f, 1), 1f).setEaseInElastic().setOnComplete(scaleBackUp);
-              LeanTween.scale(Button, new Vector3(1f, .7f, 1), 2.6f).setEaseInOutElastic().setOnComplete(scaleBackUp);
+              LeanTween.scale(Button, new Vector3(0.8f, .7f, 1), 2.6f).setEaseInOutElastic().setOnComplete(scaleBackUp);
         }
     }
 
