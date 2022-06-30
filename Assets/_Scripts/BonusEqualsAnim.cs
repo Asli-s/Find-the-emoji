@@ -27,7 +27,7 @@ public class BonusEqualsAnim : MonoBehaviour
 
     private void OnEnable()
     {
-        FindObjectOfType<AudioManager>().Play("success");
+        FindObjectOfType<AudioManager>().Play("highScoreNew");
 
         LeanTween.moveLocal(goldObject, new Vector3(234, 103, 1),.4f).setEaseOutElastic();
         LeanTween.moveLocal(presentObject, new Vector3(-22, 103, 1),.4f).setEaseOutElastic().setOnComplete(ChangeAnimationCompleted);

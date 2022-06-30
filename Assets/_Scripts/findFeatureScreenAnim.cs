@@ -94,6 +94,7 @@ public GameObject featureImageObject;
         /*POP FFEATURE TILE IMAGE*/
         LeanTween.scale(featureImageObject, new Vector3(2.9f, 2.9f, 3.7f), .6f).setDelay(0.5f).setEaseInOutElastic(); //.setOnComplete(playSoundSlide);
      Invoke("playSoundSlide", 2.9f);
+        Invoke("littlePop", 0.86f);
 
 
 
@@ -114,7 +115,7 @@ public GameObject featureImageObject;
         // LeanTween.scale(featureImageObject,  new Vector3(3,3,0), 1.6f).setDelay(2.6f).setEaseInBack();
 
         LeanTween.scale(featureImageObject, new Vector3(2.1f, 2.1f, 0), 1.51f).setDelay(3.6f).setEaseInElastic().setOnComplete(FeautureTileAppear); //.setOnComplete(featureTileAppear);
-        Invoke("playSound2", 4.8f);
+        Invoke("playSound2", 5f);
 //        LeanTween.scale(featureImageObject, new Vector3(3f, 3f, 0), 1.51f).setDelay(3.6f).setEaseInElastic().setOnComplete(playSound2); //.setOnComplete(featureTileAppear);
 
 
@@ -177,8 +178,13 @@ public GameObject featureImageObject;
     {
         FindObjectOfType<AudioManager>().Play("swipe", false);
 
-       // FindObjectOfType<AudioManager>().Play("slide");
-     
+        // FindObjectOfType<AudioManager>().Play("slide");
+
+
+    }
+    void littlePop()
+    {
+        FindObjectOfType<PlayExtraSound>().Play("littlePop");
 
     }
     void disAbleSelf()

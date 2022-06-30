@@ -45,6 +45,8 @@ public class PopupShop : MonoBehaviour
 
 
     {
+        mainBlock.transform.localScale = Vector3.zero;
+
         goldDisplay.text = GameManager.Instance.goldBag.ToString();
 
         Time.timeScale = 1;
@@ -155,6 +157,8 @@ public class PopupShop : MonoBehaviour
             buyHammerCLicked = true;
             if(GameManager.Instance.goldBag >= hammerCost)
             {
+                FindObjectOfType<AudioManager>().Play("coin");
+
                 FindObjectOfType<PlayExtraSound>().Play("success");
 
                 GameManager.Instance.goldBag -= hammerCost;
@@ -188,6 +192,8 @@ public class PopupShop : MonoBehaviour
             buyGlassCLicked = true;
             if (GameManager.Instance.goldBag >= glassCost)
             {
+                FindObjectOfType<AudioManager>().Play("coin");
+
                 FindObjectOfType<PlayExtraSound>().Play("success");
 
                 GameManager.Instance.goldBag -= glassCost;
@@ -220,6 +226,10 @@ public class PopupShop : MonoBehaviour
             buyHeartCLicked = true;
             if (GameManager.Instance.goldBag >= heartCost)
             {
+                FindObjectOfType<AudioManager>().Play("coin");
+
+
+
                 FindObjectOfType<PlayExtraSound>().Play("success");
 
                 GameManager.Instance.goldBag -= heartCost;
@@ -252,6 +262,9 @@ public class PopupShop : MonoBehaviour
             buyCoinCLicked = true;
             if (GameManager.Instance.goldBag >= coinCost)
             {
+                FindObjectOfType<AudioManager>().Play("coin");
+
+
                 FindObjectOfType<PlayExtraSound>().Play("success");
 
                 GameManager.Instance.goldBag -= coinCost;

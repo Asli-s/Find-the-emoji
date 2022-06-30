@@ -18,7 +18,7 @@ public class BonusExtraSweetGlass : MonoBehaviour
 
     private void OnEnable()
     {
-        FindObjectOfType<AudioManager>().Play("success");
+        FindObjectOfType<AudioManager>().Play("highScoreNew");
 
         // 60 - green +1 hammer
         //110 turkis +1 glass

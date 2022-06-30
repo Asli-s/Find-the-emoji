@@ -17,6 +17,7 @@ public class BonusFirstAlert : MonoBehaviour
 
     [SerializeField] private GameObject BonusCollectAsMany;
 
+    bool animated = false;
 
 
 
@@ -32,9 +33,13 @@ public class BonusFirstAlert : MonoBehaviour
         backPanelObject.SetActive(true);
                     backPanelFade.LeanAlpha(.7f, 0.2f);
 
+        Invoke("ChangeAnimationComplete", 1.5f);
 
 
-
+    }
+    private void ChangeAnimationComplete()
+    {
+        animated = true;
     }
 
     private void Update()
@@ -43,8 +48,9 @@ public class BonusFirstAlert : MonoBehaviour
         {
 
 
-            if (clicked == false)
+            if (clicked == false&& animated ==true)
             {
+                animated = false;
 
                 clicked = true;
                 gameObject.SetActive(false);
