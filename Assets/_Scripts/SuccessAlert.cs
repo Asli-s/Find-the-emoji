@@ -7,6 +7,7 @@ public class SuccessAlert : MonoBehaviour
     public GameObject mainBlock;
 
     [SerializeField] public TMPro.TextMeshProUGUI alertText;
+    public GameObject EssentialPopUp;
 
 
 
@@ -39,6 +40,12 @@ public class SuccessAlert : MonoBehaviour
         gameObject.SetActive(false);
         animCompleted = false;
         clicked = false;
+        if(GameManager.Instance.shopActive==true&& GameManager.Instance.buyEssential == true)
+        {
+            EssentialPopUp.SetActive(true);
+            GameManager.Instance.buyEssential = false;
+
+        }
 
 
 

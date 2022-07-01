@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public int goldBag = 0;
 
     public bool shopActive = false;
+    public bool buyEssential = false;
 
     public bool bonusOn =false;
     public bool yellowPresentBonus = false;
@@ -98,6 +99,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     public bool tablet = false;
     public bool phone = false;
+    public bool squarish = false;
 
     public bool minimizedApp = false;
 

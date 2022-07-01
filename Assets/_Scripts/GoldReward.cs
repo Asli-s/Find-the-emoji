@@ -17,13 +17,15 @@ public class GoldReward : MonoBehaviour
 
     private void OnEnable()
     {
+        FindObjectOfType<AudioManager>().Play("highScoreNew");
         clicked = false;
         animCompleted = false;
 
         GameManager.Instance.goldBag += 50;
         LeanTween.scale(mainBlock, new Vector3(1f, 1f, 1), 0.5f).setEaseOutExpo().setOnComplete(ChangeScreenActive);
 
-     
+
+
     }
 
     void ChangeScreenActive()
@@ -37,6 +39,7 @@ public class GoldReward : MonoBehaviour
         animCompleted = false;
         clicked = false;
         gameObject.SetActive(false);
+     // 
 
 
 
@@ -54,11 +57,11 @@ public class GoldReward : MonoBehaviour
             {
                 clicked = true;
                 LeanTween.scale(mainBlock, new Vector3(0f, 0f, 1), 0.5f).setEaseOutExpo().setOnComplete(changeScreenActive);
+                GameManager.Instance.watchedAd = false;
 
                 if (GameManager.Instance.shopActive == true)
                 {
                     goldText.text = GameManager.Instance.goldBag.ToString();
-                    GameManager.Instance.watchedAd = false;
 
                 }
 

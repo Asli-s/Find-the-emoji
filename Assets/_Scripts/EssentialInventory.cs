@@ -29,14 +29,23 @@ public class EssentialInventory : MonoBehaviour
 
     private void changeScreenActive()
     {
+       
+        if(GameManager.Instance.shopActive == false)
+        {
+
         PresentTimer.Instance.StartPresentTimer();
+        Featured.Instance.screenActive = false;
+       
+        }
+      
 
         gameObject.SetActive(false);
-        Featured.Instance.screenActive = false;
 
 
 
     }
+
+
 
     private void Update()
     {
@@ -50,7 +59,8 @@ public class EssentialInventory : MonoBehaviour
                 clicked = true;
                 LeanTween.scale(mainBlock, new Vector3(0f, 0f, 1), 0.5f).setEaseOutExpo().setOnComplete(changeScreenActive);
 
-             if(Board.Instance.paused == true)
+           
+             if( Board.Instance.paused == true && GameManager.Instance.shopActive==false)
                 {
                     Board.Instance.pauseBoard();
 
