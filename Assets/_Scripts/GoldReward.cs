@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NotEnoughSweetsPopup : MonoBehaviour
+public class GoldReward : MonoBehaviour
 {
     public GameObject mainBlock;
-
+    [SerializeField] TMPro.TextMeshProUGUI goldText;
 
 
 
@@ -19,11 +19,11 @@ public class NotEnoughSweetsPopup : MonoBehaviour
     {
         clicked = false;
         animCompleted = false;
-      
 
+        GameManager.Instance.goldBag += 50;
         LeanTween.scale(mainBlock, new Vector3(1f, 1f, 1), 0.5f).setEaseOutExpo().setOnComplete(ChangeScreenActive);
-   
 
+     
     }
 
     void ChangeScreenActive()
@@ -55,12 +55,16 @@ public class NotEnoughSweetsPopup : MonoBehaviour
                 clicked = true;
                 LeanTween.scale(mainBlock, new Vector3(0f, 0f, 1), 0.5f).setEaseOutExpo().setOnComplete(changeScreenActive);
 
-              
+                if (GameManager.Instance.shopActive == true)
+                {
+                    goldText.text = GameManager.Instance.goldBag.ToString();
+                    GameManager.Instance.watchedAd = false;
+
+                }
 
             }
         }
 
     }
 }
-
 

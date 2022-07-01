@@ -45,6 +45,7 @@ public class PopupShop : MonoBehaviour
 
 
     {
+        GameManager.Instance.shopActive = true;
         mainBlock.transform.localScale = Vector3.zero;
 
         goldDisplay.text = GameManager.Instance.goldBag.ToString();
@@ -105,7 +106,7 @@ public class PopupShop : MonoBehaviour
     {
         Featured.Instance.screenActive = false;
 
-
+        GameManager.Instance.shopActive = false;
         gameObject.SetActive(false);
 
         //  LeanTween.moveLocal(gameObject/*.GetComponent<RectTransform>()*/,new Vector3(0,1846, 89501.99f), 1f).setEaseInExpo();

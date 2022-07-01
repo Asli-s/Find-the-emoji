@@ -150,7 +150,10 @@ public class noCoinScreen : MonoBehaviour
         GameManager.Instance.adNoCoinScreenClicked = true;
         //activate ad gamobject
       //  adGameObject.SetActive(true);
-        GoogleAdsScript.Instance.ShowRewardedVideo();
+        GoogleAdsScript.Instance.UserChoseToWatchAd();
+
+
+        //call ad
 
     }
 

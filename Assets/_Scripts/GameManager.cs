@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     public int goldBag = 0;
 
+    public bool shopActive = false;
+
     public bool bonusOn =false;
     public bool yellowPresentBonus = false;
     public bool greenPresentBonus = false;

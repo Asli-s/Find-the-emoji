@@ -33,11 +33,11 @@ public class StartScreen : MonoBehaviour
         if (GameManager.Instance.phone)
         {
 
-        LeanTween.scale(Button, new Vector3(0.8f, 1f, 1f), 1.8f).setDelay(1f).setEase(LeanTweenType.easeOutElastic).setOnComplete(activateAnim);
+        LeanTween.scale(Button, new Vector3(0.65f, 1f, 1f), 1.8f).setDelay(1f).setEase(LeanTweenType.easeOutElastic).setOnComplete(activateAnim);
         }
         else
         {
-        LeanTween.scale(Button, new Vector3(0.8f, 0.8f, 1f), 1.8f).setDelay(1f).setEase(LeanTweenType.easeOutElastic).setOnComplete(activateAnim);
+        LeanTween.scale(Button, new Vector3(0.65f, 0.8f, 1f), 1.8f).setDelay(1f).setEase(LeanTweenType.easeOutElastic).setOnComplete(activateAnim);
 
         }
         Invoke("PlaySlide", 0.3f);
@@ -185,7 +185,7 @@ public class StartScreen : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("bubble");
         }
 
-        LeanTween.scale(Button, new Vector3(0.7f, 1.1f, 1), 1.6f).setEaseOutElastic().setOnComplete(ActivateCoinButton);
+        LeanTween.scale(Button, new Vector3(0.65f,.9f, 1), 1.6f).setEaseOutElastic().setOnComplete(ActivateCoinButton);
 
     }
     void ActivateCoinButton()
