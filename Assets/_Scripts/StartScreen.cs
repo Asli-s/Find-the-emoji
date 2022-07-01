@@ -23,22 +23,30 @@ public class StartScreen : MonoBehaviour
     {
         Logo.transform.localScale = Vector3.zero;
         coinBackground.GetComponent<RawImage>().enabled = false;
-        Particles.SetActive(true);
+    //    Particles.SetActive(true);
 
-        LeanTween.scale(Logo, new Vector3(1,0.9f,1), 0.1f).setEaseOutBounce();
 
 
         LeanTween.scale(Button, new Vector3(0,1f,1f), 0);
         
-        if (GameManager.Instance.phone)
+        if (GameManager.Instance.phone && GameManager.Instance.squarish == false)
         {
 
+        LeanTween.scale(Logo, new Vector3(1, 0.9f, 1), 0.1f).setEaseOutBounce();
         LeanTween.scale(Button, new Vector3(0.65f, 1f, 1f), 1.8f).setDelay(1f).setEase(LeanTweenType.easeOutElastic).setOnComplete(activateAnim);
         }
-        else
+        else if(GameManager.Instance.tablet ==true )
         {
-        LeanTween.scale(Button, new Vector3(0.65f, 0.8f, 1f), 1.8f).setDelay(1f).setEase(LeanTweenType.easeOutElastic).setOnComplete(activateAnim);
+            LeanTween.scale(Logo, new Vector3(0.7f, 0.6f, 1), 0.1f).setEaseOutBounce();
 
+            LeanTween.scale(Button, new Vector3(0.55f, 0.7f, 1f), 1.8f).setDelay(1f).setEase(LeanTweenType.easeOutElastic).setOnComplete(activateAnim);
+
+        }
+        else if (GameManager.Instance.squarish == true)
+        {
+            LeanTween.scale(Logo, new Vector3(0.9f, 0.8f, 1), 0.1f).setEaseOutBounce();
+
+            LeanTween.scale(Button, new Vector3(0.65f, 0.8f, 1f), 1.8f).setDelay(1f).setEase(LeanTweenType.easeOutElastic).setOnComplete(activateAnim);
         }
         Invoke("PlaySlide", 0.3f);
         Invoke("playStretchSound", 0.6f);
@@ -172,7 +180,16 @@ public class StartScreen : MonoBehaviour
 
             coinButtonActive = true;
             //  LeanTween.scale(Button, new Vector3(0.6f, 1.2f, 1), 1f).setEaseInElastic().setOnComplete(scaleBackUp);
+           if (GameManager.Instance.tablet)
+            {
+                LeanTween.scale(Button, new Vector3(0.58f, .6f, 1), 2.6f).setEaseInOutElastic().setOnComplete(scaleBackUp);
+
+            }
+           else if(GameManager.Instance.phone || GameManager.Instance.squarish )
+            {
+
               LeanTween.scale(Button, new Vector3(0.8f, .7f, 1), 2.6f).setEaseInOutElastic().setOnComplete(scaleBackUp);
+            }
         }
     }
 
@@ -185,7 +202,17 @@ public class StartScreen : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("bubble");
         }
 
-        LeanTween.scale(Button, new Vector3(0.65f,.9f, 1), 1.6f).setEaseOutElastic().setOnComplete(ActivateCoinButton);
+       if (GameManager.Instance.tablet)
+        {
+            LeanTween.scale(Button, new Vector3(0.5f, .7f, 1), 2.6f).setEaseInOutElastic().setOnComplete(scaleBackUp);
+
+        }
+      else  if (GameManager.Instance.phone || GameManager.Instance.squarish)
+        { 
+            LeanTween.scale(Button, new Vector3(0.65f,.9f, 1), 1.6f).setEaseOutElastic().setOnComplete(ActivateCoinButton);
+        
+        }
+
 
     }
     void ActivateCoinButton()

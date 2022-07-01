@@ -38,7 +38,7 @@ public class LolliAnim : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("swoosh");
             LeanTween.moveLocal(Lolli.GetComponent<RectTransform>().gameObject, new Vector3(150.5f, 245, 1), 1.2f).setEaseOutElastic();
         LeanTween.rotate(Lolli.GetComponent<RectTransform>().gameObject, new Vector3(0, 0, -70), 1f).setEaseOutElastic().setDelay(.8f);
-            Invoke("Crack", 1.364f);
+            Invoke("Crack", 1.381f);
 
 
         //animate hit

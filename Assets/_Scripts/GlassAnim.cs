@@ -67,7 +67,8 @@ public class GlassAnim : MonoBehaviour
         }
         else
         {
-            FindObjectOfType<AudioManager>().Play("bubble");
+            Invoke("PlaySound", 0.4f);
+
 
             print("goalvector " + goalVector);
             Glass.transform.SetParent(Board.Instance._parentObject.transform, false);
@@ -106,8 +107,7 @@ public class GlassAnim : MonoBehaviour
         }
         else
         {
-            FindObjectOfType<AudioManager>().Play("bubble");
-
+            Invoke("PlaySound", 0.4f);
             Glass.transform.SetParent(Board.Instance._parentObject.transform, false);
             Glass.transform.localScale=new Vector3(4f, 4f, 4f);
 
@@ -118,6 +118,13 @@ public class GlassAnim : MonoBehaviour
             backPanel.LeanAlpha(1, 0.2f);
 
         }
+
+    }
+
+   void PlaySound()
+    {
+        //  FindObjectOfType<PlayExtraSound>().Play("click");
+        FindObjectOfType<AudioManager>().Play("pop2");
 
     }
 

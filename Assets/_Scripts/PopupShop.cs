@@ -241,6 +241,7 @@ public class PopupShop : MonoBehaviour
 
                 buyHeartCLicked = false;
                 successAlert.SetActive(true);
+                GameManager.Instance.buyEssential = true;
 
 
             }
@@ -276,6 +277,8 @@ public class PopupShop : MonoBehaviour
 
                 buyCoinCLicked = false;
                 successAlert.SetActive(true);
+                GameManager.Instance.buyEssential = true;
+
 
 
             }

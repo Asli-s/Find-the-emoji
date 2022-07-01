@@ -21,10 +21,7 @@ public class GoogleAdsScript : MonoBehaviour
 
     string adUnitId;
     public GameObject RewardAlert;
-
-
-
-
+    bool clickedtoWatch = false;
 
     #endregion
 
@@ -39,33 +36,23 @@ public class GoogleAdsScript : MonoBehaviour
     }
 
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
-        // rewardedAdID = "ca-app-pub-3940256099942544/5224354917";
-        //ios : "ca-app-pub-3940256099942544/1712485313";
-       // string adUnitId;
-
-#if UNITY_ANDROID
-        adUnitId = "ca-app-pub-3940256099942544/5224354917";
-#elif UNITY_IPHONE
-            rewardedAdID = "ca-app-pub-3940256099942544/1712485313";
-#else
-            rewardedAdID = "unexpected_platform";
-#endif
 
 
+        #if UNITY_ANDROID
+                adUnitId = "ca-app-pub-3940256099942544/5224354917";
+        #elif UNITY_IPHONE
+                    rewardedAdID = "ca-app-pub-3940256099942544/1712485313";
+        #else
+                    rewardedAdID = "unexpected_platform";
+        #endif
 
-
-        if(GameManager.Instance.gameActive == false)
+        if(GameManager.Instance.gameActive == false) // Only initialize in the beginning
         {
-
             MobileAds.Initialize(HandleInitCompleteAction);
             print("initialize");
         }
-
         this.rewardedAd = new RewardedAd(adUnitId);
         
      
@@ -84,14 +71,24 @@ public class GoogleAdsScript : MonoBehaviour
         // Called when the ad is closed.
         this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
 
-        AdRequest request = new AdRequest.Builder().Build();
+        if (this.rewardedAd.IsLoaded() == false)
+        {
+
+                AdRequest request = new AdRequest.Builder().Build();
         // Load the rewarded ad with the request.
         this.rewardedAd.LoadAd(request);
+         
 
+        }
 
         //  RequestRewardedVideo();
 
 
+    }
+    void OnDestroy()
+    {
+        print("destroy");
+        this.rewardedAd.Destroy(); //Destroy
     }
 
     private void HandleInitCompleteAction(InitializationStatus initstatus)
@@ -102,11 +99,12 @@ public class GoogleAdsScript : MonoBehaviour
 
 
 
-    public void UserChoseToWatchAd()
+    public void UserChoseToWatchAd() // Button-Click to show ad
     {
-            print(""+this.rewardedAd.IsLoaded());
-        if (this.rewardedAd.IsLoaded())
+        
+        if (this.rewardedAd.IsLoaded() && clickedtoWatch ==false)
         {
+            clickedtoWatch = true;
             print("show ad");
             callOnce = false;
             rewardedCompleted = false;
@@ -122,82 +120,13 @@ public class GoogleAdsScript : MonoBehaviour
 
             GameManager.Instance.watchedAd = true;
             RewardAlert.SetActive(true);
-
-        //    Featured.Instance?.AddCoin();
-       
+            clickedtoWatch = false;
 
 
         }
     }
 
-    /* private void RequestRewardedVideo()
-     {
-         rewardedAd = new RewardedAd(rewardedAdID);
-         rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
-         rewardedAd.OnAdClosed += HandleRewardedAdClosed;
-         rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
-         AdRequest request = new AdRequest.Builder().Build();
-         rewardedAd.LoadAd(request);
-
-     }
-     public void ShowRewardedVideo()
-     {
-         if (rewardedAd.IsLoaded())        {
-             rewardedAd.Show();
-         }
-     }
-
-     public void HandleRewardedAdLoaded(object sender, EventArgs args)
-     {
-         MonoBehaviour.print("HandleRewardedAdLoaded event received");
-         RequestRewardedVideo();
-
-     }
-
-     public void HandleRewardedAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
-     {
-         MonoBehaviour.print(
-             "HandleRewardedAdFailedToLoad event received with message: "
-                              );
-         RequestRewardedVideo();
-
-     }
-
-     public void HandleRewardedAdOpening(object sender, EventArgs args)
-     {
-         MonoBehaviour.print("HandleRewardedAdOpening event received");
-
-
-     }
-
-     public void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
-     {
-         MonoBehaviour.print(
-             "HandleRewardedAdFailedToShow event received with message: "
-                              + args);
-         RequestRewardedVideo();
-
-     }
-
-     public void HandleRewardedAdClosed(object sender, EventArgs args)
-     {
-         MonoBehaviour.print("HandleRewardedAdClosed event received");
-
-
-     }
-
-     public void HandleUserEarnedReward(object sender, Reward args)
-     {
-         string type = args.Type;
-         double amount = args.Amount;
-         MonoBehaviour.print(
-             "HandleRewardedAdRewarded event received for "
-                         + amount.ToString() + " " + type);
-
-         rewardedCompleted = true;
-
-     }
- */
+  
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
     {
         MonoBehaviour.print("HandleRewardedAdLoaded event received");
@@ -217,56 +146,29 @@ public class GoogleAdsScript : MonoBehaviour
 
     public void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
     {
+
         MonoBehaviour.print(
             "HandleRewardedAdFailedToShow event received with message: "
                              + args.Message);
+     //   this.rewardedAd.Destroy();
+
     }
-
-
-
 
 
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
         MonoBehaviour.print("HandleRewardedAdClosed event received");
- 
+        this.rewardedAd.Destroy(); // destroy previous ad
         this.CreateAndLoadRewardedAd(adUnitId);
     }
 
 
 
-
-
     public RewardedAd CreateAndLoadRewardedAd(string adUnitId)
     {
-        /* RewardedAd rewardedAd = new RewardedAd(adUnitId);
-
-
-
-         // Called when an ad request has successfully loaded.
-         this.rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
-         // Called when an ad request failed to load.
-         this.rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
-         // Called when an ad is shown.
-         this.rewardedAd.OnAdOpening += HandleRewardedAdOpening;
-         // Called when an ad request failed to show.
-         this.rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
-         // Called when the user should be rewarded for interacting with the ad.
-         this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
-         // Called when the ad is closed.
-         this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
-
-
-         // Create an empty ad request.
-         AdRequest request = new AdRequest.Builder().Build();
-         // Load the rewarded ad with the request.
-         rewardedAd.LoadAd(request);
-         print("next ad loaded +" + this.rewardedAd.IsLoaded());*/
+        
 
         this.rewardedAd = new RewardedAd(adUnitId);
-
-
-        // Create an empty ad request.
 
         // Called when an ad request has successfully loaded.
         this.rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
