@@ -97,7 +97,7 @@ public class Tiles : MonoBehaviour
             return;
         }
        
-        else if(Featured.Instance.screenActive == false && GameManager.Instance.bonusCollectAsManyAlertActive == false)
+        else if(Featured.Instance.screenActive == false && GameManager.Instance.bonusCollectAsManyAlertActive == false && GameManager.Instance.backAlertActive ==false)
         {
             clickedTile = GetComponent<SpriteRenderer>().sprite;
             TileSpriteRenderer = GetComponent<SpriteRenderer>();

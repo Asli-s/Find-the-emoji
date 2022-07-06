@@ -17,6 +17,8 @@ public class NotEnoughSweetsPopup : MonoBehaviour
 
     private void OnEnable()
     {
+        FindObjectOfType<AudioManager>().Play("close");
+
         clicked = false;
         animCompleted = false;
       

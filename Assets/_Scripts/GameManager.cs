@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public int ExtraSweetBonbon=0;
     public int ExtraSweetLolli=0; //hammer?
 
+    public GameObject BackButtonAlert;
 
     public int goldBag = 0;
 
@@ -147,6 +148,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     public bool presTimerActive;
 
+    public bool backAlertActive = false;
+
     void Awake()
     {
         if (Instance == null) { Instance = this; }
@@ -158,7 +161,15 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
 
 
- 
+    void Update()
+    {
+        if((Input.GetKeyDown(KeyCode.Escape) && Application.platform == RuntimePlatform.Android && backAlertActive ==false))
+        {
+            backAlertActive = true;
+            BackButtonAlert.SetActive(true);
+        }
+      
+    }
 
 
 
@@ -444,7 +455,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
             case GameState.FeatureTile:
                 print("streak" + currentStreak);
                noCoinSCreenActive = false;
-            //    currentStreak = 24;
+             //   currentStreak = 24;
                currentStreak += 1;
               
                 /*  if (currentStreak == 2 || currentStreak ==3 || currentStreak == 4 || currentStreak == 5 ||currentStreak ==6 || currentStreak == 7|| currentStreak == 8)//currentstreak== 20)
@@ -768,6 +779,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         }
     }
+
 
 }
 

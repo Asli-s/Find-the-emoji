@@ -35,7 +35,7 @@ public class StartScreen : MonoBehaviour
         if (GameManager.Instance.phone && GameManager.Instance.squarish == false)
         {
 
-        LeanTween.scale(Logo, new Vector3(1, 0.9f, 1), 0.1f).setEaseOutBounce();
+        LeanTween.scale(Logo, new Vector3(0.9f, 0.8f, 1), 0.1f).setEaseOutBounce();
         LeanTween.scale(Button, new Vector3(0.65f, 1f, 1f), 1.8f).setDelay(1f).setEase(LeanTweenType.easeOutElastic).setOnComplete(activateAnim);
         }
         else if(GameManager.Instance.tablet ==true )
@@ -47,7 +47,7 @@ public class StartScreen : MonoBehaviour
         }
         else if (GameManager.Instance.squarish == true)
         {
-            LeanTween.scale(Logo, new Vector3(0.9f, 0.8f, 1), 0.1f).setEaseOutBounce();
+            LeanTween.scale(Logo, new Vector3(0.85f, 0.75f, 1), 0.1f).setEaseOutBounce();
 
             LeanTween.scale(Button, new Vector3(0.65f, 0.8f, 1f), 1.8f).setDelay(1f).setEase(LeanTweenType.easeOutElastic).setOnComplete(activateAnim);
         }
