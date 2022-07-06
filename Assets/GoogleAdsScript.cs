@@ -14,22 +14,24 @@ public class GoogleAdsScript : MonoBehaviour
 
     #region Variables
 
-    private RewardedAd rewardedAd;
     private string rewardedAdID;
     bool rewardedCompleted = false;
     bool callOnce = false;
-
-    string adUnitId;
     public GameObject RewardAlert;
     bool clickedtoWatch = false;
-
+    private RewardedAd rewardedAd;
+   
     #endregion
 
 
 
     void Awake()
     {
-        if(Instance == null)
+        if (Instance != null)
+        {
+            Destroy(this);
+        }
+        else
         {
             Instance = this;
         }
@@ -39,9 +41,10 @@ public class GoogleAdsScript : MonoBehaviour
     void Start()
     {
 
+        string adUnitId;
 
-        #if UNITY_ANDROID
-                adUnitId = "ca-app-pub-3940256099942544/5224354917";
+#if UNITY_ANDROID
+        adUnitId = "ca-app-pub-3940256099942544/5224354917";
         #elif UNITY_IPHONE
                     rewardedAdID = "ca-app-pub-3940256099942544/1712485313";
         #else
@@ -53,42 +56,82 @@ public class GoogleAdsScript : MonoBehaviour
             MobileAds.Initialize(HandleInitCompleteAction);
             print("initialize");
         }
-        this.rewardedAd = new RewardedAd(adUnitId);
-        
-     
+
+
         // Create an empty ad request.
-
-        // Called when an ad request has successfully loaded.
-        this.rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
-        // Called when an ad request failed to load.
-        this.rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
-        // Called when an ad is shown.
-        this.rewardedAd.OnAdOpening += HandleRewardedAdOpening;
-        // Called when an ad request failed to show.
-        this.rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
-        // Called when the user should be rewarded for interacting with the ad.
-        this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
-        // Called when the ad is closed.
-        this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
-
-        if (this.rewardedAd.IsLoaded() == false)
+        if (this.rewardedAd != null)
         {
+            this.rewardedAd.Destroy();
+        }
+        else
+        {
+            this.rewardedAd = new RewardedAd(adUnitId);
 
-                AdRequest request = new AdRequest.Builder().Build();
-        // Load the rewarded ad with the request.
-        this.rewardedAd.LoadAd(request);
-         
+
+
+            // Called when an ad request has successfully loaded.
+            this.rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
+            // Called when an ad request failed to load.
+            this.rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
+            // Called when an ad is shown.
+            this.rewardedAd.OnAdOpening += HandleRewardedAdOpening;
+            // Called when an ad request failed to show.
+            this.rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
+            // Called when the user should be rewarded for interacting with the ad.
+            this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
+            // Called when the ad is closed.
+            this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
+
+            AdRequest request = new AdRequest.Builder().Build();
+            // Load the rewarded ad with the request.
+            this.rewardedAd.LoadAd(request);
+
+
+
+
+
 
         }
 
-        //  RequestRewardedVideo();
 
 
+
+    /*   if (this.rewardedAd.IsLoaded() == false)
+       {
+
+       }*/
+
+    //  RequestRewardedVideo();
+
+
+}
+
+
+
+
+
+
+
+    public void SetAdsActive()
+    {
+        gameObject.SetActive(true);
     }
+
+
+    public void SetAdsInactive()
+    {
+        gameObject.SetActive(false);
+    }
+
+
+
+
+
     void OnDestroy()
     {
         print("destroy");
         this.rewardedAd.Destroy(); //Destroy
+      
     }
 
     private void HandleInitCompleteAction(InitializationStatus initstatus)
@@ -159,6 +202,18 @@ public class GoogleAdsScript : MonoBehaviour
     {
         MonoBehaviour.print("HandleRewardedAdClosed event received");
         this.rewardedAd.Destroy(); // destroy previous ad
+
+        string adUnitId;
+
+#if UNITY_ANDROID
+        adUnitId = "ca-app-pub-3940256099942544/5224354917";
+#elif UNITY_IPHONE
+                    rewardedAdID = "ca-app-pub-3940256099942544/1712485313";
+#else
+                    rewardedAdID = "unexpected_platform";
+#endif
+
+
         this.CreateAndLoadRewardedAd(adUnitId);
     }
 
@@ -166,9 +221,16 @@ public class GoogleAdsScript : MonoBehaviour
 
     public RewardedAd CreateAndLoadRewardedAd(string adUnitId)
     {
-        
 
-        this.rewardedAd = new RewardedAd(adUnitId);
+        if (this.rewardedAd != null)
+        {
+           this.rewardedAd.Destroy();
+        }
+        else
+        {
+            this.rewardedAd = new RewardedAd(adUnitId);
+
+        }
 
         // Called when an ad request has successfully loaded.
         this.rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;

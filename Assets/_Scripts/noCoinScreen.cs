@@ -48,12 +48,14 @@ public class noCoinScreen : MonoBehaviour
     void OnEnable()
     {
         adGameObject.SetActive(true);
-
-        blockText.SetActive(true);
-        FindObjectOfType<HealthHearts>().setMaxHealth();
+FindObjectOfType<HealthHearts>().setMaxHealth();
 
         GameManager.Instance.InvCoverHammer.SetActive(false);
         GameManager.Instance.ShopCoverGlass.SetActive(false);
+
+        GameManager.Instance.SweetCoverGlass.SetActive(true);
+        GameManager.Instance.SweetCoverHammer.SetActive(true);
+
         Featured.Instance.screenActive = false;
         GameManager.Instance.noCoinSCreenActive = true;
         //destroy feature tile && all nodes in board!!
@@ -162,7 +164,7 @@ public class noCoinScreen : MonoBehaviour
         if (coinButton.interactable == true && coinButtonActive ==false)
         {
             // animate 
-            blockText.SetActive(false);
+           
             coinButtonActive = true;
             if (startGameClicked == false)
             {

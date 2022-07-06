@@ -5,16 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/bufferScreen.unity
-    guid: b13eafdf831196341aa5de0be8fd1871
-  - enabled: 0
-    path: Assets/Scenes/slow.unity
-    guid: 6825fb78f1ed453419b955285ded9f60
   - enabled: 1
     path: Assets/Scenes/med.unity
     guid: 9e463db0741cf5c4698ecd6abc7c676f
-  - enabled: 0
-    path: Assets/Scenes/hard.unity
-    guid: 8a0935d4d60ce8c41826abafff98a4bd
   m_configObjects: {}

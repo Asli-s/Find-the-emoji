@@ -16,6 +16,7 @@ public class StartScreen : MonoBehaviour
     public GameObject coinBackground;
     public GameObject Logo;
     bool coinButtonActive = true;
+    public GameObject coin;
     
   //  public RawImage 
 
@@ -23,7 +24,9 @@ public class StartScreen : MonoBehaviour
     {
         Logo.transform.localScale = Vector3.zero;
         coinBackground.GetComponent<RawImage>().enabled = false;
-    //    Particles.SetActive(true);
+        //    Particles.SetActive(true);
+
+        coin.GetComponent<Canvas>().sortingOrder = 15;
 
 
 

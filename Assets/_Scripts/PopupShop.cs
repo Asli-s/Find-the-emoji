@@ -19,6 +19,8 @@ public class PopupShop : MonoBehaviour
     public GameObject successAlert;
     public GameObject notEnoughGoldAlert;
 
+    public GameObject Ads;
+
 
     int coinCost = 150;
     int heartCost = 100;
@@ -45,6 +47,8 @@ public class PopupShop : MonoBehaviour
 
 
     {
+       // GoogleAdsScript.Instance.SetAdsActive();
+
         GameManager.Instance.shopActive = true;
         mainBlock.transform.localScale = Vector3.zero;
 
@@ -98,6 +102,7 @@ public class PopupShop : MonoBehaviour
     {
         Featured.Instance.screenActive = true;
 
+
     }
 
 
@@ -130,17 +135,22 @@ public class PopupShop : MonoBehaviour
         LeanTween.scale(mainBlock, new Vector3(0f, 0f, 0f), .8f).setEaseInExpo().setOnComplete(SetFalse);
         LeanTween.scale(closingX, new Vector3(0, 0, 0), 0.8f).setEaseOutExpo();
         print("close");
+        //    GoogleAdsScript.Instance.SetAdsInactive();
+        Ads.SetActive(false);
+
 
     }
 
     public void ActivatePOP()
     {
-   /*  if(Board.Instance.gridPopulation == true)
-        {
+        /*  if(Board.Instance.gridPopulation == true)
+             {
 
 
-        }
-*/
+             }
+
+     */
+        Ads.SetActive(true);
         gameObject.SetActive(true);
     }
 
