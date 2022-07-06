@@ -13,6 +13,8 @@ public class InventoryNotEnoughCoinsALert : MonoBehaviour
     private void OnEnable()
     {
 
+        FindObjectOfType<AudioManager>().Play("close");
+
         clicked = false;
         animCompleted = false;
         LeanTween.scale(mainBlock, new Vector3(1f, 1f, 1), 0.1f).setEaseOutElastic().setOnComplete(ChangeScreenActive);

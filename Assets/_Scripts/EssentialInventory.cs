@@ -15,9 +15,11 @@ public class EssentialInventory : MonoBehaviour
 
     private void OnEnable()
     {
+        FindObjectOfType<AudioManager>().Play("highScoreNew");
+
         clicked = false;
         animCompleted = false;
-        LeanTween.scale(mainBlock, new Vector3( 1f, 1f, 1), 0.5f).setEaseOutExpo().setOnComplete(ChangeScreenActive);
+        LeanTween.scale(mainBlock, new Vector3( 1f, 1f, 1), 0.7f).setEaseOutElastic().setOnComplete(ChangeScreenActive);
                     Featured.Instance.screenActive = true;
 
 
@@ -57,7 +59,7 @@ public class EssentialInventory : MonoBehaviour
             if (clicked == false)
             {
                 clicked = true;
-                LeanTween.scale(mainBlock, new Vector3(0f, 0f, 1), 0.5f).setEaseOutExpo().setOnComplete(changeScreenActive);
+                LeanTween.scale(mainBlock, new Vector3(0f, 0f, 1), 0.3f).setEaseOutElastic().setOnComplete(changeScreenActive);
 
            
              if( Board.Instance.paused == true && GameManager.Instance.shopActive==false)
