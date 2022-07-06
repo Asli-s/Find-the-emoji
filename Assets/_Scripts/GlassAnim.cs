@@ -67,7 +67,7 @@ public class GlassAnim : MonoBehaviour
         }
         else
         {
-            Invoke("PlaySound", 0.4f);
+            Invoke("PlaySound", 0.44f);
 
 
             print("goalvector " + goalVector);
@@ -107,7 +107,7 @@ public class GlassAnim : MonoBehaviour
         }
         else
         {
-            Invoke("PlaySound", 0.4f);
+            Invoke("PlaySound", 0.5f);
             Glass.transform.SetParent(Board.Instance._parentObject.transform, false);
             Glass.transform.localScale=new Vector3(4f, 4f, 4f);
 

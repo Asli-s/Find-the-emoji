@@ -346,19 +346,8 @@ public class UiScaler : MonoBehaviour
 
             /*PHONE*/
 
-            else if(GameManager.Instance.squarish == true)
+        if(GameManager.Instance.squarish == true)
             {
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -405,9 +394,7 @@ public class UiScaler : MonoBehaviour
                 //hearts
                 heartsRect = hearts.GetComponent<RectTransform>();
                 heartsRect.localScale = new Vector3(1.7f, 1.7f, 1.0f);
-                //coin
-                coinsRect = coins.GetComponent<RectTransform>();
-                coinsRect.localScale = new Vector3(0.8f, 0.8f, 1.0f);
+         
                 //menuButton
                 menuButRect = menuBut.GetComponent<RectTransform>();
                 menuButRect.localScale = new Vector3(0.9f, 0.9f, 1.0f);
@@ -440,11 +427,12 @@ public class UiScaler : MonoBehaviour
                 WinInstrRect.localScale = new Vector3(0.85f, 0.85f, 1);
 
                 Shop.GetComponent<RectTransform>().localScale = new Vector3(0.8f, 0.8f, 1);
+                print("squarish");
                 Inventar.GetComponent<RectTransform>().localScale = new Vector3(0.8f, 0.8f, 1);
 
 
 
-
+                ShopIcon.GetComponent<RectTransform>().localScale = new Vector3(1.96f,1.96f,1);
 
 
 

@@ -899,7 +899,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
 
         // get node sprite
     
-        var nodeSprite = _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite;
+     //   var nodeSprite = _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite;
 
         if (PresentTimer.Instance.changeToBonus == true)
         {

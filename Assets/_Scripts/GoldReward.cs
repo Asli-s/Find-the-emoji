@@ -28,6 +28,9 @@ public class GoldReward : MonoBehaviour
 
     }
 
+
+
+
     void ChangeScreenActive()
     {
         animCompleted = true;
