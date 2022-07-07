@@ -12,7 +12,7 @@ public class noCoinScreen : MonoBehaviour
     [SerializeField] public Button AdButton;
 
     public static noCoinScreen Instance;
-    public GameObject adGameObject;
+ //   public GameObject adGameObject;
 
 
 
@@ -47,7 +47,7 @@ public class noCoinScreen : MonoBehaviour
 
     void OnEnable()
     {
-        adGameObject.SetActive(true);
+       // adGameObject.SetActive(true);
 FindObjectOfType<HealthHearts>().setMaxHealth();
 
         GameManager.Instance.InvCoverHammer.SetActive(false);
@@ -152,7 +152,7 @@ FindObjectOfType<HealthHearts>().setMaxHealth();
         GameManager.Instance.adNoCoinScreenClicked = true;
         //activate ad gamobject
       //  adGameObject.SetActive(true);
-        GoogleAdsScript.Instance.UserChoseToWatchAd();
+    //    GoogleAdsScript.Instance.UserChoseToWatchAd();
 
 
         //call ad

@@ -31,7 +31,7 @@ public class FeaturedPrefab : MonoBehaviour
             //clicked directly on game object. 
 
 
-            if (Featured.Instance.findScreen.activeSelf == false && Featured.Instance.screenActive == false && Board.Instance.gridPopulation == true && GameManager.Instance.glassSearch ==false)//
+            if (Featured.Instance.findScreen.activeSelf == false && Featured.Instance.screenActive == false && Board.Instance.gridPopulation == true && GameManager.Instance.glassSearch ==false && Featured.Instance.instruction == false && GameManager.Instance.firstTime ==false )//
             {
                 FindObjectOfType<ClickSound>().Click();
                 //print("feauturetiile clicked");

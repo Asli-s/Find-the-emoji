@@ -66,7 +66,7 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObject?.LoadData( gameData);
         }
-
+/*
         Debug.Log("loaded coinnum" + gameData.coinNumber);
         Debug.Log("loaded position" + gameData.lastPos);
         Debug.Log("loaded gamenum" + gameData.gameNumber);
@@ -86,7 +86,7 @@ public class DataPersistenceManager : MonoBehaviour
         print("load sec" + gameData.
          secondsLeft);
         print("activecountd" + gameData.
-         timerActive);
+         timerActive);*/
 
 
     }
@@ -99,7 +99,7 @@ public class DataPersistenceManager : MonoBehaviour
             dataPers.SaveData( gameData);
         }
         //Debug.Log("saved coinnum" + gameData.coinNumber);
-       // Debug.Log("saved positon" + gameData.lastPos);
+     /*  // Debug.Log("saved positon" + gameData.lastPos);
         Debug.Log("saved coinnum" + gameData.coinNumber);
         Debug.Log("saved position" + gameData.lastPos);
         Debug.Log("saved gamenum" + gameData.gameNumber);
@@ -117,7 +117,7 @@ public class DataPersistenceManager : MonoBehaviour
         print("activecountd" + gameData.
          timerActive);
         Debug.Log("save extrasweetlolli" + " " + gameData.ExtraSweetLolli);
-
+*/
 
 
         dataHandler.Save(gameData);

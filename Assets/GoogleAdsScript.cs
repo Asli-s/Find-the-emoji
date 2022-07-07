@@ -1,7 +1,7 @@
-using UnityEngine.Events;
+/*using UnityEngine.Events;
 using UnityEngine;
-using GoogleMobileAds.Api;
-using GoogleMobileAds.Common;
+*//*using GoogleMobileAds.Api;
+using GoogleMobileAds.Common;*//*
 using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
@@ -51,7 +51,7 @@ public class GoogleAdsScript : MonoBehaviour
                     rewardedAdID = "unexpected_platform";
         #endif
 
-        if(GameManager.Instance.gameActive == false) // Only initialize in the beginning
+     *//*   if(GameManager.Instance.gameActive == false) // Only initialize in the beginning
         {
             MobileAds.Initialize(HandleInitCompleteAction);
             print("initialize");
@@ -87,7 +87,7 @@ public class GoogleAdsScript : MonoBehaviour
             this.rewardedAd.LoadAd(request);
 
 
-
+*//*
 
 
 
@@ -96,10 +96,10 @@ public class GoogleAdsScript : MonoBehaviour
 
 
 
-    /*   if (this.rewardedAd.IsLoaded() == false)
+    *//*   if (this.rewardedAd.IsLoaded() == false)
        {
 
-       }*/
+       }*//*
 
     //  RequestRewardedVideo();
 
@@ -273,3 +273,4 @@ public class GoogleAdsScript : MonoBehaviour
                         + amount.ToString() + " " + type);
     }
 }
+*/
