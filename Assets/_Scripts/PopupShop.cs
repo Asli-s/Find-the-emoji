@@ -19,7 +19,7 @@ public class PopupShop : MonoBehaviour
     public GameObject successAlert;
     public GameObject notEnoughGoldAlert;
 
-    public GameObject Ads;
+ //   public GameObject Ads;
 
 
     int coinCost = 150;
@@ -136,7 +136,7 @@ public class PopupShop : MonoBehaviour
         LeanTween.scale(closingX, new Vector3(0, 0, 0), 0.8f).setEaseOutExpo();
         print("close");
         //    GoogleAdsScript.Instance.SetAdsInactive();
-        Ads.SetActive(false);
+      //  Ads.SetActive(false);
 
 
     }
@@ -150,7 +150,7 @@ public class PopupShop : MonoBehaviour
              }
 
      */
-        Ads.SetActive(true);
+        //Ads.SetActive(true);
         gameObject.SetActive(true);
     }
 

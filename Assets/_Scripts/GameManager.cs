@@ -417,13 +417,14 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.isPhone = false;
 
          gameData.coinNumber = this.coinNum;
-      //  gameData.coinNumber = 5;
+        //  gameData.coinNumber = 5;
 
         /*  gameData.isTablet = this.tablet;
           gameData.isPhone = this.phone;*/
 
 
-        gameData.firstTime = this.firstTime;
+        //  gameData.firstTime = this.firstTime;
+          gameData.firstTime = true;
 
         gameData.noCoinScreenActive = this.noCoinSCreenActive;
 

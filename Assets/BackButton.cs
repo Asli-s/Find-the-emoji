@@ -26,7 +26,7 @@ public class BackButton : MonoBehaviour
 
 
 
-        Featured.Instance.screenActive = false;
+      //  Featured.Instance.screenActive = false;
 
 
        
@@ -42,15 +42,16 @@ public class BackButton : MonoBehaviour
 
             Board.Instance.pauseBoard();
         }
+        Featured.Instance.screenActive = false;
+        GameManager.Instance.backAlertActive = false;
+
         
 
     }
     void Deactivate()
     {
         gameObject.SetActive(false);
-        Featured.Instance.screenActive = false;
-        GameManager.Instance.backAlertActive = false;
-
+        
     }
 
 

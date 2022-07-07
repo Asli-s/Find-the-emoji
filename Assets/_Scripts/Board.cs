@@ -622,7 +622,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
 
     public void GenerateGrid()
     {
-        _maxRange = 55;
+        //_maxRange = 55;
         featureTileSpriteRenderer = featureTile._featureTilePrefab.GetComponent<SpriteRenderer>();
         //   print("board" + featureTileSpriteRenderer.sprite);
 
