@@ -26,6 +26,7 @@ public class Featured : MonoBehaviour
     bool noCoinScreenCoinClicked = false;
 
    public bool instruction = false;
+    public bool firstTimeClickedOnce = false;
 
 
     private SpriteRenderer _prefabSpriteRenderer;
@@ -272,7 +273,7 @@ public class Featured : MonoBehaviour
     {
 
 
-        if (openTile == false/*e && !EventSystem.current.IsPointerOverGameObject()*/ && screenActive == false && GameManager.Instance.glassSearch == false || instruction ==true )
+        if (openTile == false/*e && !EventSystem.current.IsPointerOverGameObject()*/ && screenActive == false && GameManager.Instance.glassSearch == false && firstTimeClickedOnce== false|| instruction ==true )
         {
            /* if(instruction == false)
             {
@@ -528,6 +529,7 @@ public class Featured : MonoBehaviour
 
    void clickedYesFirstTime()  /// yes featuretile for instruction
     {
+           instruction = false;
         if (GameManager.Instance.firstTime == true)
         {
             Instructions.SetActive(false);
@@ -545,7 +547,6 @@ public class Featured : MonoBehaviour
                     _board.PauseButton();
                 }
             print("pasued?? "+_board.paused);
-           instruction = false;
 
 
         }
@@ -560,6 +561,11 @@ public class Featured : MonoBehaviour
            if(GameManager.Instance.firstTime == false)
             {
                 _board.pauseBoard();
+            }
+            else
+            {
+                // clickedYesFirstTime();
+                firstTimeClickedOnce = true;
             }
          
             heartLoseClicked = true;

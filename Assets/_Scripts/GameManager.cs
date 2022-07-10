@@ -341,7 +341,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.gameNumber = this.gameCount;
 
         gameData.bestStreakStat = this.bestStreakStats;
-       gameData.bestStreak = this.bestStreak;
+         gameData.bestStreak = this.bestStreak;
+       // gameData.bestStreak = 0;
+
         gameData.currentStreak = this.currentStreak;
        // gameData.currentStreak = 50;
 
@@ -416,15 +418,15 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.isTablet = false;
         gameData.isPhone = false;
 
-         gameData.coinNumber = this.coinNum;
-        //  gameData.coinNumber = 5;
+        // gameData.coinNumber = this.coinNum;
+          gameData.coinNumber = 5;
 
         /*  gameData.isTablet = this.tablet;
           gameData.isPhone = this.phone;*/
 
 
-        //  gameData.firstTime = this.firstTime;
-          gameData.firstTime = true;
+          gameData.firstTime = this.firstTime;
+       //   gameData.firstTime = true;
 
         gameData.noCoinScreenActive = this.noCoinSCreenActive;
 

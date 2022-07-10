@@ -45,6 +45,7 @@ public class Board : MonoBehaviour
 
     public Sprite blackSprite;
 
+    public GameObject Test;
 
 
     public int bonusTileCount = 0;
@@ -52,8 +53,7 @@ public class Board : MonoBehaviour
     public bool stopCounting =false;
 
 
-   public Sprite randomPresent; 
-
+   public Sprite randomPresent;
 
 
     bool checkParentBoard = false;
@@ -128,13 +128,13 @@ public class Board : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            _maxRange = _tilesPrefab._gameObjects.Length;
+         //   _maxRange = _tilesPrefab._gameObjects.Length;
             //_tilesPrefab = GetComponent<Tiles>();
             _tileSpriteRenderer = _tilesPrefab?.GetComponent<SpriteRenderer>();
         }
         else
         {
-            _maxRange = _tilesPrefab._gameObjects.Length;
+           // _maxRange = _tilesPrefab._gameObjects.Length;
             _tileSpriteRenderer = _tilesPrefab?.GetComponent<SpriteRenderer>();
 
         }
@@ -148,23 +148,23 @@ public class Board : MonoBehaviour
         checkForPopFinish = false;
         secondsLeft = originalSeconds;
         audioManager = FindObjectOfType<AudioManager>();
-
-        if (GameManager.Instance.firstTime == true)
+        if (GameManager.Instance?.firstTime == true)
         {
-            _maxRange = 17;
+            _maxRange = 16;
         }
 
-        else if (promo == true){
-            _maxRange = 18;
-        }
+       /* else if (promo == true){
+            _maxRange = 20;
+        }*/
         else
         {
             _maxRange = 55;
         }
+        print("check " +_maxRange);
     }
     private void Update()
     {
-
+        
 
         if (gridPopulation == true)
         {
@@ -174,21 +174,23 @@ public class Board : MonoBehaviour
 
               //  PopBonus();
               //  bonusPopped = true;
-                if (checkForPopFinish == false)
+
+                //maybe needed
+              /*  if (checkForPopFinish == false)
                 {
               //      Featured.Instance.screenActive = true;
                     checkTiles();
-                }
+                }*/
 
             }
 
 
-            if (checkForPopFinish == false && GameManager.Instance.bonusOn ==false)
+            if (checkForPopFinish == false && GameManager.Instance.bonusOn == false)
             {
                 checkTiles();
             }
             // first play featuretile instr 
-            else if (checkForPopFinish == true && GameManager.Instance.firstTime == true && showFeatureText == false && GameManager.Instance.firstFeatureTileAlreadyShown == false && instSetActive==false)
+            else if (checkForPopFinish ==true && GameManager.Instance.firstTime == true && showFeatureText == false && GameManager.Instance.firstFeatureTileAlreadyShown == false && instSetActive==false)
             {
                 instSetActive = true;
                 GameManager.Instance.firstFeatureTile = true;
@@ -196,10 +198,11 @@ public class Board : MonoBehaviour
                 Instructions.SetActive(true);
                 GameManager.Instance.firstFeatureTileAlreadyShown = true;
                 Time.timeScale = 0;
+
             }
          
         
-            // first play featuretile instr 
+            //if found in board           
 
             if (GameManager.Instance.firstFeatureTileAlreadyShown == true && GameManager.Instance.firstTime == true && Instructions.activeSelf == false && appearCounter == 1)
             {
@@ -343,6 +346,15 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
     public void PopSprite()
     {
         count = 0;
+
+
+        if (GameManager.Instance.firstTime)
+        {
+            _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
+
+        }
+
+
 
         for (int i = 3; i < _nodes.Count; i += 4)
         {
@@ -619,26 +631,65 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
     }
 
 
-
-    public void GenerateGrid()
+    private List<Sprite> makeSpritesArray()
     {
-        //_maxRange = 55;
+        /*  
+         if (GameManager.Instance.firstTime == true)
+         {
+             _maxRange = 20;
+         }*/
+
+        if(GameManager.Instance.firstTime == false){
+
+        _maxRange = 55;
+
         featureTileSpriteRenderer = featureTile._featureTilePrefab.GetComponent<SpriteRenderer>();
         //   print("board" + featureTileSpriteRenderer.sprite);
 
         //chosenSpritesArray will contain 80 sprites -->75
         //   limiting array to chose from
         chosenSpritesArray.Add(featureTileSpriteRenderer.sprite);
-        for (int i = 0; i < _maxRange-1; i++)
+
+
+        for (int i = 0; i < _maxRange - 1; i++)
         {
             rnd = UnityEngine.Random.Range(_minRange, _maxRange);
             chosenSpritesArray.Add(_tilesPrefab?._gameObjects?[rnd]);
         }
 
+        }
 
-        //   print(chosenSpritesArray);
-        //  print("length of chosenSpritesArray" + chosenSpritesArray.Count);
+        else
+        {
+            _maxRange = 20;
 
+            featureTileSpriteRenderer = featureTile._featureTilePrefab.GetComponent<SpriteRenderer>();
+        
+
+            //first sprite --> choseArray[0]  = f TIle
+            chosenSpritesArray.Add(featureTileSpriteRenderer.sprite);
+
+
+            for (int i = 0; i < _maxRange - 1; i++)
+            {
+                rnd = UnityEngine.Random.Range(_minRange, 80);
+                chosenSpritesArray.Add(_tilesPrefab?._gameObjects?[rnd]);
+            }
+
+
+        }
+
+
+        return chosenSpritesArray;
+    }
+
+    public void GenerateGrid()
+    {
+
+
+        makeSpritesArray();
+
+        print("MAXX range" + _maxRange);
 
 
         if (checkParentBoard == false)

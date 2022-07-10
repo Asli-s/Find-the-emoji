@@ -83,6 +83,7 @@ public class Instructions : MonoBehaviour
         }
         else if (GameManager.Instance.firstWin == true)
         {
+            gameObject.transform.GetChild(0).gameObject.GetComponent<Canvas>().sortingOrder = 200;
             boardText.SetActive(false) ;
             winText.SetActive(true);
         }
