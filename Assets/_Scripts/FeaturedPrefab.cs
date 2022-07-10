@@ -18,7 +18,8 @@ public class FeaturedPrefab : MonoBehaviour
               print("gui"+ EventSystem.current.IsPointerOverGameObject());
             //It means clicked on panel. So we do not consider this as click on game Object. Hence returning. 
             return;
-        } else if(Featured.Instance.instruction==true){
+        } else if(Featured.Instance.instruction==true && Featured.Instance.firstTimeClickedOnce == false){
+            print("first");
             FindObjectOfType<ClickSound>().Click();
             Featured.Instance.FeatureTileClicked();
 
@@ -31,7 +32,7 @@ public class FeaturedPrefab : MonoBehaviour
             //clicked directly on game object. 
 
 
-            if (Featured.Instance.findScreen.activeSelf == false && Featured.Instance.screenActive == false && Board.Instance.gridPopulation == true && GameManager.Instance.glassSearch ==false && Featured.Instance.instruction == false && GameManager.Instance.firstTime ==false )//
+            if (Featured.Instance.findScreen.activeSelf == false && Featured.Instance.screenActive == false && Board.Instance.gridPopulation == true && GameManager.Instance.glassSearch ==false && Featured.Instance.instruction == false && GameManager.Instance.firstTime ==false)//
             {
                 FindObjectOfType<ClickSound>().Click();
                 //print("feauturetiile clicked");

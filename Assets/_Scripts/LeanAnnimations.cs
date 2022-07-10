@@ -258,9 +258,9 @@ public class LeanAnnimations : MonoBehaviour
     void InstructionFunction()
     {
 
-
         if (GameManager.Instance.firstTime == true)
         {
+        print("first win");
             GameManager.Instance.firstTime = false;
         GameManager.Instance.firstWin = true;
         Instructions.SetActive(true);
