@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="915261cc-c72c-4ff1-805e-bdef71003bfe" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/puzzle.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BackButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 198.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 198.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 199.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 199.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 200.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 200.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 201.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 201.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 202.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 202.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 203-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 203-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 203.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 203.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 204-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 204-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 204.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 204.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 205-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 205-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 205.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 205.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 206-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 206-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 206.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 206.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 207-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 207-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 207.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 207.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 208-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 208-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 208.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 208.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 209-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 209-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 209.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 209.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 210-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 210-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 210.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 210.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 211-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 211-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 211.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 211.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 212-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 212-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 212.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 212.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 213-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 213-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 213.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 213.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 214-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 214-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 214.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 214.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 215-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 215-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 215.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 215.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 216-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 216-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 216.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 216.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 217.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 217.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 218.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 218.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 219.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 219.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 220.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 220.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 221.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 221.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 222.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 222.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 223.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 223.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 224.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 224.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 225.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 225.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 226.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 226.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 227.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 227.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 228.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 228.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 229.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 229.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 230.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 230.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 231.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 231.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 232.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 232.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 233.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 233.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 234.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 234.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 235.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 235.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 236.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 236.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 237.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 237.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 238.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 238.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 239.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 239.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 240.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 241.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 241.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 242.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 242.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 243.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 243.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 244.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 244.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 245.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 245.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 246.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 246.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 247.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 247.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 248.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 248.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 249.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 249.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 250.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 250.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 251.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 251.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 252.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 252.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 253.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 253.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 254.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 254.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 255.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 255.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 256.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 256.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 257.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 257.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 258.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 258.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 259.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 259.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 260.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 260.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 261.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 261.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 262.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 262.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 263.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 263.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 264.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 264.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 265.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 265.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 266.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 266.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 267.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 267.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 268.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 268.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 269.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 269.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 270.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 270.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 271.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 271.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 272.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 272.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 273.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 273.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 274.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackgrBlue/Frame 274.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FeatureTilePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FeatureTilePrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FinalEmoWhite.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ImagesMenuUI/Untitled (9)/Frame 291.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ImagesMenuUI/Untitled (9)/Frame 291.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ImagesMenuUI/Untitled (9)/Frame 294.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ImagesMenuUI/Untitled (9)/Frame 294.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/med.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/med.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Board.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/IAPManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/IAPManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/StartScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/StartScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/findFeatureScreenAnim.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/findFeatureScreenAnim.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/emoBG.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/emoTest.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/emoj500.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/emojiNew.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/emojies.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/FirstScreenBackground/clouds_2_new 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/FirstScreenBackground/clouds_2_new 1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/FirstScreenBackground/clouds_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/FirstScreenBackground/clouds_3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/FirstScreenBackground/clouds_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/FirstScreenBackground/clouds_4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/FirstScreenBackground/rocks_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/FirstScreenBackground/rocks_1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/FirstScreenBackground/rocks_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/FirstScreenBackground/rocks_2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/FirstScreenBackground/sky.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/FirstScreenBackground/sky.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Frame 328 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Frame 328 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Frame 360.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Frame 360.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Frame 431.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Frame 431.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Frame 465 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Frame 465 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Group 124.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Group 124.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Group 254.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Group 254.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Group 385.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Group 385.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Group 386.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Group 386.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 29 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 29 (2).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 29 (5).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 29 (5).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 332.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 332.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 333.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 333.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 334.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 334.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 84.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 84.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 85 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 85 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 85 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 85 (2).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 85.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 85.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 92.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Rectangle 92.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Star 25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Star 25.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Star 26.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Star 26.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Star 27.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Star 27.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Star 28.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Star 28.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/UI/Frame 290 (3).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/UI/Frame 290 (3).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/UI/ep_setting.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/UI/ep_setting.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/UI/musicoff.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/UI/musicoff.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/UI/musicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/UI/musicon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/UI/soundoff.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/UI/soundoff.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/UI/soundon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/UI/soundon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Union (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Union (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Union (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/Union (2).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/Group 232 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/Group 232 (2).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/New Animation.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/New Animation.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0000.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0000.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0001.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0001.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0002.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0002.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0003.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0003.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0004.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0004.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0005.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0005.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0006.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0006.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0007.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0007.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0008.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0008.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0009.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0009.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0010.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0010.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0011.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0011.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0012.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0012.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0013.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0013.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0014.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0014.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0015.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0015.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0016.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0016.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0017.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0017.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0018.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0018.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0019.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0019.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0020.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/anim/wind/wind0020.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/coin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/coin.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/emptyHeart (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/emptyHeart (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/heart (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/heart (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/menuUIbutton/Frame 396.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/menuUIbutton/Frame 396.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/menuUIbutton/Frame 398.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/menuUIbutton/Frame 398.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/menuUIbutton/Frame 399.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/menuUIbutton/Frame 399.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/menuUIbutton/Group 231 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/menuUIbutton/Group 231 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/menuUIbutton/panel (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/menuUIbutton/panel (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 367.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 367.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 411.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 411.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 421.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 421.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 422.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 422.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 429.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 429.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 433 (3).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 433 (3).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 433 (4) 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 433 (4) 1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 433 (4).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 433 (4).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 435.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Frame 435.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Group 232.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Group 232.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Group 235 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Group 235 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Group 239 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Group 239 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Group 240 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Group 240 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Rectangle 17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Rectangle 17.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Rectangle 171.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Rectangle 171.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Rectangle 173.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/Rectangle 173.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/game_background_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/game_background_1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/game_background_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/game_background_2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/menu 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/menu 1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/menu 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/menu 2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/menu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/menu.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/menuType2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/menuType2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/smaller icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/newassets/smaller icon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/panel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/panel.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 331.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 331.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 332.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 332.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 333.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 333.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 334.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 334.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 501 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 501 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 502.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 502.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 504.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 504.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 505 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 505 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 510.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 510.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 517.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 517.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 518.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 518.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 519.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 519.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 520.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 520.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 521.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/presentSprites/Frame 521.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Frame 275 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Frame 275 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Frame 278 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Frame 278 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Frame 278.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Frame 278.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Frame 279 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Frame 279 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Frame 279.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Frame 279.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Group 231 (3).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Group 231 (3).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Transp Rectangle (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Transp Rectangle (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Transp Rectangle (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Transp Rectangle (2).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Transp Rectangle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/Transp Rectangle.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/ques.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/questionmark/ques.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shop2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shop2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/+50x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/+50x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Emoji (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Emoji (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Emoji (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Emoji (2).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Frame 440.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Frame 440.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Frame 441.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Frame 441.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Frame 442.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Frame 442.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Frame 463 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Frame 463 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Frame 474.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Frame 474.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Group 264 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Group 264 (2).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Group 264.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Group 264.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Group 267.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Group 267.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Group 276.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Group 276.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Group 278.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Group 278.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Group 280.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Group 280.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Group 307 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Group 307 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Group 307.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Group 307.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Rectangle 1712.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Rectangle 1712.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Rectangle 183.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Rectangle 183.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Rectangle 1831.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Rectangle 1831.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Rectangle 187.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/Rectangle 187.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/backPanel (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/backPanel (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/backPanel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/backPanel.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 461.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 461.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 462.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 462.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 478 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 478 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 479 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 479 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 479 (12).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 479 (12).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 479 (8).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 479 (8).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 479 (9).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 479 (9).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 479.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 479.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 482.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 482.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 482.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Frame 482.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 284.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 284.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 286.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 286.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 293.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 293.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 294.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 294.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 295.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 295.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 343.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 343.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 344.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 344.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 345.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 345.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 347.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 347.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 348.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 348.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 349.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 349.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 350.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Group 350.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Frame 491.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Frame 491.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Group 350 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Group 350 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Group 354.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Group 354.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Group 370.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Group 370.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Group 372 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Group 372 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Group 373.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Group 373.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Rectangle 282 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Rectangle 282 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Rectangle 285.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Rectangle 285.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Rectangle 299 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Rectangle 299 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Rectangle 329.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/Rectangle 329.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/backPanel (11).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/backPanel (11).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/shop2 (4).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Neuer Ordner/shop2 (4).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Rectangle 213 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Rectangle 213 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Rectangle 234 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Rectangle 234 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Untitled (22)/ques (4).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/Untitled (22)/ques (4).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/backPack (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/backPack (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/backPanel (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/backPanel (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 454 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 454 (2).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 460.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 460.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 461.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 461.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 462.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 462.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 475.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 475.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 476.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 476.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 477.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 477.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 478.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 478.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 523 (4).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Frame 523 (4).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Group 375 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Group 375 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Group 381.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Group 381.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Group 383.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/Group 383.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/backPanel (23).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/backPanel (23).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/backPanel (24).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/backPanel (24).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/icomoon-free_film.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/c-buttons/icomoon-free_film.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/coin (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/coin (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/heart (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/heart (2).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/lolli (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/lolli (2).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/lolli (3).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/lolli (3).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/lolli (4).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/lolli (4).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/me4 (6).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/biggerImages/me4 (6).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/blue.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/blueSmall 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/blueSmall 1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/blueSmall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/blueSmall.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/crack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/crack.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/lolli 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/lolli 1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/lolli-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/lolli-1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/lolli-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/lolli-2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/lolli.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/lolli.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/lupe (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/lupe (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/lupe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/lupe.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/shop (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/shop (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/shop 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/shop 1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/shop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/shop.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/300group.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/300group.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/500group.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/500group.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/Frame 525.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/Frame 525.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/Group 372.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/Group 372.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/Group 375 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/Group 375 (2).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/Rectangle 215.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/Rectangle 215.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/Tools.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/Tools.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/backPanel (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/backPanel (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/backPanel (7).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/backPanel (7).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/backPanel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/backPanel.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/gold.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/gold.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/icon+text.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/icon+text.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/pickAxePanel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/shopAssets/woodCoinPanel/pickAxePanel.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/splashlogo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/splashlogo.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Frame 371.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Frame 371.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Frame 374.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Frame 374.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Frame 435 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Frame 435 (2).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Frame 436 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Frame 436 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Group 232 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Group 232 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Group 232 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Group 232 (2).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Group 232.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Group 232.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Group 253 (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Group 253 (1).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Group 253.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Group 253.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Rectangle 116.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Rectangle 116.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Rectangle 117.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/test/Rectangle 117.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/AndroidResolverDependencies.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/AndroidResolverDependencies.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GvhProjectSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GvhProjectSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2C4YPTjGvWcQD6mSOg89OWqTBMh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="915261cc-c72c-4ff1-805e-bdef71003bfe" name="Default Changelist" comment="" />
+      <created>1658063301947</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1658063301947</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -16,6 +16,7 @@ public class IAPManager : MonoBehaviour
     public GameObject purchasefailedAlert;
 
 
+
     public void OnPurchaseComplete(Product product)
     {
         if(product.definition.id== gold200)

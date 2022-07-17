@@ -102,8 +102,19 @@ public GameObject featureImageObject;
 
 
         /*FEATURE TILE MOVE UP*/
-        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 325, 0), .3f).setDelay(3.5f).setEaseOutExpo()/*.setOnComplete(scaleBack)*/;
-        LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 325, 0),.3f).setDelay(3.8f).setEaseInElastic();
+        if (GameManager.Instance.squarish)
+        {
+            LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 345, 0), .3f).setDelay(3.5f).setEaseOutExpo()/*.setOnComplete(scaleBack)*/;
+            LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 345, 0), .3f).setDelay(3.8f).setEaseInElastic();
+
+        }
+        else
+        {
+            LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 325, 0), .3f).setDelay(3.5f).setEaseOutExpo()/*.setOnComplete(scaleBack)*/;
+            LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 325, 0), .3f).setDelay(3.8f).setEaseInElastic();
+
+
+        }
 
         /*LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 401, 0), .4f).setDelay(3.6f).setEaseOutExpo()*//*.setOnComplete(scaleBack)*//*;
         LeanTween.move(featureImageObject.GetComponent<RectTransform>(), new Vector3(0, 401, 0), .3f).setDelay(4f).setEaseInElastic();*/

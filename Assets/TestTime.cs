@@ -18,8 +18,12 @@ public class TestTime : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI minutesText;
     [SerializeField] TMPro.TextMeshProUGUI secondsText;
 
+ //   Thread presentTimerThread;
+   // Thread countDownTimerThread;
 
     [SerializeField] public TMPro.TextMeshProUGUI TimerText;
+
+ public   CountdownTimer countDownInstance;
 
 
     public int remainingMinutes;
@@ -66,7 +70,7 @@ public    bool alreadyInGame = false;
     public void CalculateTime()
     {
 
-      
+       // countDownInstance = FindObjectOfType<CountdownTimer>();
 
 
         minutesLeft = GameManager.Instance.minutesLeft;
@@ -215,9 +219,11 @@ public    bool alreadyInGame = false;
                 
                 if (GameManager.Instance.bonusOn == false && GameManager.Instance.findScreenGameActive ==false)// && GameManager.Instance.restarted == true)
                 {
-                    PresentTimer.Instance.StartPresentTimer();
+                   /* presentTimerThread = new Thread(PresentTimer.Instance.StartPresentTimer);
+                    presentTimerThread.Start();*/
+                        PresentTimer.Instance.StartPresentTimer();
 
-              GameManager.Instance.ChangeState(GameState.FeatureTile);
+                    GameManager.Instance.ChangeState(GameState.FeatureTile);
                 }
             }
 
@@ -412,7 +418,9 @@ public    bool alreadyInGame = false;
 
                     if (GameManager.Instance.bonusOn == false && GameManager.Instance.findScreenGameActive == false)// && GameManager.Instance.restarted == true)
                     {
-                    PresentTimer.Instance.StartPresentTimer();
+                      /*  presentTimerThread = new Thread(PresentTimer.Instance.StartPresentTimer);
+                        presentTimerThread.Start();*/
+                        PresentTimer.Instance.StartPresentTimer();
 
                         GameManager.Instance.ChangeState(GameState.FeatureTile);
                     }
@@ -467,7 +475,11 @@ public    bool alreadyInGame = false;
 
                     if (GameManager.Instance.bonusOn == false && GameManager.Instance.findScreenGameActive == false)// && GameManager.Instance.restarted == true)
                     {
-                    PresentTimer.Instance.StartPresentTimer();
+
+                     /*   presentTimerThread = new Thread(PresentTimer.Instance.StartPresentTimer);
+                        presentTimerThread.Start();*/
+
+                          PresentTimer.Instance.StartPresentTimer();
 
                         GameManager.Instance.ChangeState(GameState.FeatureTile);
                     }
@@ -499,11 +511,16 @@ public    bool alreadyInGame = false;
                     minutes = 29;
                     seconds = 59;
                 }
-                FindObjectOfType<CountdownTimer>().StartTimer(minutes, seconds);
-            
-              //  PresentTimer.Instance.StartPresentTimer();
-                
-              //  PresentTimer
+
+                /*   countDownTimerThread = new Thread(() => countDownInstance.StartTimer(minutes, seconds));
+                   countDownTimerThread.Start();*/
+
+                // FindObjectOfType<CountdownTimer>().StartTimer(minutes, seconds);
+                 FindObjectOfType<CountdownTimer>().StartTimer(minutes, seconds);
+
+                //  PresentTimer.Instance.StartPresentTimer();
+
+                //  PresentTimer
             }
 
         }
@@ -528,6 +545,9 @@ public    bool alreadyInGame = false;
 
                 if (GameManager.Instance.bonusOn == false && GameManager.Instance.findScreenGameActive == false)// && GameManager.Instance.restarted == true)
                 {
+                   /*  presentTimerThread = new Thread(PresentTimer.Instance.StartPresentTimer);
+                    presentTimerThread.Start();*/
+
                 PresentTimer.Instance.StartPresentTimer();
 
                     GameManager.Instance.ChangeState(GameState.FeatureTile);

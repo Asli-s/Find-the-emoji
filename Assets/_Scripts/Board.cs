@@ -4,6 +4,8 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Threading;
+
 public class Board : MonoBehaviour
 {
     public static Board Instance;
@@ -23,6 +25,8 @@ public class Board : MonoBehaviour
 
     public GameObject PausePanel;
     public bool pausePanelActive = false;
+
+
 
     //bonus
     public Sprite presentSpriteYellow;
@@ -44,6 +48,7 @@ public class Board : MonoBehaviour
 
 
     public Sprite blackSprite;
+
 
     public GameObject Test;
 
@@ -744,7 +749,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
                     //tile.transform.localPosition = new Vector3(0,27, 0);
                     node.transform.localPosition = new Vector3((x * 7f) - 10.5f, (y * 7f) - 10.5f, 1);
 
-                    node.transform.localScale = new Vector3(0.652f, 0.652f, 0.65f);
+                    node.transform.localScale = new Vector3(0.642f, 0.642f, 0.65f);
 
                     _nodes.Add(node);
                     print(node);

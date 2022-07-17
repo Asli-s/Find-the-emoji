@@ -418,8 +418,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
         gameData.isTablet = false;
         gameData.isPhone = false;
 
-        // gameData.coinNumber = this.coinNum;
-          gameData.coinNumber = 5;
+         gameData.coinNumber = this.coinNum;
+       //   gameData.coinNumber = 5;
 
         /*  gameData.isTablet = this.tablet;
           gameData.isPhone = this.phone;*/
@@ -458,7 +458,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
             case GameState.FeatureTile:
                 print("streak" + currentStreak);
                noCoinSCreenActive = false;
-             //   currentStreak = 24;
+             // currentStreak = 24;
                currentStreak += 1;
               
                 /*  if (currentStreak == 2 || currentStreak ==3 || currentStreak == 4 || currentStreak == 5 ||currentStreak ==6 || currentStreak == 7|| currentStreak == 8)//currentstreak== 20)
