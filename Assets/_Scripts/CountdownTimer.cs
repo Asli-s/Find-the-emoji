@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class CountdownTimer : MonoBehaviour
 {
@@ -25,10 +26,12 @@ public class CountdownTimer : MonoBehaviour
     IEnumerator displayTimer;
     IEnumerator realTimer;
 
+    Thread timer1;
+    Thread timer2;
 
 
 
-  //  public GameManager coinCount;
+    //  public GameManager coinCount;
     string coinCountText;
     private int coinCountNum;
    private int newNum;
@@ -55,6 +58,11 @@ public class CountdownTimer : MonoBehaviour
 
     }
 
+    public void BeginTimer(int minute = 0, int second = 0)
+    {
+         StartTimer( minute = 0,  second = 0) ;
+
+    }
 
 
 
@@ -81,8 +89,9 @@ public class CountdownTimer : MonoBehaviour
 
             displayTimer = DisplayTime();
             realTimer = actualTimer();
-
-            StartCoroutine(displayTimer);
+          //  timer1 = new Thread(() => StartCoroutine(displayTimer) ); 
+         //   timer2 = new Thread(() => StartCoroutine(realTimer));
+           StartCoroutine(displayTimer);
             StartCoroutine(realTimer);
 
         }
@@ -102,6 +111,10 @@ public class CountdownTimer : MonoBehaviour
             timerStarted = true;
             displayTimer = DisplayTime();
             realTimer = actualTimer();
+
+            /*
+                        timer1 = new Thread(() => StartCoroutine(displayTimer));
+                        timer2 = new Thread(() => StartCoroutine(realTimer));*/
 
             StartCoroutine(displayTimer);
             StartCoroutine(realTimer);

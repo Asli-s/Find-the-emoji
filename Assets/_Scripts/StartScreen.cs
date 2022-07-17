@@ -10,7 +10,7 @@ public class StartScreen : MonoBehaviour
     private int newNum;
 
     bool clicked = false;
-    public GameObject Particles;
+  //  public GameObject Particles;
     public GameObject Button;
 
     public GameObject coinBackground;
@@ -157,7 +157,7 @@ public class StartScreen : MonoBehaviour
         GameManager.Instance.gameActive = true;
 
         gameObject.SetActive(false);
-        Particles.SetActive(false);
+      
     }
     void PlaySlide()
     {

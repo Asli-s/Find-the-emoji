@@ -353,7 +353,7 @@ public class UiScaler : MonoBehaviour
 
                 //game
                 rectTransformGame = Game.GetComponent<RectTransform>();
-                rectTransformGame.localScale = new Vector3(0.85f, 0.85f, 1.0f);
+                rectTransformGame.localScale = new Vector3(0.8f, 0.8f, 1.0f);
                 //control buttons
                 rectTransformControlButtons = ControlButtons.GetComponent<RectTransform>();
                 rectTransformControlButtons.localScale = new Vector3(0.85f, 0.85f, 1.0f);
@@ -444,7 +444,7 @@ public class UiScaler : MonoBehaviour
                 // change ui scale
                 //game
                 rectTransformGame = Game.GetComponent<RectTransform>();
-                rectTransformGame.localScale = new Vector3(0.9f, 0.9f, 1.0f);
+                rectTransformGame.localScale = new Vector3(0.84f, 0.84f, 1.0f);
 
                 //control buttons
                 rectTransformControlButtons = ControlButtons.GetComponent<RectTransform>();
@@ -646,7 +646,7 @@ public class UiScaler : MonoBehaviour
             else if(GameManager.Instance.phone == true)
             {
                 rectTransformGame = Game.GetComponent<RectTransform>();
-                rectTransformGame.localScale = new Vector3(0.9f, 0.9f, 1.0f);
+                rectTransformGame.localScale = new Vector3(0.84f, 0.84f, 1.0f);
 
                 //control buttons
                 rectTransformControlButtons = ControlButtons.GetComponent<RectTransform>();

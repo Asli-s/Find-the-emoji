@@ -12,6 +12,8 @@ public class BackButton : MonoBehaviour
 
 
     {
+        FindObjectOfType<AudioManager>().Play("close");
+
         if (Board.Instance.paused == false)
         {
             print("pausing board");
