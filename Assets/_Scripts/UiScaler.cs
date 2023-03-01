@@ -114,19 +114,9 @@ public class UiScaler : MonoBehaviour
 
 
     new Vector3 transformedVector;
-    //popups
+    
 
 
-    //Alerts!
-
-
-
-
-
-
-
-
-    //Functions
 
     private void Awake()
     {
@@ -139,21 +129,10 @@ public class UiScaler : MonoBehaviour
 
     // Start is called before the first frame update
     public  void CheckResolution()
-    {// presist tablet or phone settings? 
+    {
+        // presist tablet or phone settings? 
 
-        /* print("screen height is " + Screen.height);
-         print("lower position of height is " + ( (Screen.height / 4) -50));
-         Vector3 screenPos = cam.WorldToScreenPoint(ControlButtons.transform.position);
-         print("screen position" + screenPos);
-         Debug.Log("target is " + screenPos.y + " pixels from the top??");
-         print("target vector" +ControlButtons.transform.tr(screenPos.x, (Screen.height / 4) - 50, screenPos.z));*/
-
-
-      
-
-        //    transformedVector = cam.transform.TransformPoint(screenPos.x, (Screen.height / 4) - 50, screenPos.z);
-
-
+     
         if (GameManager.Instance.tablet == false && GameManager.Instance.phone == false)
         {
             var aspectRatio = Mathf.Max(Screen.width, Screen.height) / Mathf.Min(Screen.width, Screen.height);
@@ -180,8 +159,8 @@ public class UiScaler : MonoBehaviour
                 print("ultimate target height" + ultimateTargetHeight);
 
 
-                //LOGO POs
-                //    LogoImage.GetComponent<RectTransform>().transform.localPosition += new Vector3(0, -(targetHeight*2), 1);
+                //LOGO POSITION
+             
                 LogoImage.GetComponent<RectTransform>().transform.localPosition += new Vector3(0, -(targetHeight + targetHeight+targetHeight/3 ), 1);
 
 

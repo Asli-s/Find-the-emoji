@@ -54,11 +54,11 @@ public class Board : MonoBehaviour
 
 
     public int bonusTileCount = 0;
-    public int bonusCounter=0;
-    public bool stopCounting =false;
+    public int bonusCounter = 0;
+    public bool stopCounting = false;
 
 
-   public Sprite randomPresent;
+    public Sprite randomPresent;
 
 
     bool checkParentBoard = false;
@@ -99,7 +99,7 @@ public class Board : MonoBehaviour
 
     int count = 0;
 
-  public  bool checkForPopFinish = false;
+    public bool checkForPopFinish = false;
 
     GameObject singleNode;
 
@@ -117,13 +117,13 @@ public class Board : MonoBehaviour
     bool promo = false;
 
     public int appearedForSeach = 0;
-   public bool resetappearedForSeachCounter = false;
+    public bool resetappearedForSeachCounter = false;
     bool pauseOnce = false;
 
-  public  bool foundSearchedTile = false;
+    public bool foundSearchedTile = false;
     public GlassAnim GlassAnim;
 
-    bool bonusPopped =false;
+    bool bonusPopped = false;
 
     void Awake()
     {
@@ -133,13 +133,11 @@ public class Board : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-         //   _maxRange = _tilesPrefab._gameObjects.Length;
-            //_tilesPrefab = GetComponent<Tiles>();
+
             _tileSpriteRenderer = _tilesPrefab?.GetComponent<SpriteRenderer>();
         }
         else
         {
-           // _maxRange = _tilesPrefab._gameObjects.Length;
             _tileSpriteRenderer = _tilesPrefab?.GetComponent<SpriteRenderer>();
 
         }
@@ -149,7 +147,6 @@ public class Board : MonoBehaviour
     }
     private void Start()
     {
-        //  Debug.Log("board inside");
         checkForPopFinish = false;
         secondsLeft = originalSeconds;
         audioManager = FindObjectOfType<AudioManager>();
@@ -158,35 +155,20 @@ public class Board : MonoBehaviour
             _maxRange = 16;
         }
 
-       /* else if (promo == true){
-            _maxRange = 20;
-        }*/
         else
         {
             _maxRange = 55;
         }
-        print("check " +_maxRange);
+        print("check " + _maxRange);
     }
     private void Update()
     {
-        
+
 
         if (gridPopulation == true)
         {
-        //    print("gridPop ==true");
-            if (GameManager.Instance.bonusOn == true )//&& bonusPopped == false)
+            if (GameManager.Instance.bonusOn == true)
             {
-
-              //  PopBonus();
-              //  bonusPopped = true;
-
-                //maybe needed
-              /*  if (checkForPopFinish == false)
-                {
-              //      Featured.Instance.screenActive = true;
-                    checkTiles();
-                }*/
-
             }
 
 
@@ -195,7 +177,7 @@ public class Board : MonoBehaviour
                 checkTiles();
             }
             // first play featuretile instr 
-            else if (checkForPopFinish ==true && GameManager.Instance.firstTime == true && showFeatureText == false && GameManager.Instance.firstFeatureTileAlreadyShown == false && instSetActive==false)
+            else if (checkForPopFinish == true && GameManager.Instance.firstTime == true && showFeatureText == false && GameManager.Instance.firstFeatureTileAlreadyShown == false && instSetActive == false)
             {
                 instSetActive = true;
                 GameManager.Instance.firstFeatureTile = true;
@@ -205,13 +187,13 @@ public class Board : MonoBehaviour
                 Time.timeScale = 0;
 
             }
-         
-        
+
+
             //if found in board           
 
             if (GameManager.Instance.firstFeatureTileAlreadyShown == true && GameManager.Instance.firstTime == true && Instructions.activeSelf == false && appearCounter == 1)
             {
-                if (featureTile.openTile == false && activated ==false)
+                if (featureTile.openTile == false && activated == false)
                 {
                     activated = true;
                     GameManager.Instance.firstBoardTile = true;
@@ -225,17 +207,12 @@ public class Board : MonoBehaviour
 
 
             }
-            /*    if(GameManager.Instance.glassSearch == true&& resetappearedForSeachCounter ==false )
-                      {
 
-                          resetappearedForSeachCounter = true;
-                        //  appearedForSeach = 0;
-                      }*/
             if (appearedForSeach == 1 && GameManager.Instance.glassSearch == true && resetappearedForSeachCounter == true && foundSearchedTile == false)
             {
                 foundSearchedTile = true;
-                
-                if (paused == false && pauseOnce ==false)
+
+                if (paused == false && pauseOnce == false)
                 {
                     Featured.Instance.screenActive = false;
                     pauseOnce = true;
@@ -248,20 +225,14 @@ public class Board : MonoBehaviour
 
 
                 print("place vector of searched tile");
-                GlassAnim.goalVector =    chosenTileFirst.transform.localPosition;
+                GlassAnim.goalVector = chosenTileFirst.transform.localPosition;
                 print("transf localpos" + chosenTileFirst.transform.localPosition);
                 // bring glass to position
             }
-       
 
 
 
-
-
-
-
-
-                if (secondsToStart > 0)
+            if (secondsToStart > 0)
             {
                 toStartTimer = StartingTimer();
                 StartCoroutine(toStartTimer);
@@ -279,15 +250,15 @@ public class Board : MonoBehaviour
                 }
                 else if (takingAway == false && secondsLeft == 0 && paused == false)
                 {
-                    if(GameManager.Instance.firstTime == true)
+                    if (GameManager.Instance.firstTime == true)
                     {
-                        if ( GameManager.Instance.firstFeatureTileAlreadyShown == true)
+                        if (GameManager.Instance.firstFeatureTileAlreadyShown == true)
                         {
                             secondsLeft = originalSeconds;
                             changeSingleTile();
                         }
                     }
-                    else if(GameManager.Instance.bonusOn ==true)
+                    else if (GameManager.Instance.bonusOn == true)
                     {
                         secondsLeft = originalSeconds;
                         changeSingleBonusTile();
@@ -302,24 +273,23 @@ public class Board : MonoBehaviour
 
             }
         }
-else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonusPopped ==false && GameManager.Instance.popBonus ==true)
+        else if (gridPopulation == false && GameManager.Instance.bonusOn == true && bonusPopped == false && GameManager.Instance.popBonus == true)
         {
             print("gridPop ==false");
 
-         //   PopBonus();
+
             bonusPopped = true;
             if (checkForPopFinish == false)
             {
-           //     Featured.Instance.screenActive = true;
 
                 checkTiles();
             }
-          
+
         }
     }
 
 
-  public  void checkCurrentNodes()
+    public void checkCurrentNodes()
     {
 
         _nodes.ForEach((t) =>
@@ -332,11 +302,11 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
                 chosenTileFirst = t;
 
             }
-            
+
 
 
         });
-        if(paused == true && appearedForSeach ==0) //start board again
+        if (paused == true && appearedForSeach == 0) //start board again
         {
             Featured.Instance.screenActive = true;
 
@@ -367,11 +337,9 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
             singleNode = _nodes[i].transform.GetChild(0).gameObject;
 
 
-            // LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
-            //     LeanTween.scale(singleNode, new Vector3(.7f, .7f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+         
             LeanTween.scale(singleNode, new Vector3(.57f, .57f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
 
-            //    LeanTween.scale(singleNode, new Vector3(.8f, .8f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
 
             DestroyTileChild();
 
@@ -381,19 +349,11 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
         {
 
 
-            //  print("count" + count);
             singleNode = _nodes[x].transform.GetChild(0).gameObject;
 
-            //    LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
-            //   LeanTween.scale(singleNode, new Vector3(.8f, .8f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
-            //       LeanTween.scale(singleNode, new Vector3(.7f, .7f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
-            //     LeanTween.scale(singleNode, new Vector3(.59f, .59f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+         
             LeanTween.scale(singleNode, new Vector3(.57f, .57f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
 
-
-
-
-            //Invoke("HideShowGameobject", count / 10);
             DestroyTileChild();
 
 
@@ -404,12 +364,9 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
 
             singleNode = _nodes[y].transform.GetChild(0).gameObject;
 
-            //    LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
-            //   LeanTween.scale(singleNode, new Vector3(.59f, .59f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
+
             LeanTween.scale(singleNode, new Vector3(.57f, .57f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
 
-
-            //  Invoke("HideShowGameobject", count / 10);
             DestroyTileChild();
 
         }
@@ -420,13 +377,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
 
             singleNode = _nodes[z].transform.GetChild(0).gameObject;
 
-            //   LeanTween.scale(singleNode, new Vector3(1.45f, 1.45f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic();//.setOnComplete(DestroyTileChild);
-         //   LeanTween.scale(singleNode, new Vector3(.59f, .59f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
             LeanTween.scale(singleNode, new Vector3(.57f, .57f, 1.45f), 0.15f).setDelay(count / 9.5f).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
-
-                                                                                                                           //     LeanTween.scale(singleNode, new Vector3(.7f, .7f, 1.45f), 1.72f).setDelay(count / 10).setEaseOutElastic(); //.setOnComplete(DestroyTileChild);
-
-            //       Invoke("HideShowGameobject", count / 10);
             DestroyTileChild();
 
 
@@ -436,7 +387,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
         if (count == 16)
         {
             gridPopulation = true;
-            print("gridPopulation" +gridPopulation);
+            print("gridPopulation" + gridPopulation);
         }
 
 
@@ -467,24 +418,13 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
         count += 1;
     }
 
-    /*   void disableLoop()
-       {
-           // audioManager.GetComponent<AudioSource>().loop = false;
-           print("stop the loop");
-           FindObjectOfType<AudioManager>().Play("jump", false, true);
-
-       }
-   */
-
     void checkTiles()  //check if everything popped
     {
         int childCountFour = 0;
         print("checktiles");
 
-     //   Featured.Instance.screenActive = false;
         for (int i = 0; i < 16; i++)
         {
-            //children count should be three
             if (_nodes[i].transform.childCount == 4)
             {
                 childCountFour = 4;
@@ -494,7 +434,6 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
         }
         if (childCountFour == 0)
         {
-           // Featured.Instance.screenActive = false;
             checkForPopFinish = true;
             print("checktiles finished");
 
@@ -511,7 +450,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
 
 
         }
-      
+
 
     }
 
@@ -524,8 +463,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
         alreadyAssigned = false;
         Sprite firstSprite = Tiles.Instance.firstSprite.GetComponent<SpriteRenderer>().sprite;
 
-        // _tileSpriteRenderer.sprite = _tilesPrefab?._gameObjects?[rnd];
-
+      
         rnd = UnityEngine.Random.Range(_minRange, _maxRange);
 
         _tileSpriteRenderer.sprite = chosenSpritesArray[rnd];
@@ -542,8 +480,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
 
 
                 }
-                //print(featureTile.tile.GetComponent<SpriteRenderer>().sprite);//.GetComponent<SpriteRenderer>().sprite);
-
+            
                 //check if featureTile sprite appeared
                 if (alreadyAssigned == false && t.GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
                 {
@@ -552,14 +489,14 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
                     print("appeared onstart " + appearCounter);
                     if (appearCounter == 1 && GameManager.Instance.firstTime)
                     {
-                        if (Featured.Instance.openTile == false && paused==false)
+                        if (Featured.Instance.openTile == false && paused == false)
                         {
                             pauseBoard();
                         }
                         chosenTileFirstAppear = t.GetComponent<SpriteRenderer>();
                         chosenTileFirst = t;
                     }
-                    if (appearedForSeach == 1 && GameManager.Instance.glassSearch ==true)
+                    if (appearedForSeach == 1 && GameManager.Instance.glassSearch == true)
                     {
                         if (Featured.Instance.openTile == false && paused == false)
                         {
@@ -569,19 +506,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
                         chosenTileFirstAppear = t.GetComponent<SpriteRenderer>();
                         chosenTileFirst = t;
                     }
-                    /* if (GameManager.Instance.firstTime == true &&appearCounter ==1)
-                                    {
-                                        _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
-                                        _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sortingOrder = 30000;
-                                        _nodes[randomChosenTile].GetComponent<BoxCollider2D>().enabled = true;
-                                    }
-                                        if(GameManager.Instance.firstTime == true)
-                                        {
-                                            _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
-                                            t.GetComponent<SpriteRenderer>().sortingOrder = 30000;
-                                            t.GetComponent<BoxCollider2D>().enabled = true;
-                                        }*/
-                    //  print(appearCounter);
+                
                 }
 
 
@@ -589,25 +514,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
             });
         }
 
-        //added 02.05
-
-        //change to  first sprite 
-
-
-
-        /*   else if(findScreenFinished == false )// && population is completed)
-           {
-               _tileSpriteRenderer.sprite = firstSprite;
-
-           }*/
-
-
-
-        /* else if(findScreenFinished =true && gridPopulation ==false)
-         {
-             GenerateGrid();    ____________----->  call NEW generategrid at this point 
-             gridPopulation = true;
-         }*/
+     
         return _tilesPrefab;
 
 
@@ -617,50 +524,37 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
 
     public void ResizeArray()
     {
-        /*for(int i =0; i< chosenSpritesArray.Count; i++)
-        {
-            if (i > 30)
-            {
-                chosenSpritesArray.RemoveAt(30);
-            }
-        }*/
-
+       
         print("first object in array" + chosenSpritesArray[0]);
 
 
         _maxRange = 30;
         chosenSpritesArray = chosenSpritesArray.GetRange(0, 30);
-       // chosenSpritesArray = newArray;
-        print("chosenArray count "+chosenSpritesArray.Count);
-      
+        // chosenSpritesArray = newArray;
+        print("chosenArray count " + chosenSpritesArray.Count);
+
     }
 
 
     private List<Sprite> makeSpritesArray()
     {
-        /*  
-         if (GameManager.Instance.firstTime == true)
-         {
-             _maxRange = 20;
-         }*/
+       
 
-        if(GameManager.Instance.firstTime == false){
-
-        _maxRange = 55;
-
-        featureTileSpriteRenderer = featureTile._featureTilePrefab.GetComponent<SpriteRenderer>();
-        //   print("board" + featureTileSpriteRenderer.sprite);
-
-        //chosenSpritesArray will contain 80 sprites -->75
-        //   limiting array to chose from
-        chosenSpritesArray.Add(featureTileSpriteRenderer.sprite);
-
-
-        for (int i = 0; i < _maxRange - 1; i++)
+        if (GameManager.Instance.firstTime == false)
         {
-            rnd = UnityEngine.Random.Range(_minRange, _maxRange);
-            chosenSpritesArray.Add(_tilesPrefab?._gameObjects?[rnd]);
-        }
+
+            _maxRange = 55;
+
+            featureTileSpriteRenderer = featureTile._featureTilePrefab.GetComponent<SpriteRenderer>();
+         
+            chosenSpritesArray.Add(featureTileSpriteRenderer.sprite);
+
+
+            for (int i = 0; i < _maxRange - 1; i++)
+            {
+                rnd = UnityEngine.Random.Range(_minRange, _maxRange);
+                chosenSpritesArray.Add(_tilesPrefab?._gameObjects?[rnd]);
+            }
 
         }
 
@@ -669,7 +563,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
             _maxRange = 20;
 
             featureTileSpriteRenderer = featureTile._featureTilePrefab.GetComponent<SpriteRenderer>();
-        
+
 
             //first sprite --> choseArray[0]  = f TIle
             chosenSpritesArray.Add(featureTileSpriteRenderer.sprite);
@@ -729,7 +623,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
                     while (alreadyAssigned == true)
                     {
                         getTile();
-                      /*appearCounter = 1;*/
+                        /*appearCounter = 1;*/
                         Debug.Log(" tile already in board");
 
                         //little fix?!
@@ -848,7 +742,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
             currentPresentSprite = presentSpriteRainbow6;
 
         }
-      
+
 
         _tileSpriteRenderer.sprite = currentPresentSprite;
 
@@ -862,23 +756,14 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
 
     public void GenerateBonusGrid()
     {
-        //   featureTileSpriteRenderer = featureTile._featureTilePrefab.GetComponent<SpriteRenderer>();
-        //   print("board" + featureTileSpriteRenderer.sprite);
-
-        //chosenSpritesArray will contain 80 sprites -->75
-
-
-        //   showFeatureText bonus count in featuretile?
-
+       
 
         Featured.Instance.screenActive = false;
 
 
-        //  print("length of chosenSpritesArray" + chosenSpritesArray.Count);
 
         timeSpeed = .1f;
-        //fix number of tiles/ array pop?
-        //or getbonustile counter when 50 changeState
+    
 
         if (checkParentBoard == false)
         {
@@ -910,8 +795,8 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
 
                     Instance.getBonusTile();
                     //getBonusTIle
-                 
-                 
+
+
                     Tiles node = Instantiate(_tilesPrefab);
 
                     node.transform.SetParent(_parentObject.transform, false);
@@ -933,7 +818,6 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
 
 
 
-        //  var center = new Vector2((float)_width / 2 - 0.5f, _height / 2 + 0.5f);
         var center = new Vector2((float)_width / 2 - 0.81f, _height / 2 + 0.2f);
         Camera.main.transform.position = new Vector3(center.x, center.y, -10);
 
@@ -947,15 +831,9 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
 
         randomChosenTile = UnityEngine.Random.Range(_minRange, _width * _width);
         alreadyAssigned = false;
-        // rnd = Random.Range(_minRange, _maxRange);
         rnd = UnityEngine.Random.Range(_minRange, _maxRange);
 
-        //    var randomChosenSprite = _tilesPrefab._gameObjects?[rnd];
         var randomChosenSprite = chosenSpritesArray[rnd];
-
-        // get node sprite
-    
-     //   var nodeSprite = _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite;
 
         if (PresentTimer.Instance.changeToBonus == true)
         {
@@ -995,20 +873,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
                     PresentTimer.Instance.StartPresentTimer();
                 }
                 _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite = randomChosenSprite;
-                //set child sprite active for 1s
-
-                //   _nodes[randomChosenTile].
-                /*       particleName=  Instantiate(particleInstance);
-                         particleName.transform.parent = _parentObject.transform;*/
-
-
-
-
-                //FindObjectOfType<AudioManager>().Play("click");
-
-
-
-
+            
 
                 if (_nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite == featureTileSpriteRenderer.sprite)
                 {
@@ -1035,71 +900,19 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
                         chosenTileFirstAppear = _nodes[randomChosenTile].GetComponent<SpriteRenderer>();
                         chosenTileFirst = _nodes[randomChosenTile];
                     }
-                    // print(appearCounter);
-                    /* if (GameManager.Instance.firstTime == true &&appearCounter ==1)
-                     {
-                         _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
-                         _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sortingOrder = 30000;
-                         _nodes[randomChosenTile].GetComponent<BoxCollider2D>().enabled = true;
-                     }*/
+                  
                 }
 
             }
 
         }
-      
-    }
-
-
-
-    /*GENERATE GRID ORIGINAL FUNCTION*/
-
-
-    /*
-    public void GenerateGrid()
-    {
-        featureTileSpriteRenderer = featureTile._featureTilePrefab.GetComponent<SpriteRenderer>();
-        print("board" + featureTileSpriteRenderer.sprite);
-
-
-        _nodes = new List<Tiles>();
-        for (int x = 0; x < _width; x++)
-        {
-            for (int y = 0; y < _height; y++)
-            {
-
-                Instance.getTile();
-                while (alreadyAssigned)
-                {
-                    // Debug.Log("already");
-                    getTile();
-                }
-
-                Tiles node = Instantiate(_tilesPrefab, new Vector2(x, y), Quaternion.identity);
-
-                node.transform.parent = _parentObject.transform;
-                _nodes.Add(node);
-
-
-
-
-            }
-        }
-
-        //  var center = new Vector2((float)_width / 2 - 0.5f, _height / 2 + 0.5f);
-        var center = new Vector2((float)_width / 2 - 0.5f, _height / 2 + 0.53f);
-        Camera.main.transform.position = new Vector3(center.x, center.y, -10);
-
-
-        // _nodes.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
-
-        //  Debug.Log("ft inst");
-        *//* FeatureTile.Instance?.choseFeatureTile();*//*
-        GameManager.Instance.ChangeState(GameState.ChoseTile);
 
     }
-*/
-   public void PopBonus()
+
+
+
+
+    public void PopBonus()
     {
         print("POP iTT");
         GameManager.Instance.bonusCollectAsManyAlertActive = false;
@@ -1107,21 +920,16 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
         GameManager.Instance.SweetCoverHammer.SetActive(true);
         GameManager.Instance.ShopCoverGlass.SetActive(true);
         GameManager.Instance.InvCoverHammer.SetActive(true); //---> deactivate in board / checktiles
-    
-    Board.Instance.PopSprite();
-      /*  if (Board.Instance.gridPopulation == false)
-        {
 
-
-
-        }*/
+        Board.Instance.PopSprite();
+ 
     }
 
     public void changeSingleBonusTile()
     {
 
         bonusTileCount += 1;
-      
+
         //    var randomChosenSprite = _tilesPrefab._gameObjects?[rnd];
         randomChosenTile = UnityEngine.Random.Range(_minRange, _width * _width);
 
@@ -1131,60 +939,40 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
         //chose random tile
         _nodes.ForEach((t) =>
         {
-       //     changes from black  to orange immediately
 
-         if(   t.GetComponent<SpriteRenderer>().sprite == blackSprite)
+            if (t.GetComponent<SpriteRenderer>().sprite == blackSprite)
             {
 
                 //deactivate highlight?
                 t.transform.GetChild(1).gameObject.SetActive(false);
-              // t .GetComponent<SpriteRenderer>().sprite = presentSpriteYellow;
             }
         });
-        // changes randomly
-       _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite = currentPresentSprite;
+        _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite = currentPresentSprite;
 
 
 
 
-            //set child sprite active for 1s
-
-            //   _nodes[randomChosenTile].
-            /*       particleName=  Instantiate(particleInstance);
-                     particleName.transform.parent = _parentObject.transform;*/
 
 
-
-
-            //FindObjectOfType<AudioManager>().Play("click");
-
-
-
-        if(bonusTileCount == 50)
+        if (bonusTileCount == 50)
         {
             stopCounting = true;
-            if(paused == false)
+            if (paused == false)
             {
                 pauseBoard();
                 GameManager.Instance.ChangeState(GameState.WinBonus);
             }
         }
-      
-           
-       
-    }
-/*   void ChangeToOrange()
-    {
-        _nodes[randomChosenTile].GetComponent<SpriteRenderer>().sprite = presentSpriteYellow;
 
-    }*/
+
+
+    }
 
 
 
 
     public void pauseBoard()
     {
-        //print("here");
         if (gridPopulation == true)
         {
             //normal mode 
@@ -1202,11 +990,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
 
 
             }
-            //test this 
-            /* else if (paused == false && Featured.Instance.screenActive == true)
-             {
-                 StopCoroutine(StartTimer);
-             }*/
+         
             else if (paused == true && Featured.Instance.screenActive == false)
             {
                 if (takingAway == true && secondsLeft > 0)
@@ -1287,7 +1071,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
         randomChosenTile = UnityEngine.Random.Range(_minRange, _width * _width);
         alreadyAssigned = false;
         rnd = UnityEngine.Random.Range(_minRange, _maxRange);
-     
+
         var randomChosenSprite = _tilesPrefab._gameObjects?[rnd];
 
         _nodes.ForEach((t) =>
@@ -1339,7 +1123,7 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
         yield return new WaitForSeconds(timeSpeed);
         secondsLeft--;
         takingAway = false;
-        }
+    }
 
     IEnumerator StartingTimer()
     {
@@ -1347,5 +1131,5 @@ else if( gridPopulation ==false && GameManager.Instance.bonusOn == true && bonus
         yield return new WaitForSeconds(1);
         secondsToStart--;
 
-        }
+    }
 }

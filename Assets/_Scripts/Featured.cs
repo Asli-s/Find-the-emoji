@@ -119,13 +119,7 @@ public class Featured : MonoBehaviour
     }
     private void Start()
     {
-        Debug.Log("new inside");
-
-
-        //    animator= findScreenObject.GetComponent<Animator>();
-
-
-        //   secondsLeft = originalSeconds;
+       
 
     }
 
@@ -189,8 +183,7 @@ public class Featured : MonoBehaviour
             thirdTimer = false;
 
 
-            //       questionMark.SetActive(true);
-
+       
 
             //open tiles of board
             if (clicked == true)
@@ -218,7 +211,7 @@ public class Featured : MonoBehaviour
                     tile.transform.GetChild(lastChildIndex).gameObject.SetActive(false);
                 });
 
-                //       tile.transform.GetChild(-1).gameObject.SetActive(false); });
+             
             }
 
             disableSecondTiemr = TimerOneSec();
@@ -233,10 +226,7 @@ public class Featured : MonoBehaviour
 
 
                 StartCoroutine(waitAnotherSecond);
-                /*
-                                print(thirdTimer );
-                                print(anotherSecond);*/
-
+            
 
                 StopCoroutine(disableSecondTiemr);
 
@@ -293,16 +283,7 @@ public class Featured : MonoBehaviour
             GameManager.Instance.coinNum = coinCountNum;
             showAlert.SetActive(true);
 
-            /*     if (coinCountNum > 0)
-                 {
-
-                 }
-                 if (coinCountNum == 0)
-                 {
-                     showAlertNoCoin.SetActive(true);
-
-                 }
-     */
+     
         }
 
 
@@ -351,45 +332,6 @@ public class Featured : MonoBehaviour
 
     }
 
-    /* public void restartScene() //NEW SCENE
-     {
-         print("restartscene funct");
-         startCountDown = true;
-         screenActive = false;
-         additionalSecond = 1;
-
-         if (openTile == false*//*e && !EventSystem.current.IsPointerOverGameObject()*//*)
-         {
-         //    tile.GetComponent<BoxCollider2D>().enabled = false;
-
-             _board.pauseBoard();
-             _allTiles = _board._nodes;
-
- //_allTiles.ForEach((tile) => { tile.GetComponent<BoxCollider2D>().enabled = false; });
-             coinCountText = GameManager.Instance.m_Object.text;
-             coinCountNum = int.Parse(coinCountText);
-             GameManager.Instance.coinNum = coinCountNum;
-
-             if (coinCountNum > 0 &&screenActive ==false)
-             {
-
-                 screenActive= true;
-                 showAlert.SetActive(true);
-             }
-             if (coinCountNum == 0 &&screenActive ==false)
-             {
-                 showAlertNoCoin.SetActive(true);
-                 screenActive = true;
-             }
-         }
-
-
-         Time.timeScale = 1f;
-                                                                //cALL SAVEDATA AT THIS POINT
-         DataPersistenceManager.Instance.SaveGame();
-        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
-
-     }*/
  
     public void LoseCoinFromNoCoinScreen()
     {
