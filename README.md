@@ -13,6 +13,6 @@ This is a casual game made for android mobile phones in Unity
 
 </br>
 
-Hierarchy in Editor
+Hierarchy in editor
 
 <img src="https://drive.google.com/uc?export=view&id=1tLFI07OtPWf7tWQRRHR-w3MA929NGuNa" width="400">
