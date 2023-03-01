@@ -14,6 +14,8 @@ public class GameData
     public int win;
     public int lose;
 
+    public bool rated;
+
 
     public int score3;
     public int score2;
@@ -120,6 +122,8 @@ public class GameData
 
         this.findScreenActiveGame = false;
         this.noCoinScreenActive = false;
+
+        this.rated = false;
 
     }
 

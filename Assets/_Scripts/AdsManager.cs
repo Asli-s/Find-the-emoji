@@ -22,24 +22,21 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
 
     bool loadedSuccessfully = false;
 
-    /*
-    #if UNITY_IOS
-        string GameId = "4829946";
-         string   AdId = "Rewarded_iOS";
-    #else
-        string GameId = "4829947";
-        string AdId = "Rewarded_Android";
-    #endif*/
-
-    bool testmode = true;
+    bool buttonCLick = false;
+   
+    bool testmode = false;
     public Action onRewardedAdSuccess;
 
     // Start is called before the first frame update
     void Awake()
     {
 
+     
+    }
 
-        print("awake");
+    void Start()
+    {
+        print("awake ad");
 
         if (Application.platform == RuntimePlatform.Android)
         {
@@ -54,125 +51,112 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
         }
 
         Advertisement.Initialize(GameId, testmode, this);
-       // Advertisement.AddListener(this);
-        
-    }
-
-    void Start()
-    {
-    //    Advertisement.Load(AdId, this);
+      
     }
 
 
 
 
-
-
-
-    ////////////////////////////////////////
-    
- /*   public void RewardedAdButton()
-    {
-       // PlayRewardedAd(ActivateReward);
-
-        //call show function
-
-
-
-    }*/
 
     void ActivateReward()
     {
         GoldReward.SetActive(true);
     }
 
-
-
-    public void OnUnityAdsAdLoaded(string placementId)
-    {
-        //  throw new NotImplementedException();
-        print(placementId + AdId);
-        print("loaded");
-        /*  if (placementId.Equals(AdId))
-          {
-              // showAdButton.onClick.AddListener(ShowAd);
-              ShowAd();
-          }
-
-  */
-        loadedSuccessfully = true;
-
-        
-    }
-
-
-    public void ShowAd()
-    {
-        print("loadedsuccess" + loadedSuccessfully);
-     /*   if(loadedSuccessfully)
-        {
-*/
-        Advertisement.Show(AdId, this);
-       // }
-    }
-
-
-    public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
-    {
-        //throw new NotImplementedException();
-        loadedSuccessfully = false;
-    }
-
-    public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
-    {
-     //   throw new NotImplementedException();
-    }
-
-    public void OnUnityAdsShowStart(string placementId)
-    {
-        //  throw new NotImplementedException();
-
-
-    
-    }
-
-    public void OnUnityAdsShowClick(string placementId)
-    {
-        //  throw new NotImplementedException();
-        print("show clicked");
-     
-    }
-
-    public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
-    {
-
-
-        //reward
-        //  onRewardedAdSuccess.Invoke();
-        //   ActivateReward();
-
-        print(placementId + AdId + showCompletionState+ UnityAdsShowCompletionState.COMPLETED);
-        print("complete");
-        if (placementId == (AdId) && showCompletionState.Equals( UnityAdsShowCompletionState.COMPLETED ))
-        {
-            print("really completed");
-
-            ActivateReward();
-        Advertisement.Load(AdId, this);
-        }
-
-
-        //  throw new NotImplementedException();
-    }
+        ///////
+        ///
+        ///
+        bool adStarted =false;
 
     public void OnInitializationComplete()
     {
-        //   throw new NotImplementedException();
+        Debug.Log("Unity Ads initialization complete.");
         Advertisement.Load(AdId, this);
     }
 
     public void OnInitializationFailed(UnityAdsInitializationError error, string message)
     {
-       // throw new NotImplementedException();
+   
+        print("failed");
     }
+
+    public void OnUnityAdsAdLoaded(string adUnitId)
+    {
+        Debug.Log("Ad Loaded: " + adUnitId);
+        if (!adStarted  )
+        {
+            loadedSuccessfully = true;
+            if(notready= false)
+            {
+                notready = true;
+                Advertisement.Show(AdId, this);
+
+
+            }
+        }
+    }
+    public void OnUnityAdsFailedToLoad(string adUnitId, UnityAdsLoadError error, string message)
+    {
+       
+        print("failed");
+
+    }
+
+    public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
+    {
+      
+        print("failed");
+
+    }
+
+    public bool adCompleted;
+    public void OnUnityAdsShowStart(string adUnitId)
+    {
+        adStarted = true;
+        Debug.Log("Ad Started: " + adUnitId);
+    }
+
+
+    public void ckilcKButton()
+    {
+        print("adStarted" + adStarted);
+        print("loaded" + loadedSuccessfully);
+        if (loadedSuccessfully)
+        {
+            Advertisement.Show(AdId, this);
+       
+        }
+        else
+        {
+
+            Advertisement.Load(AdId, this);
+            notready = false;
+
+        }
+    }
+
+
+    bool notready = true;
+
+    public void OnUnityAdsShowClick(string adUnitId)
+    {
+        Debug.Log("Ad Clicked: " + adUnitId);
+    }
+
+    public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState)
+    {
+        adCompleted = showCompletionState == UnityAdsShowCompletionState.COMPLETED;
+        Debug.Log("Ad Completed: " + adUnitId);
+        adStarted = false;
+        Advertisement.Load(AdId, this);
+
+        ActivateReward();
+    }
+
+
+
+
+
+
+
 }

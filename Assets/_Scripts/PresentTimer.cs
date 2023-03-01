@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PresentTimer : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class PresentTimer : MonoBehaviour
     int randomNumber = 0;
    public IEnumerator PresentTimerCountdown;
     bool alreadyInside = false;
+
+    public GameObject rateScreen;
+    public 
 
 
     void Awake()
@@ -160,6 +164,12 @@ public    IEnumerator presentTimer  ()
 
         yield return new  WaitForSeconds(1);
             duration--;
+            print(GameManager.Instance.rated);
+            if (GameManager.Instance.rated == false&& duration %300 ==0)
+            {
+                ActivateRateScreen();
+            }
+
             GameManager.Instance.presTimerSeconds = duration;
 
 
@@ -182,6 +192,15 @@ public    IEnumerator presentTimer  ()
 
 
     }
+
+
+    public void ActivateRateScreen()
+    {
+
+        rateScreen.SetActive(true);
+    }
+
+  
 
 
 }

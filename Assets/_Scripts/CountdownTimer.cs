@@ -31,32 +31,14 @@ public class CountdownTimer : MonoBehaviour
 
 
 
-    //  public GameManager coinCount;
+    
     string coinCountText;
     private int coinCountNum;
    private int newNum;
     double minuteDiff;
-    //public int minute = 30;
-    //public int second = 0;
+  
 
-
-    private void Awake()
-    {
-       
-    }
-
-    private void Start()
-    {
-        
-
-    }
-    /*extra*/
-
-    private void Update()
-    {
-       // print(Application.runInBackground);
-
-    }
+   
 
     public void BeginTimer(int minute = 0, int second = 0)
     {
@@ -89,8 +71,7 @@ public class CountdownTimer : MonoBehaviour
 
             displayTimer = DisplayTime();
             realTimer = actualTimer();
-          //  timer1 = new Thread(() => StartCoroutine(displayTimer) ); 
-         //   timer2 = new Thread(() => StartCoroutine(realTimer));
+        
            StartCoroutine(displayTimer);
             StartCoroutine(realTimer);
 
@@ -112,19 +93,13 @@ public class CountdownTimer : MonoBehaviour
             displayTimer = DisplayTime();
             realTimer = actualTimer();
 
-            /*
-                        timer1 = new Thread(() => StartCoroutine(displayTimer));
-                        timer2 = new Thread(() => StartCoroutine(realTimer));*/
+           
 
             StartCoroutine(displayTimer);
             StartCoroutine(realTimer);
         }
        
-  /*      }*/
-      /*  if( countdown > 0)
-        {
-
-        }*/
+ 
     }
 
     private IEnumerator DisplayTime()
@@ -144,17 +119,10 @@ public class CountdownTimer : MonoBehaviour
         { 
              text = "";
             if (timerSecondsLeft > 1)
-            {/*
-                if (timeLeft.Hours != 0)
-                {
-                    text += timeLeft.Hours + "h ";
-                    text += timeLeft.Minutes + "m";
-                    yield return new WaitForSeconds(timeLeft.Seconds);
-                 *//*   print("timeleft minutes" + timeLeft.Minutes);
-                    print("timeleft sec" + timeLeft.Seconds);
-*//*
-                }
-                else*/ if (timeLeft.Minutes != 0)
+            {
+
+                
+                if (timeLeft.Minutes != 0)
                 {
                     TimeSpan ts = TimeSpan.FromSeconds(timerSecondsLeft);
                     if (ts.Minutes < 10)
@@ -170,8 +138,7 @@ public class CountdownTimer : MonoBehaviour
                         text += ts.Seconds + "s";
 
                         }
-                        /*    print("ts minutes" + ts.Minutes); 
-                            print("ts seconds" + ts.Seconds);*/
+                       
                         GameManager.Instance.minutesLeft = ts.Minutes;
                         GameManager.Instance.secondsLeft = ts.Seconds;
 
@@ -192,8 +159,7 @@ public class CountdownTimer : MonoBehaviour
 
                             }
                   
-                /*    print("ts minutes" + ts.Minutes); 
-                    print("ts seconds" + ts.Seconds);*/
+               
                   GameManager.Instance.minutesLeft = ts.Minutes;
                        GameManager.Instance.secondsLeft = ts.Seconds;
                     
@@ -208,13 +174,13 @@ public class CountdownTimer : MonoBehaviour
                     {
                         text += "0"+ Mathf.FloorToInt((float)timerSecondsLeft) + "s";
                         GameManager.Instance.secondsLeft = Mathf.FloorToInt((float)timerSecondsLeft);
-                      //      print(" seconds" + GameManager.Instance.secondsLeft);
+                    
                     }
                     else
                     {
                     text += Mathf.FloorToInt((float)timerSecondsLeft) + "s";
                     GameManager.Instance.secondsLeft = Mathf.FloorToInt((float)timerSecondsLeft );
-          //         print(" seconds" + GameManager.Instance.secondsLeft);
+         
 
                     }
 
@@ -222,7 +188,7 @@ public class CountdownTimer : MonoBehaviour
                 }
                 TimerText.text = text;
                 timerSecondsLeft -= Time.deltaTime;
-          //      print("timersec" + timerSecondsLeft);
+          
                 yield return null;
             }
             else
